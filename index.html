@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02805 Social Graphs & Complex Networks | Group Website</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- MathJax for rendering equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-badge">DTU 02805</span>
+        <span>Social Graphs & Complex Networks</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#week1">Week 1 Post</a></li>
+          <li><a href="#roadmap">Weekly Log</a></li>
+          <li><a href="https://sunelehmann.com/socialgraphs2026-web/" target="_blank" rel="noopener">Course Hub ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="course-tag">Fall Semester 2026 · Group Interactive Data Story</div>
+      <h1>The <span>Marvel Universe</span> on Wikipedia</h1>
+      <p class="hero-subtitle">
+        Mining structural topology, power laws, and link asymmetries across 303 superheroes.
+      </p>
+      
+      <!-- Group Members Callout: Edit with your team details -->
+      <div class="group-info-pill">
+        <span>👥 <strong>Group Members:</strong> [Student 1 Name (sXXXXXX)] &bull; [Student 2 Name (sXXXXXX)] &bull; [Student 3 Name (sXXXXXX)]</span>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-value">303</div>
+          <div class="stat-label">Total Characters (N)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">1,784</div>
+          <div class="stat-label">Directed Links (E)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">9.47</div>
+          <div class="stat-label">Avg Undirected &lang;k&rang;</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3.1%</div>
+          <div class="stat-label">Network Density</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">17</div>
+          <div class="stat-label">Isolated Heroes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Article Body -->
+  <main class="container">
+
+    <!-- Week 1 Article -->
+    <article id="week1">
+      <div class="post-meta">
+        <span class="badge badge-red">Week 1 Post</span>
+        <span class="badge badge-blue">Group Exercise: Go Nuts with Your LLM</span>
+        <span>&bull;</span>
+        <span>Dataset: Wikipedia Category:Marvel_Comics_superheroes</span>
+      </div>
+
+      <!-- Section 1: Overview & Research Angle -->
+      <section class="content-section">
+        <h2>1. The Representation & The Playground</h2>
+        <p>
+          Welcome to our public group journal for <strong>02805 Social Graphs and Complex Networks</strong>! This week we kicked off the semester by diving into the <strong>Wikipedia Marvel Comics Superheroes Network</strong>. 
+        </p>
+        <p>
+          Before running any calculations, network science asks a fundamental question: <em>What are the nodes and what are the edges?</em> Here, each node represents a Wikipedia article for a Marvel superhero (from the official category snapshot), and a directed edge \(A \to B\) exists if character \(A\)'s page contains an internal wikilink pointing to character \(B\)'s page.
+        </p>
+        
+        <div class="callout callout-builder">
+          <div class="callout-title">
+            <span>💡 The Isolate Preservation Rule</span>
+          </div>
+          <p>
+            When constructing the network from the edge list, 17 of the 303 characters have no incoming or outgoing connections. If one simply loads the edges, these loners vanish! We ensured all 303 nodes from <code>week1_nodes.tsv</code> were inserted first, guaranteeing an exact snapshot where \(N=303\), \(E_{\text{dir}}=1{,}784\), and the isolates are preserved.
+          </p>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Network Property</th>
+                <th>Directed View (\(G_{\text{dir}}\))</th>
+                <th>Undirected View (\(G_{\text{undir}}\))</th>
+                <th>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Node Count (\(N\))</strong></td>
+                <td class="mono">303</td>
+                <td class="mono">303</td>
+                <td>Total Marvel heroes cataloged</td>
+              </tr>
+              <tr>
+                <td><strong>Edge Count (\(E\))</strong></td>
+                <td class="mono">1,784 directed links</td>
+                <td class="mono">1,434 distinct pairs</td>
+                <td>350 links are reciprocal (\(A \leftrightarrow B\))</td>
+              </tr>
+              <tr>
+                <td><strong>Average Degree \(\langle k \rangle\)</strong></td>
+                <td class="mono">\(\langle k_{\text{in}}\rangle = \langle k_{\text{out}}\rangle = 5.89\)</td>
+                <td class="mono">\(\langle k \rangle = 2E/N \approx 9.47\)</td>
+                <td>Average connections per superhero</td>
+              </tr>
+              <tr>
+                <td><strong>Network Density</strong></td>
+                <td class="mono">\(1{,}784 / (303 \times 302) \approx 1.95\%\)</td>
+                <td class="mono">\(1{,}434 / [303 \times 302 / 2] \approx 3.13\%\)</td>
+                <td>Sparse network: ~97% of possible ties do not exist</td>
+              </tr>
+              <tr>
+                <td><strong>Giant Component</strong></td>
+                <td class="mono">277 nodes (91.4%)</td>
+                <td class="mono">277 nodes (91.4%)</td>
+                <td>Main connected superhero universe</td>
+              </tr>
+              <tr>
+                <td><strong>Islands & Isolates</strong></td>
+                <td class="mono">1 island of 9 nodes, 17 isolates</td>
+                <td class="mono">1 island of 9 nodes, 17 isolates</td>
+                <td>Disconnected subcultures (e.g. British heroes)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: In-Degree vs Out-Degree Asymmetry -->
+      <section class="content-section">
+        <h2>2. Who is Famous vs. Who is a List: In- vs. Out-Degree</h2>
+        <p>
+          One of the most profound insights from Week 1 is the <strong>asymmetry of directed networks</strong>. Every directed edge has an author and an recipient:
+        </p>
+        <ul>
+          <li><strong>In-degree (\(k_{\text{in}}\))</strong> is <em>conferred</em> by other pages. It reflects collective cultural centrality: other Wikipedia editors independently deciding that a hero is indispensable to their article's context. In-degree has <strong>no natural ceiling</strong>.</li>
+          <li><strong>Out-degree (\(k_{\text{out}}\))</strong> is <em>authored</em> locally. An editor sits down and writes hyperlinks on that specific character's page. Human editorial patience and article readability impose a <strong>hard ceiling</strong>.</li>
+        </ul>
+
+        <!-- Leaderboards -->
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="tab-in">Top In-Degree (Cultural Icons)</button>
+          <button class="tab-btn" data-tab="tab-out">Top Out-Degree (Curated Hubs)</button>
+        </div>
+
+        <div class="tab-pane active" id="tab-in">
+          <div class="data-table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Character</th>
+                  <th>In-Degree (\(k_{\text{in}}\))</th>
+                  <th>Shifted \(k_{\text{in}}+1\)</th>
+                  <th>Significance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td><strong>Spider-Man</strong></td><td class="mono">106</td><td class="mono">107</td><td>Referenced by over 35% of all Marvel pages</td></tr>
+                <tr><td>2</td><td><strong>Hulk</strong></td><td class="mono">64</td><td class="mono">65</td><td>Core Avenger & universal crossover presence</td></tr>
+                <tr><td>3</td><td><strong>Wolverine</strong></td><td class="mono">60</td><td class="mono">61</td><td>Bridge between X-Men and mainstream Avengers</td></tr>
+                <tr><td>4</td><td><strong>Doctor Strange</strong></td><td class="mono">50</td><td class="mono">51</td><td>Occult & mystical crossover nexus</td></tr>
+                <tr><td>5</td><td><strong>Deadpool</strong></td><td class="mono">33</td><td class="mono">34</td><td>Modern meta-cultural popularity</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-out">
+          <div class="data-table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Character</th>
+                  <th>Out-Degree (\(k_{\text{out}}\))</th>
+                  <th>Shifted \(k_{\text{out}}+1\)</th>
+                  <th>Significance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td><strong>Betsy Braddock (Psylocke)</strong></td><td class="mono">28</td><td class="mono">29</td><td>Exhaustive team roster mentions across X-Men/Excalibur</td></tr>
+                <tr><td>2</td><td><strong>Cloak and Dagger</strong></td><td class="mono">24</td><td class="mono">25</td><td>Extensive team-up history with NYC street-level heroes</td></tr>
+                <tr><td>3</td><td><strong>Adam Warlock</strong></td><td class="mono">22</td><td class="mono">23</td><td>Cosmic storylines linking Infinity Watch characters</td></tr>
+                <tr><td>4</td><td><strong>Venom</strong></td><td class="mono">21</td><td class="mono">22</td><td>Links to extensive Symbiote universe & Spider-family</td></tr>
+                <tr><td>5</td><td><strong>She-Hulk</strong></td><td class="mono">20</td><td class="mono">21</td><td>Legal casework involving dozens of superhero clients</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="figure-box">
+          <img src="assets/in_out_degree_distribution.png" alt="In vs Out Degree Distribution Comparison">
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> Comparing in-degree and out-degree across linear-linear and log-log coordinate systems. Both axes plot \(k+1\) so that the 17 isolated characters remain visible at \(\log(1)=0\). Notice how Spider-Man stretches the in-degree tail all the way to 106, while out-degree terminates sharply at 28.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Binning & Heavy Tails -->
+      <section class="content-section">
+        <h2>3. Logarithmic Binning: Revealing the Power Law</h2>
+        <p>
+          Real degree distributions are notoriously noisy in their tails. At high degrees, every count is either 0 or 1—a solitary Spider-Man sits at \(k=106\), with zeros at \(k=105\) and \(k=107\). Since a logarithmic axis cannot represent zero (\(\log(0) = -\infty\)), raw tail data appears fragmented and deceptively drops off.
+        </p>
+        <p>
+          Following Sune Lehmann's <em>Goodies</em> specification, we implemented the standardized logarithmic binning algorithm:
+        </p>
+        <ol>
+          <li><strong>Width-1 bins</strong> for low degrees (\(k+1 \in [1, 7]\)), where data is dense and unaggregated.</li>
+          <li><strong>Exponentially doubling bins</strong> thereafter: \([8, 16)\), \([16, 32)\), \([32, 64)\), \([64, 128)\).</li>
+          <li><strong>Width normalization:</strong> Raw bin counts are divided by the bin width \(\Delta k\) to yield a true probability density \(p(k) = \frac{\text{count}}{N \cdot \Delta k}\).</li>
+          <li><strong>Geometric mean placement:</strong> Each bin point is centered at the geometric mean \(\sqrt{k_{\text{low}} \cdot (k_{\text{high}} - 1)}\), ensuring proper alignment on a logarithmic scale.</li>
+        </ol>
+
+        <div class="figure-box">
+          <img src="assets/binned_in_degree.png" alt="Logarithmic Binning of In-Degree Distribution">
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Binned probability density overlaid on raw data points. At low degrees (\(u \le 7\)), the binned curve aligns precisely with the raw empirical frequencies. In the sparse tail, binning averages out discrete zero-count gaps and uncovers a continuous, straight power-law trajectory.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Power Law vs Exponential -->
+      <section class="content-section">
+        <h2>4. Two Mathematical Specimens: Power Law vs. Exponential</h2>
+        <p>
+          To calibrate our intuition, we drew 10,000 synthetic samples from two canonical distributions:
+        </p>
+        <ul>
+          <li><strong>Power Law (\(P(k) \propto k^{-\gamma}\)):</strong> Straightens out exclusively on <strong>Log–Log</strong> coordinates.</li>
+          <li><strong>Exponential (\(P(k) \propto e^{-\lambda k}\)):</strong> Straightens out exclusively on <strong>Semi-Log (Log-Y)</strong> coordinates.</li>
+        </ul>
+
+        <div class="figure-box">
+          <img src="assets/marvel_vs_specimens.png" alt="Marvel vs Power-Law and Exponential Specimens">
+          <div class="figure-caption">
+            <strong>Figure 3:</strong> Testing Marvel against synthetic benchmarks. (Left) The Marvel in-degree curve conforms to the Power-Law specimen on log-log axes. (Right) The Marvel out-degree distribution drops off quickly, exhibiting characteristic exponential/sub-exponential decay due to editorial limits.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Network Map & Giant Component -->
+      <section class="content-section">
+        <h2>5. Visualizing the Universe & The 9-Character Island</h2>
+        <p>
+          Visualizing the network using a force-directed layout brings the abstract matrices to life. The vast majority of heroes (277 nodes, 91.4%) coalesce into a single <strong>Giant Connected Component</strong>.
+        </p>
+        <p>
+          However, floating apart from the main swarm is an intriguing <strong>isolated component of 9 characters</strong>:
+        </p>
+        <ul>
+          <li>A localized pocket of British / Excalibur / specialized mutant lore characters who interconnect with each other but lack hyperlinks to mainstream Marvel universe heroes.</li>
+          <li>Additionally, <strong>17 isolated nodes</strong> exist completely detached from any other page in the category snapshot.</li>
+        </ul>
+
+        <div class="figure-box">
+          <img src="assets/network_graph.png" alt="Force-Directed Network Visualization of Marvel Superheroes">
+          <div class="figure-caption">
+            <strong>Figure 4:</strong> Force-directed graph representation (\(G_{\text{undir}}\)). Node diameter is scaled by degree; major crossover hubs (Spider-Man, Hulk, Wolverine, Doctor Strange, Deadpool) are highlighted in bold red.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: What Surprised Us -->
+      <section class="content-section">
+        <h2>6. Group Reflection: What Surprised Us?</h2>
+        <div class="callout">
+          <div class="callout-title">
+            <span>🧠 Key Insights from Week 1</span>
+          </div>
+          <p>
+            <strong>1. Spider-Man's sheer dominance:</strong> With an in-degree of 106, Peter Parker is cited by more than 1 in every 3 Marvel characters. He acts as the narrative glue of the Marvel universe.
+          </p>
+          <p>
+            <strong>2. The Out-Degree Disconnect:</strong> We expected major Avengers like Iron Man or Captain America to lead both lists. Instead, obscure or multi-team characters like Betsy Braddock and Cloak &amp; Dagger dominate out-degrees simply because their articles catalog long, detailed rosters of allies and enemies.
+          </p>
+          <p>
+            <strong>3. The Fragility of Isolates:</strong> Handling tabular data without explicit isolate checks silently erases 17 superheroes. In network science, what <em>doesn't</em> connect is often as instructive as what does.
+          </p>
+        </div>
+      </section>
+    </article>
+
+    <!-- Roadmap & Future Weeks Section -->
+    <section id="roadmap" class="content-section">
+      <h2>Semester Roadmap: The Interactive Data Story</h2>
+      <p>
+        Every week of <strong>02805</strong>, our group will append a new analytical chapter to this website, exploring the evolving Marvel dataset using modern network science and NLP tools:
+      </p>
+
+      <div class="data-table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Topic</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Week 1</strong></td>
+              <td>Networks, Degree Distributions &amp; Power Laws</td>
+              <td><span class="badge badge-teal" style="background: rgba(46, 160, 67, 0.15); color: #3fb950; border: 1px solid rgba(46, 160, 67, 0.4);">Published</span></td>
+            </tr>
+            <tr>
+              <td><strong>Week 2</strong></td>
+              <td>Random Graphs, Erdos-Renyi &amp; Network Models</td>
+              <td><span class="badge badge-purple">Upcoming</span></td>
+            </tr>
+            <tr>
+              <td><strong>Week 3</strong></td>
+              <td>Paths, Distance &amp; Six Degrees of Separation</td>
+              <td><span class="badge badge-purple">Upcoming</span></td>
+            </tr>
+            <tr>
+              <td><strong>Week 4</strong></td>
+              <td>Communities &amp; Clustering in the Multiverse</td>
+              <td><span class="badge badge-purple">Upcoming</span></td>
+            </tr>
+            <tr>
+              <td><strong>Weeks 5–8</strong></td>
+              <td>Text Analysis, TF-IDF, Sentiment &amp; Final Project</td>
+              <td><span class="badge badge-purple">Upcoming</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://sunelehmann.com/socialgraphs2026-web/" target="_blank">02805 Course Website</a>
+      <span>&bull;</span>
+      <a href="https://www.networkatlas.eu/" target="_blank">Network Atlas Textbook</a>
+      <span>&bull;</span>
+      <a href="https://github.com" target="_blank">GitHub Pages</a>
+    </div>
+    <p>Built with ❤️ and an LLM for DTU Course 02805: Social Graphs &amp; Complex Networks.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
