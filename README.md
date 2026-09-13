@@ -78,5 +78,3 @@ If the repository is switched to **GitHub Actions** as its Pages source, the sam
 python scripts/build.py --output _site
 python -m http.server 8000 --directory _site
 ```
-
-Share the live site link in the week's Teams channel and leave constructive feedback on another group's work as required by the course. The site build does not send messages on your behalf.
