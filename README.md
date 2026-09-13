@@ -1,12 +1,20 @@
-# EARTH—303 · The Bureau of Missing Connections
+# Crosstalk
 
-A fictional field bureau investigating a real Wikipedia network. Week 1 turns the course's frozen Marvel superhero snapshot into an interactive data story: follow the hubs, compare incoming and outgoing links, and look for the characters outside the giant component.
+**Small signals. Strange connections.** A playful network science notebook by Christos Diamantis (s253102) and Dávid Weiner (s253347), for DTU 02805 Social Graphs and Interactions.
 
-The analysis and static-site build use Python's standard library. The interactive browser experience uses plain JavaScript and CSS. No API key, package installation, or live Wikipedia connection is needed to reproduce the post.
+[Visit the website](https://vitrotank.github.io/social_graphs_2026/)
+
+The site is a little telephone switchboard: a simple homepage connects the weekly journal and an original game. The telephone language is a visual metaphor. The actual network consists of directed references between Wikipedia pages, not conversations, friendships, or Marvel alliances.
+
+## Three places to explore
+
+- **Home — `index.html`:** the group, latest published post, and all eight week slots. Unwritten weeks have no broken or empty links.
+- **Week 1 — `week1/index.html`:** the complete Marvel analysis, searchable network, linear/log–log degree plots, isolates, and hub-removal experiment.
+- **Crossed Wires — `play/index.html`:** twelve logic puzzles made from real links. Restore erased arrow directions to match the displayed incoming/outgoing counts.
 
 ## Run locally
 
-Use Python 3.10 or newer. From the repository directory:
+Python 3.10 or newer is sufficient. The analysis, site builder, and puzzle generator use only the standard library. Run these commands from the repository directory:
 
 ```sh
 python scripts/analyze.py
@@ -15,40 +23,50 @@ python -m unittest discover -s tests
 python -m http.server 8000
 ```
 
-Open [localhost:8000](http://localhost:8000). The generated site also includes the data needed to explore it by opening `index.html` directly, without an internet connection.
+Open [localhost:8000](http://localhost:8000). You can also open `index.html` directly: the three pages use relative links and bundled JavaScript data, so the site works offline. No external fonts, API keys, or package downloads are required. Python prepares the data and pages; JavaScript handles the browser interactions.
 
-The analysis reads `data/raw/week1_nodes.tsv` and `data/raw/week1_edges.tsv`, then writes `assets/data/network.json` and `assets/data/summary.json`. The node roster is loaded before the edges so isolated nodes remain in the network. `scripts/build.py` renders `templates/index.html` to `index.html`.
+For optional browser checks, run `python scripts/build.py --output _site`, then `python scripts/browser_smoke.py`. An existing Chrome or Chromium installation is required; pass `--browser PATH` if needed. Screenshots and results go in the ignored `.preview/` folder. The checks do not install anything.
 
-For an optional browser check, run `python scripts/build.py --output _site`, then `python scripts/browser_smoke.py`. This requires an already installed Chrome or Chromium browser (or pass `--browser PATH`). It checks search, link direction, degree plots, hub removal, and mobile overflow, and saves screenshots in `.preview/`. It does not install anything.
+## Add the next week
 
-## Publish on GitHub Pages
+1. Create `templates/week2.html` with the next story. Use `@@HEADER@@`, `@@FOOTER@@`, and the `@@ROOT@@` prefix on shared asset and navigation paths; see `templates/week1.html` for an example.
+2. Update the Week 2 entry in `site.json`:
 
-The included workflow rebuilds and checks the site on a push to `main`, or when run manually from the Actions tab. It detects the repository's existing Pages publishing mode. With **Deploy from a branch**, GitHub publishes the generated files committed at the root of `main`. With **GitHub Actions**, the workflow publishes only the staged `_site` directory. The build has read-only repository/Pages access; the deployment job has the Pages and identity permissions it requires.
+```json
+{
+  "number": 2,
+  "title": "Your next question",
+  "summary": "A short invitation to read the new experiment.",
+  "status": "published",
+  "path": "week2/index.html",
+  "template": "week2.html"
+}
+```
 
-1. Keep this repository public for the course website.
-2. Keep the existing **Deploy from a branch → main → / (root)** setting, or select **GitHub Actions** to deploy the Python build artifact.
-3. Run the Python build and push the generated files to `main`. In Actions mode, you can also run **Publish EARTH—303** from **Actions**.
-4. Wait for a successful deployment, then open the URL shown by the deployment job.
+3. Run the build and tests. The builder creates the new page, links it in the archive, and features the latest published week on the homepage.
+4. Commit the generated pages along with their templates and push to `main`.
 
-The intended address is [vitrotank.github.io/social_graphs_2026](https://vitrotank.github.io/social_graphs_2026/). This README does not confirm that publication has completed.
+Edit `site.json` for names, the site identity, and the week registry. Shared styling lives in `style.css`; Week 1 interactions in `app.js`; the game in `game.js` and `game.css`. The small `home.js` preserves bookmarks to the original report's anchors by taking visitors to Week 1.
 
-To inspect exactly what will be published:
+## Where the numbers and puzzles come from
+
+`scripts/analyze.py` loads the complete node roster before adding edges, preserving the 17 isolated characters. It writes `assets/data/network.json`, `summary.json`, and downloadable SVG plots. The frozen release contains 303 nodes, 1,784 directed links, and weak component sizes of 277, 9, and seventeen singletons.
+
+`scripts/puzzles.py` selects small connected sets of real, non-reciprocal links. The clues are the incoming/outgoing degrees **within the selected puzzle**, not the full graph and not necessarily the entire induced subgraph. Exhaustive enumeration verifies that each puzzle has exactly one solution. Generation is deterministic. No Marvel trivia or live Wikipedia access is needed to solve them.
+
+`scripts/build.py` renders all published pages, generates the puzzle payload, and bundles data for offline use. Its publication allowlist excludes repository metadata, control files, source scripts, tests, and browser profiles. The full source remains available in GitHub.
+
+The data is the frozen 26 August 2026 Week 1 release from the [course data page](https://sunelehmann.com/socialgraphs2026-web/data/), based on Wikipedia's [Marvel Comics superheroes category](https://en.wikipedia.org/wiki/Category:Marvel_Comics_superheroes). Original TSV files, provenance, and checksums are in [data/raw](data/raw/README.md). Git attributes preserve the raw release bytes across operating systems.
+
+## GitHub Pages
+
+The public repository already publishes from **main → / (root)**. Push generated HTML, CSS, JavaScript, and data along with the Python source. GitHub Pages publishes the committed pages; the **Publish Crosstalk** workflow separately rebuilds and tests them.
+
+If the repository is switched to **GitHub Actions** as its Pages source, the same workflow detects that mode and deploys the allowlisted `_site` artifact. To inspect that artifact locally:
 
 ```sh
 python scripts/build.py --output _site
 python -m http.server 8000 --directory _site
 ```
 
-## Make it your group's site
-
-Edit `site.json` for the group's details, `templates/index.html` for the story, `style.css` for the appearance, and `app.js` for the interactions. Run the build again after changing the template or configuration. Add a new post each week and keep the frozen Week 1 data unchanged so its findings remain reproducible.
-
-In `site.json`, set `group_name` to your chosen group name and edit the members' names in the `members` list. The current group is Christos Diamantis (s253102) and Dávid Weiner (s253347). `title`, `course`, and `semester` control the other labels; `repository_url` and `site_url` identify your repository and published website.
-
-The fictional bureau is a presentation device. A Wikipedia link measures a reference between pages; it does not establish a friendship, an alliance, a fight, or a character's importance in Marvel canon. The story's claims concern this snapshot and this restricted roster.
-
-## Data and course credits
-
-The network is the frozen Week 1 release for [Social Graphs and Interactions 2026](https://sunelehmann.com/socialgraphs2026-web/data/), based on Wikipedia's [Marvel Comics superheroes category](https://en.wikipedia.org/wiki/Category:Marvel_Comics_superheroes). The raw node and edge files are included for reproducibility. See [data/raw/README.md](data/raw/README.md) for local provenance and checksums.
-
-After publication, share the live link in the week's Teams channel by Monday evening and leave constructive, friendly feedback on another group's post. Those course actions are separate from this site's build and deployment.
+Share the live site link in the week's Teams channel and leave constructive feedback on another group's work as required by the course. The site build does not send messages on your behalf.

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title description">
 <title id="title">The long tail, under a different lens</title><desc id="description">Degree distributions · positive degrees only · logarithmic axes. In-degree in orange; out-degree in teal. Each point is the fraction of the complete node roster having that degree.</desc>
-<rect width="960" height="600" fill="#f4f0e7"/>
-<g font-family="Arial, sans-serif" fill="#173e3f">
+<rect width="960" height="600" fill="#f6f1e7"/>
+<g font-family="Arial, sans-serif" fill="#232927">
 <text x="40" y="38" font-size="24" font-weight="700">The long tail, under a different lens</text>
 <text x="40" y="65" font-size="13" fill="#586866">Degree distributions · positive degrees only · logarithmic axes</text>
 <path d="M88.00,92 V490" stroke="#d5d9cf"/><text x="88.00" y="514" text-anchor="middle" font-size="12">1</text>
@@ -17,65 +17,65 @@
 <path d="M88,218.35 H916" stroke="#d5d9cf"/><text x="76" y="222.35" text-anchor="end" font-size="12">0.05</text>
 <path d="M88,155.18 H916" stroke="#d5d9cf"/><text x="76" y="159.18" text-anchor="end" font-size="12">0.1</text>
 <path d="M88,92.00 H916" stroke="#d5d9cf"/><text x="76" y="96.00" text-anchor="end" font-size="12">0.2</text>
-<circle cx="88.00" cy="127.61" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 1: 41 pages</title></circle>
-<circle cx="207.88" cy="123.27" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 2: 43 pages</title></circle>
-<circle cx="278.01" cy="162.37" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 3: 28 pages</title></circle>
-<circle cx="327.76" cy="188.59" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 4: 21 pages</title></circle>
-<circle cx="366.35" cy="184.35" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 5: 22 pages</title></circle>
-<circle cx="397.89" cy="232.30" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 6: 13 pages</title></circle>
-<circle cx="424.55" cy="256.22" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 7: 10 pages</title></circle>
-<circle cx="447.64" cy="288.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 8: 7 pages</title></circle>
-<circle cx="468.01" cy="288.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 9: 7 pages</title></circle>
-<circle cx="486.23" cy="288.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 10: 7 pages</title></circle>
-<circle cx="502.72" cy="339.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 11: 4 pages</title></circle>
-<circle cx="517.77" cy="365.95" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 12: 3 pages</title></circle>
-<circle cx="531.61" cy="302.78" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 13: 6 pages</title></circle>
-<circle cx="544.43" cy="402.91" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 14: 2 pages</title></circle>
-<circle cx="556.36" cy="402.91" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 15: 2 pages</title></circle>
-<circle cx="567.52" cy="365.95" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 16: 3 pages</title></circle>
-<circle cx="578.01" cy="339.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 17: 4 pages</title></circle>
-<circle cx="597.24" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 19: 1 pages</title></circle>
-<circle cx="606.11" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 20: 1 pages</title></circle>
-<circle cx="614.55" cy="339.73" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 21: 4 pages</title></circle>
-<circle cx="622.60" cy="402.91" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 22: 2 pages</title></circle>
-<circle cx="630.29" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 23: 1 pages</title></circle>
-<circle cx="637.65" cy="365.95" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 24: 3 pages</title></circle>
-<circle cx="644.71" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 25: 1 pages</title></circle>
-<circle cx="651.49" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 26: 1 pages</title></circle>
-<circle cx="658.02" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 27: 1 pages</title></circle>
-<circle cx="664.31" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 28: 1 pages</title></circle>
-<circle cx="670.38" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 29: 1 pages</title></circle>
-<circle cx="692.72" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 33: 1 pages</title></circle>
-<circle cx="764.59" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 50: 1 pages</title></circle>
-<circle cx="796.12" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 60: 1 pages</title></circle>
-<circle cx="807.28" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 64: 1 pages</title></circle>
-<circle cx="894.55" cy="466.09" r="4.3" fill="#ef5b35" fill-opacity=".75"><title>in-degree 106: 1 pages</title></circle>
-<circle cx="674" cy="37" r="5" fill="#ef5b35"/><text x="686" y="42" font-size="13">in-degree</text>
-<circle cx="88.00" cy="153.10" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 1: 31 pages</title></circle>
-<circle cx="207.88" cy="136.97" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 2: 37 pages</title></circle>
-<circle cx="278.01" cy="129.86" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 3: 40 pages</title></circle>
-<circle cx="327.76" cy="153.10" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 4: 31 pages</title></circle>
-<circle cx="366.35" cy="188.59" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 5: 21 pages</title></circle>
-<circle cx="397.89" cy="213.38" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 6: 16 pages</title></circle>
-<circle cx="424.55" cy="225.55" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 7: 14 pages</title></circle>
-<circle cx="447.64" cy="207.85" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 8: 17 pages</title></circle>
-<circle cx="468.01" cy="225.55" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 9: 14 pages</title></circle>
-<circle cx="486.23" cy="302.78" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 10: 6 pages</title></circle>
-<circle cx="502.72" cy="239.60" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 11: 12 pages</title></circle>
-<circle cx="517.77" cy="247.53" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 12: 11 pages</title></circle>
-<circle cx="531.61" cy="365.95" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 13: 3 pages</title></circle>
-<circle cx="544.43" cy="265.82" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 14: 9 pages</title></circle>
-<circle cx="556.36" cy="365.95" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 15: 3 pages</title></circle>
-<circle cx="567.52" cy="339.73" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 16: 4 pages</title></circle>
-<circle cx="578.01" cy="319.39" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 17: 5 pages</title></circle>
-<circle cx="587.89" cy="466.09" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 18: 1 pages</title></circle>
-<circle cx="597.24" cy="402.91" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 19: 2 pages</title></circle>
-<circle cx="606.11" cy="402.91" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 20: 2 pages</title></circle>
-<circle cx="614.55" cy="466.09" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 21: 1 pages</title></circle>
-<circle cx="622.60" cy="466.09" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 22: 1 pages</title></circle>
-<circle cx="637.65" cy="466.09" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 24: 1 pages</title></circle>
-<circle cx="664.31" cy="466.09" r="4.3" fill="#287c85" fill-opacity=".75"><title>out-degree 28: 1 pages</title></circle>
-<circle cx="796" cy="37" r="5" fill="#287c85"/><text x="808" y="42" font-size="13">out-degree</text>
+<circle cx="88.00" cy="127.61" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 1: 41 pages</title></circle>
+<circle cx="207.88" cy="123.27" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 2: 43 pages</title></circle>
+<circle cx="278.01" cy="162.37" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 3: 28 pages</title></circle>
+<circle cx="327.76" cy="188.59" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 4: 21 pages</title></circle>
+<circle cx="366.35" cy="184.35" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 5: 22 pages</title></circle>
+<circle cx="397.89" cy="232.30" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 6: 13 pages</title></circle>
+<circle cx="424.55" cy="256.22" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 7: 10 pages</title></circle>
+<circle cx="447.64" cy="288.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 8: 7 pages</title></circle>
+<circle cx="468.01" cy="288.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 9: 7 pages</title></circle>
+<circle cx="486.23" cy="288.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 10: 7 pages</title></circle>
+<circle cx="502.72" cy="339.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 11: 4 pages</title></circle>
+<circle cx="517.77" cy="365.95" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 12: 3 pages</title></circle>
+<circle cx="531.61" cy="302.78" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 13: 6 pages</title></circle>
+<circle cx="544.43" cy="402.91" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 14: 2 pages</title></circle>
+<circle cx="556.36" cy="402.91" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 15: 2 pages</title></circle>
+<circle cx="567.52" cy="365.95" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 16: 3 pages</title></circle>
+<circle cx="578.01" cy="339.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 17: 4 pages</title></circle>
+<circle cx="597.24" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 19: 1 pages</title></circle>
+<circle cx="606.11" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 20: 1 pages</title></circle>
+<circle cx="614.55" cy="339.73" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 21: 4 pages</title></circle>
+<circle cx="622.60" cy="402.91" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 22: 2 pages</title></circle>
+<circle cx="630.29" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 23: 1 pages</title></circle>
+<circle cx="637.65" cy="365.95" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 24: 3 pages</title></circle>
+<circle cx="644.71" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 25: 1 pages</title></circle>
+<circle cx="651.49" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 26: 1 pages</title></circle>
+<circle cx="658.02" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 27: 1 pages</title></circle>
+<circle cx="664.31" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 28: 1 pages</title></circle>
+<circle cx="670.38" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 29: 1 pages</title></circle>
+<circle cx="692.72" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 33: 1 pages</title></circle>
+<circle cx="764.59" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 50: 1 pages</title></circle>
+<circle cx="796.12" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 60: 1 pages</title></circle>
+<circle cx="807.28" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 64: 1 pages</title></circle>
+<circle cx="894.55" cy="466.09" r="4.3" fill="#dc512f" fill-opacity=".75"><title>in-degree 106: 1 pages</title></circle>
+<circle cx="674" cy="37" r="5" fill="#dc512f"/><text x="686" y="42" font-size="13">in-degree</text>
+<circle cx="88.00" cy="153.10" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 1: 31 pages</title></circle>
+<circle cx="207.88" cy="136.97" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 2: 37 pages</title></circle>
+<circle cx="278.01" cy="129.86" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 3: 40 pages</title></circle>
+<circle cx="327.76" cy="153.10" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 4: 31 pages</title></circle>
+<circle cx="366.35" cy="188.59" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 5: 21 pages</title></circle>
+<circle cx="397.89" cy="213.38" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 6: 16 pages</title></circle>
+<circle cx="424.55" cy="225.55" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 7: 14 pages</title></circle>
+<circle cx="447.64" cy="207.85" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 8: 17 pages</title></circle>
+<circle cx="468.01" cy="225.55" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 9: 14 pages</title></circle>
+<circle cx="486.23" cy="302.78" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 10: 6 pages</title></circle>
+<circle cx="502.72" cy="239.60" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 11: 12 pages</title></circle>
+<circle cx="517.77" cy="247.53" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 12: 11 pages</title></circle>
+<circle cx="531.61" cy="365.95" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 13: 3 pages</title></circle>
+<circle cx="544.43" cy="265.82" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 14: 9 pages</title></circle>
+<circle cx="556.36" cy="365.95" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 15: 3 pages</title></circle>
+<circle cx="567.52" cy="339.73" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 16: 4 pages</title></circle>
+<circle cx="578.01" cy="319.39" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 17: 5 pages</title></circle>
+<circle cx="587.89" cy="466.09" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 18: 1 pages</title></circle>
+<circle cx="597.24" cy="402.91" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 19: 2 pages</title></circle>
+<circle cx="606.11" cy="402.91" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 20: 2 pages</title></circle>
+<circle cx="614.55" cy="466.09" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 21: 1 pages</title></circle>
+<circle cx="622.60" cy="466.09" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 22: 1 pages</title></circle>
+<circle cx="637.65" cy="466.09" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 24: 1 pages</title></circle>
+<circle cx="664.31" cy="466.09" r="4.3" fill="#2849c7" fill-opacity=".75"><title>out-degree 28: 1 pages</title></circle>
+<circle cx="796" cy="37" r="5" fill="#2849c7"/><text x="808" y="42" font-size="13">out-degree</text>
 <text x="500" y="544" text-anchor="middle" font-size="14">Degree k</text>
 <text x="23" y="300" transform="rotate(-90 23 300)" text-anchor="middle" font-size="14">Fraction of pages P(k)</text>
 <text x="40" y="578" font-size="12" fill="#586866">P(k) = count / 303. Zero-degree pages excluded from this plot: in 58, out 20. No power-law fit.</text>

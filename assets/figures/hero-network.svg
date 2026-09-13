@@ -1,86 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 650" role="img" aria-labelledby="title desc">
-<title id="title">EARTH–303: the Marvel Wikipedia constellation</title>
+<title id="title">Crosstalk: the Marvel Wikipedia switchboard</title>
 <desc id="desc">303 pages and 1784 directed links, drawn without arrows. The largest weak component contains 277 pages. Small components are positioned in a separate observation lane. Circle size shows in-degree.</desc>
-<rect width="680" height="650" fill="#142a2b"/>
-<defs><radialGradient id="halo"><stop stop-color="#31544d" stop-opacity=".5"/><stop offset="1" stop-color="#142a2b" stop-opacity="0"/></radialGradient></defs>
-<circle cx="282" cy="315" r="268" fill="url(#halo)"/>
-<g fill="none" stroke="#90b19f" stroke-opacity=".13" stroke-width=".7">
-<circle cx="280" cy="315" r="110"/>
-<circle cx="280" cy="315" r="176"/>
-<circle cx="280" cy="315" r="242"/>
-<path d="M16 315H536M280 57V574" stroke-dasharray="2 7"/>
-<path d="M522.00,315.00 L535.00,315.00"/>
-<path d="M521.08,336.09 L528.05,336.70"/>
-<path d="M518.32,357.02 L525.22,358.24"/>
-<path d="M513.75,377.63 L520.52,379.45"/>
-<path d="M507.41,397.77 L513.98,400.16"/>
-<path d="M499.33,417.27 L505.67,420.23"/>
-<path d="M489.58,436.00 L500.84,442.50"/>
-<path d="M478.23,453.81 L483.97,457.82"/>
-<path d="M465.38,470.55 L470.75,475.05"/>
-<path d="M451.12,486.12 L456.07,491.07"/>
-<path d="M435.55,500.38 L440.05,505.75"/>
-<path d="M418.81,513.23 L422.82,518.97"/>
-<path d="M401.00,524.58 L407.50,535.84"/>
-<path d="M382.27,534.33 L385.23,540.67"/>
-<path d="M362.77,542.41 L365.16,548.98"/>
-<path d="M342.63,548.75 L344.45,555.52"/>
-<path d="M322.02,553.32 L323.24,560.22"/>
-<path d="M301.09,556.08 L301.70,563.05"/>
-<path d="M280.00,557.00 L280.00,570.00"/>
-<path d="M258.91,556.08 L258.30,563.05"/>
-<path d="M237.98,553.32 L236.76,560.22"/>
-<path d="M217.37,548.75 L215.55,555.52"/>
-<path d="M197.23,542.41 L194.84,548.98"/>
-<path d="M177.73,534.33 L174.77,540.67"/>
-<path d="M159.00,524.58 L152.50,535.84"/>
-<path d="M141.19,513.23 L137.18,518.97"/>
-<path d="M124.45,500.38 L119.95,505.75"/>
-<path d="M108.88,486.12 L103.93,491.07"/>
-<path d="M94.62,470.55 L89.25,475.05"/>
-<path d="M81.77,453.81 L76.03,457.82"/>
-<path d="M70.42,436.00 L59.16,442.50"/>
-<path d="M60.67,417.27 L54.33,420.23"/>
-<path d="M52.59,397.77 L46.02,400.16"/>
-<path d="M46.25,377.63 L39.48,379.45"/>
-<path d="M41.68,357.02 L34.78,358.24"/>
-<path d="M38.92,336.09 L31.95,336.70"/>
-<path d="M38.00,315.00 L25.00,315.00"/>
-<path d="M38.92,293.91 L31.95,293.30"/>
-<path d="M41.68,272.98 L34.78,271.76"/>
-<path d="M46.25,252.37 L39.48,250.55"/>
-<path d="M52.59,232.23 L46.02,229.84"/>
-<path d="M60.67,212.73 L54.33,209.77"/>
-<path d="M70.42,194.00 L59.16,187.50"/>
-<path d="M81.77,176.19 L76.03,172.18"/>
-<path d="M94.62,159.45 L89.25,154.95"/>
-<path d="M108.88,143.88 L103.93,138.93"/>
-<path d="M124.45,129.62 L119.95,124.25"/>
-<path d="M141.19,116.77 L137.18,111.03"/>
-<path d="M159.00,105.42 L152.50,94.16"/>
-<path d="M177.73,95.67 L174.77,89.33"/>
-<path d="M197.23,87.59 L194.84,81.02"/>
-<path d="M217.37,81.25 L215.55,74.48"/>
-<path d="M237.98,76.68 L236.76,69.78"/>
-<path d="M258.91,73.92 L258.30,66.95"/>
-<path d="M280.00,73.00 L280.00,60.00"/>
-<path d="M301.09,73.92 L301.70,66.95"/>
-<path d="M322.02,76.68 L323.24,69.78"/>
-<path d="M342.63,81.25 L344.45,74.48"/>
-<path d="M362.77,87.59 L365.16,81.02"/>
-<path d="M382.27,95.67 L385.23,89.33"/>
-<path d="M401.00,105.42 L407.50,94.16"/>
-<path d="M418.81,116.77 L422.82,111.03"/>
-<path d="M435.55,129.62 L440.05,124.25"/>
-<path d="M451.12,143.88 L456.07,138.93"/>
-<path d="M465.38,159.45 L470.75,154.95"/>
-<path d="M478.23,176.19 L483.97,172.18"/>
-<path d="M489.58,194.00 L500.84,187.50"/>
-<path d="M499.33,212.73 L505.67,209.77"/>
-<path d="M507.41,232.23 L513.98,229.84"/>
-<path d="M513.75,252.37 L520.52,250.55"/>
-<path d="M518.32,272.98 L525.22,271.76"/>
-<path d="M521.08,293.91 L528.05,293.30"/>
+<rect width="680" height="650" fill="#172a48"/>
+<g fill="none" stroke="#b0bdd9" stroke-opacity=".15" stroke-width=".7">
+<rect x="20" y="65" width="496" height="502" rx="12"/><rect x="542" y="65" width="116" height="502" rx="12"/>
+<path d="M44 67V565" stroke-opacity=".25"/>
+<path d="M84 67V565" stroke-opacity=".25"/>
+<path d="M124 67V565" stroke-opacity=".25"/>
+<path d="M164 67V565" stroke-opacity=".25"/>
+<path d="M204 67V565" stroke-opacity=".25"/>
+<path d="M244 67V565" stroke-opacity=".25"/>
+<path d="M284 67V565" stroke-opacity=".25"/>
+<path d="M324 67V565" stroke-opacity=".25"/>
+<path d="M364 67V565" stroke-opacity=".25"/>
+<path d="M404 67V565" stroke-opacity=".25"/>
+<path d="M444 67V565" stroke-opacity=".25"/>
+<path d="M484 67V565" stroke-opacity=".25"/>
+<path d="M22 87H514" stroke-opacity=".25"/>
+<path d="M22 127H514" stroke-opacity=".25"/>
+<path d="M22 167H514" stroke-opacity=".25"/>
+<path d="M22 207H514" stroke-opacity=".25"/>
+<path d="M22 247H514" stroke-opacity=".25"/>
+<path d="M22 287H514" stroke-opacity=".25"/>
+<path d="M22 327H514" stroke-opacity=".25"/>
+<path d="M22 367H514" stroke-opacity=".25"/>
+<path d="M22 407H514" stroke-opacity=".25"/>
+<path d="M22 447H514" stroke-opacity=".25"/>
+<path d="M22 487H514" stroke-opacity=".25"/>
+<path d="M22 527H514" stroke-opacity=".25"/>
 <path d="M532 64V564" stroke-dasharray="3 7"/></g>
 <g stroke="#a3bdab" stroke-opacity=".14" stroke-width=".7">
 <path d="M222.11,323.73 L220.75,367.41"/>
@@ -1868,326 +1815,326 @@
 <path d="M316.43,397.30 L267.64,348.70"/>
 <path d="M316.43,397.30 L269.16,383.50"/>
 </g>
-<circle cx="609.76" cy="105.30" r="1.70" fill="#c6b696" opacity=".92"><title>Baymax: 0 incoming / 0 outgoing</title></circle>
-<circle cx="546.56" cy="157.10" r="1.70" fill="#c6b696" opacity=".92"><title>Bird-Brain: 0 incoming / 0 outgoing</title></circle>
-<circle cx="609.76" cy="157.10" r="1.70" fill="#c6b696" opacity=".92"><title>Black Fox: 0 incoming / 0 outgoing</title></circle>
-<circle cx="150.49" cy="388.10" r="1.70" fill="#c7d6aa" opacity=".92"><title>Blackwulf: 0 incoming / 2 outgoing</title></circle>
-<circle cx="145.28" cy="223.51" r="1.70" fill="#c7d6aa" opacity=".92"><title>Blue Eagle: 0 incoming / 1 outgoing</title></circle>
-<circle cx="546.56" cy="208.90" r="1.70" fill="#c6b696" opacity=".92"><title>Brain Drain: 0 incoming / 0 outgoing</title></circle>
-<circle cx="609.76" cy="208.90" r="1.70" fill="#c6b696" opacity=".92"><title>Breeze Barton: 0 incoming / 0 outgoing</title></circle>
-<circle cx="546.56" cy="260.70" r="1.70" fill="#c6b696" opacity=".92"><title>Captain Midlands: 0 incoming / 0 outgoing</title></circle>
-<circle cx="132.56" cy="421.83" r="1.70" fill="#c7d6aa" opacity=".92"><title>Captain Ultra: 0 incoming / 1 outgoing</title></circle>
-<circle cx="609.76" cy="260.70" r="1.70" fill="#c6b696" opacity=".92"><title>Charcoal: 0 incoming / 0 outgoing</title></circle>
-<circle cx="285.09" cy="455.28" r="1.70" fill="#c7d6aa" opacity=".92"><title>Coldblood: 0 incoming / 2 outgoing</title></circle>
-<circle cx="178.85" cy="328.49" r="1.70" fill="#c7d6aa" opacity=".92"><title>Crippler: 0 incoming / 4 outgoing</title></circle>
-<circle cx="162.23" cy="426.35" r="1.70" fill="#c7d6aa" opacity=".92"><title>Dargo Ktor: 0 incoming / 2 outgoing</title></circle>
-<circle cx="83.18" cy="359.21" r="1.70" fill="#c7d6aa" opacity=".92"><title>Detroit Steel: 0 incoming / 1 outgoing</title></circle>
-<circle cx="106.93" cy="398.92" r="1.70" fill="#c7d6aa" opacity=".92"><title>Digitek: 0 incoming / 1 outgoing</title></circle>
-<circle cx="393.14" cy="416.81" r="1.70" fill="#c7d6aa" opacity=".92"><title>Dogpool: 0 incoming / 1 outgoing</title></circle>
-<circle cx="370.82" cy="395.83" r="1.70" fill="#c7d6aa" opacity=".92"><title>Emrys Killebrew: 0 incoming / 2 outgoing</title></circle>
-<circle cx="386.03" cy="270.62" r="1.70" fill="#c7d6aa" opacity=".92"><title>Enigma: 0 incoming / 1 outgoing</title></circle>
-<circle cx="357.04" cy="232.06" r="1.70" fill="#c7d6aa" opacity=".92"><title>Ethan Edwards: 0 incoming / 1 outgoing</title></circle>
-<circle cx="354.70" cy="392.26" r="1.70" fill="#c7d6aa" opacity=".92"><title>Fabio Medina: 0 incoming / 3 outgoing</title></circle>
-<circle cx="546.56" cy="312.50" r="1.70" fill="#c6b696" opacity=".92"><title>Father Time: 0 incoming / 0 outgoing</title></circle>
-<circle cx="315.47" cy="279.58" r="1.70" fill="#c7d6aa" opacity=".92"><title>Gremlin: 0 incoming / 4 outgoing</title></circle>
-<circle cx="609.76" cy="312.50" r="1.70" fill="#c6b696" opacity=".92"><title>Happy Sam Sawyer: 0 incoming / 0 outgoing</title></circle>
-<circle cx="152.11" cy="347.92" r="1.70" fill="#c7d6aa" opacity=".92"><title>Hawkeye: 0 incoming / 3 outgoing</title></circle>
-<circle cx="393.10" cy="285.99" r="1.70" fill="#c7d6aa" opacity=".92"><title>Helix: 0 incoming / 1 outgoing</title></circle>
-<circle cx="546.56" cy="364.30" r="1.70" fill="#c6b696" opacity=".92"><title>Hellfire: 0 incoming / 0 outgoing</title></circle>
-<circle cx="297.98" cy="267.03" r="1.70" fill="#c7d6aa" opacity=".92"><title>Human Fly: 0 incoming / 5 outgoing</title></circle>
-<circle cx="609.76" cy="364.30" r="1.70" fill="#c6b696" opacity=".92"><title>Illuminator: 0 incoming / 0 outgoing</title></circle>
-<circle cx="212.02" cy="485.46" r="1.70" fill="#c7d6aa" opacity=".92"><title>Inferno: 0 incoming / 3 outgoing</title></circle>
-<circle cx="271.49" cy="297.00" r="1.70" fill="#c7d6aa" opacity=".92"><title>Isaiah Bradley: 0 incoming / 7 outgoing</title></circle>
-<circle cx="370.57" cy="432.65" r="1.70" fill="#c7d6aa" opacity=".92"><title>Junior Juniper: 0 incoming / 2 outgoing</title></circle>
-<circle cx="456.63" cy="303.82" r="1.70" fill="#c7d6aa" opacity=".92"><title>Mahr Vehl: 0 incoming / 1 outgoing</title></circle>
-<circle cx="331.35" cy="92.49" r="1.70" fill="#c7d6aa" opacity=".92"><title>Mark Hazzard: Merc: 0 incoming / 1 outgoing</title></circle>
-<circle cx="546.56" cy="416.10" r="1.70" fill="#c6b696" opacity=".92"><title>Miracleman: 0 incoming / 0 outgoing</title></circle>
-<circle cx="140.92" cy="438.68" r="1.70" fill="#c7d6aa" opacity=".92"><title>Moonglow: 0 incoming / 1 outgoing</title></circle>
-<circle cx="369.31" cy="244.74" r="1.70" fill="#c7d6aa" opacity=".92"><title>Phil Grayfield: 0 incoming / 1 outgoing</title></circle>
-<circle cx="609.76" cy="416.10" r="1.70" fill="#c6b696" opacity=".92"><title>Ogre: 0 incoming / 0 outgoing</title></circle>
-<circle cx="344.71" cy="440.63" r="1.70" fill="#c7d6aa" opacity=".92"><title>Oya: 0 incoming / 3 outgoing</title></circle>
-<circle cx="502.32" cy="361.36" r="1.70" fill="#c7d6aa" opacity=".92"><title>Redneck: 0 incoming / 1 outgoing</title></circle>
-<circle cx="114.80" cy="214.93" r="1.70" fill="#c7d6aa" opacity=".92"><title>Rockman: 0 incoming / 2 outgoing</title></circle>
-<circle cx="323.63" cy="502.24" r="1.70" fill="#c7d6aa" opacity=".92"><title>Ruby Summers: 0 incoming / 2 outgoing</title></circle>
-<circle cx="126.21" cy="352.13" r="1.70" fill="#c7d6aa" opacity=".92"><title>Scarlet Scarab: 0 incoming / 2 outgoing</title></circle>
-<circle cx="377.04" cy="344.52" r="1.70" fill="#c7d6aa" opacity=".92"><title>Scorpio: 0 incoming / 2 outgoing</title></circle>
-<circle cx="546.56" cy="467.90" r="1.70" fill="#c6b696" opacity=".92"><title>Sean and Chris: 0 incoming / 0 outgoing</title></circle>
-<circle cx="253.63" cy="334.43" r="1.70" fill="#c7d6aa" opacity=".92"><title>Shamrock: 0 incoming / 8 outgoing</title></circle>
-<circle cx="177.88" cy="257.94" r="1.70" fill="#c7d6aa" opacity=".92"><title>Silencer: 0 incoming / 2 outgoing</title></circle>
-<circle cx="311.80" cy="234.19" r="1.70" fill="#c7d6aa" opacity=".92"><title>Silhouette: 0 incoming / 2 outgoing</title></circle>
-<circle cx="609.76" cy="467.90" r="1.70" fill="#c6b696" opacity=".92"><title>Solarman: 0 incoming / 0 outgoing</title></circle>
-<circle cx="139.22" cy="252.75" r="1.70" fill="#c7d6aa" opacity=".92"><title>Solomon Kane: 0 incoming / 1 outgoing</title></circle>
-<circle cx="321.07" cy="261.29" r="1.70" fill="#c7d6aa" opacity=".92"><title>Spider-Man: 0 incoming / 3 outgoing</title></circle>
-<circle cx="213.03" cy="462.55" r="1.70" fill="#c7d6aa" opacity=".92"><title>Straw Man: 0 incoming / 2 outgoing</title></circle>
-<circle cx="546.56" cy="519.70" r="1.70" fill="#c6b696" opacity=".92"><title>Super Rabbit: 0 incoming / 0 outgoing</title></circle>
-<circle cx="286.56" cy="217.57" r="1.70" fill="#c7d6aa" opacity=".92"><title>Thunderbolt: 0 incoming / 2 outgoing</title></circle>
-<circle cx="378.33" cy="257.35" r="1.70" fill="#c7d6aa" opacity=".92"><title>Thunderclap: 0 incoming / 1 outgoing</title></circle>
-<circle cx="190.08" cy="346.72" r="1.70" fill="#c7d6aa" opacity=".92"><title>Ursa Major: 0 incoming / 4 outgoing</title></circle>
-<circle cx="349.17" cy="485.07" r="1.70" fill="#c7d6aa" opacity=".92"><title>Wild Child: 0 incoming / 3 outgoing</title></circle>
-<circle cx="609.76" cy="519.70" r="1.70" fill="#c6b696" opacity=".92"><title>Yo-Yo Rodriguez: 0 incoming / 0 outgoing</title></circle>
-<circle cx="316.43" cy="397.30" r="1.70" fill="#c7d6aa" opacity=".92"><title>Zombie: 0 incoming / 4 outgoing</title></circle>
-<circle cx="107.13" cy="324.23" r="2.40" fill="#c7d6aa" opacity=".92"><title>Ajak: 1 incoming / 4 outgoing</title></circle>
-<circle cx="375.95" cy="441.65" r="2.40" fill="#c7d6aa" opacity=".92"><title>Alex Wilder: 1 incoming / 1 outgoing</title></circle>
-<circle cx="172.66" cy="217.16" r="2.40" fill="#c7d6aa" opacity=".92"><title>Black Jack Tarr: 1 incoming / 1 outgoing</title></circle>
-<circle cx="150.30" cy="316.72" r="2.40" fill="#c7d6aa" opacity=".92"><title>Black Rider: 1 incoming / 4 outgoing</title></circle>
-<circle cx="151.06" cy="399.96" r="2.40" fill="#c7d6aa" opacity=".92"><title>Blue Diamond: 1 incoming / 9 outgoing</title></circle>
-<circle cx="343.54" cy="532.51" r="2.40" fill="#c7d6aa" opacity=".92"><title>Box: 1 incoming / 2 outgoing</title></circle>
-<circle cx="248.02" cy="408.37" r="2.40" fill="#c7d6aa" opacity=".92"><title>Brian Braddock: 1 incoming / 11 outgoing</title></circle>
-<circle cx="369.08" cy="345.69" r="2.40" fill="#c7d6aa" opacity=".92"><title>Bug: 1 incoming / 4 outgoing</title></circle>
-<circle cx="348.23" cy="313.10" r="2.40" fill="#c7d6aa" opacity=".92"><title>Crane Mother: 1 incoming / 3 outgoing</title></circle>
-<circle cx="282.50" cy="268.49" r="2.40" fill="#c7d6aa" opacity=".92"><title>Darkdevil: 1 incoming / 4 outgoing</title></circle>
-<circle cx="202.38" cy="255.92" r="2.40" fill="#c7d6aa" opacity=".92"><title>Debrii: 1 incoming / 5 outgoing</title></circle>
-<circle cx="328.37" cy="253.71" r="2.40" fill="#c7d6aa" opacity=".92"><title>Devil Hulk: 1 incoming / 2 outgoing</title></circle>
-<circle cx="264.00" cy="340.11" r="2.40" fill="#c7d6aa" opacity=".92"><title>Doom 2099: 1 incoming / 9 outgoing</title></circle>
-<circle cx="331.90" cy="261.59" r="2.40" fill="#c7d6aa" opacity=".92"><title>Dragon Lord: 1 incoming / 1 outgoing</title></circle>
-<circle cx="140.85" cy="355.57" r="2.40" fill="#c7d6aa" opacity=".92"><title>Fandral: 1 incoming / 2 outgoing</title></circle>
-<circle cx="152.24" cy="297.95" r="2.40" fill="#c7d6aa" opacity=".92"><title>Flatman: 1 incoming / 3 outgoing</title></circle>
-<circle cx="144.61" cy="174.35" r="2.40" fill="#c7d6aa" opacity=".92"><title>Force: 1 incoming / 1 outgoing</title></circle>
-<circle cx="250.52" cy="499.62" r="2.40" fill="#c7d6aa" opacity=".92"><title>G. W. Bridge: 1 incoming / 2 outgoing</title></circle>
-<circle cx="289.93" cy="469.86" r="2.40" fill="#c7d6aa" opacity=".92"><title>Garrison Kane: 1 incoming / 6 outgoing</title></circle>
-<circle cx="184.80" cy="454.32" r="2.40" fill="#c7d6aa" opacity=".92"><title>Golem: 1 incoming / 3 outgoing</title></circle>
-<circle cx="333.00" cy="394.01" r="2.40" fill="#c7d6aa" opacity=".92"><title>Hit-Monkey: 1 incoming / 3 outgoing</title></circle>
-<circle cx="249.54" cy="523.55" r="2.40" fill="#c7d6aa" opacity=".92"><title>Hrimhari: 1 incoming / 1 outgoing</title></circle>
-<circle cx="222.59" cy="388.92" r="2.40" fill="#c7d6aa" opacity=".92"><title>Iron Man: 1 incoming / 5 outgoing</title></circle>
-<circle cx="157.11" cy="419.43" r="2.40" fill="#c7d6aa" opacity=".92"><title>Jack Frost: 1 incoming / 7 outgoing</title></circle>
-<circle cx="254.55" cy="265.52" r="2.40" fill="#c7d6aa" opacity=".92"><title>Janice Lincoln: 1 incoming / 4 outgoing</title></circle>
-<circle cx="311.11" cy="464.92" r="2.40" fill="#c7d6aa" opacity=".92"><title>Jean Grey: 1 incoming / 5 outgoing</title></circle>
-<circle cx="257.14" cy="467.78" r="2.40" fill="#c7d6aa" opacity=".92"><title>Magician: 1 incoming / 3 outgoing</title></circle>
-<circle cx="297.40" cy="327.82" r="2.40" fill="#c7d6aa" opacity=".92"><title>Mania: 1 incoming / 7 outgoing</title></circle>
-<circle cx="317.21" cy="418.59" r="2.40" fill="#c7d6aa" opacity=".92"><title>Motormouth: 1 incoming / 4 outgoing</title></circle>
-<circle cx="324.91" cy="305.81" r="2.40" fill="#c7d6aa" opacity=".92"><title>Nightwatch: 1 incoming / 3 outgoing</title></circle>
-<circle cx="360.09" cy="358.78" r="2.40" fill="#c7d6aa" opacity=".92"><title>Powerhouse: 1 incoming / 4 outgoing</title></circle>
-<circle cx="200.74" cy="302.14" r="2.40" fill="#c7d6aa" opacity=".92"><title>Red Wolf: 1 incoming / 9 outgoing</title></circle>
-<circle cx="534.54" cy="113.74" r="2.40" fill="#c6b696" opacity=".92"><title>Shear: 1 incoming / 2 outgoing</title></circle>
-<circle cx="213.60" cy="248.28" r="2.40" fill="#c7d6aa" opacity=".92"><title>Skull the Slayer: 1 incoming / 3 outgoing</title></circle>
-<circle cx="242.43" cy="402.96" r="2.40" fill="#c7d6aa" opacity=".92"><title>Solo: 1 incoming / 12 outgoing</title></circle>
-<circle cx="210.08" cy="384.36" r="2.40" fill="#c7d6aa" opacity=".92"><title>Stingray: 1 incoming / 7 outgoing</title></circle>
-<circle cx="47.28" cy="152.21" r="2.40" fill="#c7d6aa" opacity=".92"><title>The Witness: 1 incoming / 0 outgoing</title></circle>
-<circle cx="296.53" cy="233.12" r="2.40" fill="#c7d6aa" opacity=".92"><title>Timeslip: 1 incoming / 2 outgoing</title></circle>
-<circle cx="324.69" cy="378.92" r="2.40" fill="#c7d6aa" opacity=".92"><title>Typeface: 1 incoming / 3 outgoing</title></circle>
-<circle cx="272.57" cy="228.69" r="2.40" fill="#c7d6aa" opacity=".92"><title>White Tiger: 1 incoming / 3 outgoing</title></circle>
-<circle cx="215.84" cy="272.45" r="2.40" fill="#c7d6aa" opacity=".92"><title>Will o&#x27; the Wisp: 1 incoming / 2 outgoing</title></circle>
-<circle cx="524.44" cy="110.73" r="2.69" fill="#c6b696" opacity=".92"><title>Backhand: 2 incoming / 1 outgoing</title></circle>
-<circle cx="235.97" cy="385.25" r="2.69" fill="#c7d6aa" opacity=".92"><title>Beta Ray Bill: 2 incoming / 5 outgoing</title></circle>
-<circle cx="557.51" cy="116.95" r="2.69" fill="#c6b696" opacity=".92"><title>Blackthorn: 2 incoming / 1 outgoing</title></circle>
-<circle cx="166.71" cy="484.36" r="2.69" fill="#c7d6aa" opacity=".92"><title>Blue Bullet: 2 incoming / 2 outgoing</title></circle>
-<circle cx="237.93" cy="276.72" r="2.69" fill="#c7d6aa" opacity=".92"><title>Blue Marvel: 2 incoming / 4 outgoing</title></circle>
-<circle cx="262.23" cy="410.45" r="2.69" fill="#c7d6aa" opacity=".92"><title>Bob, Agent of Hydra: 2 incoming / 7 outgoing</title></circle>
-<circle cx="387.93" cy="392.67" r="2.69" fill="#c7d6aa" opacity=".92"><title>Cammi: 2 incoming / 3 outgoing</title></circle>
-<circle cx="178.69" cy="288.64" r="2.69" fill="#c7d6aa" opacity=".92"><title>Caretaker: 2 incoming / 3 outgoing</title></circle>
-<circle cx="162.83" cy="463.05" r="2.69" fill="#c7d6aa" opacity=".92"><title>Citizen V: 2 incoming / 1 outgoing</title></circle>
-<circle cx="224.64" cy="295.66" r="2.69" fill="#c7d6aa" opacity=".92"><title>Alice Nugent: 2 incoming / 6 outgoing</title></circle>
-<circle cx="355.99" cy="305.00" r="2.69" fill="#c7d6aa" opacity=".92"><title>Dusk: 2 incoming / 6 outgoing</title></circle>
-<circle cx="237.46" cy="317.70" r="2.69" fill="#c7d6aa" opacity=".92"><title>Firebird: 2 incoming / 12 outgoing</title></circle>
-<circle cx="164.50" cy="282.97" r="2.69" fill="#c7d6aa" opacity=".92"><title>Firelord: 2 incoming / 1 outgoing</title></circle>
-<circle cx="239.35" cy="390.31" r="2.69" fill="#c7d6aa" opacity=".92"><title>Frankenstein&#x27;s Monster: 2 incoming / 11 outgoing</title></circle>
-<circle cx="268.49" cy="264.62" r="2.69" fill="#c7d6aa" opacity=".92"><title>Frog-Man: 2 incoming / 6 outgoing</title></circle>
-<circle cx="233.76" cy="262.23" r="2.69" fill="#c7d6aa" opacity=".92"><title>Hulk 2099: 2 incoming / 2 outgoing</title></circle>
-<circle cx="246.48" cy="249.48" r="2.69" fill="#c7d6aa" opacity=".92"><title>Hybrid: 2 incoming / 5 outgoing</title></circle>
-<circle cx="125.46" cy="334.79" r="2.69" fill="#c7d6aa" opacity=".92"><title>Ikaris: 2 incoming / 3 outgoing</title></circle>
-<circle cx="254.01" cy="435.82" r="2.69" fill="#c7d6aa" opacity=".92"><title>Iron Lad: 2 incoming / 4 outgoing</title></circle>
-<circle cx="257.50" cy="219.05" r="2.69" fill="#c7d6aa" opacity=".92"><title>Justice: 2 incoming / 5 outgoing</title></circle>
-<circle cx="302.48" cy="449.21" r="2.69" fill="#c7d6aa" opacity=".92"><title>Killpower: 2 incoming / 2 outgoing</title></circle>
-<circle cx="238.40" cy="293.70" r="2.69" fill="#c7d6aa" opacity=".92"><title>Killraven: 2 incoming / 5 outgoing</title></circle>
-<circle cx="269.26" cy="473.11" r="2.69" fill="#c7d6aa" opacity=".92"><title>Leech: 2 incoming / 4 outgoing</title></circle>
-<circle cx="214.51" cy="221.60" r="2.69" fill="#c7d6aa" opacity=".92"><title>Marvel Boy: 2 incoming / 2 outgoing</title></circle>
-<circle cx="308.90" cy="271.48" r="2.69" fill="#c7d6aa" opacity=".92"><title>Power Man: 2 incoming / 4 outgoing</title></circle>
-<circle cx="315.25" cy="428.80" r="2.69" fill="#c7d6aa" opacity=".92"><title>Raza Longknife: 2 incoming / 5 outgoing</title></circle>
-<circle cx="195.87" cy="402.93" r="2.69" fill="#c7d6aa" opacity=".92"><title>Red Raven: 2 incoming / 3 outgoing</title></circle>
-<circle cx="351.33" cy="323.35" r="2.69" fill="#c7d6aa" opacity=".92"><title>Ricochet: 2 incoming / 4 outgoing</title></circle>
-<circle cx="290.01" cy="503.79" r="2.69" fill="#c7d6aa" opacity=".92"><title>Rusty Collins: 2 incoming / 3 outgoing</title></circle>
-<circle cx="568.68" cy="93.65" r="2.69" fill="#c6b696" opacity=".92"><title>Scatterbrain: 2 incoming / 2 outgoing</title></circle>
-<circle cx="297.77" cy="302.43" r="2.69" fill="#c7d6aa" opacity=".92"><title>She-Hulk: 2 incoming / 6 outgoing</title></circle>
-<circle cx="547.53" cy="115.25" r="2.69" fill="#c6b696" opacity=".92"><title>Snapdragon: 2 incoming / 3 outgoing</title></circle>
-<circle cx="290.81" cy="336.00" r="2.69" fill="#c7d6aa" opacity=".92"><title>Spider-Bitch: 2 incoming / 15 outgoing</title></circle>
-<circle cx="336.66" cy="287.63" r="2.69" fill="#c7d6aa" opacity=".92"><title>Spider-UK: 2 incoming / 8 outgoing</title></circle>
-<circle cx="328.03" cy="330.81" r="2.69" fill="#c7d6aa" opacity=".92"><title>Starhawk: 2 incoming / 5 outgoing</title></circle>
-<circle cx="280.71" cy="174.16" r="2.69" fill="#c7d6aa" opacity=".92"><title>Starr the Slayer: 2 incoming / 3 outgoing</title></circle>
-<circle cx="320.02" cy="250.42" r="2.69" fill="#c7d6aa" opacity=".92"><title>Steel Spider: 2 incoming / 3 outgoing</title></circle>
-<circle cx="237.87" cy="513.46" r="2.69" fill="#c7d6aa" opacity=".92"><title>Synapse: 2 incoming / 0 outgoing</title></circle>
-<circle cx="78.37" cy="399.88" r="2.69" fill="#c7d6aa" opacity=".92"><title>The Union: 2 incoming / 2 outgoing</title></circle>
-<circle cx="67.02" cy="310.70" r="2.69" fill="#c7d6aa" opacity=".92"><title>Thena: 2 incoming / 1 outgoing</title></circle>
-<circle cx="306.41" cy="391.32" r="2.69" fill="#c7d6aa" opacity=".92"><title>Ulysses Bloodstone: 2 incoming / 1 outgoing</title></circle>
-<circle cx="265.04" cy="257.18" r="2.69" fill="#c7d6aa" opacity=".92"><title>White Tiger: 2 incoming / 5 outgoing</title></circle>
-<circle cx="192.79" cy="304.90" r="2.69" fill="#c7d6aa" opacity=".92"><title>Yelena Belova: 2 incoming / 6 outgoing</title></circle>
-<circle cx="317.88" cy="288.08" r="2.91" fill="#c7d6aa" opacity=".92"><title>She-Venom: 3 incoming / 4 outgoing</title></circle>
-<circle cx="123.44" cy="366.72" r="2.91" fill="#c7d6aa" opacity=".92"><title>Balder the Brave: 3 incoming / 2 outgoing</title></circle>
-<circle cx="164.73" cy="445.80" r="2.91" fill="#c7d6aa" opacity=".92"><title>Battlestar: 3 incoming / 2 outgoing</title></circle>
-<circle cx="193.32" cy="318.52" r="2.91" fill="#c7d6aa" opacity=".92"><title>Blazing Skull: 3 incoming / 8 outgoing</title></circle>
-<circle cx="332.15" cy="442.27" r="2.91" fill="#c7d6aa" opacity=".92"><title>Captain Marvel: 3 incoming / 2 outgoing</title></circle>
-<circle cx="202.30" cy="322.22" r="2.91" fill="#c7d6aa" opacity=".92"><title>Gauntlet: 3 incoming / 3 outgoing</title></circle>
-<circle cx="186.77" cy="470.37" r="2.91" fill="#c7d6aa" opacity=".92"><title>Jack Monroe: 3 incoming / 4 outgoing</title></circle>
-<circle cx="145.15" cy="284.54" r="2.91" fill="#c7d6aa" opacity=".92"><title>Kid Colt: 3 incoming / 2 outgoing</title></circle>
-<circle cx="287.94" cy="314.96" r="2.91" fill="#c7d6aa" opacity=".92"><title>Kismet: 3 incoming / 9 outgoing</title></circle>
-<circle cx="355.64" cy="429.04" r="2.91" fill="#c7d6aa" opacity=".92"><title>Korvus: 3 incoming / 4 outgoing</title></circle>
-<circle cx="351.16" cy="365.90" r="2.91" fill="#c7d6aa" opacity=".92"><title>Lei Kung: 3 incoming / 3 outgoing</title></circle>
-<circle cx="202.02" cy="292.04" r="2.91" fill="#c7d6aa" opacity=".92"><title>Living Lightning: 3 incoming / 5 outgoing</title></circle>
-<circle cx="357.75" cy="414.80" r="2.91" fill="#c7d6aa" opacity=".92"><title>Peggy Carter: 3 incoming / 0 outgoing</title></circle>
-<circle cx="274.47" cy="258.53" r="2.91" fill="#c7d6aa" opacity=".92"><title>Ravage 2099: 3 incoming / 2 outgoing</title></circle>
-<circle cx="269.86" cy="434.03" r="2.91" fill="#c7d6aa" opacity=".92"><title>Rikki Barnes: 3 incoming / 6 outgoing</title></circle>
-<circle cx="276.94" cy="439.44" r="2.91" fill="#c7d6aa" opacity=".92"><title>Rockslide: 3 incoming / 6 outgoing</title></circle>
-<circle cx="207.22" cy="341.27" r="2.91" fill="#c7d6aa" opacity=".92"><title>Sabra: 3 incoming / 9 outgoing</title></circle>
-<circle cx="564.12" cy="101.49" r="2.91" fill="#c6b696" opacity=".92"><title>Scaredycat: 3 incoming / 3 outgoing</title></circle>
-<circle cx="268.88" cy="497.48" r="2.91" fill="#c7d6aa" opacity=".92"><title>Shatterstar: 3 incoming / 3 outgoing</title></circle>
-<circle cx="258.82" cy="306.85" r="2.91" fill="#c7d6aa" opacity=".92"><title>Shuri: 3 incoming / 9 outgoing</title></circle>
-<circle cx="261.29" cy="445.46" r="2.91" fill="#c7d6aa" opacity=".92"><title>Speed: 3 incoming / 6 outgoing</title></circle>
-<circle cx="321.23" cy="458.00" r="2.91" fill="#c7d6aa" opacity=".92"><title>Surge: 3 incoming / 2 outgoing</title></circle>
-<circle cx="113.65" cy="416.16" r="2.91" fill="#c7d6aa" opacity=".92"><title>Thin Man: 3 incoming / 1 outgoing</title></circle>
-<circle cx="234.76" cy="231.42" r="2.91" fill="#c7d6aa" opacity=".92"><title>Thor Girl: 3 incoming / 2 outgoing</title></circle>
-<circle cx="558.12" cy="97.81" r="2.91" fill="#c6b696" opacity=".92"><title>Toxyn: 3 incoming / 2 outgoing</title></circle>
-<circle cx="405.60" cy="358.20" r="2.91" fill="#c7d6aa" opacity=".92"><title>Turbo: 3 incoming / 3 outgoing</title></circle>
-<circle cx="537.80" cy="108.80" r="2.91" fill="#c6b696" opacity=".92"><title>Vyking: 3 incoming / 2 outgoing</title></circle>
-<circle cx="197.56" cy="435.01" r="2.91" fill="#c7d6aa" opacity=".92"><title>William Burnside: 3 incoming / 4 outgoing</title></circle>
-<circle cx="225.99" cy="437.56" r="3.10" fill="#c7d6aa" opacity=".92"><title>Agent X: 4 incoming / 3 outgoing</title></circle>
-<circle cx="207.00" cy="297.67" r="3.10" fill="#c7d6aa" opacity=".92"><title>Black Knight: 4 incoming / 3 outgoing</title></circle>
-<circle cx="348.16" cy="409.07" r="3.10" fill="#c7d6aa" opacity=".92"><title>Ch&#x27;od: 4 incoming / 3 outgoing</title></circle>
-<circle cx="341.44" cy="422.33" r="3.10" fill="#c7d6aa" opacity=".92"><title>Chase Stein: 4 incoming / 4 outgoing</title></circle>
-<circle cx="247.30" cy="379.56" r="3.10" fill="#c7d6aa" opacity=".92"><title>Devil Dinosaur: 4 incoming / 8 outgoing</title></circle>
-<circle cx="301.01" cy="488.32" r="3.10" fill="#c7d6aa" opacity=".92"><title>Empath: 4 incoming / 3 outgoing</title></circle>
-<circle cx="200.92" cy="270.93" r="3.10" fill="#c7d6aa" opacity=".92"><title>Guardsman: 4 incoming / 7 outgoing</title></circle>
-<circle cx="284.87" cy="443.48" r="3.10" fill="#c7d6aa" opacity=".92"><title>Hellion: 4 incoming / 11 outgoing</title></circle>
-<circle cx="345.02" cy="295.12" r="3.10" fill="#c7d6aa" opacity=".92"><title>Hornet: 4 incoming / 4 outgoing</title></circle>
-<circle cx="228.51" cy="364.09" r="3.10" fill="#c7d6aa" opacity=".92"><title>Iron Man 2020: 4 incoming / 3 outgoing</title></circle>
-<circle cx="223.29" cy="408.14" r="3.10" fill="#c7d6aa" opacity=".92"><title>Karnak: 4 incoming / 7 outgoing</title></circle>
-<circle cx="224.74" cy="379.17" r="3.10" fill="#c7d6aa" opacity=".92"><title>Kristoff Vernard: 4 incoming / 4 outgoing</title></circle>
-<circle cx="282.42" cy="380.95" r="3.10" fill="#c7d6aa" opacity=".92"><title>Noh-Varr: 4 incoming / 18 outgoing</title></circle>
-<circle cx="286.33" cy="424.59" r="3.10" fill="#c7d6aa" opacity=".92"><title>Northstar: 4 incoming / 14 outgoing</title></circle>
-<circle cx="550.66" cy="108.00" r="3.10" fill="#c6b696" opacity=".92"><title>Radian: 4 incoming / 6 outgoing</title></circle>
-<circle cx="242.08" cy="332.06" r="3.10" fill="#c7d6aa" opacity=".92"><title>Radioactive Man: 4 incoming / 8 outgoing</title></circle>
-<circle cx="192.23" cy="331.16" r="3.10" fill="#c7d6aa" opacity=".92"><title>Ronin: 4 incoming / 5 outgoing</title></circle>
-<circle cx="279.11" cy="347.50" r="3.10" fill="#c7d6aa" opacity=".92"><title>Satana: 4 incoming / 7 outgoing</title></circle>
-<circle cx="210.49" cy="421.76" r="3.10" fill="#c7d6aa" opacity=".92"><title>Toro: 4 incoming / 4 outgoing</title></circle>
-<circle cx="162.37" cy="326.72" r="3.10" fill="#c7d6aa" opacity=".92"><title>Two-Gun Kid: 4 incoming / 4 outgoing</title></circle>
-<circle cx="286.45" cy="396.52" r="3.10" fill="#c7d6aa" opacity=".92"><title>Xorn: 4 incoming / 8 outgoing</title></circle>
-<circle cx="222.11" cy="323.73" r="3.27" fill="#c7d6aa" opacity=".92"><title>Abomination: 5 incoming / 8 outgoing</title></circle>
-<circle cx="208.75" cy="370.26" r="3.27" fill="#c7d6aa" opacity=".92"><title>Arabian Knight: 5 incoming / 8 outgoing</title></circle>
-<circle cx="190.11" cy="360.55" r="3.27" fill="#c7d6aa" opacity=".92"><title>Ares: 5 incoming / 7 outgoing</title></circle>
-<circle cx="288.45" cy="301.87" r="3.27" fill="#c7d6aa" opacity=".92"><title>Black Marvel: 5 incoming / 2 outgoing</title></circle>
-<circle cx="254.53" cy="257.25" r="3.27" fill="#c7d6aa" opacity=".92"><title>Delroy Garrett: 5 incoming / 3 outgoing</title></circle>
-<circle cx="270.38" cy="319.49" r="3.27" fill="#c7d6aa" opacity=".92"><title>Doctor Druid: 5 incoming / 4 outgoing</title></circle>
-<circle cx="268.72" cy="373.97" r="3.27" fill="#c7d6aa" opacity=".92"><title>Elsa Bloodstone: 5 incoming / 12 outgoing</title></circle>
-<circle cx="239.13" cy="376.58" r="3.27" fill="#c7d6aa" opacity=".92"><title>Fin Fang Foom: 5 incoming / 2 outgoing</title></circle>
-<circle cx="253.05" cy="294.66" r="3.27" fill="#c7d6aa" opacity=".92"><title>Gargoyle: 5 incoming / 5 outgoing</title></circle>
-<circle cx="204.94" cy="456.24" r="3.27" fill="#c7d6aa" opacity=".92"><title>Gorgon: 5 incoming / 1 outgoing</title></circle>
-<circle cx="274.84" cy="421.91" r="3.27" fill="#c7d6aa" opacity=".92"><title>Hulkling: 5 incoming / 9 outgoing</title></circle>
-<circle cx="144.48" cy="319.25" r="3.27" fill="#c7d6aa" opacity=".92"><title>Makkari: 5 incoming / 1 outgoing</title></circle>
-<circle cx="304.30" cy="189.79" r="3.27" fill="#c7d6aa" opacity=".92"><title>Nightmask: 5 incoming / 3 outgoing</title></circle>
-<circle cx="232.36" cy="467.93" r="3.27" fill="#c7d6aa" opacity=".92"><title>Nomad: 5 incoming / 4 outgoing</title></circle>
-<circle cx="245.70" cy="354.77" r="3.27" fill="#c7d6aa" opacity=".92"><title>Paladin: 5 incoming / 10 outgoing</title></circle>
-<circle cx="381.43" cy="317.89" r="3.27" fill="#c7d6aa" opacity=".92"><title>Phil Urich: 5 incoming / 3 outgoing</title></circle>
-<circle cx="311.28" cy="410.79" r="3.27" fill="#c7d6aa" opacity=".92"><title>Puck: 5 incoming / 8 outgoing</title></circle>
-<circle cx="173.40" cy="342.37" r="3.27" fill="#c7d6aa" opacity=".92"><title>Red Guardian: 5 incoming / 5 outgoing</title></circle>
-<circle cx="307.83" cy="348.12" r="3.27" fill="#c7d6aa" opacity=".92"><title>Spider-Girl: 5 incoming / 12 outgoing</title></circle>
-<circle cx="175.16" cy="426.76" r="3.27" fill="#c7d6aa" opacity=".92"><title>Spitfire: 5 incoming / 5 outgoing</title></circle>
-<circle cx="228.21" cy="301.29" r="3.27" fill="#c7d6aa" opacity=".92"><title>Vance Astrovik: 5 incoming / 8 outgoing</title></circle>
-<circle cx="334.06" cy="468.35" r="3.27" fill="#c7d6aa" opacity=".92"><title>Vindicator: 5 incoming / 4 outgoing</title></circle>
-<circle cx="297.23" cy="454.86" r="3.41" fill="#c7d6aa" opacity=".92"><title>Anole: 6 incoming / 6 outgoing</title></circle>
-<circle cx="300.29" cy="308.34" r="3.41" fill="#c7d6aa" opacity=".92"><title>Captain Universe: 6 incoming / 14 outgoing</title></circle>
-<circle cx="323.99" cy="356.51" r="3.41" fill="#c7d6aa" opacity=".92"><title>Gladiator: 6 incoming / 6 outgoing</title></circle>
-<circle cx="328.05" cy="473.73" r="3.41" fill="#c7d6aa" opacity=".92"><title>Guardian: 6 incoming / 4 outgoing</title></circle>
-<circle cx="259.82" cy="344.62" r="3.41" fill="#c7d6aa" opacity=".92"><title>Gwenpool: 6 incoming / 15 outgoing</title></circle>
-<circle cx="261.62" cy="366.49" r="3.41" fill="#c7d6aa" opacity=".92"><title>Machine Man: 6 incoming / 12 outgoing</title></circle>
-<circle cx="244.29" cy="433.41" r="3.41" fill="#c7d6aa" opacity=".92"><title>Outlaw: 6 incoming / 5 outgoing</title></circle>
-<circle cx="296.58" cy="320.76" r="3.41" fill="#c7d6aa" opacity=".92"><title>Robbie Baldwin: 6 incoming / 13 outgoing</title></circle>
-<circle cx="211.81" cy="351.70" r="3.41" fill="#c7d6aa" opacity=".92"><title>Tarantula: 6 incoming / 9 outgoing</title></circle>
-<circle cx="200.69" cy="365.57" r="3.41" fill="#c7d6aa" opacity=".92"><title>U.S. Agent: 6 incoming / 20 outgoing</title></circle>
-<circle cx="139.77" cy="385.00" r="3.41" fill="#c7d6aa" opacity=".92"><title>Union Jack: 6 incoming / 6 outgoing</title></circle>
-<circle cx="204.56" cy="391.07" r="3.41" fill="#c7d6aa" opacity=".92"><title>Whizzer: 6 incoming / 6 outgoing</title></circle>
-<circle cx="289.08" cy="431.98" r="3.41" fill="#c7d6aa" opacity=".92"><title>Wolverine: 6 incoming / 8 outgoing</title></circle>
-<circle cx="280.48" cy="403.62" r="3.55" fill="#c7d6aa" opacity=".92"><title>Betsy Braddock: 7 incoming / 28 outgoing</title></circle>
-<circle cx="238.12" cy="400.99" r="3.55" fill="#c7d6aa" opacity=".92"><title>Doctor Nemesis: 7 incoming / 9 outgoing</title></circle>
-<circle cx="353.82" cy="329.44" r="3.55" fill="#c7d6aa" opacity=".92"><title>Genis-Vell: 7 incoming / 3 outgoing</title></circle>
-<circle cx="225.02" cy="347.57" r="3.55" fill="#c7d6aa" opacity=".92"><title>Ghost Rider: 7 incoming / 7 outgoing</title></circle>
-<circle cx="248.12" cy="306.76" r="3.55" fill="#c7d6aa" opacity=".92"><title>Hyperion: 7 incoming / 6 outgoing</title></circle>
-<circle cx="141.72" cy="398.24" r="3.55" fill="#c7d6aa" opacity=".92"><title>Jeffrey Mace: 7 incoming / 1 outgoing</title></circle>
-<circle cx="252.08" cy="350.05" r="3.55" fill="#c7d6aa" opacity=".92"><title>Patsy Walker: 7 incoming / 10 outgoing</title></circle>
-<circle cx="335.89" cy="354.42" r="3.55" fill="#c7d6aa" opacity=".92"><title>Phyla-Vell: 7 incoming / 8 outgoing</title></circle>
-<circle cx="299.45" cy="283.43" r="3.55" fill="#c7d6aa" opacity=".92"><title>Spider-Man Noir: 7 incoming / 5 outgoing</title></circle>
-<circle cx="253.01" cy="398.24" r="3.55" fill="#c7d6aa" opacity=".92"><title>Werewolf by Night: 7 incoming / 13 outgoing</title></circle>
-<circle cx="275.53" cy="358.22" r="3.68" fill="#c7d6aa" opacity=".92"><title>Adam Warlock: 8 incoming / 22 outgoing</title></circle>
-<circle cx="331.82" cy="370.98" r="3.68" fill="#c7d6aa" opacity=".92"><title>Darkhawk: 8 incoming / 11 outgoing</title></circle>
-<circle cx="270.00" cy="331.54" r="3.68" fill="#c7d6aa" opacity=".92"><title>Jessica Jones: 8 incoming / 14 outgoing</title></circle>
-<circle cx="317.32" cy="342.35" r="3.68" fill="#c7d6aa" opacity=".92"><title>Rom the Space Knight: 8 incoming / 8 outgoing</title></circle>
-<circle cx="254.68" cy="275.51" r="3.68" fill="#c7d6aa" opacity=".92"><title>Scarlet Spider: 8 incoming / 3 outgoing</title></circle>
-<circle cx="273.30" cy="284.66" r="3.68" fill="#c7d6aa" opacity=".92"><title>Star Brand: 8 incoming / 11 outgoing</title></circle>
-<circle cx="168.98" cy="375.91" r="3.68" fill="#c7d6aa" opacity=".92"><title>Union Jack: 8 incoming / 5 outgoing</title></circle>
-<circle cx="238.15" cy="312.97" r="3.80" fill="#c7d6aa" opacity=".92"><title>Bill Foster: 9 incoming / 12 outgoing</title></circle>
-<circle cx="191.34" cy="427.79" r="3.80" fill="#c7d6aa" opacity=".92"><title>Bucky: 9 incoming / 9 outgoing</title></circle>
-<circle cx="295.76" cy="365.46" r="3.80" fill="#c7d6aa" opacity=".92"><title>Captain Marvel: 9 incoming / 14 outgoing</title></circle>
-<circle cx="274.50" cy="338.81" r="3.80" fill="#c7d6aa" opacity=".92"><title>John Jameson: 9 incoming / 7 outgoing</title></circle>
-<circle cx="257.00" cy="363.22" r="3.80" fill="#c7d6aa" opacity=".92"><title>Morbius: 9 incoming / 16 outgoing</title></circle>
-<circle cx="243.24" cy="344.87" r="3.80" fill="#c7d6aa" opacity=".92"><title>Sentry: 9 incoming / 6 outgoing</title></circle>
-<circle cx="328.89" cy="408.66" r="3.80" fill="#c7d6aa" opacity=".92"><title>Vulcan: 9 incoming / 8 outgoing</title></circle>
-<circle cx="320.67" cy="330.72" r="3.91" fill="#c7d6aa" opacity=".92"><title>Anya Corazon: 10 incoming / 12 outgoing</title></circle>
-<circle cx="231.30" cy="340.13" r="3.91" fill="#c7d6aa" opacity=".92"><title>Ghost Rider: 10 incoming / 8 outgoing</title></circle>
-<circle cx="283.64" cy="412.51" r="3.91" fill="#c7d6aa" opacity=".92"><title>Jubilee: 10 incoming / 10 outgoing</title></circle>
-<circle cx="231.13" cy="412.31" r="3.91" fill="#c7d6aa" opacity=".92"><title>Quicksilver: 10 incoming / 10 outgoing</title></circle>
-<circle cx="295.12" cy="353.62" r="3.91" fill="#c7d6aa" opacity=".92"><title>Rocket Raccoon: 10 incoming / 8 outgoing</title></circle>
-<circle cx="313.94" cy="298.32" r="3.91" fill="#c7d6aa" opacity=".92"><title>Silk: 10 incoming / 4 outgoing</title></circle>
-<circle cx="278.71" cy="299.59" r="3.91" fill="#c7d6aa" opacity=".92"><title>Spider-Woman: 10 incoming / 12 outgoing</title></circle>
-<circle cx="278.48" cy="363.96" r="4.02" fill="#c7d6aa" opacity=".92"><title>Cloak and Dagger: 11 incoming / 24 outgoing</title></circle>
-<circle cx="261.34" cy="301.12" r="4.02" fill="#c7d6aa" opacity=".92"><title>Eddie Brock: 11 incoming / 16 outgoing</title></circle>
-<circle cx="301.34" cy="339.61" r="4.02" fill="#c7d6aa" opacity=".92"><title>Moondragon: 11 incoming / 7 outgoing</title></circle>
-<circle cx="312.35" cy="362.87" r="4.02" fill="#c7d6aa" opacity=".92"><title>Ms. Marvel: 11 incoming / 1 outgoing</title></circle>
-<circle cx="307.49" cy="325.54" r="4.12" fill="#c7d6aa" opacity=".92"><title>Spider-Woman: 12 incoming / 14 outgoing</title></circle>
-<circle cx="301.39" cy="353.12" r="4.12" fill="#c7d6aa" opacity=".92"><title>Star-Lord: 12 incoming / 10 outgoing</title></circle>
-<circle cx="196.79" cy="357.85" r="4.12" fill="#c7d6aa" opacity=".92"><title>War Machine: 12 incoming / 4 outgoing</title></circle>
-<circle cx="261.77" cy="395.11" r="4.22" fill="#c7d6aa" opacity=".92"><title>Black Bolt: 13 incoming / 9 outgoing</title></circle>
-<circle cx="229.89" cy="394.08" r="4.22" fill="#c7d6aa" opacity=".92"><title>Franklin Richards: 13 incoming / 3 outgoing</title></circle>
-<circle cx="244.95" cy="320.17" r="4.22" fill="#c7d6aa" opacity=".92"><title>Ghost Rider: 13 incoming / 15 outgoing</title></circle>
-<circle cx="267.64" cy="348.70" r="4.22" fill="#c7d6aa" opacity=".92"><title>Jericho Drumm: 13 incoming / 7 outgoing</title></circle>
-<circle cx="215.80" cy="331.83" r="4.22" fill="#c7d6aa" opacity=".92"><title>Mockingbird: 13 incoming / 11 outgoing</title></circle>
-<circle cx="233.80" cy="322.73" r="4.22" fill="#c7d6aa" opacity=".92"><title>Shang-Chi: 13 incoming / 11 outgoing</title></circle>
-<circle cx="180.26" cy="394.59" r="4.32" fill="#c7d6aa" opacity=".92"><title>Human Torch: 14 incoming / 9 outgoing</title></circle>
-<circle cx="317.37" cy="306.71" r="4.32" fill="#c7d6aa" opacity=".92"><title>Mayday Parker: 14 incoming / 14 outgoing</title></circle>
-<circle cx="269.16" cy="383.50" r="4.41" fill="#c7d6aa" opacity=".92"><title>Man-Thing: 15 incoming / 12 outgoing</title></circle>
-<circle cx="260.55" cy="328.44" r="4.41" fill="#c7d6aa" opacity=".92"><title>Misty Knight: 15 incoming / 13 outgoing</title></circle>
-<circle cx="311.59" cy="375.99" r="4.50" fill="#c7d6aa" opacity=".92"><title>Nova: 16 incoming / 11 outgoing</title></circle>
-<circle cx="296.88" cy="411.28" r="4.50" fill="#c7d6aa" opacity=".92"><title>Rachel Summers: 16 incoming / 19 outgoing</title></circle>
-<circle cx="288.30" cy="324.90" r="4.50" fill="#c7d6aa" opacity=".92"><title>Spider-Woman: 16 incoming / 11 outgoing</title></circle>
-<circle cx="251.51" cy="368.28" r="4.59" fill="#c7d6aa" opacity=".92"><title>Blade: 17 incoming / 12 outgoing</title></circle>
-<circle cx="220.75" cy="367.41" r="4.59" fill="#c7d6aa" opacity=".92"><title>Deathlok: 17 incoming / 5 outgoing</title></circle>
-<circle cx="230.60" cy="352.61" r="4.59" fill="#c7d6aa" opacity=".92"><title>Human Torch: 17 incoming / 5 outgoing</title></circle>
-<circle cx="284.32" cy="308.28" r="4.59" fill="#c7d6aa" opacity=".92"><title>Venom: 17 incoming / 21 outgoing</title></circle>
-<circle cx="222.17" cy="356.33" r="4.75" fill="#c7d6aa" opacity=".92"><title>Hercules: 19 incoming / 17 outgoing</title></circle>
-<circle cx="278.94" cy="375.48" r="4.83" fill="#c7d6aa" opacity=".92"><title>Storm: 20 incoming / 16 outgoing</title></circle>
-<circle cx="278.25" cy="327.84" r="4.91" fill="#c7d6aa" opacity=".92"><title>Black Cat: 21 incoming / 14 outgoing</title></circle>
-<circle cx="258.42" cy="425.39" r="4.91" fill="#c7d6aa" opacity=".92"><title>Cable: 21 incoming / 11 outgoing</title></circle>
-<circle cx="278.45" cy="407.95" r="4.91" fill="#c7d6aa" opacity=".92"><title>Emma Frost: 21 incoming / 17 outgoing</title></circle>
-<circle cx="273.87" cy="312.61" r="4.91" fill="#c7d6aa" opacity=".92"><title>Iron Fist: 21 incoming / 16 outgoing</title></circle>
-<circle cx="221.25" cy="314.00" r="4.98" fill="#c7d6aa" opacity=".92"><title>Black Widow: 22 incoming / 7 outgoing</title></circle>
-<circle cx="230.49" cy="330.76" r="4.98" fill="#c7d6aa" opacity=".92"><title>Moon Knight: 22 incoming / 14 outgoing</title></circle>
-<circle cx="295.14" cy="399.12" r="5.06" fill="#c7d6aa" opacity=".92"><title>Jean Grey: 23 incoming / 12 outgoing</title></circle>
-<circle cx="234.53" cy="367.80" r="5.13" fill="#c7d6aa" opacity=".92"><title>Hank Pym: 24 incoming / 8 outgoing</title></circle>
-<circle cx="287.83" cy="378.16" r="5.13" fill="#c7d6aa" opacity=".92"><title>Phoenix: 24 incoming / 17 outgoing</title></circle>
-<circle cx="254.34" cy="311.95" r="5.13" fill="#c7d6aa" opacity=".92"><title>Quasar: 24 incoming / 3 outgoing</title></circle>
-<circle cx="267.28" cy="308.52" r="5.20" fill="#c7d6aa" opacity=".92"><title>Luke Cage: 25 incoming / 9 outgoing</title></circle>
-<circle cx="303.21" cy="428.58" r="5.27" fill="#c7d6aa" opacity=".92"><title>Cyclops: 26 incoming / 11 outgoing</title></circle>
-<circle cx="235.31" cy="332.10" r="5.34" fill="#c7d6aa" opacity=".92"><title>Black Panther: 27 incoming / 11 outgoing</title></circle>
-<circle cx="254.07" cy="387.66" r="5.40" fill="#c7d6aa" opacity=".92"><title>Scarlet Witch: 28 incoming / 14 outgoing</title></circle>
-<circle cx="250.67" cy="324.14" r="5.47" fill="#c7d6aa" opacity=".92"><title>She-Hulk: 29 incoming / 20 outgoing</title></circle>
-<circle cx="278.30" cy="368.45" r="10.72" fill="#ef7954" opacity=".10"/>
-<circle cx="278.30" cy="368.45" r="5.72" fill="#ef7954" opacity=".92"><title>Deadpool: 33 incoming / 19 outgoing</title></circle>
-<circle cx="239.37" cy="361.19" r="11.65" fill="#ef7954" opacity=".10"/>
-<circle cx="239.37" cy="361.19" r="6.65" fill="#ef7954" opacity=".92"><title>Doctor Strange: 50 incoming / 17 outgoing</title></circle>
-<circle cx="293.02" cy="376.53" r="12.12" fill="#ef7954" opacity=".10"/>
-<circle cx="293.02" cy="376.53" r="7.12" fill="#ef7954" opacity=".92"><title>Wolverine: 60 incoming / 17 outgoing</title></circle>
-<circle cx="259.75" cy="350.38" r="12.30" fill="#ef7954" opacity=".10"/>
-<circle cx="259.75" cy="350.38" r="7.30" fill="#ef7954" opacity=".92"><title>Hulk: 64 incoming / 10 outgoing</title></circle>
-<circle cx="282.77" cy="334.49" r="13.91" fill="#ef7954" opacity=".10"/>
-<circle cx="282.77" cy="334.49" r="8.91" fill="#ef7954" opacity=".92"><title>Spider-Man: 106 incoming / 9 outgoing</title></circle>
+<circle cx="609.76" cy="105.30" r="1.70" fill="#ecdba9" opacity=".92"><title>Baymax: 0 incoming / 0 outgoing</title></circle>
+<circle cx="546.56" cy="157.10" r="1.70" fill="#ecdba9" opacity=".92"><title>Bird-Brain: 0 incoming / 0 outgoing</title></circle>
+<circle cx="609.76" cy="157.10" r="1.70" fill="#ecdba9" opacity=".92"><title>Black Fox: 0 incoming / 0 outgoing</title></circle>
+<circle cx="150.49" cy="388.10" r="1.70" fill="#adc5f5" opacity=".92"><title>Blackwulf: 0 incoming / 2 outgoing</title></circle>
+<circle cx="145.28" cy="223.51" r="1.70" fill="#adc5f5" opacity=".92"><title>Blue Eagle: 0 incoming / 1 outgoing</title></circle>
+<circle cx="546.56" cy="208.90" r="1.70" fill="#ecdba9" opacity=".92"><title>Brain Drain: 0 incoming / 0 outgoing</title></circle>
+<circle cx="609.76" cy="208.90" r="1.70" fill="#ecdba9" opacity=".92"><title>Breeze Barton: 0 incoming / 0 outgoing</title></circle>
+<circle cx="546.56" cy="260.70" r="1.70" fill="#ecdba9" opacity=".92"><title>Captain Midlands: 0 incoming / 0 outgoing</title></circle>
+<circle cx="132.56" cy="421.83" r="1.70" fill="#adc5f5" opacity=".92"><title>Captain Ultra: 0 incoming / 1 outgoing</title></circle>
+<circle cx="609.76" cy="260.70" r="1.70" fill="#ecdba9" opacity=".92"><title>Charcoal: 0 incoming / 0 outgoing</title></circle>
+<circle cx="285.09" cy="455.28" r="1.70" fill="#adc5f5" opacity=".92"><title>Coldblood: 0 incoming / 2 outgoing</title></circle>
+<circle cx="178.85" cy="328.49" r="1.70" fill="#adc5f5" opacity=".92"><title>Crippler: 0 incoming / 4 outgoing</title></circle>
+<circle cx="162.23" cy="426.35" r="1.70" fill="#adc5f5" opacity=".92"><title>Dargo Ktor: 0 incoming / 2 outgoing</title></circle>
+<circle cx="83.18" cy="359.21" r="1.70" fill="#adc5f5" opacity=".92"><title>Detroit Steel: 0 incoming / 1 outgoing</title></circle>
+<circle cx="106.93" cy="398.92" r="1.70" fill="#adc5f5" opacity=".92"><title>Digitek: 0 incoming / 1 outgoing</title></circle>
+<circle cx="393.14" cy="416.81" r="1.70" fill="#adc5f5" opacity=".92"><title>Dogpool: 0 incoming / 1 outgoing</title></circle>
+<circle cx="370.82" cy="395.83" r="1.70" fill="#adc5f5" opacity=".92"><title>Emrys Killebrew: 0 incoming / 2 outgoing</title></circle>
+<circle cx="386.03" cy="270.62" r="1.70" fill="#adc5f5" opacity=".92"><title>Enigma: 0 incoming / 1 outgoing</title></circle>
+<circle cx="357.04" cy="232.06" r="1.70" fill="#adc5f5" opacity=".92"><title>Ethan Edwards: 0 incoming / 1 outgoing</title></circle>
+<circle cx="354.70" cy="392.26" r="1.70" fill="#adc5f5" opacity=".92"><title>Fabio Medina: 0 incoming / 3 outgoing</title></circle>
+<circle cx="546.56" cy="312.50" r="1.70" fill="#ecdba9" opacity=".92"><title>Father Time: 0 incoming / 0 outgoing</title></circle>
+<circle cx="315.47" cy="279.58" r="1.70" fill="#adc5f5" opacity=".92"><title>Gremlin: 0 incoming / 4 outgoing</title></circle>
+<circle cx="609.76" cy="312.50" r="1.70" fill="#ecdba9" opacity=".92"><title>Happy Sam Sawyer: 0 incoming / 0 outgoing</title></circle>
+<circle cx="152.11" cy="347.92" r="1.70" fill="#adc5f5" opacity=".92"><title>Hawkeye: 0 incoming / 3 outgoing</title></circle>
+<circle cx="393.10" cy="285.99" r="1.70" fill="#adc5f5" opacity=".92"><title>Helix: 0 incoming / 1 outgoing</title></circle>
+<circle cx="546.56" cy="364.30" r="1.70" fill="#ecdba9" opacity=".92"><title>Hellfire: 0 incoming / 0 outgoing</title></circle>
+<circle cx="297.98" cy="267.03" r="1.70" fill="#adc5f5" opacity=".92"><title>Human Fly: 0 incoming / 5 outgoing</title></circle>
+<circle cx="609.76" cy="364.30" r="1.70" fill="#ecdba9" opacity=".92"><title>Illuminator: 0 incoming / 0 outgoing</title></circle>
+<circle cx="212.02" cy="485.46" r="1.70" fill="#adc5f5" opacity=".92"><title>Inferno: 0 incoming / 3 outgoing</title></circle>
+<circle cx="271.49" cy="297.00" r="1.70" fill="#adc5f5" opacity=".92"><title>Isaiah Bradley: 0 incoming / 7 outgoing</title></circle>
+<circle cx="370.57" cy="432.65" r="1.70" fill="#adc5f5" opacity=".92"><title>Junior Juniper: 0 incoming / 2 outgoing</title></circle>
+<circle cx="456.63" cy="303.82" r="1.70" fill="#adc5f5" opacity=".92"><title>Mahr Vehl: 0 incoming / 1 outgoing</title></circle>
+<circle cx="331.35" cy="92.49" r="1.70" fill="#adc5f5" opacity=".92"><title>Mark Hazzard: Merc: 0 incoming / 1 outgoing</title></circle>
+<circle cx="546.56" cy="416.10" r="1.70" fill="#ecdba9" opacity=".92"><title>Miracleman: 0 incoming / 0 outgoing</title></circle>
+<circle cx="140.92" cy="438.68" r="1.70" fill="#adc5f5" opacity=".92"><title>Moonglow: 0 incoming / 1 outgoing</title></circle>
+<circle cx="369.31" cy="244.74" r="1.70" fill="#adc5f5" opacity=".92"><title>Phil Grayfield: 0 incoming / 1 outgoing</title></circle>
+<circle cx="609.76" cy="416.10" r="1.70" fill="#ecdba9" opacity=".92"><title>Ogre: 0 incoming / 0 outgoing</title></circle>
+<circle cx="344.71" cy="440.63" r="1.70" fill="#adc5f5" opacity=".92"><title>Oya: 0 incoming / 3 outgoing</title></circle>
+<circle cx="502.32" cy="361.36" r="1.70" fill="#adc5f5" opacity=".92"><title>Redneck: 0 incoming / 1 outgoing</title></circle>
+<circle cx="114.80" cy="214.93" r="1.70" fill="#adc5f5" opacity=".92"><title>Rockman: 0 incoming / 2 outgoing</title></circle>
+<circle cx="323.63" cy="502.24" r="1.70" fill="#adc5f5" opacity=".92"><title>Ruby Summers: 0 incoming / 2 outgoing</title></circle>
+<circle cx="126.21" cy="352.13" r="1.70" fill="#adc5f5" opacity=".92"><title>Scarlet Scarab: 0 incoming / 2 outgoing</title></circle>
+<circle cx="377.04" cy="344.52" r="1.70" fill="#adc5f5" opacity=".92"><title>Scorpio: 0 incoming / 2 outgoing</title></circle>
+<circle cx="546.56" cy="467.90" r="1.70" fill="#ecdba9" opacity=".92"><title>Sean and Chris: 0 incoming / 0 outgoing</title></circle>
+<circle cx="253.63" cy="334.43" r="1.70" fill="#adc5f5" opacity=".92"><title>Shamrock: 0 incoming / 8 outgoing</title></circle>
+<circle cx="177.88" cy="257.94" r="1.70" fill="#adc5f5" opacity=".92"><title>Silencer: 0 incoming / 2 outgoing</title></circle>
+<circle cx="311.80" cy="234.19" r="1.70" fill="#adc5f5" opacity=".92"><title>Silhouette: 0 incoming / 2 outgoing</title></circle>
+<circle cx="609.76" cy="467.90" r="1.70" fill="#ecdba9" opacity=".92"><title>Solarman: 0 incoming / 0 outgoing</title></circle>
+<circle cx="139.22" cy="252.75" r="1.70" fill="#adc5f5" opacity=".92"><title>Solomon Kane: 0 incoming / 1 outgoing</title></circle>
+<circle cx="321.07" cy="261.29" r="1.70" fill="#adc5f5" opacity=".92"><title>Spider-Man: 0 incoming / 3 outgoing</title></circle>
+<circle cx="213.03" cy="462.55" r="1.70" fill="#adc5f5" opacity=".92"><title>Straw Man: 0 incoming / 2 outgoing</title></circle>
+<circle cx="546.56" cy="519.70" r="1.70" fill="#ecdba9" opacity=".92"><title>Super Rabbit: 0 incoming / 0 outgoing</title></circle>
+<circle cx="286.56" cy="217.57" r="1.70" fill="#adc5f5" opacity=".92"><title>Thunderbolt: 0 incoming / 2 outgoing</title></circle>
+<circle cx="378.33" cy="257.35" r="1.70" fill="#adc5f5" opacity=".92"><title>Thunderclap: 0 incoming / 1 outgoing</title></circle>
+<circle cx="190.08" cy="346.72" r="1.70" fill="#adc5f5" opacity=".92"><title>Ursa Major: 0 incoming / 4 outgoing</title></circle>
+<circle cx="349.17" cy="485.07" r="1.70" fill="#adc5f5" opacity=".92"><title>Wild Child: 0 incoming / 3 outgoing</title></circle>
+<circle cx="609.76" cy="519.70" r="1.70" fill="#ecdba9" opacity=".92"><title>Yo-Yo Rodriguez: 0 incoming / 0 outgoing</title></circle>
+<circle cx="316.43" cy="397.30" r="1.70" fill="#adc5f5" opacity=".92"><title>Zombie: 0 incoming / 4 outgoing</title></circle>
+<circle cx="107.13" cy="324.23" r="2.40" fill="#adc5f5" opacity=".92"><title>Ajak: 1 incoming / 4 outgoing</title></circle>
+<circle cx="375.95" cy="441.65" r="2.40" fill="#adc5f5" opacity=".92"><title>Alex Wilder: 1 incoming / 1 outgoing</title></circle>
+<circle cx="172.66" cy="217.16" r="2.40" fill="#adc5f5" opacity=".92"><title>Black Jack Tarr: 1 incoming / 1 outgoing</title></circle>
+<circle cx="150.30" cy="316.72" r="2.40" fill="#adc5f5" opacity=".92"><title>Black Rider: 1 incoming / 4 outgoing</title></circle>
+<circle cx="151.06" cy="399.96" r="2.40" fill="#adc5f5" opacity=".92"><title>Blue Diamond: 1 incoming / 9 outgoing</title></circle>
+<circle cx="343.54" cy="532.51" r="2.40" fill="#adc5f5" opacity=".92"><title>Box: 1 incoming / 2 outgoing</title></circle>
+<circle cx="248.02" cy="408.37" r="2.40" fill="#adc5f5" opacity=".92"><title>Brian Braddock: 1 incoming / 11 outgoing</title></circle>
+<circle cx="369.08" cy="345.69" r="2.40" fill="#adc5f5" opacity=".92"><title>Bug: 1 incoming / 4 outgoing</title></circle>
+<circle cx="348.23" cy="313.10" r="2.40" fill="#adc5f5" opacity=".92"><title>Crane Mother: 1 incoming / 3 outgoing</title></circle>
+<circle cx="282.50" cy="268.49" r="2.40" fill="#adc5f5" opacity=".92"><title>Darkdevil: 1 incoming / 4 outgoing</title></circle>
+<circle cx="202.38" cy="255.92" r="2.40" fill="#adc5f5" opacity=".92"><title>Debrii: 1 incoming / 5 outgoing</title></circle>
+<circle cx="328.37" cy="253.71" r="2.40" fill="#adc5f5" opacity=".92"><title>Devil Hulk: 1 incoming / 2 outgoing</title></circle>
+<circle cx="264.00" cy="340.11" r="2.40" fill="#adc5f5" opacity=".92"><title>Doom 2099: 1 incoming / 9 outgoing</title></circle>
+<circle cx="331.90" cy="261.59" r="2.40" fill="#adc5f5" opacity=".92"><title>Dragon Lord: 1 incoming / 1 outgoing</title></circle>
+<circle cx="140.85" cy="355.57" r="2.40" fill="#adc5f5" opacity=".92"><title>Fandral: 1 incoming / 2 outgoing</title></circle>
+<circle cx="152.24" cy="297.95" r="2.40" fill="#adc5f5" opacity=".92"><title>Flatman: 1 incoming / 3 outgoing</title></circle>
+<circle cx="144.61" cy="174.35" r="2.40" fill="#adc5f5" opacity=".92"><title>Force: 1 incoming / 1 outgoing</title></circle>
+<circle cx="250.52" cy="499.62" r="2.40" fill="#adc5f5" opacity=".92"><title>G. W. Bridge: 1 incoming / 2 outgoing</title></circle>
+<circle cx="289.93" cy="469.86" r="2.40" fill="#adc5f5" opacity=".92"><title>Garrison Kane: 1 incoming / 6 outgoing</title></circle>
+<circle cx="184.80" cy="454.32" r="2.40" fill="#adc5f5" opacity=".92"><title>Golem: 1 incoming / 3 outgoing</title></circle>
+<circle cx="333.00" cy="394.01" r="2.40" fill="#adc5f5" opacity=".92"><title>Hit-Monkey: 1 incoming / 3 outgoing</title></circle>
+<circle cx="249.54" cy="523.55" r="2.40" fill="#adc5f5" opacity=".92"><title>Hrimhari: 1 incoming / 1 outgoing</title></circle>
+<circle cx="222.59" cy="388.92" r="2.40" fill="#adc5f5" opacity=".92"><title>Iron Man: 1 incoming / 5 outgoing</title></circle>
+<circle cx="157.11" cy="419.43" r="2.40" fill="#adc5f5" opacity=".92"><title>Jack Frost: 1 incoming / 7 outgoing</title></circle>
+<circle cx="254.55" cy="265.52" r="2.40" fill="#adc5f5" opacity=".92"><title>Janice Lincoln: 1 incoming / 4 outgoing</title></circle>
+<circle cx="311.11" cy="464.92" r="2.40" fill="#adc5f5" opacity=".92"><title>Jean Grey: 1 incoming / 5 outgoing</title></circle>
+<circle cx="257.14" cy="467.78" r="2.40" fill="#adc5f5" opacity=".92"><title>Magician: 1 incoming / 3 outgoing</title></circle>
+<circle cx="297.40" cy="327.82" r="2.40" fill="#adc5f5" opacity=".92"><title>Mania: 1 incoming / 7 outgoing</title></circle>
+<circle cx="317.21" cy="418.59" r="2.40" fill="#adc5f5" opacity=".92"><title>Motormouth: 1 incoming / 4 outgoing</title></circle>
+<circle cx="324.91" cy="305.81" r="2.40" fill="#adc5f5" opacity=".92"><title>Nightwatch: 1 incoming / 3 outgoing</title></circle>
+<circle cx="360.09" cy="358.78" r="2.40" fill="#adc5f5" opacity=".92"><title>Powerhouse: 1 incoming / 4 outgoing</title></circle>
+<circle cx="200.74" cy="302.14" r="2.40" fill="#adc5f5" opacity=".92"><title>Red Wolf: 1 incoming / 9 outgoing</title></circle>
+<circle cx="534.54" cy="113.74" r="2.40" fill="#ecdba9" opacity=".92"><title>Shear: 1 incoming / 2 outgoing</title></circle>
+<circle cx="213.60" cy="248.28" r="2.40" fill="#adc5f5" opacity=".92"><title>Skull the Slayer: 1 incoming / 3 outgoing</title></circle>
+<circle cx="242.43" cy="402.96" r="2.40" fill="#adc5f5" opacity=".92"><title>Solo: 1 incoming / 12 outgoing</title></circle>
+<circle cx="210.08" cy="384.36" r="2.40" fill="#adc5f5" opacity=".92"><title>Stingray: 1 incoming / 7 outgoing</title></circle>
+<circle cx="47.28" cy="152.21" r="2.40" fill="#adc5f5" opacity=".92"><title>The Witness: 1 incoming / 0 outgoing</title></circle>
+<circle cx="296.53" cy="233.12" r="2.40" fill="#adc5f5" opacity=".92"><title>Timeslip: 1 incoming / 2 outgoing</title></circle>
+<circle cx="324.69" cy="378.92" r="2.40" fill="#adc5f5" opacity=".92"><title>Typeface: 1 incoming / 3 outgoing</title></circle>
+<circle cx="272.57" cy="228.69" r="2.40" fill="#adc5f5" opacity=".92"><title>White Tiger: 1 incoming / 3 outgoing</title></circle>
+<circle cx="215.84" cy="272.45" r="2.40" fill="#adc5f5" opacity=".92"><title>Will o&#x27; the Wisp: 1 incoming / 2 outgoing</title></circle>
+<circle cx="524.44" cy="110.73" r="2.69" fill="#ecdba9" opacity=".92"><title>Backhand: 2 incoming / 1 outgoing</title></circle>
+<circle cx="235.97" cy="385.25" r="2.69" fill="#adc5f5" opacity=".92"><title>Beta Ray Bill: 2 incoming / 5 outgoing</title></circle>
+<circle cx="557.51" cy="116.95" r="2.69" fill="#ecdba9" opacity=".92"><title>Blackthorn: 2 incoming / 1 outgoing</title></circle>
+<circle cx="166.71" cy="484.36" r="2.69" fill="#adc5f5" opacity=".92"><title>Blue Bullet: 2 incoming / 2 outgoing</title></circle>
+<circle cx="237.93" cy="276.72" r="2.69" fill="#adc5f5" opacity=".92"><title>Blue Marvel: 2 incoming / 4 outgoing</title></circle>
+<circle cx="262.23" cy="410.45" r="2.69" fill="#adc5f5" opacity=".92"><title>Bob, Agent of Hydra: 2 incoming / 7 outgoing</title></circle>
+<circle cx="387.93" cy="392.67" r="2.69" fill="#adc5f5" opacity=".92"><title>Cammi: 2 incoming / 3 outgoing</title></circle>
+<circle cx="178.69" cy="288.64" r="2.69" fill="#adc5f5" opacity=".92"><title>Caretaker: 2 incoming / 3 outgoing</title></circle>
+<circle cx="162.83" cy="463.05" r="2.69" fill="#adc5f5" opacity=".92"><title>Citizen V: 2 incoming / 1 outgoing</title></circle>
+<circle cx="224.64" cy="295.66" r="2.69" fill="#adc5f5" opacity=".92"><title>Alice Nugent: 2 incoming / 6 outgoing</title></circle>
+<circle cx="355.99" cy="305.00" r="2.69" fill="#adc5f5" opacity=".92"><title>Dusk: 2 incoming / 6 outgoing</title></circle>
+<circle cx="237.46" cy="317.70" r="2.69" fill="#adc5f5" opacity=".92"><title>Firebird: 2 incoming / 12 outgoing</title></circle>
+<circle cx="164.50" cy="282.97" r="2.69" fill="#adc5f5" opacity=".92"><title>Firelord: 2 incoming / 1 outgoing</title></circle>
+<circle cx="239.35" cy="390.31" r="2.69" fill="#adc5f5" opacity=".92"><title>Frankenstein&#x27;s Monster: 2 incoming / 11 outgoing</title></circle>
+<circle cx="268.49" cy="264.62" r="2.69" fill="#adc5f5" opacity=".92"><title>Frog-Man: 2 incoming / 6 outgoing</title></circle>
+<circle cx="233.76" cy="262.23" r="2.69" fill="#adc5f5" opacity=".92"><title>Hulk 2099: 2 incoming / 2 outgoing</title></circle>
+<circle cx="246.48" cy="249.48" r="2.69" fill="#adc5f5" opacity=".92"><title>Hybrid: 2 incoming / 5 outgoing</title></circle>
+<circle cx="125.46" cy="334.79" r="2.69" fill="#adc5f5" opacity=".92"><title>Ikaris: 2 incoming / 3 outgoing</title></circle>
+<circle cx="254.01" cy="435.82" r="2.69" fill="#adc5f5" opacity=".92"><title>Iron Lad: 2 incoming / 4 outgoing</title></circle>
+<circle cx="257.50" cy="219.05" r="2.69" fill="#adc5f5" opacity=".92"><title>Justice: 2 incoming / 5 outgoing</title></circle>
+<circle cx="302.48" cy="449.21" r="2.69" fill="#adc5f5" opacity=".92"><title>Killpower: 2 incoming / 2 outgoing</title></circle>
+<circle cx="238.40" cy="293.70" r="2.69" fill="#adc5f5" opacity=".92"><title>Killraven: 2 incoming / 5 outgoing</title></circle>
+<circle cx="269.26" cy="473.11" r="2.69" fill="#adc5f5" opacity=".92"><title>Leech: 2 incoming / 4 outgoing</title></circle>
+<circle cx="214.51" cy="221.60" r="2.69" fill="#adc5f5" opacity=".92"><title>Marvel Boy: 2 incoming / 2 outgoing</title></circle>
+<circle cx="308.90" cy="271.48" r="2.69" fill="#adc5f5" opacity=".92"><title>Power Man: 2 incoming / 4 outgoing</title></circle>
+<circle cx="315.25" cy="428.80" r="2.69" fill="#adc5f5" opacity=".92"><title>Raza Longknife: 2 incoming / 5 outgoing</title></circle>
+<circle cx="195.87" cy="402.93" r="2.69" fill="#adc5f5" opacity=".92"><title>Red Raven: 2 incoming / 3 outgoing</title></circle>
+<circle cx="351.33" cy="323.35" r="2.69" fill="#adc5f5" opacity=".92"><title>Ricochet: 2 incoming / 4 outgoing</title></circle>
+<circle cx="290.01" cy="503.79" r="2.69" fill="#adc5f5" opacity=".92"><title>Rusty Collins: 2 incoming / 3 outgoing</title></circle>
+<circle cx="568.68" cy="93.65" r="2.69" fill="#ecdba9" opacity=".92"><title>Scatterbrain: 2 incoming / 2 outgoing</title></circle>
+<circle cx="297.77" cy="302.43" r="2.69" fill="#adc5f5" opacity=".92"><title>She-Hulk: 2 incoming / 6 outgoing</title></circle>
+<circle cx="547.53" cy="115.25" r="2.69" fill="#ecdba9" opacity=".92"><title>Snapdragon: 2 incoming / 3 outgoing</title></circle>
+<circle cx="290.81" cy="336.00" r="2.69" fill="#adc5f5" opacity=".92"><title>Spider-Bitch: 2 incoming / 15 outgoing</title></circle>
+<circle cx="336.66" cy="287.63" r="2.69" fill="#adc5f5" opacity=".92"><title>Spider-UK: 2 incoming / 8 outgoing</title></circle>
+<circle cx="328.03" cy="330.81" r="2.69" fill="#adc5f5" opacity=".92"><title>Starhawk: 2 incoming / 5 outgoing</title></circle>
+<circle cx="280.71" cy="174.16" r="2.69" fill="#adc5f5" opacity=".92"><title>Starr the Slayer: 2 incoming / 3 outgoing</title></circle>
+<circle cx="320.02" cy="250.42" r="2.69" fill="#adc5f5" opacity=".92"><title>Steel Spider: 2 incoming / 3 outgoing</title></circle>
+<circle cx="237.87" cy="513.46" r="2.69" fill="#adc5f5" opacity=".92"><title>Synapse: 2 incoming / 0 outgoing</title></circle>
+<circle cx="78.37" cy="399.88" r="2.69" fill="#adc5f5" opacity=".92"><title>The Union: 2 incoming / 2 outgoing</title></circle>
+<circle cx="67.02" cy="310.70" r="2.69" fill="#adc5f5" opacity=".92"><title>Thena: 2 incoming / 1 outgoing</title></circle>
+<circle cx="306.41" cy="391.32" r="2.69" fill="#adc5f5" opacity=".92"><title>Ulysses Bloodstone: 2 incoming / 1 outgoing</title></circle>
+<circle cx="265.04" cy="257.18" r="2.69" fill="#adc5f5" opacity=".92"><title>White Tiger: 2 incoming / 5 outgoing</title></circle>
+<circle cx="192.79" cy="304.90" r="2.69" fill="#adc5f5" opacity=".92"><title>Yelena Belova: 2 incoming / 6 outgoing</title></circle>
+<circle cx="317.88" cy="288.08" r="2.91" fill="#adc5f5" opacity=".92"><title>She-Venom: 3 incoming / 4 outgoing</title></circle>
+<circle cx="123.44" cy="366.72" r="2.91" fill="#adc5f5" opacity=".92"><title>Balder the Brave: 3 incoming / 2 outgoing</title></circle>
+<circle cx="164.73" cy="445.80" r="2.91" fill="#adc5f5" opacity=".92"><title>Battlestar: 3 incoming / 2 outgoing</title></circle>
+<circle cx="193.32" cy="318.52" r="2.91" fill="#adc5f5" opacity=".92"><title>Blazing Skull: 3 incoming / 8 outgoing</title></circle>
+<circle cx="332.15" cy="442.27" r="2.91" fill="#adc5f5" opacity=".92"><title>Captain Marvel: 3 incoming / 2 outgoing</title></circle>
+<circle cx="202.30" cy="322.22" r="2.91" fill="#adc5f5" opacity=".92"><title>Gauntlet: 3 incoming / 3 outgoing</title></circle>
+<circle cx="186.77" cy="470.37" r="2.91" fill="#adc5f5" opacity=".92"><title>Jack Monroe: 3 incoming / 4 outgoing</title></circle>
+<circle cx="145.15" cy="284.54" r="2.91" fill="#adc5f5" opacity=".92"><title>Kid Colt: 3 incoming / 2 outgoing</title></circle>
+<circle cx="287.94" cy="314.96" r="2.91" fill="#adc5f5" opacity=".92"><title>Kismet: 3 incoming / 9 outgoing</title></circle>
+<circle cx="355.64" cy="429.04" r="2.91" fill="#adc5f5" opacity=".92"><title>Korvus: 3 incoming / 4 outgoing</title></circle>
+<circle cx="351.16" cy="365.90" r="2.91" fill="#adc5f5" opacity=".92"><title>Lei Kung: 3 incoming / 3 outgoing</title></circle>
+<circle cx="202.02" cy="292.04" r="2.91" fill="#adc5f5" opacity=".92"><title>Living Lightning: 3 incoming / 5 outgoing</title></circle>
+<circle cx="357.75" cy="414.80" r="2.91" fill="#adc5f5" opacity=".92"><title>Peggy Carter: 3 incoming / 0 outgoing</title></circle>
+<circle cx="274.47" cy="258.53" r="2.91" fill="#adc5f5" opacity=".92"><title>Ravage 2099: 3 incoming / 2 outgoing</title></circle>
+<circle cx="269.86" cy="434.03" r="2.91" fill="#adc5f5" opacity=".92"><title>Rikki Barnes: 3 incoming / 6 outgoing</title></circle>
+<circle cx="276.94" cy="439.44" r="2.91" fill="#adc5f5" opacity=".92"><title>Rockslide: 3 incoming / 6 outgoing</title></circle>
+<circle cx="207.22" cy="341.27" r="2.91" fill="#adc5f5" opacity=".92"><title>Sabra: 3 incoming / 9 outgoing</title></circle>
+<circle cx="564.12" cy="101.49" r="2.91" fill="#ecdba9" opacity=".92"><title>Scaredycat: 3 incoming / 3 outgoing</title></circle>
+<circle cx="268.88" cy="497.48" r="2.91" fill="#adc5f5" opacity=".92"><title>Shatterstar: 3 incoming / 3 outgoing</title></circle>
+<circle cx="258.82" cy="306.85" r="2.91" fill="#adc5f5" opacity=".92"><title>Shuri: 3 incoming / 9 outgoing</title></circle>
+<circle cx="261.29" cy="445.46" r="2.91" fill="#adc5f5" opacity=".92"><title>Speed: 3 incoming / 6 outgoing</title></circle>
+<circle cx="321.23" cy="458.00" r="2.91" fill="#adc5f5" opacity=".92"><title>Surge: 3 incoming / 2 outgoing</title></circle>
+<circle cx="113.65" cy="416.16" r="2.91" fill="#adc5f5" opacity=".92"><title>Thin Man: 3 incoming / 1 outgoing</title></circle>
+<circle cx="234.76" cy="231.42" r="2.91" fill="#adc5f5" opacity=".92"><title>Thor Girl: 3 incoming / 2 outgoing</title></circle>
+<circle cx="558.12" cy="97.81" r="2.91" fill="#ecdba9" opacity=".92"><title>Toxyn: 3 incoming / 2 outgoing</title></circle>
+<circle cx="405.60" cy="358.20" r="2.91" fill="#adc5f5" opacity=".92"><title>Turbo: 3 incoming / 3 outgoing</title></circle>
+<circle cx="537.80" cy="108.80" r="2.91" fill="#ecdba9" opacity=".92"><title>Vyking: 3 incoming / 2 outgoing</title></circle>
+<circle cx="197.56" cy="435.01" r="2.91" fill="#adc5f5" opacity=".92"><title>William Burnside: 3 incoming / 4 outgoing</title></circle>
+<circle cx="225.99" cy="437.56" r="3.10" fill="#adc5f5" opacity=".92"><title>Agent X: 4 incoming / 3 outgoing</title></circle>
+<circle cx="207.00" cy="297.67" r="3.10" fill="#adc5f5" opacity=".92"><title>Black Knight: 4 incoming / 3 outgoing</title></circle>
+<circle cx="348.16" cy="409.07" r="3.10" fill="#adc5f5" opacity=".92"><title>Ch&#x27;od: 4 incoming / 3 outgoing</title></circle>
+<circle cx="341.44" cy="422.33" r="3.10" fill="#adc5f5" opacity=".92"><title>Chase Stein: 4 incoming / 4 outgoing</title></circle>
+<circle cx="247.30" cy="379.56" r="3.10" fill="#adc5f5" opacity=".92"><title>Devil Dinosaur: 4 incoming / 8 outgoing</title></circle>
+<circle cx="301.01" cy="488.32" r="3.10" fill="#adc5f5" opacity=".92"><title>Empath: 4 incoming / 3 outgoing</title></circle>
+<circle cx="200.92" cy="270.93" r="3.10" fill="#adc5f5" opacity=".92"><title>Guardsman: 4 incoming / 7 outgoing</title></circle>
+<circle cx="284.87" cy="443.48" r="3.10" fill="#adc5f5" opacity=".92"><title>Hellion: 4 incoming / 11 outgoing</title></circle>
+<circle cx="345.02" cy="295.12" r="3.10" fill="#adc5f5" opacity=".92"><title>Hornet: 4 incoming / 4 outgoing</title></circle>
+<circle cx="228.51" cy="364.09" r="3.10" fill="#adc5f5" opacity=".92"><title>Iron Man 2020: 4 incoming / 3 outgoing</title></circle>
+<circle cx="223.29" cy="408.14" r="3.10" fill="#adc5f5" opacity=".92"><title>Karnak: 4 incoming / 7 outgoing</title></circle>
+<circle cx="224.74" cy="379.17" r="3.10" fill="#adc5f5" opacity=".92"><title>Kristoff Vernard: 4 incoming / 4 outgoing</title></circle>
+<circle cx="282.42" cy="380.95" r="3.10" fill="#adc5f5" opacity=".92"><title>Noh-Varr: 4 incoming / 18 outgoing</title></circle>
+<circle cx="286.33" cy="424.59" r="3.10" fill="#adc5f5" opacity=".92"><title>Northstar: 4 incoming / 14 outgoing</title></circle>
+<circle cx="550.66" cy="108.00" r="3.10" fill="#ecdba9" opacity=".92"><title>Radian: 4 incoming / 6 outgoing</title></circle>
+<circle cx="242.08" cy="332.06" r="3.10" fill="#adc5f5" opacity=".92"><title>Radioactive Man: 4 incoming / 8 outgoing</title></circle>
+<circle cx="192.23" cy="331.16" r="3.10" fill="#adc5f5" opacity=".92"><title>Ronin: 4 incoming / 5 outgoing</title></circle>
+<circle cx="279.11" cy="347.50" r="3.10" fill="#adc5f5" opacity=".92"><title>Satana: 4 incoming / 7 outgoing</title></circle>
+<circle cx="210.49" cy="421.76" r="3.10" fill="#adc5f5" opacity=".92"><title>Toro: 4 incoming / 4 outgoing</title></circle>
+<circle cx="162.37" cy="326.72" r="3.10" fill="#adc5f5" opacity=".92"><title>Two-Gun Kid: 4 incoming / 4 outgoing</title></circle>
+<circle cx="286.45" cy="396.52" r="3.10" fill="#adc5f5" opacity=".92"><title>Xorn: 4 incoming / 8 outgoing</title></circle>
+<circle cx="222.11" cy="323.73" r="3.27" fill="#adc5f5" opacity=".92"><title>Abomination: 5 incoming / 8 outgoing</title></circle>
+<circle cx="208.75" cy="370.26" r="3.27" fill="#adc5f5" opacity=".92"><title>Arabian Knight: 5 incoming / 8 outgoing</title></circle>
+<circle cx="190.11" cy="360.55" r="3.27" fill="#adc5f5" opacity=".92"><title>Ares: 5 incoming / 7 outgoing</title></circle>
+<circle cx="288.45" cy="301.87" r="3.27" fill="#adc5f5" opacity=".92"><title>Black Marvel: 5 incoming / 2 outgoing</title></circle>
+<circle cx="254.53" cy="257.25" r="3.27" fill="#adc5f5" opacity=".92"><title>Delroy Garrett: 5 incoming / 3 outgoing</title></circle>
+<circle cx="270.38" cy="319.49" r="3.27" fill="#adc5f5" opacity=".92"><title>Doctor Druid: 5 incoming / 4 outgoing</title></circle>
+<circle cx="268.72" cy="373.97" r="3.27" fill="#adc5f5" opacity=".92"><title>Elsa Bloodstone: 5 incoming / 12 outgoing</title></circle>
+<circle cx="239.13" cy="376.58" r="3.27" fill="#adc5f5" opacity=".92"><title>Fin Fang Foom: 5 incoming / 2 outgoing</title></circle>
+<circle cx="253.05" cy="294.66" r="3.27" fill="#adc5f5" opacity=".92"><title>Gargoyle: 5 incoming / 5 outgoing</title></circle>
+<circle cx="204.94" cy="456.24" r="3.27" fill="#adc5f5" opacity=".92"><title>Gorgon: 5 incoming / 1 outgoing</title></circle>
+<circle cx="274.84" cy="421.91" r="3.27" fill="#adc5f5" opacity=".92"><title>Hulkling: 5 incoming / 9 outgoing</title></circle>
+<circle cx="144.48" cy="319.25" r="3.27" fill="#adc5f5" opacity=".92"><title>Makkari: 5 incoming / 1 outgoing</title></circle>
+<circle cx="304.30" cy="189.79" r="3.27" fill="#adc5f5" opacity=".92"><title>Nightmask: 5 incoming / 3 outgoing</title></circle>
+<circle cx="232.36" cy="467.93" r="3.27" fill="#adc5f5" opacity=".92"><title>Nomad: 5 incoming / 4 outgoing</title></circle>
+<circle cx="245.70" cy="354.77" r="3.27" fill="#adc5f5" opacity=".92"><title>Paladin: 5 incoming / 10 outgoing</title></circle>
+<circle cx="381.43" cy="317.89" r="3.27" fill="#adc5f5" opacity=".92"><title>Phil Urich: 5 incoming / 3 outgoing</title></circle>
+<circle cx="311.28" cy="410.79" r="3.27" fill="#adc5f5" opacity=".92"><title>Puck: 5 incoming / 8 outgoing</title></circle>
+<circle cx="173.40" cy="342.37" r="3.27" fill="#adc5f5" opacity=".92"><title>Red Guardian: 5 incoming / 5 outgoing</title></circle>
+<circle cx="307.83" cy="348.12" r="3.27" fill="#adc5f5" opacity=".92"><title>Spider-Girl: 5 incoming / 12 outgoing</title></circle>
+<circle cx="175.16" cy="426.76" r="3.27" fill="#adc5f5" opacity=".92"><title>Spitfire: 5 incoming / 5 outgoing</title></circle>
+<circle cx="228.21" cy="301.29" r="3.27" fill="#adc5f5" opacity=".92"><title>Vance Astrovik: 5 incoming / 8 outgoing</title></circle>
+<circle cx="334.06" cy="468.35" r="3.27" fill="#adc5f5" opacity=".92"><title>Vindicator: 5 incoming / 4 outgoing</title></circle>
+<circle cx="297.23" cy="454.86" r="3.41" fill="#adc5f5" opacity=".92"><title>Anole: 6 incoming / 6 outgoing</title></circle>
+<circle cx="300.29" cy="308.34" r="3.41" fill="#adc5f5" opacity=".92"><title>Captain Universe: 6 incoming / 14 outgoing</title></circle>
+<circle cx="323.99" cy="356.51" r="3.41" fill="#adc5f5" opacity=".92"><title>Gladiator: 6 incoming / 6 outgoing</title></circle>
+<circle cx="328.05" cy="473.73" r="3.41" fill="#adc5f5" opacity=".92"><title>Guardian: 6 incoming / 4 outgoing</title></circle>
+<circle cx="259.82" cy="344.62" r="3.41" fill="#adc5f5" opacity=".92"><title>Gwenpool: 6 incoming / 15 outgoing</title></circle>
+<circle cx="261.62" cy="366.49" r="3.41" fill="#adc5f5" opacity=".92"><title>Machine Man: 6 incoming / 12 outgoing</title></circle>
+<circle cx="244.29" cy="433.41" r="3.41" fill="#adc5f5" opacity=".92"><title>Outlaw: 6 incoming / 5 outgoing</title></circle>
+<circle cx="296.58" cy="320.76" r="3.41" fill="#adc5f5" opacity=".92"><title>Robbie Baldwin: 6 incoming / 13 outgoing</title></circle>
+<circle cx="211.81" cy="351.70" r="3.41" fill="#adc5f5" opacity=".92"><title>Tarantula: 6 incoming / 9 outgoing</title></circle>
+<circle cx="200.69" cy="365.57" r="3.41" fill="#adc5f5" opacity=".92"><title>U.S. Agent: 6 incoming / 20 outgoing</title></circle>
+<circle cx="139.77" cy="385.00" r="3.41" fill="#adc5f5" opacity=".92"><title>Union Jack: 6 incoming / 6 outgoing</title></circle>
+<circle cx="204.56" cy="391.07" r="3.41" fill="#adc5f5" opacity=".92"><title>Whizzer: 6 incoming / 6 outgoing</title></circle>
+<circle cx="289.08" cy="431.98" r="3.41" fill="#adc5f5" opacity=".92"><title>Wolverine: 6 incoming / 8 outgoing</title></circle>
+<circle cx="280.48" cy="403.62" r="3.55" fill="#adc5f5" opacity=".92"><title>Betsy Braddock: 7 incoming / 28 outgoing</title></circle>
+<circle cx="238.12" cy="400.99" r="3.55" fill="#adc5f5" opacity=".92"><title>Doctor Nemesis: 7 incoming / 9 outgoing</title></circle>
+<circle cx="353.82" cy="329.44" r="3.55" fill="#adc5f5" opacity=".92"><title>Genis-Vell: 7 incoming / 3 outgoing</title></circle>
+<circle cx="225.02" cy="347.57" r="3.55" fill="#adc5f5" opacity=".92"><title>Ghost Rider: 7 incoming / 7 outgoing</title></circle>
+<circle cx="248.12" cy="306.76" r="3.55" fill="#adc5f5" opacity=".92"><title>Hyperion: 7 incoming / 6 outgoing</title></circle>
+<circle cx="141.72" cy="398.24" r="3.55" fill="#adc5f5" opacity=".92"><title>Jeffrey Mace: 7 incoming / 1 outgoing</title></circle>
+<circle cx="252.08" cy="350.05" r="3.55" fill="#adc5f5" opacity=".92"><title>Patsy Walker: 7 incoming / 10 outgoing</title></circle>
+<circle cx="335.89" cy="354.42" r="3.55" fill="#adc5f5" opacity=".92"><title>Phyla-Vell: 7 incoming / 8 outgoing</title></circle>
+<circle cx="299.45" cy="283.43" r="3.55" fill="#adc5f5" opacity=".92"><title>Spider-Man Noir: 7 incoming / 5 outgoing</title></circle>
+<circle cx="253.01" cy="398.24" r="3.55" fill="#adc5f5" opacity=".92"><title>Werewolf by Night: 7 incoming / 13 outgoing</title></circle>
+<circle cx="275.53" cy="358.22" r="3.68" fill="#adc5f5" opacity=".92"><title>Adam Warlock: 8 incoming / 22 outgoing</title></circle>
+<circle cx="331.82" cy="370.98" r="3.68" fill="#adc5f5" opacity=".92"><title>Darkhawk: 8 incoming / 11 outgoing</title></circle>
+<circle cx="270.00" cy="331.54" r="3.68" fill="#adc5f5" opacity=".92"><title>Jessica Jones: 8 incoming / 14 outgoing</title></circle>
+<circle cx="317.32" cy="342.35" r="3.68" fill="#adc5f5" opacity=".92"><title>Rom the Space Knight: 8 incoming / 8 outgoing</title></circle>
+<circle cx="254.68" cy="275.51" r="3.68" fill="#adc5f5" opacity=".92"><title>Scarlet Spider: 8 incoming / 3 outgoing</title></circle>
+<circle cx="273.30" cy="284.66" r="3.68" fill="#adc5f5" opacity=".92"><title>Star Brand: 8 incoming / 11 outgoing</title></circle>
+<circle cx="168.98" cy="375.91" r="3.68" fill="#adc5f5" opacity=".92"><title>Union Jack: 8 incoming / 5 outgoing</title></circle>
+<circle cx="238.15" cy="312.97" r="3.80" fill="#adc5f5" opacity=".92"><title>Bill Foster: 9 incoming / 12 outgoing</title></circle>
+<circle cx="191.34" cy="427.79" r="3.80" fill="#adc5f5" opacity=".92"><title>Bucky: 9 incoming / 9 outgoing</title></circle>
+<circle cx="295.76" cy="365.46" r="3.80" fill="#adc5f5" opacity=".92"><title>Captain Marvel: 9 incoming / 14 outgoing</title></circle>
+<circle cx="274.50" cy="338.81" r="3.80" fill="#adc5f5" opacity=".92"><title>John Jameson: 9 incoming / 7 outgoing</title></circle>
+<circle cx="257.00" cy="363.22" r="3.80" fill="#adc5f5" opacity=".92"><title>Morbius: 9 incoming / 16 outgoing</title></circle>
+<circle cx="243.24" cy="344.87" r="3.80" fill="#adc5f5" opacity=".92"><title>Sentry: 9 incoming / 6 outgoing</title></circle>
+<circle cx="328.89" cy="408.66" r="3.80" fill="#adc5f5" opacity=".92"><title>Vulcan: 9 incoming / 8 outgoing</title></circle>
+<circle cx="320.67" cy="330.72" r="3.91" fill="#adc5f5" opacity=".92"><title>Anya Corazon: 10 incoming / 12 outgoing</title></circle>
+<circle cx="231.30" cy="340.13" r="3.91" fill="#adc5f5" opacity=".92"><title>Ghost Rider: 10 incoming / 8 outgoing</title></circle>
+<circle cx="283.64" cy="412.51" r="3.91" fill="#adc5f5" opacity=".92"><title>Jubilee: 10 incoming / 10 outgoing</title></circle>
+<circle cx="231.13" cy="412.31" r="3.91" fill="#adc5f5" opacity=".92"><title>Quicksilver: 10 incoming / 10 outgoing</title></circle>
+<circle cx="295.12" cy="353.62" r="3.91" fill="#adc5f5" opacity=".92"><title>Rocket Raccoon: 10 incoming / 8 outgoing</title></circle>
+<circle cx="313.94" cy="298.32" r="3.91" fill="#adc5f5" opacity=".92"><title>Silk: 10 incoming / 4 outgoing</title></circle>
+<circle cx="278.71" cy="299.59" r="3.91" fill="#adc5f5" opacity=".92"><title>Spider-Woman: 10 incoming / 12 outgoing</title></circle>
+<circle cx="278.48" cy="363.96" r="4.02" fill="#adc5f5" opacity=".92"><title>Cloak and Dagger: 11 incoming / 24 outgoing</title></circle>
+<circle cx="261.34" cy="301.12" r="4.02" fill="#adc5f5" opacity=".92"><title>Eddie Brock: 11 incoming / 16 outgoing</title></circle>
+<circle cx="301.34" cy="339.61" r="4.02" fill="#adc5f5" opacity=".92"><title>Moondragon: 11 incoming / 7 outgoing</title></circle>
+<circle cx="312.35" cy="362.87" r="4.02" fill="#adc5f5" opacity=".92"><title>Ms. Marvel: 11 incoming / 1 outgoing</title></circle>
+<circle cx="307.49" cy="325.54" r="4.12" fill="#adc5f5" opacity=".92"><title>Spider-Woman: 12 incoming / 14 outgoing</title></circle>
+<circle cx="301.39" cy="353.12" r="4.12" fill="#adc5f5" opacity=".92"><title>Star-Lord: 12 incoming / 10 outgoing</title></circle>
+<circle cx="196.79" cy="357.85" r="4.12" fill="#adc5f5" opacity=".92"><title>War Machine: 12 incoming / 4 outgoing</title></circle>
+<circle cx="261.77" cy="395.11" r="4.22" fill="#adc5f5" opacity=".92"><title>Black Bolt: 13 incoming / 9 outgoing</title></circle>
+<circle cx="229.89" cy="394.08" r="4.22" fill="#adc5f5" opacity=".92"><title>Franklin Richards: 13 incoming / 3 outgoing</title></circle>
+<circle cx="244.95" cy="320.17" r="4.22" fill="#adc5f5" opacity=".92"><title>Ghost Rider: 13 incoming / 15 outgoing</title></circle>
+<circle cx="267.64" cy="348.70" r="4.22" fill="#adc5f5" opacity=".92"><title>Jericho Drumm: 13 incoming / 7 outgoing</title></circle>
+<circle cx="215.80" cy="331.83" r="4.22" fill="#adc5f5" opacity=".92"><title>Mockingbird: 13 incoming / 11 outgoing</title></circle>
+<circle cx="233.80" cy="322.73" r="4.22" fill="#adc5f5" opacity=".92"><title>Shang-Chi: 13 incoming / 11 outgoing</title></circle>
+<circle cx="180.26" cy="394.59" r="4.32" fill="#adc5f5" opacity=".92"><title>Human Torch: 14 incoming / 9 outgoing</title></circle>
+<circle cx="317.37" cy="306.71" r="4.32" fill="#adc5f5" opacity=".92"><title>Mayday Parker: 14 incoming / 14 outgoing</title></circle>
+<circle cx="269.16" cy="383.50" r="4.41" fill="#adc5f5" opacity=".92"><title>Man-Thing: 15 incoming / 12 outgoing</title></circle>
+<circle cx="260.55" cy="328.44" r="4.41" fill="#adc5f5" opacity=".92"><title>Misty Knight: 15 incoming / 13 outgoing</title></circle>
+<circle cx="311.59" cy="375.99" r="4.50" fill="#adc5f5" opacity=".92"><title>Nova: 16 incoming / 11 outgoing</title></circle>
+<circle cx="296.88" cy="411.28" r="4.50" fill="#adc5f5" opacity=".92"><title>Rachel Summers: 16 incoming / 19 outgoing</title></circle>
+<circle cx="288.30" cy="324.90" r="4.50" fill="#adc5f5" opacity=".92"><title>Spider-Woman: 16 incoming / 11 outgoing</title></circle>
+<circle cx="251.51" cy="368.28" r="4.59" fill="#adc5f5" opacity=".92"><title>Blade: 17 incoming / 12 outgoing</title></circle>
+<circle cx="220.75" cy="367.41" r="4.59" fill="#adc5f5" opacity=".92"><title>Deathlok: 17 incoming / 5 outgoing</title></circle>
+<circle cx="230.60" cy="352.61" r="4.59" fill="#adc5f5" opacity=".92"><title>Human Torch: 17 incoming / 5 outgoing</title></circle>
+<circle cx="284.32" cy="308.28" r="4.59" fill="#adc5f5" opacity=".92"><title>Venom: 17 incoming / 21 outgoing</title></circle>
+<circle cx="222.17" cy="356.33" r="4.75" fill="#adc5f5" opacity=".92"><title>Hercules: 19 incoming / 17 outgoing</title></circle>
+<circle cx="278.94" cy="375.48" r="4.83" fill="#adc5f5" opacity=".92"><title>Storm: 20 incoming / 16 outgoing</title></circle>
+<circle cx="278.25" cy="327.84" r="4.91" fill="#adc5f5" opacity=".92"><title>Black Cat: 21 incoming / 14 outgoing</title></circle>
+<circle cx="258.42" cy="425.39" r="4.91" fill="#adc5f5" opacity=".92"><title>Cable: 21 incoming / 11 outgoing</title></circle>
+<circle cx="278.45" cy="407.95" r="4.91" fill="#adc5f5" opacity=".92"><title>Emma Frost: 21 incoming / 17 outgoing</title></circle>
+<circle cx="273.87" cy="312.61" r="4.91" fill="#adc5f5" opacity=".92"><title>Iron Fist: 21 incoming / 16 outgoing</title></circle>
+<circle cx="221.25" cy="314.00" r="4.98" fill="#adc5f5" opacity=".92"><title>Black Widow: 22 incoming / 7 outgoing</title></circle>
+<circle cx="230.49" cy="330.76" r="4.98" fill="#adc5f5" opacity=".92"><title>Moon Knight: 22 incoming / 14 outgoing</title></circle>
+<circle cx="295.14" cy="399.12" r="5.06" fill="#adc5f5" opacity=".92"><title>Jean Grey: 23 incoming / 12 outgoing</title></circle>
+<circle cx="234.53" cy="367.80" r="5.13" fill="#adc5f5" opacity=".92"><title>Hank Pym: 24 incoming / 8 outgoing</title></circle>
+<circle cx="287.83" cy="378.16" r="5.13" fill="#adc5f5" opacity=".92"><title>Phoenix: 24 incoming / 17 outgoing</title></circle>
+<circle cx="254.34" cy="311.95" r="5.13" fill="#adc5f5" opacity=".92"><title>Quasar: 24 incoming / 3 outgoing</title></circle>
+<circle cx="267.28" cy="308.52" r="5.20" fill="#adc5f5" opacity=".92"><title>Luke Cage: 25 incoming / 9 outgoing</title></circle>
+<circle cx="303.21" cy="428.58" r="5.27" fill="#adc5f5" opacity=".92"><title>Cyclops: 26 incoming / 11 outgoing</title></circle>
+<circle cx="235.31" cy="332.10" r="5.34" fill="#adc5f5" opacity=".92"><title>Black Panther: 27 incoming / 11 outgoing</title></circle>
+<circle cx="254.07" cy="387.66" r="5.40" fill="#adc5f5" opacity=".92"><title>Scarlet Witch: 28 incoming / 14 outgoing</title></circle>
+<circle cx="250.67" cy="324.14" r="5.47" fill="#adc5f5" opacity=".92"><title>She-Hulk: 29 incoming / 20 outgoing</title></circle>
+<circle cx="278.30" cy="368.45" r="10.72" fill="#ff956d" opacity=".10"/>
+<circle cx="278.30" cy="368.45" r="5.72" fill="#ff956d" opacity=".92"><title>Deadpool: 33 incoming / 19 outgoing</title></circle>
+<circle cx="239.37" cy="361.19" r="11.65" fill="#ff956d" opacity=".10"/>
+<circle cx="239.37" cy="361.19" r="6.65" fill="#ff956d" opacity=".92"><title>Doctor Strange: 50 incoming / 17 outgoing</title></circle>
+<circle cx="293.02" cy="376.53" r="12.12" fill="#ff956d" opacity=".10"/>
+<circle cx="293.02" cy="376.53" r="7.12" fill="#ff956d" opacity=".92"><title>Wolverine: 60 incoming / 17 outgoing</title></circle>
+<circle cx="259.75" cy="350.38" r="12.30" fill="#ff956d" opacity=".10"/>
+<circle cx="259.75" cy="350.38" r="7.30" fill="#ff956d" opacity=".92"><title>Hulk: 64 incoming / 10 outgoing</title></circle>
+<circle cx="282.77" cy="334.49" r="13.91" fill="#ff956d" opacity=".10"/>
+<circle cx="282.77" cy="334.49" r="8.91" fill="#ff956d" opacity=".92"><title>Spider-Man: 106 incoming / 9 outgoing</title></circle>
 <g font-family="Consolas, monospace" font-size="9" fill="#b0c4b5">
-<text x="30" y="38" letter-spacing="1.3">THE MAINLAND</text><text x="548" y="38" letter-spacing="1">THE FRINGE</text>
+<text x="30" y="38" letter-spacing="1.3">THE MAIN EXCHANGE</text><text x="548" y="38" letter-spacing="1">QUIET LINES</text>
 <path d="M282.77,334.49 L304.37,297.49 H309.77" fill="none" stroke="#dfa27b" stroke-width=".6" opacity=".65"/>
-<text x="309.77" y="300.49" text-anchor="start" fill="#f4c6a0" stroke="#142a2b" stroke-width="3" paint-order="stroke">Spider-Man</text>
+<text x="309.77" y="300.49" text-anchor="start" fill="#f4c6a0" stroke="#172a48" stroke-width="3" paint-order="stroke">Spider-Man</text>
 <path d="M259.75,350.38 L223.75,317.38 H214.75" fill="none" stroke="#dfa27b" stroke-width=".6" opacity=".65"/>
-<text x="214.75" y="320.38" text-anchor="end" fill="#f4c6a0" stroke="#142a2b" stroke-width="3" paint-order="stroke">Hulk</text>
+<text x="214.75" y="320.38" text-anchor="end" fill="#f4c6a0" stroke="#172a48" stroke-width="3" paint-order="stroke">Hulk</text>
 <path d="M293.02,376.53 L317.02,410.53 H323.02" fill="none" stroke="#dfa27b" stroke-width=".6" opacity=".65"/>
-<text x="323.02" y="413.53" text-anchor="start" fill="#f4c6a0" stroke="#142a2b" stroke-width="3" paint-order="stroke">Wolverine</text>
+<text x="323.02" y="413.53" text-anchor="start" fill="#f4c6a0" stroke="#172a48" stroke-width="3" paint-order="stroke">Wolverine</text>
 <path d="M239.37,361.19 L205.77,367.19 H197.37" fill="none" stroke="#dfa27b" stroke-width=".6" opacity=".65"/>
-<text x="197.37" y="370.19" text-anchor="end" fill="#f4c6a0" stroke="#142a2b" stroke-width="3" paint-order="stroke">Doctor Strange</text>
+<text x="197.37" y="370.19" text-anchor="end" fill="#f4c6a0" stroke="#172a48" stroke-width="3" paint-order="stroke">Doctor Strange</text>
 <path d="M278.30,368.45 L310.30,375.45 H318.30" fill="none" stroke="#dfa27b" stroke-width=".6" opacity=".65"/>
-<text x="318.30" y="378.45" text-anchor="start" fill="#f4c6a0" stroke="#142a2b" stroke-width="3" paint-order="stroke">Deadpool</text>
-<text x="34" y="610" fill="#df9b75">277 ON THE MAINLAND</text><text x="34" y="629" fill="#8ca899">One weak component. Many possible routes.</text>
-<text x="647" y="610" text-anchor="end" fill="#df9b75">17 IN SILENCE</text><text x="647" y="629" text-anchor="end" fill="#8ca899">+ a nine-page island</text>
+<text x="318.30" y="378.45" text-anchor="start" fill="#f4c6a0" stroke="#172a48" stroke-width="3" paint-order="stroke">Deadpool</text>
+<text x="34" y="610" fill="#f3aa83">277 CONNECTED PAGES</text><text x="34" y="629" fill="#a9bddb">One weak component. Many possible routes.</text>
+<text x="647" y="610" text-anchor="end" fill="#f3aa83">17 SILENT LINES</text><text x="647" y="629" text-anchor="end" fill="#a9bddb">+ a nine-page island</text>
 </g></svg>

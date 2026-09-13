@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2849c7">
+  <meta name="description" content="303 Marvel characters. 1,784 links. 17 silences. An interactive expedition through the Wikipedia superhero network, built with Python.">
+  <meta property="og:title" content="Week 1 · Some heroes never get the call. · CROSSTALK">
+  <meta property="og:description" content="A directed network, a busy exchange, and 17 silent lines. Explore Week 1 of Crosstalk.">
+  <meta property="og:type" content="article">
+  <title>Week 1 · Some heroes never get the call. · CROSSTALK</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="../assets/data/network.js"></script>
+  <script defer src="../app.js"></script>
+</head>
+<body class="report-page" data-root="../">
+  <a class="skip-link" href="#report">Skip to field report</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Crosstalk home"><svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg><span class="brand-copy"><strong>CROSSTALK</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../index.html#journal" aria-current="page">Weekly journal</a><a href="../play/index.html">Crossed Wires</a><a href="https://github.com/vitrotank/social_graphs_2026">Source ↗</a></nav></div></header>
+  <main id="top">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="legend-dot orange"></span> LINE 01 / WEEK ONE <span> / </span> FALL 2026</p>
+        <h1 class="hero-title" id="hero-title">Some heroes<br>never get<br><em>the call.</em></h1>
+        <p class="hero-deck">303 characters. A universe of hyperlinks.<br>And <strong>17 heroes in complete silence.</strong><br>We went looking for the connections—and the missing ones.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#atlas">Explore the switchboard <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#report">Read the field notes <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-annotation">A switchboard made from Wikipedia’s Marvel pages.<br>Mapped with Python. Investigated with curiosity.</p>
+      </div>
+      <figure class="hero-art hero-figure">
+        <div class="figure-topline"><span>THE WIKIPEDIA EXCHANGE / LINE 01</span><span class="signal"><span class="legend-dot"></span> SNAPSHOT 26.08.26</span></div>
+        <img src="../assets/figures/hero-network.svg" width="680" height="650" alt="All 303 Marvel pages: the 277-node giant component, a separate nine-character component, and seventeen isolated nodes. Node size shows incoming links.">
+        <figcaption class="orbit-caption"><span>FIG. 001 — NOT EVERY LINE CONNECTS</span><span>303 NODES · 1,784 LINKS</span></figcaption>
+      </figure>
+    </section>
+    <div class="issue-strip shell" aria-label="Snapshot statistics">
+      <div class="issue-item"><span>THE PLAYGROUND</span><strong>303 <small>characters</small></strong></div>
+      <div class="issue-item"><span>THE CONVERSATION</span><strong>1,784 <small>directed links</small></strong></div>
+      <div class="issue-item"><span>THE MAINLAND</span><strong>277 <small>connected pages</small></strong></div>
+      <div class="issue-item"><span>THE SILENCE</span><strong>17 <small>isolated characters</small></strong></div>
+    </div>
+
+    <article id="report" class="shell section">
+      <div class="section-head"><p class="eyebrow"><span class="section-number">01 /</span> THE FIRST DISPATCH</p><span class="post-meta">WEEK 1 · THE BOOTSTRAP EDITION</span></div>
+      <div class="article-layout">
+        <div class="article-main"><h2 class="section-title">Who gets to be<br>the centre of a universe?</h2><p class="lede">Imagine Wikipedia as a telephone exchange. Some lines never stop ringing. Others never ring at all. What does the wiring actually look like?</p><p>Here, each line is a character page in the course’s frozen Marvel roster. The calls are a metaphor for hyperlinks. An arrow from A to B means A’s article links to B. It measures a reference within this particular collection of pages; it does not tell us who is friends, who is stronger, or who would win a fight.</p><p>We loaded every character first, then added the directed links. That little order of operations matters: an edge list alone would erase all 17 isolates before the investigation even began.</p></div>
+        <aside class="article-aside"><p class="eyebrow">OUR WORKING HYPOTHESIS</p><blockquote class="quote">“The most mentioned hero must also have the most to say.”</blockquote><p>A reasonable guess.<br>An excellent way to be wrong.</p><div class="margin-note"><span>↳ FIELD DICTIONARY</span><p><strong>In-degree</strong> = other pages pointing here.<br><strong>Out-degree</strong> = pages this one points to.</p><p>Both count distinct links inside the 303-page roster.</p></div></aside>
+      </div>
+      <div class="findings-grid">
+        <section class="finding"><span class="finding-number">A / THE MAGNET</span><h3 class="finding-title">Spider-Man</h3><p class="finding-stat">106 <small>incoming links</small></p><p>35.1% of the other 302 pages link to him. But his own article points to just 9 roster pages. Attention is wonderfully lopsided.</p><button class="text-link inspect-character" data-character="Spider-Man">Open his dossier ↗</button></section>
+        <section class="finding"><span class="finding-number">B / THE CONNECTOR</span><h3 class="finding-title">Betsy Braddock</h3><p class="finding-stat">28 <small>outgoing links</small></p><p>The busiest outgoing page belongs to someone else entirely. A page can mention many characters without being the page everyone else mentions.</p><button class="text-link inspect-character" data-character="Betsy_Braddock">Follow the outgoing trail ↗</button></section>
+        <section class="finding"><span class="finding-number">C / THE GHOSTS</span><h3 class="finding-title">Present. Unconnected.</h3><p class="finding-stat">17 <small>zero-degree nodes</small></p><p>Baymax is here. So is Super Rabbit. They exist in the roster, but no arrow in this snapshot touches them. Absence has a shape, too.</p><a class="text-link" href="#islands">Visit the edge of the map ↗</a></section>
+      </div>
+    </article>
+
+    <section id="atlas" class="section atlas-section" aria-labelledby="atlas-title">
+      <div class="shell"><div class="section-head"><p class="eyebrow"><span class="section-number">02 /</span> THE SWITCHBOARD</p><span class="badge">INTERACTIVE EXHIBIT</span></div><div class="section-intro"><h2 class="section-title" id="atlas-title">See who’s on the line.</h2><p>Choose a character. Follow their incoming or outgoing links.<br>Every dot is a real page; every line is a link from the frozen release.</p></div>
+      <div class="atlas-shell">
+        <div class="atlas-toolbar"><form class="control-group" id="search-form"><label class="sr-only" for="character-search">Find a character</label><input class="search-input" id="character-search" list="character-options" placeholder="Find a hero…" autocomplete="off"><datalist id="character-options"><option value="Abomination">Abomination (character)</option>
+<option value="Adam Warlock">Adam Warlock</option>
+<option value="Agent X">Agent X (Marvel Comics)</option>
+<option value="Ajak">Ajak</option>
+<option value="Alex Wilder">Alex Wilder</option>
+<option value="Alice Nugent">Alice Nugent</option>
+<option value="Anole">Anole (character)</option>
+<option value="Anya Corazon">Anya Corazon</option>
+<option value="Arabian Knight">Arabian Knight (character)</option>
+<option value="Ares">Ares (Marvel Comics)</option>
+<option value="Backhand">Backhand (character)</option>
+<option value="Balder the Brave">Balder the Brave</option>
+<option value="Battlestar">Battlestar (character)</option>
+<option value="Baymax">Baymax</option>
+<option value="Beta Ray Bill">Beta Ray Bill</option>
+<option value="Betsy Braddock">Betsy Braddock</option>
+<option value="Bill Foster">Bill Foster (character)</option>
+<option value="Bird-Brain">Bird-Brain (Marvel Comics)</option>
+<option value="Black Bolt">Black Bolt</option>
+<option value="Black Cat">Black Cat (Marvel Comics)</option>
+<option value="Black Fox">Black Fox (Robert Paine)</option>
+<option value="Black Jack Tarr">Black Jack Tarr</option>
+<option value="Black Knight">Black Knight (Marvel Comics)</option>
+<option value="Black Marvel">Black Marvel</option>
+<option value="Black Panther">Black Panther (character)</option>
+<option value="Black Rider">Black Rider (character)</option>
+<option value="Black Widow">Black Widow (Natasha Romanova)</option>
+<option value="Blackthorn">Blackthorn (character)</option>
+<option value="Blackwulf">Blackwulf</option>
+<option value="Blade">Blade (character)</option>
+<option value="Blazing Skull">Blazing Skull</option>
+<option value="Blue Bullet">Blue Bullet</option>
+<option value="Blue Diamond">Blue Diamond (character)</option>
+<option value="Blue Eagle">Blue Eagle (character)</option>
+<option value="Blue Marvel">Blue Marvel</option>
+<option value="Bob, Agent of Hydra">Bob, Agent of Hydra</option>
+<option value="Box">Box (comics)</option>
+<option value="Brain Drain">Brain Drain (character)</option>
+<option value="Breeze Barton">Breeze Barton</option>
+<option value="Brian Braddock">Brian Braddock</option>
+<option value="Bucky">Bucky (Marvel Comics)</option>
+<option value="Bug">Bug (Marvel Comics)</option>
+<option value="Cable">Cable (character)</option>
+<option value="Cammi">Cammi (character)</option>
+<option value="Captain Marvel (Khn&#x27;nr)">Captain Marvel (Khn&#x27;nr)</option>
+<option value="Captain Marvel (Marvel Comics)">Captain Marvel (Marvel Comics)</option>
+<option value="Captain Midlands">Captain Midlands</option>
+<option value="Captain Ultra">Captain Ultra</option>
+<option value="Captain Universe">Captain Universe</option>
+<option value="Caretaker">Caretaker (comics)</option>
+<option value="Ch&#x27;od">Ch&#x27;od</option>
+<option value="Charcoal">Charcoal (comics)</option>
+<option value="Chase Stein">Chase Stein</option>
+<option value="Citizen V">Citizen V</option>
+<option value="Cloak and Dagger">Cloak and Dagger (characters)</option>
+<option value="Coldblood">Coldblood</option>
+<option value="Crane Mother">Crane Mother</option>
+<option value="Crippler">Crippler (character)</option>
+<option value="Cyclops">Cyclops (Marvel Comics)</option>
+<option value="Dargo Ktor">Dargo Ktor</option>
+<option value="Darkdevil">Darkdevil</option>
+<option value="Darkhawk">Darkhawk</option>
+<option value="Deadpool">Deadpool</option>
+<option value="Deathlok">Deathlok</option>
+<option value="Debrii">Debrii</option>
+<option value="Delroy Garrett">Delroy Garrett</option>
+<option value="Detroit Steel">Detroit Steel</option>
+<option value="Devil Dinosaur">Devil Dinosaur</option>
+<option value="Devil Hulk">Devil Hulk</option>
+<option value="Digitek">Digitek (character)</option>
+<option value="Doctor Druid">Doctor Druid</option>
+<option value="Doctor Nemesis">Doctor Nemesis</option>
+<option value="Doctor Strange">Doctor Strange</option>
+<option value="Dogpool">Dogpool</option>
+<option value="Doom 2099">Doom 2099</option>
+<option value="Dragon Lord">Dragon Lord (character)</option>
+<option value="Dusk">Dusk (comics)</option>
+<option value="Eddie Brock">Eddie Brock</option>
+<option value="Elsa Bloodstone">Elsa Bloodstone</option>
+<option value="Emma Frost">Emma Frost</option>
+<option value="Empath">Empath (character)</option>
+<option value="Emrys Killebrew">Emrys Killebrew</option>
+<option value="Enigma">Enigma (Marvel Comics)</option>
+<option value="Ethan Edwards">Ethan Edwards</option>
+<option value="Fabio Medina">Fabio Medina</option>
+<option value="Fandral">Fandral</option>
+<option value="Father Time">Father Time (Marvel Comics)</option>
+<option value="Fin Fang Foom">Fin Fang Foom</option>
+<option value="Firebird">Firebird (Marvel Comics)</option>
+<option value="Firelord">Firelord (character)</option>
+<option value="Flatman">Flatman (character)</option>
+<option value="Force">Force (comics)</option>
+<option value="Frankenstein&#x27;s Monster">Frankenstein&#x27;s Monster (Marvel Comics)</option>
+<option value="Franklin Richards">Franklin Richards (character)</option>
+<option value="Frog-Man">Frog-Man</option>
+<option value="G. W. Bridge">G. W. Bridge</option>
+<option value="Gargoyle">Gargoyle (comics)</option>
+<option value="Garrison Kane">Garrison Kane</option>
+<option value="Gauntlet">Gauntlet (Joseph Green)</option>
+<option value="Genis-Vell">Genis-Vell</option>
+<option value="Ghost Rider">Ghost Rider</option>
+<option value="Ghost Rider (Danny Ketch)">Ghost Rider (Danny Ketch)</option>
+<option value="Ghost Rider (Johnny Blaze)">Ghost Rider (Johnny Blaze)</option>
+<option value="Gladiator">Gladiator (Kallark)</option>
+<option value="Golem">Golem (Marvel Comics)</option>
+<option value="Gorgon">Gorgon (Inhuman)</option>
+<option value="Gremlin">Gremlin (comics)</option>
+<option value="Guardian">Guardian (Marvel Comics)</option>
+<option value="Guardsman">Guardsman (character)</option>
+<option value="Gwenpool">Gwenpool</option>
+<option value="Hank Pym">Hank Pym</option>
+<option value="Happy Sam Sawyer">Happy Sam Sawyer</option>
+<option value="Hawkeye">Hawkeye (comics)</option>
+<option value="Helix">Helix (Marvel Comics)</option>
+<option value="Hellfire">Hellfire (J. T. Slade)</option>
+<option value="Hellion">Hellion (character)</option>
+<option value="Hercules">Hercules (Marvel Comics)</option>
+<option value="Hit-Monkey">Hit-Monkey</option>
+<option value="Hornet">Hornet (comics)</option>
+<option value="Hrimhari">Hrimhari</option>
+<option value="Hulk">Hulk</option>
+<option value="Hulk 2099">Hulk 2099</option>
+<option value="Hulkling">Hulkling</option>
+<option value="Human Fly">Human Fly (character)</option>
+<option value="Human Torch">Human Torch</option>
+<option value="Human Torch (android)">Human Torch (android)</option>
+<option value="Hybrid">Hybrid (Scott Washington)</option>
+<option value="Hyperion">Hyperion (character)</option>
+<option value="Ikaris">Ikaris</option>
+<option value="Illuminator">Illuminator (Marvel Comics)</option>
+<option value="Inferno">Inferno (Dante Pertuz)</option>
+<option value="Iron Fist">Iron Fist (character)</option>
+<option value="Iron Lad">Iron Lad</option>
+<option value="Iron Man">Iron Man (Ultimate Marvel character)</option>
+<option value="Iron Man 2020">Iron Man 2020</option>
+<option value="Isaiah Bradley">Isaiah Bradley</option>
+<option value="Jack Frost">Jack Frost (Marvel Comics)</option>
+<option value="Jack Monroe">Jack Monroe (character)</option>
+<option value="Janice Lincoln">Janice Lincoln</option>
+<option value="Jean Grey">Jean Grey</option>
+<option value="Jean Grey (X-Men film series)">Jean Grey (X-Men film series)</option>
+<option value="Jeffrey Mace">Jeffrey Mace</option>
+<option value="Jericho Drumm">Jericho Drumm</option>
+<option value="Jessica Jones">Jessica Jones</option>
+<option value="John Jameson">John Jameson (character)</option>
+<option value="Jubilee">Jubilee (character)</option>
+<option value="Junior Juniper">Junior Juniper</option>
+<option value="Justice">Justice (New Universe)</option>
+<option value="Karnak">Karnak (character)</option>
+<option value="Kid Colt">Kid Colt</option>
+<option value="Killpower">Killpower</option>
+<option value="Killraven">Killraven</option>
+<option value="Kismet">Kismet (Marvel Comics)</option>
+<option value="Korvus">Korvus</option>
+<option value="Kristoff Vernard">Kristoff Vernard</option>
+<option value="Leech">Leech (character)</option>
+<option value="Lei Kung">Lei Kung (character)</option>
+<option value="Living Lightning">Living Lightning</option>
+<option value="Luke Cage">Luke Cage</option>
+<option value="Machine Man">Machine Man</option>
+<option value="Magician">Magician (Marvel Comics)</option>
+<option value="Mahr Vehl">Mahr Vehl</option>
+<option value="Makkari">Makkari (character)</option>
+<option value="Man-Thing">Man-Thing</option>
+<option value="Mania">Mania (character)</option>
+<option value="Mark Hazzard: Merc">Mark Hazzard: Merc</option>
+<option value="Marvel Boy">Marvel Boy (Robert Grayson)</option>
+<option value="Mayday Parker">Mayday Parker</option>
+<option value="Miracleman">Miracleman (character)</option>
+<option value="Misty Knight">Misty Knight</option>
+<option value="Mockingbird">Mockingbird (Marvel Comics)</option>
+<option value="Moon Knight">Moon Knight</option>
+<option value="Moondragon">Moondragon</option>
+<option value="Moonglow">Moonglow (comics)</option>
+<option value="Morbius">Morbius</option>
+<option value="Motormouth">Motormouth (comics)</option>
+<option value="Ms. Marvel">Ms. Marvel</option>
+<option value="Nightmask">Nightmask</option>
+<option value="Nightwatch">Nightwatch (character)</option>
+<option value="Noh-Varr">Noh-Varr</option>
+<option value="Nomad">Nomad (Marvel Comics)</option>
+<option value="Northstar">Northstar (character)</option>
+<option value="Nova">Nova (Richard Rider)</option>
+<option value="Ogre">Ogre (Marvel Comics)</option>
+<option value="Outlaw">Outlaw (Marvel Comics)</option>
+<option value="Oya">Oya (comics)</option>
+<option value="Paladin">Paladin (comics)</option>
+<option value="Patsy Walker">Patsy Walker</option>
+<option value="Peggy Carter">Peggy Carter</option>
+<option value="Phil Grayfield">Phil Grayfield</option>
+<option value="Phil Urich">Phil Urich</option>
+<option value="Phoenix">Phoenix (Guardians of the Galaxy)</option>
+<option value="Phyla-Vell">Phyla-Vell</option>
+<option value="Power Man">Power Man (Victor Alvarez)</option>
+<option value="Powerhouse">Powerhouse (Marvel Comics)</option>
+<option value="Puck">Puck (Marvel Comics)</option>
+<option value="Quasar">Quasar (character)</option>
+<option value="Quicksilver">Quicksilver (Marvel Comics)</option>
+<option value="Rachel Summers">Rachel Summers</option>
+<option value="Radian">Radian (Morituri)</option>
+<option value="Radioactive Man">Radioactive Man (comics)</option>
+<option value="Ravage 2099">Ravage 2099</option>
+<option value="Raza Longknife">Raza Longknife</option>
+<option value="Red Guardian">Red Guardian</option>
+<option value="Red Raven">Red Raven (Dania)</option>
+<option value="Red Wolf">Red Wolf (comics)</option>
+<option value="Redneck">Redneck (comics)</option>
+<option value="Ricochet">Ricochet (comics)</option>
+<option value="Rikki Barnes">Rikki Barnes</option>
+<option value="Robbie Baldwin">Robbie Baldwin</option>
+<option value="Rocket Raccoon">Rocket Raccoon</option>
+<option value="Rockman">Rockman (character)</option>
+<option value="Rockslide">Rockslide (character)</option>
+<option value="Rom the Space Knight">Rom the Space Knight</option>
+<option value="Ronin">Ronin (Marvel Comics)</option>
+<option value="Ruby Summers">Ruby Summers</option>
+<option value="Rusty Collins">Rusty Collins</option>
+<option value="Sabra">Sabra (character)</option>
+<option value="Satana">Satana (Marvel Comics)</option>
+<option value="Scaredycat">Scaredycat</option>
+<option value="Scarlet Scarab">Scarlet Scarab</option>
+<option value="Scarlet Spider">Scarlet Spider</option>
+<option value="Scarlet Witch">Scarlet Witch</option>
+<option value="Scatterbrain">Scatterbrain (Morituri)</option>
+<option value="Scorpio">Scorpio (Marvel Comics)</option>
+<option value="Sean and Chris">Sean and Chris</option>
+<option value="Sentry">Sentry (Robert Reynolds)</option>
+<option value="Shamrock">Shamrock (comics)</option>
+<option value="Shang-Chi">Shang-Chi</option>
+<option value="Shatterstar">Shatterstar</option>
+<option value="She-Hulk">She-Hulk</option>
+<option value="She-Hulk (Lyra)">She-Hulk (Lyra)</option>
+<option value="She-Venom">She-Venom (Patricia Robertson)</option>
+<option value="Shear">Shear (character)</option>
+<option value="Shuri">Shuri (character)</option>
+<option value="Silencer">Silencer (comics)</option>
+<option value="Silhouette">Silhouette (comics)</option>
+<option value="Silk">Silk (character)</option>
+<option value="Skull the Slayer">Skull the Slayer</option>
+<option value="Snapdragon">Snapdragon (Morituri)</option>
+<option value="Solarman">Solarman</option>
+<option value="Solo">Solo (Marvel Comics)</option>
+<option value="Solomon Kane">Solomon Kane (comics)</option>
+<option value="Speed">Speed (character)</option>
+<option value="Spider-Bitch">Spider-Bitch (Ashley Barton)</option>
+<option value="Spider-Girl">Spider-Girl</option>
+<option value="Spider-Man">Spider-Man</option>
+<option value="Spider-Man (Marvel Mangaverse)">Spider-Man (Marvel Mangaverse)</option>
+<option value="Spider-Man Noir">Spider-Man Noir</option>
+<option value="Spider-UK">Spider-UK</option>
+<option value="Spider-Woman">Spider-Woman</option>
+<option value="Spider-Woman (Gwen Stacy)">Spider-Woman (Gwen Stacy)</option>
+<option value="Spider-Woman (Jessica Drew)">Spider-Woman (Jessica Drew)</option>
+<option value="Spitfire">Spitfire (character)</option>
+<option value="Star Brand">Star Brand</option>
+<option value="Star-Lord">Star-Lord</option>
+<option value="Starhawk">Starhawk (character)</option>
+<option value="Starr the Slayer">Starr the Slayer</option>
+<option value="Steel Spider">Steel Spider</option>
+<option value="Stingray">Stingray (Marvel Comics)</option>
+<option value="Storm">Storm (Marvel Comics)</option>
+<option value="Straw Man">Straw Man (comics)</option>
+<option value="Super Rabbit">Super Rabbit</option>
+<option value="Surge">Surge (Marvel Comics)</option>
+<option value="Synapse">Synapse (character)</option>
+<option value="Tarantula">Tarantula (Marvel Comics)</option>
+<option value="The Union">The Union (Marvel)</option>
+<option value="The Witness">The Witness (character)</option>
+<option value="Thena">Thena</option>
+<option value="Thin Man">Thin Man (character)</option>
+<option value="Thor Girl">Thor Girl</option>
+<option value="Thunderbolt">Thunderbolt (Marvel Comics)</option>
+<option value="Thunderclap">Thunderclap (comics)</option>
+<option value="Timeslip">Timeslip (comics)</option>
+<option value="Toro">Toro (character)</option>
+<option value="Toxyn">Toxyn</option>
+<option value="Turbo">Turbo (comics)</option>
+<option value="Two-Gun Kid">Two-Gun Kid</option>
+<option value="Typeface">Typeface (character)</option>
+<option value="U.S. Agent">U.S. Agent</option>
+<option value="Ulysses Bloodstone">Ulysses Bloodstone</option>
+<option value="Union Jack (Joseph Chapman)">Union Jack (Joseph Chapman)</option>
+<option value="Union Jack (Marvel Comics)">Union Jack (Marvel Comics)</option>
+<option value="Ursa Major">Ursa Major (character)</option>
+<option value="Vance Astrovik">Vance Astrovik</option>
+<option value="Venom">Venom (character)</option>
+<option value="Vindicator">Vindicator (comics)</option>
+<option value="Vulcan">Vulcan (Marvel Comics)</option>
+<option value="Vyking">Vyking</option>
+<option value="War Machine">War Machine</option>
+<option value="Werewolf by Night">Werewolf by Night</option>
+<option value="White Tiger (Heroes for Hire)">White Tiger (Heroes for Hire)</option>
+<option value="White Tiger (comics)">White Tiger (comics)</option>
+<option value="Whizzer">Whizzer (Robert Frank)</option>
+<option value="Wild Child">Wild Child (character)</option>
+<option value="Will o&#x27; the Wisp">Will o&#x27; the Wisp (comics)</option>
+<option value="William Burnside">William Burnside (character)</option>
+<option value="Wolverine (Ultimate Marvel character)">Wolverine (Ultimate Marvel character)</option>
+<option value="Wolverine (character)">Wolverine (character)</option>
+<option value="Xorn">Xorn</option>
+<option value="Yelena Belova">Yelena Belova</option>
+<option value="Yo-Yo Rodriguez">Yo-Yo Rodriguez</option>
+<option value="Zombie">Zombie (comics)</option></datalist><button type="submit" class="button button-small">Find ↗</button></form><div class="segmented" role="group" aria-label="Link direction"><button class="active" data-direction="all" aria-pressed="true">All links</button><button data-direction="in" aria-pressed="false">Incoming</button><button data-direction="out" aria-pressed="false">Outgoing</button></div></div>
+        <p id="search-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div class="atlas-stage"><div class="atlas-canvas"><svg id="network-atlas" viewBox="0 0 900 700" role="img" aria-labelledby="atlas-svg-title atlas-svg-desc"><title id="atlas-svg-title">Marvel’s directed Wikipedia network</title><desc id="atlas-svg-desc">Use the character search and direction controls to explore the graph. Larger circles receive more incoming links. Positions are illustrative.</desc></svg><noscript><img src="../assets/figures/hero-network.svg" alt="Static map of the Marvel network"><p>Enable JavaScript to select characters. The report, figures and data downloads work without it.</p></noscript><div class="map-controls" role="group" aria-label="Map zoom"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-reset" aria-label="Reset map view">↺</button></div><p class="map-hint">CLICK A DOT · DRAG TO PAN · + / − TO ZOOM</p></div><aside class="atlas-sidebar dossier" id="dossier" aria-live="polite"><p class="eyebrow">CHARACTER DOSSIER</p><h3>Spider-Man</h3><p>106 incoming · 9 outgoing links.</p><p>Choose a character to inspect its place in the network.</p></aside></div>
+        <div class="legend"><span><i class="legend-dot orange"></i> Selected character</span><span><i class="legend-dot teal"></i> Connected neighbour</span><span><i class="legend-dot pale"></i> Other characters</span><span>Circle size = in-degree · arrows show link direction</span></div>
+      </div></div>
+    </section>
+
+    <section id="degrees" class="shell section">
+      <div class="section-head"><p class="eyebrow"><span class="section-number">03 /</span> THE ATTENTION ECONOMY</p><span class="post-meta">SAME PAGES. TWO VERY DIFFERENT ROLES.</span></div>
+      <div class="section-intro"><h2 class="section-title">Being mentioned ≠<br>doing the mentioning.</h2><p>A few pages gather extraordinary attention.<br>Switch the axes to see how far the tail reaches.</p></div>
+      <div class="distribution-layout"><figure class="chart-panel"><div class="chart-toolbar"><span class="eyebrow">DEGREE DISTRIBUTION</span><div class="segmented" role="group" aria-label="Distribution axis scale"><button data-scale="linear" aria-pressed="true" class="active">Linear</button><button data-scale="log" aria-pressed="false">Log–log</button></div></div><div class="chart-area" id="distribution-chart"><img src="../assets/figures/degree-linear.svg" alt="Linear degree distributions of incoming and outgoing links for all 303 characters."></div><figcaption class="chart-note" id="distribution-caption">Each point shows the fraction of the 303 pages with exactly that degree. Linear axes include degree zero.</figcaption><div class="legend"><span><i class="legend-dot orange"></i> Incoming</span><span><i class="legend-dot teal"></i> Outgoing</span><a id="download-chart" href="../assets/figures/degree-linear.svg" download>Download figure ↓</a></div></figure>
+      <div class="rank-panel"><div class="chart-toolbar"><span class="eyebrow">THE TOP FIVE</span><div class="segmented" role="group" aria-label="Rank characters"><button data-ranking="in" class="active" aria-pressed="true">In</button><button data-ranking="out" aria-pressed="false">Out</button></div></div><div id="rankings"><ol class="rank-list"><li><button class="rank-button inspect-character" data-character="Spider-Man"><span class="rank-number">01</span><span class="rank-name">Spider-Man</span><strong>106</strong><i class="rank-bar" style="width:100.00%"></i></button></li><li><button class="rank-button inspect-character" data-character="Hulk"><span class="rank-number">02</span><span class="rank-name">Hulk</span><strong>64</strong><i class="rank-bar" style="width:60.38%"></i></button></li><li><button class="rank-button inspect-character" data-character="Wolverine_(character)"><span class="rank-number">03</span><span class="rank-name">Wolverine</span><strong>60</strong><i class="rank-bar" style="width:56.60%"></i></button></li><li><button class="rank-button inspect-character" data-character="Doctor_Strange"><span class="rank-number">04</span><span class="rank-name">Doctor Strange</span><strong>50</strong><i class="rank-bar" style="width:47.17%"></i></button></li><li><button class="rank-button inspect-character" data-character="Deadpool"><span class="rank-number">05</span><span class="rank-name">Deadpool</span><strong>33</strong><i class="rank-bar" style="width:31.13%"></i></button></li></ol></div><p class="chart-note">Ties are ordered by page ID. These are hyperlink counts, not a popularity poll.</p></div></div>
+      <div class="article-layout interpretation"><div class="article-main"><h3>One arrow. Two editorial decisions.</h3><p>An incoming link is written on somebody else’s page. An outgoing link is written on this page. Those are different processes, so their leaders need not match. A long article, a sprawling team history, or an editor’s linking habits could help explain a high out-degree—but the edge list alone cannot tell us which explanation is right.</p><p>The observed in-degree reaches 106, while out-degree stops at 28. A long tail is visible. We have not fitted or validated a power law: a suggestive log–log plot is a starting question, not a verdict.</p></div><aside class="article-aside margin-note"><span>↳ A NOTE ABOUT ZERO</span><p>Zero cannot appear on a logarithmic axis. The log–log view omits zero-degree values and reports them explicitly. We do not silently shift every degree by one.</p><a class="text-link" href="../assets/figures/degree-loglog.svg" download>Download the log–log figure ↓</a></aside></div>
+    </section>
+
+    <section id="islands" class="island-section section"><div class="shell"><div class="section-head"><p class="eyebrow"><span class="section-number">04 /</span> BEYOND THE MAINLAND</p><span class="badge badge-outline">NO CHARACTER LEFT BEHIND</span></div><div class="article-layout"><div class="article-main"><h2 class="section-title">Some lines<br>stay quiet.</h2><p class="lede">277 pages share one weakly connected component. The remaining 26 do not disappear. They live here.</p><p>“Weakly connected” means you can trace a route when you ignore arrow direction. Outside the giant component, we found one separate nine-page island, plus 17 singletons. Select a name below to visit its dossier.</p><div class="island-members"><p class="eyebrow">THE NINE-PAGE ISLAND</p><div class="isolate-list"><button type="button" class="isolate-token inspect-character" data-character="Backhand_(character)">Backhand <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Blackthorn_(character)">Blackthorn <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Radian_(Morituri)">Radian <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Scaredycat">Scaredycat <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Scatterbrain_(Morituri)">Scatterbrain <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Shear_(character)">Shear <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Snapdragon_(Morituri)">Snapdragon <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Toxyn">Toxyn <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Vyking">Vyking <span aria-hidden="true">↗</span></button></div></div><p>Three of the island’s page IDs carry the qualifier “Morituri”: Radian, Scatterbrain, and Snapdragon. A clue to shared context—but the frozen edge list does not explain why this island formed.</p></div><aside class="article-aside"><p class="eyebrow">THE ZERO-DEGREE REGISTER / 17 ENTRIES</p><div class="isolate-list"><button type="button" class="isolate-token inspect-character" data-character="Baymax">Baymax <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Bird-Brain_(Marvel_Comics)">Bird-Brain <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Black_Fox_(Robert_Paine)">Black Fox <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Brain_Drain_(character)">Brain Drain <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Breeze_Barton">Breeze Barton <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Captain_Midlands">Captain Midlands <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Charcoal_(comics)">Charcoal <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Father_Time_(Marvel_Comics)">Father Time <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Happy_Sam_Sawyer">Happy Sam Sawyer <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Hellfire_(J._T._Slade)">Hellfire <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Illuminator_(Marvel_Comics)">Illuminator <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Miracleman_(character)">Miracleman <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Ogre_(Marvel_Comics)">Ogre <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Sean_and_Chris">Sean and Chris <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Solarman">Solarman <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Super_Rabbit">Super Rabbit <span aria-hidden="true">↗</span></button>
+<button type="button" class="isolate-token inspect-character" data-character="Yo-Yo_Rodriguez">Yo-Yo Rodriguez <span aria-hidden="true">↗</span></button></div><p class="chart-note">Unconnected in this roster and snapshot. These pages may still link to thousands of things outside it.</p></aside></div><div class="callout"><span class="eyebrow">THE THING THAT SURPRISED US</span><p>The edge list cannot tell you who is missing from the edge list. The separate node roster is what lets silence become a result.</p></div></div></section>
+
+    <section id="experiment" class="shell section"><div class="section-head"><p class="eyebrow"><span class="section-number">05 /</span> A SMALL THOUGHT EXPERIMENT</p><span class="badge">YOU CONTROL THE COUNTERFACTUAL</span></div><div class="article-layout"><div class="article-main"><h2 class="section-title">What if the star<br>left the universe?</h2><p class="lede">Spider-Man gets the most incoming links. Does that make him the load-bearing wall?</p><p>Remove the most linked-to characters, one at a time, and recalculate the largest weakly connected component. We keep the ranking fixed at its original in-degree. All links touching a removed page disappear with it.</p><p>The surprise: remove Spider-Man and the mainland shrinks from 277 to <strong>271 pages</strong>. Beyond Spider-Man himself, 5 more pages detach. The broader web holds together, but some neighbours depend entirely on that one connection.</p><p>This is a structural experiment on hyperlinks, not a prediction about Marvel. A well-connected star can still be replaceable if other routes hold the web together.</p></div><div class="experiment"><label class="eyebrow" for="removal-count">REMOVE THE TOP <output id="removal-label" for="removal-count">0</output> IN-DEGREE CHARACTERS</label><input id="removal-count" type="range" min="0" max="40" value="0" step="1"><div class="range-labels"><span>Keep everyone</span><span>Remove 40</span></div><div class="experiment-result" role="status" aria-live="polite"><strong id="remaining-giant">277</strong><span>pages in the largest surviving component</span><div class="component-bar"><i id="giant-bar" style="width:91.4%"></i></div><p id="removal-detail">277 of 303 surviving pages · 91.4%</p><p id="removed-names" class="chart-note">Slide to begin the experiment.</p></div><button class="text-link" id="remove-spider">Try removing just Spider-Man ↗</button><noscript><p>The slider requires JavaScript. You can reproduce the experiment with the Python analysis script.</p></noscript></div></div></section>
+
+    <section id="methods" class="shell section"><div class="section-head"><p class="eyebrow"><span class="section-number">06 /</span> OPEN THE NOTEBOOK</p><a class="text-link" href="https://github.com/vitrotank/social_graphs_2026">Code &amp; reproducibility ↗</a></div><div class="section-intro"><h2 class="section-title">Curiosity, with receipts.</h2><p>Every number above comes from the same two frozen TSV files.<br>Python does the analysis; the browser makes it explorable.</p></div><div class="method-grid"><section class="method-card"><p class="eyebrow">01 / THE MATERIAL</p><h3>A frozen slice of Wikipedia.</h3><p>Week 1 release, 26 August 2026. We used the course files already in our exercise folder, preserving their bytes. The roster defines our world; links beyond it are outside this analysis.</p><ul class="source-list"><li><a href="../data/raw/week1_nodes.tsv" download>Node roster · TSV ↓</a></li><li><a href="../data/raw/week1_edges.tsv" download>Directed edge list · TSV ↓</a></li><li><a href="https://sunelehmann.com/socialgraphs2026-web/data/">Official course data &amp; collection notes ↗</a></li></ul></section><section class="method-card"><p class="eyebrow">02 / THE RECIPE</p><h3>Keep the quiet characters.</h3><pre class="code-block"><code><span># The order is the point.</span>
+nodes = read_roster("week1_nodes.tsv")
+graph = {node: set() for node in nodes}
+for source, target in read_edges(...):
+    graph[source].add(target)
+
+<span># Run our full, standard-library pipeline:</span>
+python scripts/analyze.py
+python scripts/build.py</code></pre><p class="chart-note">Illustrative loader above; the full script validates IDs, preserves isolated nodes, and computes the figures. No Python packages required.</p></section><section class="method-card"><p class="eyebrow">03 / THE LIMITS</p><h3>A map has a point of view.</h3><p>Category membership and Wikipedia’s editorial choices shape the network. Coordinates are a deterministic drawing, not physical distance or measured communities. Small components are arranged separately for visibility.</p><p>We did not recrawl the live API or test a power-law model. Claims about why editors link characters remain hypotheses for a later text-based investigation.</p><a class="text-link" href="../assets/data/summary.json" download>Download every computed result · JSON ↓</a></section></div></section>
+
+    <section class="shell section report-outro"><p class="eyebrow">ONE MORE THING / THE GO-NUTS EXTRA</p><h2 class="section-title">A few wires got crossed.</h2><p>We turned incoming and outgoing degree into a little logic puzzle. Real characters, real links—and some missing arrowheads. Can you reconnect the switchboard?</p><div class="hero-actions"><a class="button button-primary" href="../play/index.html">Play Crossed Wires ↗</a><a class="text-link" href="../index.html#journal">Back to all eight weeks ←</a></div></section>
+  </main>
+  <footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos &amp; Dávid.</p></div><div class="footer-members"><div class="member"><strong>Christos Diamantis</strong><small>s253102</small></div><div class="member"><strong>Dávid Weiner</strong><small>s253347</small></div></div></div><div class="footer-bottom"><span>02805 · Social Graphs and Interactions · Fall 2026</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="../index.html">Back to the switchboard ↗</a></div></div></footer>
+</body>
+</html>

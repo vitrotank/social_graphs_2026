@@ -1,0 +1,739 @@
+{
+  "version": 1,
+  "title": "Crossed Wires",
+  "description": "The links are real. The arrowheads are missing. Restore their directions using each character's incoming and outgoing targets.",
+  "puzzles": [
+    {
+      "id": "line-01",
+      "title": "Your first connection",
+      "difficulty": "easy",
+      "nodes": [
+        {
+          "id": "Shuri_(character)",
+          "name": "Shuri",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Wolverine_(character)",
+          "name": "Wolverine",
+          "in_target": 1,
+          "out_target": 1
+        }
+      ],
+      "edges": [
+        {
+          "a": "Shuri_(character)",
+          "b": "Spider-Man",
+          "source": "Shuri_(character)",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Shuri_(character)",
+          "b": "Wolverine_(character)",
+          "source": "Shuri_(character)",
+          "target": "Wolverine_(character)"
+        },
+        {
+          "a": "Spider-Man",
+          "b": "Wolverine_(character)",
+          "source": "Wolverine_(character)",
+          "target": "Spider-Man"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-02",
+      "title": "A little green interference",
+      "difficulty": "easy",
+      "nodes": [
+        {
+          "id": "Doctor_Strange",
+          "name": "Doctor Strange",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Hulk",
+          "name": "Hulk",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Toro_(character)",
+          "name": "Toro",
+          "in_target": 0,
+          "out_target": 2
+        }
+      ],
+      "edges": [
+        {
+          "a": "Doctor_Strange",
+          "b": "Hulk",
+          "source": "Doctor_Strange",
+          "target": "Hulk"
+        },
+        {
+          "a": "Doctor_Strange",
+          "b": "Toro_(character)",
+          "source": "Toro_(character)",
+          "target": "Doctor_Strange"
+        },
+        {
+          "a": "Hulk",
+          "b": "Toro_(character)",
+          "source": "Toro_(character)",
+          "target": "Hulk"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-03",
+      "title": "A strange reception",
+      "difficulty": "easy",
+      "nodes": [
+        {
+          "id": "Doctor_Strange",
+          "name": "Doctor Strange",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Human_Torch",
+          "name": "Human Torch",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Morbius",
+          "name": "Morbius",
+          "in_target": 0,
+          "out_target": 2
+        }
+      ],
+      "edges": [
+        {
+          "a": "Doctor_Strange",
+          "b": "Human_Torch",
+          "source": "Doctor_Strange",
+          "target": "Human_Torch"
+        },
+        {
+          "a": "Doctor_Strange",
+          "b": "Morbius",
+          "source": "Morbius",
+          "target": "Doctor_Strange"
+        },
+        {
+          "a": "Human_Torch",
+          "b": "Morbius",
+          "source": "Morbius",
+          "target": "Human_Torch"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-04",
+      "title": "Weather on the line",
+      "difficulty": "easy",
+      "nodes": [
+        {
+          "id": "Phoenix_Force",
+          "name": "Phoenix",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "in_target": 0,
+          "out_target": 2
+        }
+      ],
+      "edges": [
+        {
+          "a": "Phoenix_Force",
+          "b": "Spider-Man",
+          "source": "Phoenix_Force",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Phoenix_Force",
+          "b": "Storm_(Marvel_Comics)",
+          "source": "Storm_(Marvel_Comics)",
+          "target": "Phoenix_Force"
+        },
+        {
+          "a": "Spider-Man",
+          "b": "Storm_(Marvel_Comics)",
+          "source": "Storm_(Marvel_Comics)",
+          "target": "Spider-Man"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-05",
+      "title": "The switchboard thickens",
+      "difficulty": "medium",
+      "nodes": [
+        {
+          "id": "Black_Widow_(Natasha_Romanova)",
+          "name": "Black Widow",
+          "in_target": 2,
+          "out_target": 1
+        },
+        {
+          "id": "Eddie_Brock",
+          "name": "Eddie Brock",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Rockman_(character)",
+          "name": "Rockman",
+          "in_target": 0,
+          "out_target": 1
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 2,
+          "out_target": 0
+        }
+      ],
+      "edges": [
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Spider-Man",
+          "source": "Black_Widow_(Natasha_Romanova)",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Eddie_Brock",
+          "source": "Eddie_Brock",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Eddie_Brock",
+          "b": "Spider-Man",
+          "source": "Eddie_Brock",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Rockman_(character)",
+          "source": "Rockman_(character)",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-06",
+      "title": "A call from the neighborhood",
+      "difficulty": "medium",
+      "nodes": [
+        {
+          "id": "Human_Fly_(character)",
+          "name": "Human Fly",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Luke_Cage",
+          "name": "Luke Cage",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Moon_Knight",
+          "name": "Moon Knight",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Spider-Woman_(Jessica_Drew)",
+          "name": "Spider-Woman",
+          "in_target": 1,
+          "out_target": 1
+        }
+      ],
+      "edges": [
+        {
+          "a": "Human_Fly_(character)",
+          "b": "Moon_Knight",
+          "source": "Human_Fly_(character)",
+          "target": "Moon_Knight"
+        },
+        {
+          "a": "Human_Fly_(character)",
+          "b": "Spider-Woman_(Jessica_Drew)",
+          "source": "Human_Fly_(character)",
+          "target": "Spider-Woman_(Jessica_Drew)"
+        },
+        {
+          "a": "Luke_Cage",
+          "b": "Moon_Knight",
+          "source": "Moon_Knight",
+          "target": "Luke_Cage"
+        },
+        {
+          "a": "Luke_Cage",
+          "b": "Spider-Woman_(Jessica_Drew)",
+          "source": "Spider-Woman_(Jessica_Drew)",
+          "target": "Luke_Cage"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-07",
+      "title": "Please hold",
+      "difficulty": "medium",
+      "nodes": [
+        {
+          "id": "Luke_Cage",
+          "name": "Luke Cage",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Nightwatch_(character)",
+          "name": "Nightwatch",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "She-Hulk",
+          "name": "She-Hulk",
+          "in_target": 1,
+          "out_target": 2
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 3,
+          "out_target": 0
+        }
+      ],
+      "edges": [
+        {
+          "a": "Luke_Cage",
+          "b": "Spider-Man",
+          "source": "Luke_Cage",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Nightwatch_(character)",
+          "b": "She-Hulk",
+          "source": "Nightwatch_(character)",
+          "target": "She-Hulk"
+        },
+        {
+          "a": "Nightwatch_(character)",
+          "b": "Spider-Man",
+          "source": "Nightwatch_(character)",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Luke_Cage",
+          "b": "She-Hulk",
+          "source": "She-Hulk",
+          "target": "Luke_Cage"
+        },
+        {
+          "a": "She-Hulk",
+          "b": "Spider-Man",
+          "source": "She-Hulk",
+          "target": "Spider-Man"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-08",
+      "title": "Some crossed claws",
+      "difficulty": "medium",
+      "nodes": [
+        {
+          "id": "Black_Widow_(Natasha_Romanova)",
+          "name": "Black Widow",
+          "in_target": 1,
+          "out_target": 2
+        },
+        {
+          "id": "Eddie_Brock",
+          "name": "Eddie Brock",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 3,
+          "out_target": 0
+        },
+        {
+          "id": "Wolverine_(character)",
+          "name": "Wolverine",
+          "in_target": 1,
+          "out_target": 1
+        }
+      ],
+      "edges": [
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Spider-Man",
+          "source": "Black_Widow_(Natasha_Romanova)",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Wolverine_(character)",
+          "source": "Black_Widow_(Natasha_Romanova)",
+          "target": "Wolverine_(character)"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Eddie_Brock",
+          "source": "Eddie_Brock",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Eddie_Brock",
+          "b": "Spider-Man",
+          "source": "Eddie_Brock",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Spider-Man",
+          "b": "Wolverine_(character)",
+          "source": "Wolverine_(character)",
+          "target": "Spider-Man"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-09",
+      "title": "The night shift",
+      "difficulty": "hard",
+      "nodes": [
+        {
+          "id": "Eddie_Brock",
+          "name": "Eddie Brock",
+          "in_target": 0,
+          "out_target": 1
+        },
+        {
+          "id": "Ghost_Rider",
+          "name": "Ghost Rider",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Luke_Cage",
+          "name": "Luke Cage",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Moon_Knight",
+          "name": "Moon Knight",
+          "in_target": 0,
+          "out_target": 3
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 4,
+          "out_target": 0
+        }
+      ],
+      "edges": [
+        {
+          "a": "Eddie_Brock",
+          "b": "Spider-Man",
+          "source": "Eddie_Brock",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Ghost_Rider",
+          "b": "Spider-Man",
+          "source": "Ghost_Rider",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Luke_Cage",
+          "b": "Spider-Man",
+          "source": "Luke_Cage",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Ghost_Rider",
+          "b": "Moon_Knight",
+          "source": "Moon_Knight",
+          "target": "Ghost_Rider"
+        },
+        {
+          "a": "Luke_Cage",
+          "b": "Moon_Knight",
+          "source": "Moon_Knight",
+          "target": "Luke_Cage"
+        },
+        {
+          "a": "Moon_Knight",
+          "b": "Spider-Man",
+          "source": "Moon_Knight",
+          "target": "Spider-Man"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-10",
+      "title": "An unusually chatty caller",
+      "difficulty": "hard",
+      "nodes": [
+        {
+          "id": "Black_Widow_(Natasha_Romanova)",
+          "name": "Black Widow",
+          "in_target": 2,
+          "out_target": 0
+        },
+        {
+          "id": "Deadpool",
+          "name": "Deadpool",
+          "in_target": 2,
+          "out_target": 1
+        },
+        {
+          "id": "Doctor_Strange",
+          "name": "Doctor Strange",
+          "in_target": 1,
+          "out_target": 2
+        },
+        {
+          "id": "Straw_Man_(comics)",
+          "name": "Straw Man",
+          "in_target": 0,
+          "out_target": 1
+        },
+        {
+          "id": "Werewolf_by_Night",
+          "name": "Werewolf by Night",
+          "in_target": 1,
+          "out_target": 2
+        }
+      ],
+      "edges": [
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Deadpool",
+          "source": "Deadpool",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Doctor_Strange",
+          "source": "Doctor_Strange",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Deadpool",
+          "b": "Doctor_Strange",
+          "source": "Doctor_Strange",
+          "target": "Deadpool"
+        },
+        {
+          "a": "Straw_Man_(comics)",
+          "b": "Werewolf_by_Night",
+          "source": "Straw_Man_(comics)",
+          "target": "Werewolf_by_Night"
+        },
+        {
+          "a": "Deadpool",
+          "b": "Werewolf_by_Night",
+          "source": "Werewolf_by_Night",
+          "target": "Deadpool"
+        },
+        {
+          "a": "Doctor_Strange",
+          "b": "Werewolf_by_Night",
+          "source": "Werewolf_by_Night",
+          "target": "Doctor_Strange"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-11",
+      "title": "A tangled appointment",
+      "difficulty": "hard",
+      "nodes": [
+        {
+          "id": "Black_Bolt",
+          "name": "Black Bolt",
+          "in_target": 1,
+          "out_target": 1
+        },
+        {
+          "id": "Firebird_(Marvel_Comics)",
+          "name": "Firebird",
+          "in_target": 0,
+          "out_target": 1
+        },
+        {
+          "id": "Hulk",
+          "name": "Hulk",
+          "in_target": 4,
+          "out_target": 0
+        },
+        {
+          "id": "Noh-Varr",
+          "name": "Noh-Varr",
+          "in_target": 0,
+          "out_target": 3
+        },
+        {
+          "id": "Spider-Woman_(Jessica_Drew)",
+          "name": "Spider-Woman",
+          "in_target": 1,
+          "out_target": 1
+        }
+      ],
+      "edges": [
+        {
+          "a": "Black_Bolt",
+          "b": "Hulk",
+          "source": "Black_Bolt",
+          "target": "Hulk"
+        },
+        {
+          "a": "Firebird_(Marvel_Comics)",
+          "b": "Hulk",
+          "source": "Firebird_(Marvel_Comics)",
+          "target": "Hulk"
+        },
+        {
+          "a": "Black_Bolt",
+          "b": "Noh-Varr",
+          "source": "Noh-Varr",
+          "target": "Black_Bolt"
+        },
+        {
+          "a": "Hulk",
+          "b": "Noh-Varr",
+          "source": "Noh-Varr",
+          "target": "Hulk"
+        },
+        {
+          "a": "Noh-Varr",
+          "b": "Spider-Woman_(Jessica_Drew)",
+          "source": "Noh-Varr",
+          "target": "Spider-Woman_(Jessica_Drew)"
+        },
+        {
+          "a": "Hulk",
+          "b": "Spider-Woman_(Jessica_Drew)",
+          "source": "Spider-Woman_(Jessica_Drew)",
+          "target": "Hulk"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    },
+    {
+      "id": "line-12",
+      "title": "The final connection",
+      "difficulty": "hard",
+      "nodes": [
+        {
+          "id": "Adam_Warlock",
+          "name": "Adam Warlock",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Black_Widow_(Natasha_Romanova)",
+          "name": "Black Widow",
+          "in_target": 3,
+          "out_target": 1
+        },
+        {
+          "id": "Eddie_Brock",
+          "name": "Eddie Brock",
+          "in_target": 0,
+          "out_target": 2
+        },
+        {
+          "id": "Spider-Man",
+          "name": "Spider-Man",
+          "in_target": 3,
+          "out_target": 0
+        },
+        {
+          "id": "Ursa_Major_(character)",
+          "name": "Ursa Major",
+          "in_target": 0,
+          "out_target": 1
+        }
+      ],
+      "edges": [
+        {
+          "a": "Adam_Warlock",
+          "b": "Black_Widow_(Natasha_Romanova)",
+          "source": "Adam_Warlock",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Adam_Warlock",
+          "b": "Spider-Man",
+          "source": "Adam_Warlock",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Spider-Man",
+          "source": "Black_Widow_(Natasha_Romanova)",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Eddie_Brock",
+          "source": "Eddie_Brock",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        },
+        {
+          "a": "Eddie_Brock",
+          "b": "Spider-Man",
+          "source": "Eddie_Brock",
+          "target": "Spider-Man"
+        },
+        {
+          "a": "Black_Widow_(Natasha_Romanova)",
+          "b": "Ursa_Major_(character)",
+          "source": "Ursa_Major_(character)",
+          "target": "Black_Widow_(Natasha_Romanova)"
+        }
+      ],
+      "explanation": "These arrows reproduce actual Wikipedia links in the frozen week-1 snapshot. The counts apply only to the selected wires on this board; other links between these pages may exist. Each board has exactly one solution."
+    }
+  ]
+}

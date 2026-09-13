@@ -1,8 +1,9 @@
-/* EARTH—303 explores data computed by scripts/analyze.py. No external libraries. */
+/* Crosstalk explores data computed by scripts/analyze.py. No external libraries. */
 (() => {
   "use strict";
-  if (!window.EARTH303_DATA) return;
-  const { nodes, edges } = window.EARTH303_DATA.network;
+  if (!window.CROSSTALK_DATA || !document.querySelector("#network-atlas")) return;
+  const root = document.body.dataset.root || "";
+  const { nodes, edges } = window.CROSSTALK_DATA.network;
   const byId = new Map(nodes.map(n => [n.id, n]));
   const incoming = new Map(nodes.map(n => [n.id, new Set()]));
   const outgoing = new Map(nodes.map(n => [n.id, new Set()]));
@@ -120,12 +121,12 @@
     yt.forEach(t=>{const py=y(t);plot.append(svg("line",{x1:m.l,x2:680-m.r,y1:py,y2:py,stroke:"#ccd0c3","stroke-dasharray":"3 5"}),svg("text",{x:m.l-12,y:py+4,"text-anchor":"end",fill:"#62716a","font-family":"monospace","font-size":11},`${+(t*100).toFixed(1)}%`));});
     xt.forEach(t=>{const px=x(t);plot.append(svg("line",{x1:px,x2:px,y1:m.t+h,y2:m.t+h+6,stroke:"#89998f"}),svg("text",{x:px,y:m.t+h+25,"text-anchor":"middle",fill:"#62716a","font-family":"monospace","font-size":11},String(t)));});
     plot.append(svg("path",{d:`M${m.l} ${m.t} V${m.t+h} H${680-m.r}`,fill:"none",stroke:"#88998e"}));
-    [[ins,"#df5b35","Incoming"],[outs,"#287c85","Outgoing"]].forEach(([data,color,label])=>data.filter(d=>!log||d.degree>0).forEach(d=>{const dot=svg("circle",{cx:x(d.degree),cy:y(d.probability),r:log?4.2:3.5,fill:color,"fill-opacity":.78,stroke:"#f4f0e7","stroke-width":.7});dot.append(svg("title",{},`${label}: ${d.degree} links · ${d.count} pages · ${(d.probability*100).toFixed(2)}%`));plot.append(dot);}));
+    [[ins,"#dc512f","Incoming"],[outs,"#2849c7","Outgoing"]].forEach(([data,color,label])=>data.filter(d=>!log||d.degree>0).forEach(d=>{const dot=svg("circle",{cx:x(d.degree),cy:y(d.probability),r:log?4.2:3.5,fill:color,"fill-opacity":.78,stroke:"#f6f1e7","stroke-width":.7});dot.append(svg("title",{},`${label}: ${d.degree} links · ${d.count} pages · ${(d.probability*100).toFixed(2)}%`));plot.append(dot);}));
     plot.append(svg("text",{x:m.l+w/2,y:395,"text-anchor":"middle",fill:"#40594f","font-family":"monospace","font-size":11},log?"NUMBER OF LINKS · LOG SCALE":"NUMBER OF LINKS"),svg("text",{x:18,y:m.t+h/2,transform:`rotate(-90 18 ${m.t+h/2})`,"text-anchor":"middle",fill:"#40594f","font-family":"monospace","font-size":11},log?"FRACTION OF PAGES · LOG SCALE":"FRACTION OF PAGES"));
     $("#distribution-chart").replaceChildren(plot);
     const zi=ins.find(d=>d.degree===0)?.count||0,zo=outs.find(d=>d.degree===0)?.count||0,isolates=nodes.filter(n=>!n.in_degree&&!n.out_degree).length;
     $("#distribution-caption").textContent=log?`True log–log axes. Omitted at degree zero: ${zi} pages with no incoming links; ${zo} with no outgoing links. Of these, ${isolates} have neither. No degree shift or fitted power law.`:`Each point shows the fraction of the ${nodes.length} pages with exactly that degree. Linear axes include degree zero. Hover a point for its count.`;
-    $("#download-chart").href=`assets/figures/degree-${log?"loglog":"linear"}.svg`;
+    $("#download-chart").href=`${root}assets/figures/degree-${log?"loglog":"linear"}.svg`;
   }
   document.querySelectorAll("[data-scale]").forEach(b=>b.addEventListener("click",()=>{activate("[data-scale]",b);renderDistribution(b.dataset.scale);}));
   function renderRanking(kind){const top=rankedBy(`${kind}_degree`).slice(0,5),list=element("ol",{class:"rank-list"});top.forEach((n,i)=>{const li=element("li"),b=element("button",{class:"rank-button",type:"button"});b.append(element("span",{class:"rank-number"},String(i+1).padStart(2,"0")),element("span",{class:"rank-name"},nameOf(n)),element("strong",{},String(n[`${kind}_degree`])),element("i",{class:"rank-bar",style:`width:${n[`${kind}_degree`]/top[0][`${kind}_degree`]*100}%`}));b.addEventListener("click",()=>{resetZoom();select(n.id,true);});li.append(b);list.append(li);});$("#rankings").replaceChildren(list);}

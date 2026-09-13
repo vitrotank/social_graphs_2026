@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.png binary
+# Keep the official release byte-for-byte identical on every operating system.
+data/raw/*.tsv -text

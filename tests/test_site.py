@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import re
 import shutil
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -17,7 +18,8 @@ from urllib.parse import unquote, urlsplit
 REPO = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("site_build", REPO / "scripts/build.py")
 build = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(build)
+with patch.object(sys, "path", [str(REPO / "scripts"), *sys.path]):
+    SPEC.loader.exec_module(build)
 
 
 class Document(HTMLParser):
@@ -58,12 +60,13 @@ def tsv_rows(path):
 
 class SiteTests(unittest.TestCase):
     def setUp(self):
-        temporary = tempfile.TemporaryDirectory(prefix="earth303-site-test-")
+        temporary = tempfile.TemporaryDirectory(prefix="crosstalk-site-test-")
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
-            "site.json", "templates/index.html", "style.css", "app.js",
+            "site.json", "templates/home.html", "templates/week1.html", "templates/play.html",
+            "style.css", "app.js", "home.js", "game.css", "game.js",
             "assets/data/network.json", "assets/data/summary.json",
             "assets/figures/degree-linear.svg", "assets/figures/degree-loglog.svg",
             "data/raw/week1_nodes.tsv", "data/raw/week1_edges.tsv", "data/raw/README.md",
@@ -80,35 +83,69 @@ class SiteTests(unittest.TestCase):
         first = {name: (self.root / name).read_bytes() for name in public_files}
         self.assertEqual(build.render(), public_files)
         self.assertEqual(first, {name: (self.root / name).read_bytes() for name in public_files})
-        html = (self.root / "index.html").read_text(encoding="utf-8")
-        self.assertIsNone(re.search(r"@@[A-Z_]+@@", html), "Unresolved template value in the report")
-        self.assertNotIn("polyfill.io", html)
-        document = Document(html)
-        self.assertEqual(len(document.ids), len(set(document.ids)), "HTML IDs must be unique")
-        for reference in document.references:
-            self.assertIn(reference, document.ids, f"Broken label or accessibility reference: {reference}")
-        for image in document.images:
-            self.assertIn("alt", image, f"Missing image alternative: {image}")
-        for control in document.inputs:
-            self.assertTrue(control.get("aria-label") or control.get("aria-labelledby") or control.get("id") in document.labels,
-                            f"Input has no accessible label: {control}")
-        for source in document.scripts:
-            self.assertFalse(urlsplit(source).scheme or source.startswith("//"), "The site must run without a remote script dependency")
-        for reference in document.links:
-            parsed = urlsplit(reference)
-            if parsed.scheme or parsed.netloc:
-                continue
-            destination = (self.root / unquote(parsed.path)).resolve() if parsed.path else self.root / "index.html"
-            self.assertTrue(destination.is_relative_to(self.root), f"Local link escapes the published site: {reference}")
-            self.assertTrue(destination.is_file(), f"Local link has no file: {reference}")
-            if parsed.fragment:
-                target = document if destination == self.root / "index.html" else Document(destination.read_text(encoding="utf-8"))
-                self.assertIn(unquote(parsed.fragment), target.ids, f"Local fragment is missing: {reference}")
+        pages = {path for path in public_files if path.suffix == ".html"}
+        self.assertTrue({Path("index.html"), Path("week1/index.html"), Path("play/index.html")} <= pages)
+        documents = {}
+        for relative in pages:
+            html = (self.root / relative).read_text(encoding="utf-8")
+            self.assertIsNone(re.search(r"@@[A-Z_]+@@", html), f"Unresolved template value in {relative}")
+            self.assertNotIn("polyfill.io", html)
+            documents[self.root / relative] = Document(html)
+        linked_pages = {}
+        for path, document in documents.items():
+            with self.subTest(page=str(path.relative_to(self.root))):
+                self.assertEqual(len(document.ids), len(set(document.ids)), "HTML IDs must be unique")
+                for reference in document.references:
+                    self.assertIn(reference, document.ids, f"Broken label or accessibility reference: {reference}")
+                for image in document.images:
+                    self.assertIn("alt", image, f"Missing image alternative: {image}")
+                for control in document.inputs:
+                    self.assertTrue(control.get("aria-label") or control.get("aria-labelledby") or control.get("id") in document.labels,
+                                    f"Input has no accessible label: {control}")
+                for source in document.scripts:
+                    self.assertFalse(urlsplit(source).scheme or source.startswith("//"), "The site must run without a remote script dependency")
+                linked_pages[path] = set()
+                for reference in document.links:
+                    parsed = urlsplit(reference)
+                    if parsed.scheme or parsed.netloc:
+                        continue
+                    self.assertFalse(parsed.path.startswith("/"), f"Root-relative link breaks GitHub project paths: {reference}")
+                    destination = (path.parent / unquote(parsed.path)).resolve() if parsed.path else path
+                    self.assertTrue(destination.is_relative_to(self.root), f"Local link escapes the published site: {reference}")
+                    self.assertTrue(destination.is_file(), f"Local link has no explicit file for offline viewing: {reference}")
+                    self.assertIn(destination.relative_to(self.root), public_files, f"Link target is excluded from publication: {reference}")
+                    if destination in documents:
+                        linked_pages[path].add(destination)
+                    if parsed.fragment:
+                        target = documents.get(destination) or Document(destination.read_text(encoding="utf-8"))
+                        self.assertIn(unquote(parsed.fragment), target.ids, f"Local fragment is missing: {reference}")
+        home = self.root / "index.html"
+        for relative in ("week1/index.html", "play/index.html"):
+            page = self.root / relative
+            self.assertIn(page, linked_pages[home], f"Homepage must link to {relative}")
+            self.assertIn(home, linked_pages[page], f"{relative} must link back home")
+
+    def test_new_published_week_updates_homepage_and_creates_its_page(self):
+        config_path = self.root / "site.json"
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config["weeks"][1].update({"status": "published", "title": "Second dispatch",
+                                   "summary": "A new question for the journal.",
+                                   "path": "week2/index.html", "template": "week2.html"})
+        config_path.write_text(json.dumps(config), encoding="utf-8")
+        (self.root / "templates/week2.html").write_text(
+            '<!doctype html><html><body>@@HEADER@@<h1>Second dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
+        files = build.render()
+        self.assertIn(Path("week2/index.html"), files)
+        home = (self.root / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Second dispatch", home)
+        self.assertIn('href="week2/index.html"', home)
+        self.assertIn("Read Week 2", home)
+        self.assertIn('href="../index.html"', (self.root / "week2/index.html").read_text(encoding="utf-8"))
 
     def test_browser_payload_preserves_raw_nodes_edges_and_measured_degrees(self):
         build.render()
         javascript = (self.root / "assets/data/network.js").read_text(encoding="utf-8")
-        prefix = "window.EARTH303_DATA = "
+        prefix = "window.CROSSTALK_DATA = "
         self.assertTrue(javascript.startswith(prefix) and javascript.endswith(";\n"))
         payload = json.loads(javascript[len(prefix):-2])
         network, summary = payload["network"], payload["summary"]
@@ -127,14 +164,22 @@ class SiteTests(unittest.TestCase):
             self.assertEqual((node["in_degree"], node["out_degree"]), (incoming[node["id"]], outgoing[node["id"]]))
         self.assertEqual(set(summary["isolates"]), {node for node in roster if not incoming[node] and not outgoing[node]})
 
+        # The game uses an offline JavaScript payload; its downloadable source
+        # must expose exactly the same generated puzzle facts.
+        javascript = (self.root / "assets/data/puzzles.js").read_text(encoding="utf-8")
+        prefix = "window.CROSSTALK_PUZZLES = "
+        self.assertTrue(javascript.startswith(prefix) and javascript.endswith(";\n"))
+        self.assertEqual(json.loads(javascript[len(prefix):-2]),
+                         json.loads((self.root / "assets/data/puzzles.json").read_text(encoding="utf-8")))
+
     def test_staging_publishes_only_the_allowlist_and_preserves_its_bytes(self):
         # A workspace may contain control files that must never reach Pages.
-        for relative in (".git/HEAD", ".codex/private.txt", ".agents/private.txt", "scripts/private.py", "tests/private.py", "unrelated.txt"):
+        for relative in (".git/HEAD", ".codex/private.txt", ".agents/private.txt", ".preview/private.txt", "scripts/private.py", "tests/private.py", "unrelated.txt"):
             path = self.root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text("private fixture", encoding="utf-8")
         public_files = build.render()
-        forbidden = {".git", ".codex", ".agents", "scripts", "tests", "templates"}
+        forbidden = {".git", ".codex", ".agents", ".preview", "scripts", "tests", "templates"}
         self.assertFalse(any(path.parts[0] in forbidden for path in public_files))
         self.assertNotIn(Path("unrelated.txt"), public_files)
         output = self.root / "_site"
@@ -148,7 +193,7 @@ class SiteTests(unittest.TestCase):
     def test_staging_rejects_unsafe_destinations_without_overwriting_source_files(self):
         public_files = build.render()
         original = {path: (self.root / path).read_bytes() for path in public_files}
-        for destination in (self.root, self.root.parent, self.root / "../outside-site", self.root / "assets", self.root / "data/nested", self.root / "scripts", self.root / ".git", self.root / ".codex", self.root / ".agents", self.root / "templates", self.root / "tests"):
+        for destination in (self.root, self.root.parent, self.root / "../outside-site", self.root / "assets", self.root / "data/nested", self.root / "scripts", self.root / ".git", self.root / ".codex", self.root / ".agents", self.root / ".preview", self.root / "templates", self.root / "tests", self.root / "week1", self.root / "play/nested"):
             with self.subTest(destination=str(destination)):
                 with self.assertRaises(ValueError):
                     build.stage(destination, public_files)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Marvel Observatory's data and SVG figures using Python's stdlib.
+"""Build the Crosstalk's data and SVG figures using Python's stdlib.
 
 Input: the course's frozen week-1 roster and directed edge list. The complete
 roster is loaded first, including characters that never appear in an edge.
@@ -324,8 +324,8 @@ def degree_svg(summary: dict, logarithmic: bool = False) -> str:
 
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">',
              f'<title id="title">{escape(title)}</title><desc id="description">{escape(subtitle)}. In-degree in orange; out-degree in teal. Each point is the fraction of the complete node roster having that degree.</desc>',
-             '<rect width="960" height="600" fill="#f4f0e7"/>',
-             '<g font-family="Arial, sans-serif" fill="#173e3f">',
+             '<rect width="960" height="600" fill="#f6f1e7"/>',
+             '<g font-family="Arial, sans-serif" fill="#232927">',
              f'<text x="40" y="38" font-size="24" font-weight="700">{escape(title)}</text>',
              f'<text x="40" y="65" font-size="13" fill="#586866">{escape(subtitle)}</text>']
     xticks = [1, 2, 5, 10, 20, 50, 100] if logarithmic else list(range(0, x_max + 1, 20))
@@ -338,7 +338,7 @@ def degree_svg(summary: dict, logarithmic: bool = False) -> str:
     for tick in yticks:
         y = py(tick)
         parts.append(f'<path d="M{left},{y:.2f} H{right}" stroke="#d5d9cf"/><text x="76" y="{y + 4:.2f}" text-anchor="end" font-size="12">{tick:.3g}</text>')
-    for index, (direction, color) in enumerate((("in", "#ef5b35"), ("out", "#287c85"))):
+    for index, (direction, color) in enumerate((("in", "#dc512f"), ("out", "#2849c7"))):
         for row in rows[direction]:
             if logarithmic and row["degree"] == 0:
                 continue

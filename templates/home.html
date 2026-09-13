@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CROSSTALK: a playful network science notebook by Christos Diamantis and Dávid Weiner. Eight weeks of curious connections, starting with Marvel's Wikipedia network.">
   <meta name="theme-color" content="#f6f1e7">
-  <title>CROSSTALK — Small signals. Strange connections.</title>
+  <title>@@TITLE@@ — Small signals. Strange connections.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script defer src="home.js"></script>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><div class="shell header-inner"><a class="brand" href="index.html" aria-label="Crosstalk home"><svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg><span class="brand-copy"><strong>CROSSTALK</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="index.html#journal">Weekly journal</a><a href="play/index.html">Crossed Wires</a><a href="https://github.com/vitrotank/social_graphs_2026">Source ↗</a></nav></div></header>
+  @@HEADER@@
   <main id="main">
     <section class="home-hero shell" aria-labelledby="home-title">
       <div class="home-caption"><span>A NOTEBOOK FOR THE CURIOUS</span><span>02805 / FALL 2026</span></div>
@@ -22,7 +22,7 @@
           <h1 id="home-title">Small signals.<br>Strange connections.</h1>
           <p>Who gets heard? Who gets left out? And what happens when you pull on the wrong thread?</p>
           <p>We’re following the links through Marvel’s Wikipedia universe. A little network science. A little mischief. One new experiment each week.</p>
-          <div class="home-stats" aria-label="Our shared dataset"><span><strong>303</strong> characters</span><span><strong>1,784</strong> links</span><span><strong>17</strong> quiet ones</span></div>
+          <div class="home-stats" aria-label="Our shared dataset"><span><strong>@@NODES@@</strong> characters</span><span><strong>@@EDGES@@</strong> links</span><span><strong>@@ISOLATE_COUNT@@</strong> quiet ones</span></div>
         </div>
         <figure class="switchboard-art">
           <svg viewBox="0 0 560 315" role="img" aria-labelledby="switchboard-title switchboard-desc">
@@ -49,9 +49,9 @@
     <section class="home-content shell" aria-label="Start exploring">
       <div class="feature-grid">
         <article class="weekly-feature">
-          <div class="feature-topline"><p class="eyebrow">JUST CONNECTED / WEEK 1</p><span class="feature-stamp" aria-hidden="true">1</span></div>
+          <div class="feature-topline"><p class="eyebrow">JUST CONNECTED / WEEK @@LATEST_NUMBER@@</p><span class="feature-stamp" aria-hidden="true">@@LATEST_NUMBER@@</span></div>
           <div class="feature-body">
-            <div class="feature-copy"><h2>Some heroes never get the call.</h2><p>Who&#x27;s on everyone&#x27;s speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.</p><a class="button button-primary" href="week1/index.html">Read Week 1 <span aria-hidden="true">↗</span></a></div>
+            <div class="feature-copy"><h2>@@LATEST_TITLE@@</h2><p>@@LATEST_SUMMARY@@</p><a class="button button-primary" href="@@LATEST_URL@@">Read Week @@LATEST_NUMBER@@ <span aria-hidden="true">↗</span></a></div>
             <figure class="feature-art"><img src="assets/figures/hero-network.svg" alt="The real Marvel network, including its disconnected characters." width="680" height="650"><figcaption>303 PAGES. UNEQUAL ATTENTION.</figcaption></figure>
           </div>
           <div class="feature-bottom"><span>FROM THE SHARED MARVEL PLAYGROUND</span><span>READ &amp; EXPLORE</span></div>
@@ -68,17 +68,10 @@
     </section>
 
     <section id="journal" class="week-archive shell" aria-labelledby="archive-title">
-      <div class="archive-heading"><div><p class="eyebrow">THE WEEKLY JOURNAL</p><h2 id="archive-title">Eight weeks. Open lines.</h2></div><p>1 published. 7 still to come.</p></div>
-      <div class="week-grid"><a class="week-entry published" href="week1/index.html" aria-label="Week 1: Some heroes never get the call."><span class="week-number">01</span><span class="week-label">Week 1</span><span class="week-state">Read the story ↗</span></a>
-<div class="week-entry upcoming"><span class="week-number">02</span><span class="week-label">Week 2</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">03</span><span class="week-label">Week 3</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">04</span><span class="week-label">Week 4</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">05</span><span class="week-label">Week 5</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">06</span><span class="week-label">Week 6</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">07</span><span class="week-label">Week 7</span><span class="week-state">Coming soon</span></div>
-<div class="week-entry upcoming"><span class="week-number">08</span><span class="week-label">Week 8</span><span class="week-state">Coming soon</span></div></div>
+      <div class="archive-heading"><div><p class="eyebrow">THE WEEKLY JOURNAL</p><h2 id="archive-title">Eight weeks. Open lines.</h2></div><p>@@PUBLISHED_COUNT@@ published. @@UPCOMING_COUNT@@ still to come.</p></div>
+      <div class="week-grid">@@WEEK_ENTRIES@@</div>
     </section>
   </main>
-  <footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos &amp; Dávid.</p></div><div class="footer-members"><div class="member"><strong>Christos Diamantis</strong><small>s253102</small></div><div class="member"><strong>Dávid Weiner</strong><small>s253347</small></div></div></div><div class="footer-bottom"><span>02805 · Social Graphs and Interactions · Fall 2026</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="index.html">Back to the switchboard ↗</a></div></div></footer>
+  @@FOOTER@@
 </body>
 </html>

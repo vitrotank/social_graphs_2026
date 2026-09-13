@@ -1,9 +1,19 @@
 {
-  "title": "EARTH—303",
-  "group_name": "The Bureau of Missing Connections",
+  "title": "CROSSTALK",
+  "group_name": "Crosstalk",
   "members": ["Christos Diamantis (s253102)", "Dávid Weiner (s253347)"],
   "course": "02805 · Social Graphs and Interactions",
   "semester": "Fall 2026",
   "repository_url": "https://github.com/vitrotank/social_graphs_2026",
-  "site_url": "https://vitrotank.github.io/social_graphs_2026/"
+  "site_url": "https://vitrotank.github.io/social_graphs_2026/",
+  "weeks": [
+    {"number": 1, "title": "Some heroes never get the call.", "summary": "Who's on everyone's speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.", "status": "published", "path": "week1/index.html", "template": "week1.html"},
+    {"number": 2, "status": "upcoming"},
+    {"number": 3, "status": "upcoming"},
+    {"number": 4, "status": "upcoming"},
+    {"number": 5, "status": "upcoming"},
+    {"number": 6, "status": "upcoming"},
+    {"number": 7, "status": "upcoming"},
+    {"number": 8, "status": "upcoming"}
+  ]
 }
