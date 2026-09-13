@@ -6,6 +6,7 @@
   "semester": "Fall 2026",
   "repository_url": "https://github.com/vitrotank/social_graphs_2026",
   "site_url": "https://vitrotank.github.io/social_graphs_2026/",
+  "arcade": {"first_release": "2026-09-09", "release_hour": 19, "week_count": 52},
   "weeks": [
     {"number": 1, "title": "Some heroes never get the call.", "summary": "Who's on everyone's speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.", "status": "published", "path": "week1/index.html", "template": "week1.html"},
     {"number": 2, "status": "upcoming"},

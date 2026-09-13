@@ -233,47 +233,174 @@ def main():
                 (preview / "mobile.png").write_bytes(base64.b64decode(shot["data"]))
         client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
         game_ready = "document.readyState==='complete' && document.querySelectorAll('#cw-wires .cw-wire').length>0"
-        navigate(base_url + "play/index.html", game_ready)
-        client.js("localStorage.removeItem('crosstalk-crossed-wires-v1')")
-        navigate(base_url + "play/index.html", game_ready)
-        check("game offers twelve real puzzles", "document.querySelector('#cw-select').options.length===12 && CROSSTALK_PUZZLES.puzzles.length===12")
-        check("game starts with missing arrows", "document.querySelectorAll('.cw-wire-assigned').length===0")
-        screenshot("game.png", full=True)
-        client.js("document.querySelector('#cw-check').click()")
-        check("game explains incomplete board", "document.querySelector('#cw-status').textContent.includes('need') && !document.querySelector('.cw-is-solved')")
-        client.js("document.querySelector('.cw-wire').click()")
-        check("wire can be connected", "document.querySelectorAll('.cw-wire-assigned').length===1 && document.querySelector('.cw-wire-direction').textContent==='→'")
-        client.js("document.querySelector('.cw-wire').click()")
-        check("wire can be reversed", "document.querySelector('.cw-wire-direction').textContent==='←'")
-        client.js("document.querySelector('#cw-reset').click();document.querySelector('#cw-hint').click()")
-        check("hint restores one real arrow", "document.querySelectorAll('.cw-wire-assigned').length===1 && document.querySelector('#cw-status').textContent.includes('Hint:')")
-        client.js("document.querySelector('#cw-reset').click()")
-        check("reset clears arrows", "document.querySelectorAll('.cw-wire-assigned').length===0")
-        client.js("CROSSTALK_PUZZLES.puzzles[0].edges.forEach((e,i)=>{const b=document.querySelector(`[data-edge='${i}']`);b.click();if(e.source===e.a)b.click()});document.querySelector('#cw-check').click()")
-        check("incorrect complete board is rejected", "document.querySelector('#cw-status').textContent.includes('crossed connection') && !document.querySelector('.cw-is-solved')")
-        solve_all = """CROSSTALK_PUZZLES.puzzles.every((p,index)=>{
-            const picker=document.querySelector('#cw-select');picker.value=index;picker.dispatchEvent(new Event('change'));
-            p.edges.forEach((edge,i)=>{const b=document.querySelector(`[data-edge='${i}']`);b.click();if(edge.source!==edge.a)b.click()});
+        game_url = base_url + "play/index.html"
+        storage_key = "crosstalk-crossed-wires-v2"
+        clock_script = None
+
+        def freeze_clock(instant):
+            """Control browser time without an application-only release bypass."""
+            nonlocal clock_script
+            if clock_script:
+                client.call("Page.removeScriptToEvaluateOnNewDocument", {"identifier":clock_script})
+            source = """(() => {
+                const RealDate = Date;
+                window.__cwTestNow = RealDate.parse(INSTANT);
+                class FixedDate extends RealDate {
+                    constructor(...args) { super(...(args.length ? args : [window.__cwTestNow])); }
+                    static now() { return window.__cwTestNow; }
+                }
+                window.Date = FixedDate;
+            })();""".replace("INSTANT", json.dumps(instant))
+            clock_script = client.call("Page.addScriptToEvaluateOnNewDocument", {"source":source})["identifier"]
+
+        def await_check(name, expression):
+            for _ in range(40):
+                if client.js(expression):
+                    break
+                time.sleep(.1)
+            check(name, expression)
+
+        assigned_count = "document.querySelectorAll('#cw-wires .cw-wire-assigned').length"
+        first_direction = "document.querySelector('#cw-wires [data-edge=\"0\"]').dataset.direction"
+        saved_state = f"JSON.parse(localStorage.getItem({json.dumps(storage_key)}))"
+        solve_board = """(p => {
+            document.querySelector('#cw-reset').click();
+            p.edges.forEach((edge,i) => {
+                const selector=`#cw-wires [data-edge='${i}']`;
+                document.querySelector(selector).click();
+                if(edge.source!==edge.a) document.querySelector(selector).click();
+            });
             document.querySelector('#cw-check').click();
-            return !!document.querySelector('.cw-is-solved') && document.querySelectorAll('.cw-socket-matched').length===p.nodes.length;
+            return !!document.querySelector('.cw-is-solved') &&
+                document.querySelectorAll('.cw-socket-matched').length===p.nodes.length;
         })"""
-        check("all twelve puzzles solve with their real directions", solve_all)
-        check("game celebrates completion", "document.querySelector('#cw-progress').textContent==='12 / 12 connected' && document.querySelector('#cw-status').textContent.includes('All twelve')")
-        client.js("document.querySelector('#cw-next').click()")
-        check("last board loops back for replay", "document.querySelector('#cw-select').value==='0' && !document.querySelector('.cw-is-solved')")
-        navigate(base_url + "play/index.html", game_ready)
-        check("completed boards survive reload", "document.querySelector('#cw-progress').textContent==='12 / 12 connected'")
-        client.js("document.querySelector('#cw-select').value=11;document.querySelector('#cw-select').dispatchEvent(new Event('change'))")
+
+        freeze_clock("2026-09-13T15:00:00Z")
+        navigate(game_url, game_ready)
+        client.js(f"localStorage.removeItem({json.dumps(storage_key)});localStorage.removeItem('crosstalk-crossed-wires-v1')")
+        navigate(game_url, game_ready)
+        check("weekly shift is the default with future releases locked", "document.querySelector('#cw-weekly').getAttribute('aria-pressed')==='true' && document.querySelector('#cw-week-select').value==='shift-01' && Array.from(document.querySelector('#cw-week-select').options).filter(o=>!o.disabled).length===1")
+        check("twelve practice boards and a year of weekly shifts", "document.querySelector('#cw-select').options.length===12 && CROSSTALK_PUZZLES.puzzles.length===12 && CROSSTALK_PUZZLES.weeks.length===52")
+        check("weekly shift has three progressively unlocked rounds", "document.querySelectorAll('.cw-round').length===3 && !document.querySelector('.cw-round[data-round=\"0\"]').disabled && document.querySelector('.cw-round[data-round=\"1\"]').disabled && document.querySelector('.cw-round[data-round=\"2\"]').disabled")
+        check("release countdown has an explicit timestamp", "!!document.querySelector('#cw-countdown').textContent.trim() && Date.parse(document.querySelector('#cw-release-time').dateTime)===Date.parse('2026-09-16T17:00:00Z')")
+        check("game starts with missing arrows", assigned_count + "===0")
+        screenshot("game.png", full=True)
+
+        client.js("document.querySelector('#cw-check').click()")
+        check("game explains an incomplete board", "document.querySelector('#cw-status').textContent.length>25 && !document.querySelector('.cw-is-solved')")
+        client.js("document.querySelector('#cw-diagram').scrollIntoView({block:'center',behavior:'instant'})")
+        wire_point = client.js("""(() => {
+            const group=document.querySelector('#cw-diagram [data-wire="0"]');
+            const line=group.querySelector('path,line');
+            const local=line.getPointAtLength(line.getTotalLength()/2);
+            const point=new DOMPoint(local.x,local.y).matrixTransform(line.getScreenCTM());
+            return {x:point.x,y:point.y};
+        })()""")
+        client.call("Input.dispatchMouseEvent", {"type":"mousePressed",**wire_point,"button":"left","clickCount":1})
+        client.call("Input.dispatchMouseEvent", {"type":"mouseReleased",**wire_point,"button":"left","clickCount":1})
+        check("clicking the drawn wire sets its direction", assigned_count + "===1 && " + first_direction + "==='0'")
+        client.js("document.querySelector('#cw-diagram [data-wire=\"0\"]').focus()")
+        client.call("Input.dispatchKeyEvent", {"type":"rawKeyDown","key":"Enter","code":"Enter","windowsVirtualKeyCode":13,"nativeVirtualKeyCode":13})
+        client.call("Input.dispatchKeyEvent", {"type":"keyUp","key":"Enter","code":"Enter","windowsVirtualKeyCode":13,"nativeVirtualKeyCode":13})
+        check("drawn wires also respond to the keyboard", first_direction + "==='1'")
+        client.js("document.querySelector('#cw-undo').click()")
+        check("undo restores the preceding direction", first_direction + "==='0'")
+        saved_directions = client.js("Array.from(document.querySelectorAll('#cw-wires .cw-wire'),b=>b.dataset.direction)")
+        navigate(game_url, game_ready)
+        check("partial board survives reload", "JSON.stringify(Array.from(document.querySelectorAll('#cw-wires .cw-wire'),b=>b.dataset.direction))===" + json.dumps(json.dumps(saved_directions, separators=(',', ':'))))
+        client.js("document.querySelector('#cw-reset').click();document.querySelector('#cw-hint').click()")
+        check("hint gives a real arrow and a deduction", assigned_count + "===1 && Number(document.querySelector('#cw-hints-used').textContent)===1 && document.querySelector('#cw-status').textContent.length>60")
+        client.js("document.querySelector('#cw-reset').click()")
+        check("reset clears arrows and the attempt counters", assigned_count + "===0 && Number(document.querySelector('#cw-moves').textContent)===0 && Number(document.querySelector('#cw-hints-used').textContent)===0")
+        client.js("document.querySelector('#cw-week-select').value='shift-02';document.querySelector('#cw-week-select').dispatchEvent(new Event('change'))")
+        check("a forced change cannot open a future shift", "document.querySelector('#cw-week-select').value==='shift-01' && " + assigned_count + "===0")
+
+        # A complete shift exercises the progressive and blackout variants.
+        for round_index in range(3):
+            client.js(f"document.querySelector('.cw-round[data-round=\"{round_index}\"]').click()")
+            check(f"weekly round {round_index + 1} solves using real edges", solve_board + f"(CROSSTALK_PUZZLES.weeks[0].puzzles[{round_index}])")
+            check(f"weekly round {round_index + 1} earns a receipt", "!document.querySelector('#cw-receipt').hidden && document.querySelector('#cw-receipt-rating').textContent.trim().length>0")
+            check(f"clean weekly round {round_index + 1} earns three stars", saved_state + f".boards[CROSSTALK_PUZZLES.weeks[0].puzzles[{round_index}].id].bestStars===3")
+            if round_index < 2:
+                check(f"solving round {round_index + 1} unlocks the next stage", f"!document.querySelector('.cw-round[data-round=\"{round_index + 1}\"]').disabled")
+        check("weekly receipt offers a shareable result", "!document.querySelector('#cw-share').disabled")
+        client.js("Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__cwCopied=text}}});document.querySelector('#cw-share').click()")
+        await_check("share copies the completed shift and score", "window.__cwCopied?.includes('Shift 01') && window.__cwCopied.includes('9/9 stars') && window.__cwCopied.includes('/play/index.html')")
+        client.js("navigator.clipboard.writeText=async()=>{throw new Error('Clipboard unavailable for test')};document.querySelector('#cw-share').click()")
+        await_check("share has a selectable fallback when clipboard is unavailable", "!document.querySelector('#cw-share-text').hidden && document.querySelector('#cw-share-text').value.includes('9/9 stars')")
+        navigate(game_url, game_ready)
+        check("weekly completion and selected round survive reload", saved_state + ".selection.round===2 && !!document.querySelector('.cw-is-solved') && CROSSTALK_PUZZLES.weeks[0].puzzles.every(p=>" + saved_state + ".boards[p.id].bestStars===3)")
+        screenshot("game-solved.png", full=True)
+        client.js("document.querySelector('#cw-reset').click()")
+        check("replaying keeps the best weekly score", saved_state + ".boards[CROSSTALK_PUZZLES.weeks[0].puzzles[2].id].bestStars===3 && !document.querySelector('.cw-is-solved')")
         for width in (390, 360, 768):
             client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
-            check(f"game {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+            check(f"weekly blackout board {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
             if width == 390:
                 screenshot("game-mobile.png", full=True)
+        client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+        client.js("document.querySelector('#cw-practice').click();document.querySelector('#cw-select').value='0';document.querySelector('#cw-select').dispatchEvent(new Event('change'));document.querySelector('#cw-reset').click()")
+        client.js("CROSSTALK_PUZZLES.puzzles[0].edges.forEach((e,i)=>{const s=`#cw-wires [data-edge='${i}']`;document.querySelector(s).click();if(e.source===e.a)document.querySelector(s).click()});document.querySelector('#cw-check').click()")
+        check("incorrect complete board is rejected", "!document.querySelector('.cw-is-solved') && document.querySelector('#cw-receipt').hidden && document.querySelectorAll('.cw-socket-matched').length<CROSSTALK_PUZZLES.puzzles[0].nodes.length")
+        solve_all = """CROSSTALK_PUZZLES.puzzles.every((p,index)=>{
+            const picker=document.querySelector('#cw-select');picker.value=index;picker.dispatchEvent(new Event('change'));
+            return SOLVER(p);
+        })""".replace("SOLVER", solve_board)
+        check("all twelve practice puzzles solve with their real directions", solve_all)
+        check("all twelve practice completions are saved", "CROSSTALK_PUZZLES.puzzles.every(p=>" + saved_state + ".boards[p.id].bestStars>0)")
+        navigate(game_url, game_ready)
+        check("practice mode and completed board survive reload", "document.querySelector('#cw-practice').getAttribute('aria-pressed')==='true' && document.querySelector('#cw-select').value==='11' && !!document.querySelector('.cw-is-solved')")
+        for width in (390, 360, 768):
+            client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+            check(f"practice board {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+        freeze_clock("2026-09-09T16:59:59Z")
+        client.js(f"localStorage.removeItem({json.dumps(storage_key)})")
+        navigate(game_url, "document.readyState==='complete' && document.querySelector('#cw-week-select')?.options.length===52")
+        check("before the season starts every weekly shift is sealed", "Array.from(document.querySelector('#cw-week-select').options).every(o=>o.disabled) && document.querySelectorAll('#cw-wires .cw-wire').length===0 && document.querySelector('#cw-check').disabled")
+        client.js("document.querySelector('#cw-practice').click()")
+        check("practice is available before the first weekly release", "document.querySelectorAll('#cw-wires .cw-wire').length>0 && !document.querySelector('#cw-check').disabled")
+        client.js("document.querySelector('#cw-weekly').click();window.__cwTestNow=Date.parse('2026-09-09T17:00:00Z')")
+        await_check("first release creates the board on an already open page", "document.querySelector('#cw-week-select').value==='shift-01' && document.querySelectorAll('#cw-wires .cw-wire').length>0 && !document.querySelector('#cw-check').disabled")
+
+        # Explicit UTC expectations catch a fixed-offset schedule across DST.
+        release_cases = (
+            ("2026-09-16T16:59:59Z", "shift-02", False),
+            ("2026-09-16T17:00:00Z", "shift-02", True),
+            ("2026-10-28T17:59:59Z", "shift-08", False),
+            ("2026-10-28T18:00:00Z", "shift-08", True),
+            ("2027-03-31T16:59:59Z", "shift-30", False),
+            ("2027-03-31T17:00:00Z", "shift-30", True),
+        )
+        for instant, shift_id, unlocked in release_cases:
+            freeze_clock(instant)
+            navigate(game_url, game_ready)
+            check(f"{shift_id} {'unlocked' if unlocked else 'locked'} at {instant}", f"document.querySelector('#cw-week-select option[value=\"{shift_id}\"]').disabled==={str(not unlocked).lower()}")
+        freeze_clock("2027-09-01T17:00:00Z")
+        navigate(game_url, game_ready)
+        check("the completed season keeps all 52 shifts open", "Array.from(document.querySelector('#cw-week-select').options).every(o=>!o.disabled) && document.querySelector('#cw-countdown').textContent==='Season complete' && !document.querySelector('#cw-release-time').hasAttribute('datetime') && !/NaN|undefined/.test(document.querySelector('#cw-release-time').textContent)")
+        client.call("Emulation.setTimezoneOverride", {"timezoneId":"America/Los_Angeles"})
+        freeze_clock("2026-10-28T18:00:00Z")
+        navigate(game_url, game_ready)
+        check("release availability is independent of a visitor's timezone", "!document.querySelector('#cw-week-select option[value=\"shift-08\"]').disabled && document.querySelector('#cw-week-select option[value=\"shift-09\"]').disabled")
+        client.call("Emulation.setTimezoneOverride", {"timezoneId":"Europe/Copenhagen"})
+        freeze_clock("2026-09-16T16:59:59Z")
+        navigate(game_url, game_ready)
+        client.js("window.__cwTestNow=Date.parse('2026-09-16T17:00:00Z')")
+        await_check("an open page unlocks the Wednesday release automatically", "!document.querySelector('#cw-week-select option[value=\"shift-02\"]').disabled")
+
+        freeze_clock("2026-09-13T15:00:00Z")
+        client.js(f"localStorage.removeItem({json.dumps(storage_key)});localStorage.setItem('crosstalk-crossed-wires-v1',JSON.stringify(['line-01']))")
+        navigate(game_url, game_ready)
+        check("previous game completions migrate into practice", saved_state + ".boards['line-01'].bestStars>0")
         blocker=client.call("Page.addScriptToEvaluateOnNewDocument", {"source":"Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable for test')}})"})
-        navigate(base_url + "play/index.html", game_ready)
+        navigate(game_url, game_ready)
         client.js("document.querySelector('#cw-hint').click()")
-        check("game works when storage is unavailable", "document.querySelectorAll('.cw-wire-assigned').length===1")
+        check("game works when storage is unavailable", assigned_count + "===1")
         client.call("Page.removeScriptToEvaluateOnNewDocument", {"identifier":blocker["identifier"]})
+        client.call("Page.removeScriptToEvaluateOnNewDocument", {"identifier":clock_script})
         navigate(base_url + "#atlas", "location.pathname.endsWith('/week1/index.html') && !!document.querySelector('#network-atlas [data-node]')")
         check("old report bookmarks still work", "location.hash==='#atlas'")
         # All pages also work when opened from disk.

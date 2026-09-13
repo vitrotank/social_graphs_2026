@@ -1,266 +1,332 @@
-/* Crossed Wires: selected real links, uniquely solved by local degree targets. */
+/* Crossed Wires: Python supplies real, uniquely solvable boards and release dates. */
 (() => {
   "use strict";
-  const mount = document.getElementById("crossed-wires");
+  const $ = id => document.getElementById(id);
+  const mount = $("crossed-wires");
   if (!mount) return;
   const data = window.CROSSTALK_PUZZLES;
-  const status = document.getElementById("cw-status");
-  if (!data?.puzzles?.length) {
-    status.textContent = "The puzzle data could not be loaded. Please reload the page to reconnect.";
+  if (!data?.puzzles?.length || !data?.weeks?.length) {
+    $("cw-status").textContent = "The switchboard data could not be loaded. Please reload to reconnect.";
     return;
   }
-
-  const puzzles = data.puzzles;
-  const select = document.getElementById("cw-select");
-  const diagram = document.getElementById("cw-diagram");
-  // Crop unused outer space so socket and wire labels stay legible on phones.
-  diagram.setAttribute("viewBox", "50 10 460 340");
-  const socketList = document.getElementById("cw-sockets");
-  const wireList = document.getElementById("cw-wires");
-  const progress = document.getElementById("cw-progress");
-  const level = document.getElementById("cw-level");
-  const assignedLabel = document.getElementById("cw-assigned");
-  const checkButton = document.getElementById("cw-check");
-  const hintButton = document.getElementById("cw-hint");
-  const nextButton = document.getElementById("cw-next");
-  const storageKey = "crosstalk-crossed-wires-v1";
-  let completed = new Set();
+  const practice = data.puzzles, weeks = data.weeks;
+  const storageKey = "crosstalk-crossed-wires-v2";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", stageNames = ["Dial in", "Crossed lines", "Blackout"];
+  const diagram = $("cw-diagram"), select = $("cw-select"), weekSelect = $("cw-week-select");
+  diagram.setAttribute("viewBox", "0 0 600 440");
+  let saved = {version: 2, boards: {}, selection: {}};
   try {
-    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    if (Array.isArray(saved)) completed = new Set(saved.filter(id => puzzles.some(p => p.id === id)));
-  } catch (_) { /* Storage is an optional convenience, including in private browsing. */ }
+    const parsed = JSON.parse(localStorage.getItem(storageKey) || "null");
+    if (parsed?.version === 2 && parsed.boards && typeof parsed.boards === "object") {
+      saved = {version: 2, boards: parsed.boards, selection: parsed.selection || {}};
+    }
+    const legacy = JSON.parse(localStorage.getItem("crosstalk-crossed-wires-v1") || "[]");
+    if (Array.isArray(legacy)) practice.forEach(board => {
+      if (legacy.includes(board.id) && !saved.boards[board.id]) saved.boards[board.id] = {
+        directions: board.edges.map(answer), moves: 0, hints: 0, checks: 0, history: [], solved: true, bestStars: 1,
+      };
+    });
+  } catch (_) { /* Storage is optional, including in private browsing. */ }
+  const available = () => weeks.filter(item => Date.parse(item.release_at) <= Date.now());
+  let mode = saved.selection.mode === "practice" ? "practice" : "weekly";
+  let week = available().find(item => item.id === saved.selection.week) || available().at(-1) || null;
+  let round = Number.isInteger(saved.selection.round) ? Math.max(0, Math.min(2, saved.selection.round)) : 0;
+  let practiceIndex = Number.isInteger(saved.selection.practice) ? Math.max(0, Math.min(practice.length - 1, saved.selection.practice)) : 0;
+  let puzzle = null, state = null, sockets = [], wires = [], positions = [], releaseSignature = null;
 
-  let index = 0;
-  let puzzle;
-  let directions = [];
-  let solved = false;
-  let hints = 0;
-  let sockets = [];
-  let wires = [];
-  let positions = [];
-  const svgNS = "http://www.w3.org/2000/svg";
-  const letters = "ABCDE";
-  const byId = () => new Map(puzzle.nodes.map((node, i) => [node.id, {...node, letter: letters[i]}]));
-
+  function answer(edge) { return edge.source === edge.a ? 0 : 1; }
+  function fresh() { return {directions: [], moves: 0, hints: 0, checks: 0, history: [], solved: false, bestStars: 0}; }
+  function nonnegative(value) { return Number.isInteger(value) && value >= 0 ? value : 0; }
+  function boardState(board) {
+    const stored = saved.boards[board.id] || fresh();
+    const valid = values => Array.isArray(values) && values.length === board.edges.length && values.every(value => value === null || value === 0 || value === 1);
+    const directions = valid(stored.directions) ? stored.directions.slice() : board.edges.map(() => null);
+    return {
+      directions, moves: nonnegative(stored.moves), hints: nonnegative(stored.hints), checks: nonnegative(stored.checks),
+      history: Array.isArray(stored.history) ? stored.history.filter(valid).slice(-80) : [],
+      solved: stored.solved === true && directions.every((value, i) => value === answer(board.edges[i])),
+      bestStars: Math.min(3, nonnegative(stored.bestStars)),
+    };
+  }
+  function completed(board) { return boardState(board).bestStars > 0; }
+  function save() {
+    if (puzzle && state) saved.boards[puzzle.id] = state;
+    saved.selection = {mode, week: week?.id || null, round, practice: practiceIndex};
+    try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch (_) { /* Gameplay needs no storage. */ }
+  }
   function element(tag, className, text) {
     const node = document.createElement(tag);
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
   }
-
-  function svgElement(tag, attributes) {
-    const node = document.createElementNS(svgNS, tag);
-    for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, value);
+  function svgElement(tag, attrs) {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
     return node;
   }
-
   function announce(message, type = "") {
-    status.textContent = message;
-    status.className = `cw-status${type ? ` cw-status-${type}` : ""}`;
+    $("cw-status").textContent = message;
+    $("cw-status").className = `cw-status${type ? ` cw-status-${type}` : ""}`;
   }
-
-  function updateProgress() {
-    progress.textContent = `${completed.size} / ${puzzles.length} connected`;
-    for (const [i, option] of Array.from(select.options).entries()) {
-      option.textContent = `${String(i + 1).padStart(2, "0")} — ${puzzles[i].title}${completed.has(puzzles[i].id) ? " ✓" : ""}`;
+  function nameMap() { return new Map(puzzle.nodes.map((node, i) => [node.id, {...node, letter: letters[i]}])); }
+  function counts() {
+    const result = new Map(puzzle.nodes.map(node => [node.id, {incoming: 0, outgoing: 0}]));
+    puzzle.edges.forEach((edge, i) => {
+      if (state.directions[i] === null) return;
+      result.get(state.directions[i] === 0 ? edge.a : edge.b).outgoing++;
+      result.get(state.directions[i] === 0 ? edge.b : edge.a).incoming++;
+    });
+    return result;
+  }
+  function hiddenSocket(node) { return mode === "weekly" && round === 2 && !state.solved && node.id === puzzle.nodes.at(-1).id; }
+  function dateLabel(instant) {
+    return new Intl.DateTimeFormat("en-GB", {timeZone: data.schedule.timezone, weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZoneName: "short", hour12: false}).format(new Date(instant));
+  }
+  function renderSchedule() {
+    const open = available(), current = open.at(-1);
+    const next = weeks.find(item => Date.parse(item.release_at) > Date.now());
+    const displayed = mode === "weekly" && week ? week : current;
+    $("cw-release-title").textContent = displayed ? `Shift ${String(displayed.number).padStart(2, "0")} · ${displayed.title}` : "Your first night shift is on its way.";
+    $("cw-release-detail").textContent = `${current && displayed !== current ? `Shift ${String(current.number).padStart(2, "0")} is now open. Choose “The weekly shift” to start it. ` : "Three rounds. One repaired switchboard. "}Fresh challenges every Wednesday at ${String(data.schedule.release_hour).padStart(2, "0")}:00, Copenhagen / Paris time.`;
+    $("cw-release-time").textContent = next ? dateLabel(next.release_at) : `All ${weeks.length} shifts are open. The archive is yours.`;
+    if (next) $("cw-release-time").dateTime = next.release_at;
+    else $("cw-release-time").removeAttribute("datetime");
+    if (next) {
+      const seconds = Math.max(0, Math.ceil((Date.parse(next.release_at) - Date.now()) / 1000));
+      $("cw-countdown").textContent = `${Math.floor(seconds / 86400)}d ${String(Math.floor(seconds % 86400 / 3600)).padStart(2, "0")}h ${String(Math.floor(seconds % 3600 / 60)).padStart(2, "0")}m ${String(seconds % 60).padStart(2, "0")}s`;
+    } else $("cw-countdown").textContent = "Season complete";
+    const signature = open.map(item => item.id).join();
+    if (signature !== releaseSignature || !weekSelect.options.length) {
+      releaseSignature = signature;
+      weekSelect.replaceChildren(...weeks.map(item => {
+        const unlocked = open.includes(item);
+        const option = element("option", "", `${String(item.number).padStart(2, "0")} · ${item.title}${unlocked ? "" : ` · opens ${dateLabel(item.release_at)}`}`);
+        option.value = item.id; option.disabled = !unlocked;
+        return option;
+      }));
+      weekSelect.disabled = !open.length;
+      if (!week && current) { week = current; round = 0; if (mode === "weekly") loadBoard(); }
+      weekSelect.value = week?.id || "";
     }
   }
-
-  function currentCounts() {
-    const counts = new Map(puzzle.nodes.map(node => [node.id, {incoming: 0, outgoing: 0}]));
-    puzzle.edges.forEach((edge, i) => {
-      if (directions[i] === null) return;
-      const source = directions[i] === 0 ? edge.a : edge.b;
-      const target = directions[i] === 0 ? edge.b : edge.a;
-      counts.get(source).outgoing += 1;
-      counts.get(target).incoming += 1;
+  function renderNavigation() {
+    const focusedRound = document.activeElement.closest?.(".cw-round")?.dataset.round;
+    $("cw-weekly").setAttribute("aria-pressed", String(mode === "weekly"));
+    $("cw-practice").setAttribute("aria-pressed", String(mode === "practice"));
+    $("cw-practice-panel").hidden = mode !== "practice";
+    $("cw-week-panel").hidden = mode !== "weekly";
+    $("cw-rounds").hidden = mode !== "weekly" || !week;
+    weekSelect.value = week?.id || ""; select.value = String(practiceIndex);
+    $("cw-rounds").replaceChildren();
+    if (week) week.puzzles.forEach((board, i) => {
+      const done = completed(board);
+      const button = element("button", `cw-round${i === round ? " cw-round-active" : ""}${done ? " cw-round-complete" : ""}`);
+      button.type = "button"; button.dataset.round = i;
+      button.disabled = i > 0 && !completed(week.puzzles[i - 1]);
+      if (i === round) button.setAttribute("aria-current", "step");
+      button.append(element("span", "cw-round-number", done ? "✓" : String(i + 1).padStart(2, "0")), element("span", "cw-round-name", stageNames[i]), element("span", "cw-round-note", button.disabled ? "Complete the previous round" : done ? "Repaired · replay anytime" : ["3 pages · find your rhythm", "4 pages · follow the clues", "6 pages · one dark socket"][i]));
+      button.addEventListener("click", () => { if (!button.disabled) { save(); round = i; loadBoard(); } });
+      $("cw-rounds").append(button);
     });
-    return counts;
+    practice.forEach((board, i) => { select.options[i].textContent = `${String(i + 1).padStart(2, "0")} · ${board.title}${completed(board) ? " ✓" : ""}`; });
+    $("cw-progress").textContent = mode === "practice" ? `${practice.filter(completed).length} / 12 connected` : `${week ? week.puzzles.filter(completed).length : 0} / 3 rounds restored`;
+    if (focusedRound !== undefined && mode === "weekly") $("cw-rounds").querySelector(`[data-round="${focusedRound}"]`)?.focus({preventScroll: true});
   }
-
+  function wireLabel(edge, i) {
+    const names = nameMap(), direction = state.directions[i];
+    const a = names.get(edge.a).name, b = names.get(edge.b).name;
+    return `Wire ${i + 1}: ${direction === null ? `${a} and ${b}, unassigned. Activate to connect.` : `${direction === 0 ? a : b} points to ${direction === 0 ? b : a}. Activate to reverse.`}`;
+  }
   function drawDiagram() {
+    const focused = diagram.contains(document.activeElement) ? document.activeElement.dataset.wire : null;
     diagram.replaceChildren();
     const defs = svgElement("defs", {});
-    const marker = svgElement("marker", {id: "cw-arrow", markerWidth: 9, markerHeight: 9, refX: 7, refY: 4.5, orient: "auto", markerUnits: "userSpaceOnUse"});
-    marker.append(svgElement("path", {d: "M0 0 L9 4.5 L0 9 Z", fill: "#2849c7"}));
-    defs.append(marker);
-    diagram.append(defs);
-    const records = byId();
+    const marker = svgElement("marker", {id: "cw-arrow", markerWidth: 11, markerHeight: 11, refX: 9, refY: 5.5, orient: "auto", markerUnits: "userSpaceOnUse"});
+    marker.append(svgElement("path", {d: "M0 0 L11 5.5 L0 11 Z", fill: "#a8b8ff"}));
+    defs.append(marker); diagram.append(defs);
     puzzle.edges.forEach((edge, i) => {
-      const a = positions[puzzle.nodes.findIndex(n => n.id === edge.a)];
-      const b = positions[puzzle.nodes.findIndex(n => n.id === edge.b)];
-      const [start, end] = directions[i] === 1 ? [b, a] : [a, b];
-      const distance = Math.hypot(end.x - start.x, end.y - start.y);
-      const dx = (end.x - start.x) / distance;
-      const dy = (end.y - start.y) / distance;
-      const path = svgElement("line", {
-        x1: start.x + dx * 32, y1: start.y + dy * 32,
-        x2: end.x - dx * 34, y2: end.y - dy * 34,
-        stroke: directions[i] === null ? "#9d9b94" : "#2849c7",
-        "stroke-width": directions[i] === null ? 2 : 3,
-        "stroke-linecap": "round",
-      });
-      if (directions[i] === null) path.setAttribute("stroke-dasharray", "5 7");
-      else path.setAttribute("marker-end", "url(#cw-arrow)");
-      diagram.append(path);
-      // Wire labels sit partway along the line to avoid central intersections.
-      const ratio = 0.39 + (i % 3) * 0.09;
-      const lx = a.x + (b.x - a.x) * ratio;
-      const ly = a.y + (b.y - a.y) * ratio;
-      diagram.append(svgElement("circle", {cx: lx, cy: ly, r: 12, fill: "#f6f1e7", stroke: directions[i] === null ? "#c7c5bb" : "#2849c7"}));
-      const label = svgElement("text", {x: lx, y: ly + 4, "text-anchor": "middle", class: "cw-svg-wire-label"});
-      label.textContent = i + 1;
-      diagram.append(label);
+      const a = positions[puzzle.nodes.findIndex(node => node.id === edge.a)], b = positions[puzzle.nodes.findIndex(node => node.id === edge.b)];
+      const [start, end] = state.directions[i] === 1 ? [b, a] : [a, b];
+      const length = Math.hypot(end.x - start.x, end.y - start.y), dx = (end.x - start.x) / length, dy = (end.y - start.y) / length;
+      const geometry = {x1: start.x + dx * 34, y1: start.y + dy * 34, x2: end.x - dx * 37, y2: end.y - dy * 37};
+      const group = svgElement("g", {class: "cw-svg-wire", "data-wire": i, role: "button", tabindex: state.solved ? -1 : 0, "aria-label": wireLabel(edge, i), "aria-disabled": String(state.solved)});
+      group.append(svgElement("line", {...geometry, stroke: "transparent", "stroke-width": 26, class: "cw-wire-hit"}));
+      const assigned = state.directions[i] !== null;
+      const line = svgElement("line", {...geometry, class: "cw-cable", stroke: assigned ? "#a8b8ff" : "#8b97ad", "stroke-width": assigned ? 3.5 : 2, "stroke-linecap": "round"});
+      if (assigned) line.setAttribute("marker-end", "url(#cw-arrow)"); else line.setAttribute("stroke-dasharray", "5 8");
+      group.append(line);
+      if (assigned) group.append(svgElement("line", {...geometry, class: "cw-flow", "aria-hidden": "true"}));
+      const ratio = .34 + i % 3 * .12, x = a.x + (b.x - a.x) * ratio, y = a.y + (b.y - a.y) * ratio;
+      group.append(svgElement("circle", {cx: x, cy: y, r: 17, fill: "#232c44", stroke: "#a8b8ff", "stroke-width": 1.5}));
+      const text = svgElement("text", {x, y: y + 5, "text-anchor": "middle", class: "cw-svg-wire-label"});
+      text.textContent = i + 1; group.append(text);
+      group.addEventListener("click", () => flip(i));
+      group.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); flip(i); } });
+      diagram.append(group);
     });
+    const current = counts();
     puzzle.nodes.forEach((node, i) => {
       const {x, y} = positions[i];
-      diagram.append(svgElement("circle", {cx: x, cy: y, r: 30, fill: "#f6f1e7", stroke: "#232927", "stroke-width": 2}));
-      diagram.append(svgElement("circle", {cx: x, cy: y, r: 23, fill: "#2849c7"}));
-      const letter = svgElement("text", {x, y: y + 7, "text-anchor": "middle", class: "cw-svg-letter"});
-      letter.textContent = records.get(node.id).letter;
-      diagram.append(letter);
-      const badge = svgElement("text", {x, y: y + 49, "text-anchor": "middle", class: "cw-svg-target"});
-      badge.textContent = `IN ${node.in_target} / OUT ${node.out_target}`;
-      diagram.append(badge);
+      const matched = !hiddenSocket(node) && current.get(node.id).incoming === node.in_target && current.get(node.id).outgoing === node.out_target;
+      diagram.append(svgElement("circle", {cx: x, cy: y, r: 31, fill: "#f6f1e7", stroke: matched ? "#aac8a4" : "#f6f1e7", "stroke-width": matched ? 5 : 2, class: `cw-port${matched ? " cw-port-matched" : ""}`}));
+      diagram.append(svgElement("circle", {cx: x, cy: y, r: 25, fill: matched ? "#486452" : "#2849c7"}));
+      const letter = svgElement("text", {x, y: y + 8, "text-anchor": "middle", class: "cw-svg-letter"});
+      letter.textContent = letters[i]; diagram.append(letter);
+      const target = svgElement("text", {x, y: y + 53, "text-anchor": "middle", class: "cw-svg-target"});
+      target.textContent = hiddenSocket(node) ? "IN ? / OUT ?" : `IN ${node.in_target} / OUT ${node.out_target}`; diagram.append(target);
     });
+    if (focused !== null && !state.solved) diagram.querySelector(`[data-wire="${focused}"]`)?.focus({preventScroll: true});
   }
-
   function updateBoard() {
-    const counts = currentCounts();
-    const names = byId();
-    sockets.forEach(({node, card, incoming, outgoing, match}) => {
-      const current = counts.get(node.id);
-      incoming.textContent = current.incoming;
-      outgoing.textContent = current.outgoing;
-      const correct = current.incoming === node.in_target && current.outgoing === node.out_target;
-      const over = current.incoming > node.in_target || current.outgoing > node.out_target;
-      card.classList.toggle("cw-socket-matched", correct);
-      card.classList.toggle("cw-socket-over", over);
-      match.textContent = correct ? "Matched ✓" : over ? "Over target" : "In progress";
+    if (!puzzle) return;
+    const current = counts(), names = nameMap();
+    let matches = 0;
+    sockets.forEach(({node, card, incoming, outgoing, inTarget, outTarget, match}) => {
+      const value = current.get(node.id), hidden = hiddenSocket(node);
+      incoming.textContent = value.incoming; outgoing.textContent = value.outgoing;
+      inTarget.textContent = hidden ? "?" : node.in_target; outTarget.textContent = hidden ? "?" : node.out_target;
+      const correct = !hidden && value.incoming === node.in_target && value.outgoing === node.out_target;
+      const over = !hidden && (value.incoming > node.in_target || value.outgoing > node.out_target);
+      if (correct) matches++;
+      card.classList.toggle("cw-socket-matched", correct); card.classList.toggle("cw-socket-over", over); card.classList.toggle("cw-socket-blackout", hidden);
+      match.textContent = hidden ? "Blackout · infer the targets" : correct ? "Matched ✓" : over ? "Over target" : "Waiting for a signal";
     });
     wires.forEach(({edge, button, arrow, label}, i) => {
-      const a = names.get(edge.a), b = names.get(edge.b);
-      const assigned = directions[i] !== null;
-      arrow.textContent = assigned ? (directions[i] === 0 ? "→" : "←") : "?";
-      button.classList.toggle("cw-wire-assigned", assigned);
-      button.disabled = solved;
-      const source = directions[i] === 1 ? b : a;
-      const target = directions[i] === 1 ? a : b;
-      label.textContent = assigned ? `${source.name} → ${target.name}` : `${a.name} · ${b.name}`;
-      button.setAttribute("aria-label", `Wire ${i + 1}: ${assigned ? `${source.name} points to ${target.name}. Activate to reverse.` : `${a.name} and ${b.name}, unassigned. Activate to point from ${a.name} to ${b.name}.`}`);
+      const direction = state.directions[i], assigned = direction !== null, a = names.get(edge.a), b = names.get(edge.b);
+      arrow.textContent = assigned ? (direction === 0 ? "→" : "←") : "?";
+      button.dataset.direction = assigned ? String(direction) : ""; button.classList.toggle("cw-wire-assigned", assigned); button.disabled = state.solved;
+      label.textContent = assigned ? `${direction === 0 ? a.name : b.name} → ${direction === 0 ? b.name : a.name}` : `${a.name} · ${b.name}`;
+      button.setAttribute("aria-label", wireLabel(edge, i));
     });
-    const assigned = directions.filter(value => value !== null).length;
-    assignedLabel.textContent = `${assigned} / ${directions.length} wires assigned`;
-    mount.classList.toggle("cw-is-solved", solved);
-    checkButton.disabled = solved;
-    hintButton.disabled = solved;
-    drawDiagram();
+    $("cw-assigned").textContent = `${state.directions.filter(value => value !== null).length} / ${state.directions.length} wires assigned`;
+    $("cw-moves").textContent = state.moves; $("cw-hints-used").textContent = state.hints;
+    $("cw-matched").textContent = `${matches} / ${puzzle.nodes.length}${mode === "weekly" && round === 2 && !state.solved ? " · 1 dark" : ""}`;
+    mount.classList.toggle("cw-is-solved", state.solved);
+    $("cw-check").disabled = state.solved; $("cw-hint").disabled = state.solved; $("cw-undo").disabled = state.solved || !state.history.length;
+    $("cw-next").disabled = mode === "weekly" && (!state.solved || round === 2);
+    $("cw-next").textContent = mode === "practice" ? "Next practice board →" : round === 2 ? (state.solved ? "Shift complete ✓" : "Finish this round") : "Next round →";
+    $("cw-receipt").hidden = !state.solved; drawDiagram(); if (state.solved) renderReceipt();
   }
-
-  function loadBoard(newIndex) {
-    index = newIndex;
-    puzzle = puzzles[index];
-    directions = puzzle.edges.map(() => null);
-    solved = false;
-    hints = 0;
-    select.value = String(index);
-    const degree = puzzle.difficulty[0].toUpperCase() + puzzle.difficulty.slice(1);
-    level.textContent = `${degree} / ${puzzle.nodes.length} pages / ${puzzle.edges.length} wires`;
-    nextButton.firstChild.textContent = index === puzzles.length - 1 ? "First board " : "Next board ";
-    socketList.replaceChildren();
-    wireList.replaceChildren();
-    positions = puzzle.nodes.map((_, i) => {
-      const angle = -Math.PI / 2 + i * Math.PI * 2 / puzzle.nodes.length;
-      return {x: 280 + Math.cos(angle) * 187, y: 178 + Math.sin(angle) * 126};
-    });
+  function flip(i) {
+    if (!puzzle || state.solved) return;
+    state.history.push(state.directions.slice()); state.history = state.history.slice(-80);
+    state.directions[i] = state.directions[i] === 0 ? 1 : 0; state.moves++;
+    save(); updateBoard(); announce(wireLabel(puzzle.edges[i], i));
+  }
+  function loadBoard() {
+    renderNavigation();
+    if (mode === "weekly" && !week) {
+      puzzle = null; state = null;
+      $("cw-board-title").textContent = "The exchange opens on Wednesday.";
+      $("cw-briefing").textContent = "Your weekly shift will appear here automatically. Explore the practice boards while you wait.";
+      ["cw-check", "cw-hint", "cw-reset", "cw-next", "cw-undo"].forEach(id => $(id).disabled = true);
+      diagram.replaceChildren(); $("cw-wires").replaceChildren(); $("cw-sockets").replaceChildren(); $("cw-receipt").hidden = true;
+      announce("The first shift has not opened yet. Practice is always available."); save(); return;
+    }
+    if (mode === "weekly") while (round > 0 && !completed(week.puzzles[round - 1])) round--;
+    puzzle = mode === "practice" ? practice[practiceIndex] : week.puzzles[round]; state = boardState(puzzle);
+    $("cw-reset").disabled = false; $("cw-share-text").hidden = true;
+    $("cw-board-title").textContent = mode === "weekly" ? `${String(round + 1).padStart(2, "0")} / ${stageNames[round]}` : puzzle.title;
+    $("cw-briefing").textContent = mode === "weekly" && round === 2
+      ? `A power cut erased socket ${letters[puzzle.nodes.length - 1]}'s targets. Every wire adds one IN and one OUT, so each target column must total ${puzzle.edges.length}. Deduce the missing counts, then reconnect the board.`
+      : mode === "weekly" && round === 1 ? "The exchange is getting busy. Follow one socket's counts through its neighbors. Every change sends a ripple through the board."
+        : "Tap a numbered wire to connect it; tap again to reverse it. Match each socket's IN and OUT targets, then send a test signal.";
+    $("cw-level").textContent = `${puzzle.difficulty.toUpperCase()} / ${puzzle.nodes.length} pages / ${puzzle.edges.length} wires`;
+    positions = puzzle.nodes.map((_, i) => { const angle = -Math.PI / 2 + i * Math.PI * 2 / puzzle.nodes.length; return {x: 300 + Math.cos(angle) * 220, y: 205 + Math.sin(angle) * 150}; });
+    $("cw-sockets").replaceChildren();
     sockets = puzzle.nodes.map((node, i) => {
-      const card = element("article", "cw-socket");
-      const identity = element("div", "cw-socket-identity");
+      const card = element("article", "cw-socket"), identity = element("div", "cw-socket-identity");
       identity.append(element("span", "cw-socket-letter", letters[i]), element("h3", "", node.name));
-      const counts = element("div", "cw-socket-counts");
-      const incoming = element("strong", "", "0");
-      const outgoing = element("strong", "", "0");
-      const inCount = element("span", "");
-      const outCount = element("span", "");
-      inCount.append(document.createTextNode("IN "), incoming, document.createTextNode(` / ${node.in_target}`));
-      outCount.append(document.createTextNode("OUT "), outgoing, document.createTextNode(` / ${node.out_target}`));
-      counts.append(inCount, outCount);
-      const match = element("span", "cw-socket-match", "In progress");
-      card.append(identity, counts, match);
-      socketList.append(card);
-      return {node, card, incoming, outgoing, match};
+      const countRow = element("div", "cw-socket-counts"), incoming = element("strong"), outgoing = element("strong"), inTarget = element("span"), outTarget = element("span");
+      const inCount = element("span"), outCount = element("span");
+      inCount.append("IN ", incoming, " / ", inTarget); outCount.append("OUT ", outgoing, " / ", outTarget); countRow.append(inCount, outCount);
+      const match = element("span", "cw-socket-match"); card.append(identity, countRow, match); $("cw-sockets").append(card);
+      return {node, card, incoming, outgoing, inTarget, outTarget, match};
     });
-    const names = byId();
+    const names = nameMap(); $("cw-wires").replaceChildren();
     wires = puzzle.edges.map((edge, i) => {
-      const button = element("button", "cw-wire");
-      button.type = "button";
-      button.dataset.edge = i;
-      const number = element("span", "cw-wire-number", String(i + 1).padStart(2, "0"));
-      const ports = element("span", "cw-wire-ports");
-      const arrow = element("span", "cw-wire-direction", "?");
-      ports.setAttribute("aria-hidden", "true");
+      const button = element("button", "cw-wire"); button.type = "button"; button.dataset.edge = i;
+      const ports = element("span", "cw-wire-ports"), arrow = element("span", "cw-wire-direction", "?"); ports.setAttribute("aria-hidden", "true");
       ports.append(element("span", "", names.get(edge.a).letter), arrow, element("span", "", names.get(edge.b).letter));
-      const label = element("span", "cw-wire-label");
-      const flip = element("span", "cw-wire-flip", "↔");
-      flip.setAttribute("aria-hidden", "true");
-      button.append(number, ports, label, flip);
-      button.addEventListener("click", () => {
-        directions[i] = directions[i] === 0 ? 1 : 0;
-        updateBoard();
-        const source = names.get(directions[i] === 0 ? edge.a : edge.b);
-        const target = names.get(directions[i] === 0 ? edge.b : edge.a);
-        const counts = currentCounts();
-        announce(`Wire ${i + 1}: ${source.name} → ${target.name}. ${source.name} now has ${counts.get(source.id).outgoing} of ${source.out_target} outgoing; ${target.name} has ${counts.get(target.id).incoming} of ${target.in_target} incoming.`);
-      });
-      wireList.append(button);
-      return {edge, button, arrow, label};
+      const label = element("span", "cw-wire-label"), flipIcon = element("span", "cw-wire-flip", "↔"); flipIcon.setAttribute("aria-hidden", "true");
+      button.append(element("span", "cw-wire-number", String(i + 1).padStart(2, "0")), ports, label, flipIcon);
+      button.addEventListener("click", () => flip(i)); $("cw-wires").append(button); return {edge, button, arrow, label};
     });
-    updateBoard();
-    announce(`Board ${index + 1}: ${puzzle.title}. Set the directions to match every IN and OUT target. Counts refer only to this board.`);
+    save(); renderNavigation(); renderSchedule(); updateBoard();
+    announce(state.solved ? "This board is repaired. Replay it to try for a better ticket, or continue your shift." : `${puzzle.title}. ${state.moves ? "Your unfinished board is restored." : "The targets count only the links on this board."}`);
   }
-
-  select.replaceChildren(...puzzles.map((puzzle, i) => {
-    const option = element("option", "", puzzle.title);
-    option.value = String(i);
-    return option;
-  }));
-  select.addEventListener("change", () => loadBoard(Number(select.value)));
-  document.getElementById("cw-reset").addEventListener("click", () => loadBoard(index));
-  nextButton.addEventListener("click", () => loadBoard((index + 1) % puzzles.length));
-  checkButton.addEventListener("click", () => {
-    const missing = directions.filter(value => value === null).length;
-    if (missing) {
-      announce(`${missing} wire${missing === 1 ? " still needs" : "s still need"} a direction. Press the buttons marked with a question mark.`, "notice");
-      return;
-    }
-    const counts = currentCounts();
-    const wrong = puzzle.nodes.filter(node => counts.get(node.id).incoming !== node.in_target || counts.get(node.id).outgoing !== node.out_target);
-    if (wrong.length) {
-      announce(`${wrong.length} sockets have a crossed connection: ${wrong.map(node => node.name).join(", ")}. Try reversing a wire touching one of them.`, "notice");
-      return;
-    }
-    solved = true;
-    completed.add(puzzle.id);
-    try { localStorage.setItem(storageKey, JSON.stringify([...completed])); } catch (_) { /* Gameplay also works without storage. */ }
-    updateProgress();
-    updateBoard();
-    announce(`Connection restored! Every IN and OUT target matches the real links.${hints ? ` You used ${hints} hint${hints === 1 ? "" : "s"}.` : " All yours, without a hint."}${completed.size === puzzles.length ? " All twelve boards are connected. The switchboard is yours." : " Ready for another tangle?"}`, "success");
-    nextButton.focus({preventScroll: true});
+  function stars() { return state.hints + state.checks === 0 ? 3 : state.hints + state.checks <= 2 ? 2 : 1; }
+  function renderReceipt() {
+    const shiftDone = mode === "weekly" && week.puzzles.every(completed);
+    $("cw-receipt-title").textContent = shiftDone ? "Night shift, signed off." : "Connection restored.";
+    $("cw-receipt-rating").textContent = "★".repeat(stars()) + "☆".repeat(3 - stars()); $("cw-receipt-rating").dataset.stars = stars();
+    $("cw-receipt-rating").setAttribute("aria-label", `${stars()} of 3 stars`);
+    $("cw-receipt-detail").textContent = `${puzzle.edges.length} real Wikipedia links restored. ${state.hints} hint${state.hints === 1 ? "" : "s"}, ${state.checks} failed test${state.checks === 1 ? "" : "s"}. ${shiftDone ? `Shift total: ${week.puzzles.reduce((sum, board) => sum + boardState(board).bestStars, 0)} / 9 stars. ` : ""}Three stars with no hints or failed tests; two with one or two assists; one for seeing it through. Replays keep your best score.`;
+  }
+  select.replaceChildren(...practice.map((board, i) => { const option = element("option", "", board.title); option.value = i; return option; }));
+  select.addEventListener("change", () => {
+    const value = Number(select.value); if (!Number.isInteger(value) || value < 0 || value >= practice.length) return;
+    save(); practiceIndex = value; mode = "practice"; loadBoard();
   });
-  hintButton.addEventListener("click", () => {
-    const i = puzzle.edges.findIndex((edge, i) => directions[i] !== (edge.source === edge.a ? 0 : 1));
-    if (i < 0) {
-      announce("The wires look ready. Press Check connections to test your work.");
-      return;
-    }
-    const edge = puzzle.edges[i];
-    directions[i] = edge.source === edge.a ? 0 : 1;
-    hints += 1;
-    updateBoard();
-    const names = byId();
-    announce(`Hint: in the snapshot, ${names.get(edge.source).name} links to ${names.get(edge.target).name}. Wire ${i + 1} is now set correctly. Follow that change through the remaining targets.`);
+  weekSelect.addEventListener("change", () => {
+    const chosen = available().find(item => item.id === weekSelect.value);
+    if (!chosen) { weekSelect.value = week?.id || ""; announce("That shift is still sealed. It opens on the Wednesday shown in the archive."); return; }
+    save(); week = chosen; mode = "weekly"; round = Math.max(0, week.puzzles.findIndex(board => !completed(board))); loadBoard();
   });
-  updateProgress();
-  loadBoard(0);
+  $("cw-weekly").addEventListener("click", () => { save(); mode = "weekly"; week = available().at(-1) || null; round = week ? Math.max(0, week.puzzles.findIndex(board => !completed(board))) : 0; loadBoard(); });
+  $("cw-practice").addEventListener("click", () => { save(); mode = "practice"; loadBoard(); });
+  $("cw-reset").addEventListener("click", () => { if (puzzle) { saved.boards[puzzle.id] = {...fresh(), bestStars: state.bestStars}; loadBoard(); announce("Fresh wires. Your best ticket is kept; this attempt starts from zero."); } });
+  $("cw-undo").addEventListener("click", () => {
+    if (!puzzle || state.solved || !state.history.length) return;
+    state.directions = state.history.pop(); state.moves++; save(); updateBoard(); announce("Last wire change undone. Hints and failed tests still count for this attempt.");
+  });
+  $("cw-next").addEventListener("click", () => {
+    if (!puzzle) return; save();
+    if (mode === "practice") practiceIndex = (practiceIndex + 1) % practice.length;
+    else if (state.solved && round < 2) round++; else return;
+    loadBoard();
+  });
+  $("cw-check").addEventListener("click", () => {
+    if (!puzzle || state.solved) return;
+    const missing = state.directions.filter(value => value === null).length;
+    if (missing) { announce(`${missing} wire${missing === 1 ? " still needs" : "s still need"} a direction. Connect the question marks before sending a signal.`, "notice"); return; }
+    mount.classList.remove("cw-testing"); void mount.offsetWidth; mount.classList.add("cw-testing");
+    const current = counts(), wrong = puzzle.nodes.filter(node => current.get(node.id).incoming !== node.in_target || current.get(node.id).outgoing !== node.out_target);
+    if (wrong.length) { state.checks++; save(); updateBoard(); announce(`${wrong.length} sockets have a crossed connection: ${wrong.map(node => node.name).join(", ")}. Trace a wire touching them and try reversing it. This test counts as one assist.`, "notice"); return; }
+    state.solved = true; state.bestStars = Math.max(state.bestStars, stars()); save(); renderNavigation(); updateBoard();
+    announce(`Connection restored! ${stars()} of 3 stars. ${mode === "weekly" && round === 2 ? "Your night shift is complete. Your repair ticket is ready." : "Your ticket is ready. Continue when you like."}`, "success");
+  });
+  $("cw-hint").addEventListener("click", () => {
+    if (!puzzle || state.solved) return;
+    const wrong = puzzle.edges.findIndex((edge, i) => state.directions[i] !== null && state.directions[i] !== answer(edge));
+    const names = nameMap(), current = counts(); let index = wrong, explanation = "";
+    if (wrong >= 0) {
+      const edge = puzzle.edges[wrong]; explanation = `The current directions cannot all satisfy the targets. Reverse wire ${wrong + 1}: ${names.get(edge.source).name} must send to ${names.get(edge.target).name}. Recount these sockets before following the next wire.`;
+    } else {
+      for (let i = 0; i < puzzle.edges.length; i++) {
+        if (state.directions[i] !== null) continue;
+        const edge = puzzle.edges[i], forcing = [names.get(edge.a), names.get(edge.b)].find(node => current.get(node.id).incoming === node.in_target || current.get(node.id).outgoing === node.out_target);
+        if (!forcing) continue;
+        index = i; const allIn = current.get(forcing.id).incoming === forcing.in_target;
+        explanation = `${forcing.name} already has its ${allIn ? "IN" : "OUT"} target of ${allIn ? forcing.in_target : forcing.out_target}. Every unassigned wire here must point ${allIn ? "out" : "in"}. Wire ${i + 1} follows that rule.`; break;
+      }
+      if (index < 0) index = puzzle.edges.findIndex((edge, i) => state.directions[i] !== answer(edge));
+      if (index < 0) { announce("All the wires are ready. Send a test signal to sign off this repair."); return; }
+      if (!explanation) explanation = `Only one orientation matches all the targets: wire ${index + 1} must point from ${names.get(puzzle.edges[index].source).name} to ${names.get(puzzle.edges[index].target).name}. Follow the resulting counts.`;
+    }
+    state.history.push(state.directions.slice()); state.history = state.history.slice(-80);
+    state.directions[index] = answer(puzzle.edges[index]); state.hints++; state.moves++; save(); updateBoard(); announce(`Hint: ${explanation}`);
+  });
+  $("cw-share").addEventListener("click", async () => {
+    if (!puzzle || !state.solved) return;
+    const shiftDone = mode === "weekly" && week.puzzles.every(completed);
+    const score = shiftDone ? `${week.puzzles.reduce((sum, board) => sum + boardState(board).bestStars, 0)}/9 stars` : `${stars()}/3 stars`;
+    const text = `CROSSTALK / Crossed Wires\n${mode === "weekly" ? `Shift ${String(week.number).padStart(2, "0")} · ${week.title}${shiftDone ? " · complete" : ` · round ${round + 1}`}` : `Practice · ${puzzle.title}`}\n${score}. Real links. Repaired by hand.\nhttps://vitrotank.github.io/social_graphs_2026/play/index.html`;
+    try { await navigator.clipboard.writeText(text); announce("Repair ticket copied. Paste it wherever you like.", "success"); }
+    catch (_) { $("cw-share-text").value = text; $("cw-share-text").hidden = false; $("cw-share-text").focus(); $("cw-share-text").select(); announce("Your ticket is selected below. Copy the text to share it."); }
+  });
+  renderSchedule(); loadBoard();
+  setInterval(renderSchedule, 1000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) renderSchedule(); });
 })();

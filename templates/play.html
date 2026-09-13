@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f1e7">
-  <meta name="description" content="The links are real. The arrowheads are missing. Play Crossed Wires, a little network-science puzzle built from Marvel's Wikipedia pages.">
+  <meta name="description" content="Clock in at the Crossed Wires switchboard: a weekly three-round puzzle made from real Marvel Wikipedia links. Reconnect the lines, brave a blackout, and earn your operator's receipt.">
   <meta property="og:title" content="Crossed Wires — @@TITLE@@">
-  <meta property="og:description" content="A little deduction. A few superheroes. Twelve very crossed connections.">
+  <meta property="og:description" content="Three tangles. One night shift. A new network puzzle every Wednesday evening.">
   <meta property="og:type" content="website">
   <title>Crossed Wires — @@TITLE@@</title>
   <link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml">
@@ -16,65 +16,108 @@
   <script defer src="@@ROOT@@game.js"></script>
 </head>
 <body class="play-page">
-  <a class="skip-link" href="#play">Skip to the game</a>
+  <a class="skip-link" href="#crossed-wires">Skip to the game</a>
   @@HEADER@@
   <main id="play" class="shell cw-page">
     <section class="cw-intro" aria-labelledby="cw-title">
-      <div>
+      <div class="cw-intro-copy">
         <p class="cw-eyebrow"><span class="cw-signal" aria-hidden="true"></span> THE ARCADE / GO NUTS EXTRA</p>
-        <h1 id="cw-title">Crossed<br><em>Wires.</em><span class="cw-title-star" aria-hidden="true">✳</span></h1>
-        <p class="cw-deck">Someone lost the arrowheads.<br>A little deduction should reconnect the universe.</p>
+        <h1 id="cw-title">Crossed <em>Wires.</em><span class="cw-title-star" aria-hidden="true">✳</span></h1>
+        <p class="cw-deck">Three tangles. One night shift.<br> The universe is on hold. You’re the operator.</p>
       </div>
-      <aside class="cw-instructions" aria-label="How to play">
-        <span class="cw-ticket-label">OPERATOR’S HANDBOOK / 01</span>
-        <h2>Your shift starts here.</h2>
-        <ol>
-          <li><strong>Read the targets.</strong> Each page needs a specific number of incoming and outgoing wires.</li>
-          <li><strong>Set the directions.</strong> Press a wire button once to connect it; press again to reverse it.</li>
-          <li><strong>Match every socket.</strong> Get all the IN and OUT counts right, then check your work.</li>
-        </ol>
-        <p class="cw-handbook-note">No timer. No lives. Just twelve little tangles.</p>
-      </aside>
+      <div class="cw-intro-side">
+        <div class="cw-shift-stamp" aria-hidden="true"><span class="cw-stamp-line"></span><span>DEPARTMENT OF<br>UNFINISHED CONNECTIONS</span><span class="cw-stamp-line"></span></div>
+        <details class="cw-instructions">
+          <summary><span>First time at the switchboard?</span><span class="cw-help-sign" aria-hidden="true">+</span></summary>
+          <div class="cw-handbook-body">
+            <p class="cw-ticket-label">OPERATOR’S HANDBOOK / READ BEFORE CONNECTING</p>
+            <ol>
+              <li><strong>Read the sockets.</strong> IN counts incoming arrows; OUT counts outgoing arrows. Match the targets for every page.</li>
+              <li><strong>Tap a wire.</strong> Connect it, then tap again to reverse it. The wire buttons do the same job; Tab and Enter work too.</li>
+              <li><strong>Send a test signal.</strong> Clear all three rounds to finish your weekly shift. The last round has a missing target to deduce.</li>
+            </ol>
+            <p class="cw-handbook-note">No timer penalties. Undo is free. Earn three stars with no hints or failed tests, two with one or two assists, and one for seeing it through. Replays keep your best score.</p>
+          </div>
+        </details>
+      </div>
     </section>
 
     <section id="crossed-wires" class="cw-machine" aria-label="Crossed Wires puzzle">
       <div class="cw-machine-top">
-        <div class="cw-machine-label"><span class="cw-signal" aria-hidden="true"></span> THE SWITCHBOARD <span class="cw-machine-serial">/ CW—01</span></div>
-        <p id="cw-progress" class="cw-progress">0 / 12 connected</p>
+        <div class="cw-machine-label"><span class="cw-signal" aria-hidden="true"></span> CROSSTALK / NIGHT DESK <span class="cw-machine-serial">EST. 2026</span></div>
+        <p id="cw-progress" class="cw-progress">Connecting to the switchboard…</p>
       </div>
-      <div class="cw-toolbar">
-        <div class="cw-board-picker"><label for="cw-select">Choose a board</label><select id="cw-select" aria-describedby="cw-level"><option>Loading the switchboard…</option></select></div>
-        <p id="cw-level" class="cw-level"></p>
+      <div class="cw-modebar">
+        <div class="cw-modes" role="group" aria-label="Game mode">
+          <button id="cw-weekly" class="cw-mode" type="button" aria-pressed="true">The weekly shift <span aria-hidden="true">↗</span></button>
+          <button id="cw-practice" class="cw-mode" type="button" aria-pressed="false">Practice desk</button>
+        </div>
+        <span class="cw-mode-caption">A little deduction goes a long way.</span>
+      </div>
+      <div id="cw-week-panel" class="cw-week-panel">
+        <div class="cw-weekly-card">
+          <div class="cw-release-copy">
+            <p class="cw-eyebrow">ON YOUR DESK</p>
+            <h2 id="cw-release-title">A call is coming in.</h2>
+            <p id="cw-release-detail">One shared mission. Three rounds of increasingly crossed connections.</p>
+          </div>
+          <div class="cw-release-clock">
+            <p class="cw-eyebrow"><span class="cw-clock-dot" aria-hidden="true"></span> NEXT SHIFT OPENS</p>
+            <p id="cw-countdown" class="cw-countdown" aria-live="off">—</p>
+            <time id="cw-release-time">Loading the release schedule…</time>
+          </div>
+        </div>
+        <details class="cw-archive">
+          <summary>Previous shifts &amp; the release calendar <span aria-hidden="true">↓</span></summary>
+          <div class="cw-board-picker"><label for="cw-week-select">Choose a weekly shift</label><select id="cw-week-select"><option>Loading weekly shifts…</option></select><p>Finished early? Revisit an open shift, or try the practice desk while the next one is on its way.</p></div>
+        </details>
+      </div>
+      <div id="cw-practice-panel" class="cw-practice-panel" hidden>
+        <div class="cw-board-picker"><label for="cw-select">Pick a practice board</label><select id="cw-select" aria-describedby="cw-level"><option>Loading the switchboard…</option></select></div>
+        <p>Twelve small tangles, always open.<br>Get your bearings before the night shift.</p>
+      </div>
+      <div id="cw-rounds" class="cw-rounds" role="group" aria-label="Rounds in this shift"></div>
+      <div class="cw-mission-bar">
+        <div class="cw-mission-copy"><p id="cw-level" class="cw-level"></p><h2 id="cw-board-title">Connect the first call.</h2><p id="cw-briefing" class="cw-briefing">Give every wire a direction, then test the signal.</p></div>
+        <dl class="cw-stats" aria-label="Current round statistics"><div><dt>Moves</dt><dd id="cw-moves">0</dd></div><div><dt>Hints</dt><dd id="cw-hints-used">0</dd></div><div><dt>Sockets</dt><dd id="cw-matched">0 / 0</dd></div></dl>
       </div>
       <div class="cw-console">
         <div class="cw-board">
-          <div class="cw-board-heading"><span class="cw-eyebrow">THE LINES</span><span id="cw-assigned">0 wires assigned</span></div>
-          <svg id="cw-diagram" viewBox="0 0 560 390" aria-hidden="true"></svg>
-          <p class="cw-diagram-key"><span class="cw-key-wire" aria-hidden="true"></span> Dashed = unassigned <span class="cw-key-arrow" aria-hidden="true">→</span> Arrow = your direction</p>
-          <div class="cw-board-tip"><span aria-hidden="true">↳</span><p><strong>A place to start:</strong> a page with an IN target of zero can only send. Follow the consequences.</p></div>
+          <div class="cw-board-heading"><span class="cw-eyebrow"><span class="cw-live-dot" aria-hidden="true"></span> LIVE PATCHBOARD</span><span id="cw-assigned">0 wires assigned</span></div>
+          <svg id="cw-diagram" viewBox="0 0 600 440" role="group" aria-label="Interactive connection diagram. Select a numbered wire to connect or reverse it."></svg>
+          <p class="cw-diagram-key"><span class="cw-key-wire" aria-hidden="true"></span> Needs a direction <span class="cw-key-arrow" aria-hidden="true">→</span> Connected</p>
+          <p class="cw-board-tip"><span aria-hidden="true">↳</span> Tap a numbered wire to connect. Tap again to flip.</p>
         </div>
         <div class="cw-workbench">
-          <div class="cw-workbench-heading"><h2>The sockets</h2><span>CURRENT / TARGET</span></div>
+          <div class="cw-workbench-heading"><h3>The sockets</h3><span>CURRENT / TARGET</span></div>
           <div id="cw-sockets" class="cw-sockets"></div>
-          <div class="cw-workbench-heading cw-wires-heading"><h2>Set the wires</h2><span>PRESS TO FLIP ↔</span></div>
-          <div id="cw-wires" class="cw-wires"></div>
+          <details class="cw-wire-controls" open>
+            <summary class="cw-workbench-heading cw-wires-heading"><span>Wire controls</span><span>PRESS TO FLIP ↔</span></summary>
+            <div id="cw-wires" class="cw-wires"></div>
+          </details>
         </div>
       </div>
       <div class="cw-bottom">
         <div class="cw-actions">
-          <button id="cw-check" class="cw-action cw-action-primary" type="button">Check connections <span aria-hidden="true">↗</span></button>
-          <button id="cw-hint" class="cw-action" type="button">Give me a hint</button>
+          <button id="cw-check" class="cw-action cw-action-primary" type="button">Send a test signal <span aria-hidden="true">↗</span></button>
+          <button id="cw-hint" class="cw-action" type="button">Ask for a hint</button>
+          <button id="cw-undo" class="cw-action cw-action-quiet" type="button">Undo</button>
           <button id="cw-reset" class="cw-action cw-action-quiet" type="button">Reset</button>
-          <button id="cw-next" class="cw-action cw-action-next" type="button">Next board <span aria-hidden="true">→</span></button>
+          <button id="cw-next" class="cw-action cw-action-next" type="button">Next round <span aria-hidden="true">→</span></button>
         </div>
         <p id="cw-status" class="cw-status" role="status" aria-live="polite" aria-atomic="true">Choose a direction for each wire. The numbers count only the links on this board.</p>
       </div>
+      <section id="cw-receipt" class="cw-receipt" aria-labelledby="cw-receipt-title" hidden>
+        <div class="cw-receipt-mark" aria-hidden="true">↗</div>
+        <div class="cw-receipt-copy"><p class="cw-eyebrow">CROSSTALK / OPERATOR’S RECEIPT</p><h2 id="cw-receipt-title">Connection restored.</h2><p id="cw-receipt-rating" class="cw-receipt-rating"></p><p id="cw-receipt-detail"></p></div>
+        <div class="cw-receipt-actions"><button id="cw-share" class="cw-action" type="button">Copy my receipt <span aria-hidden="true">↗</span></button><label for="cw-share-text" class="sr-only">Your shareable shift receipt</label><textarea id="cw-share-text" rows="5" readonly hidden></textarea></div>
+      </section>
       <noscript><p class="cw-noscript">This game needs JavaScript. You can still read <a href="@@ROOT@@week1/index.html">the Week 1 story</a> and explore its Python-generated figures.</p></noscript>
     </section>
 
     <section class="cw-footnotes" aria-label="The science behind the puzzle">
-      <div class="cw-note-lead"><p class="cw-eyebrow">SMALL GAME. REAL NETWORK.</p><h2>Counting is<br>half the story.</h2></div>
-      <div><p>An incoming link means another Wikipedia page points here. An outgoing link means this page points elsewhere. Same wire, two very different jobs.</p><p>Every connection in these boards comes from the course’s frozen Marvel network. These are <strong>selected links</strong>: the targets count only the wires shown, not all links between the characters or their full-network degrees. A hyperlink is not necessarily a friendship.</p><p>Python picks the boards and checks every possible orientation to make sure there is exactly one solution. Reciprocal links are left out of the puzzles. Your completed boards are saved only in this browser when local storage is available.</p><a class="cw-text-link" href="@@ROOT@@week1/index.html">See what the full network revealed <span aria-hidden="true">↗</span></a><a class="cw-text-link" href="@@REPO@@/blob/main/scripts/puzzles.py">Peek at the Python <span aria-hidden="true">↗</span></a></div>
+      <div class="cw-note-lead"><p class="cw-eyebrow">SMALL GAME. REAL NETWORK.</p><h2>Every wire<br>has a source.</h2><span class="cw-note-arrow" aria-hidden="true">↗</span></div>
+      <div><p>An incoming link means another Wikipedia page points here. An outgoing link means this page points elsewhere. Same wire, two very different jobs.</p><p>These are <strong>selected real links</strong> from the course’s frozen Marvel network. The targets count the wires shown, not all links between these characters or their full-network degrees. A hyperlink is not necessarily a friendship.</p><p>Python builds the boards and checks every possible orientation for a unique solution. In the blackout round, the other sockets give you enough information to recover the missing target. Reciprocal links are left out. Progress is saved in this browser when storage is available.</p><a class="cw-text-link" href="@@ROOT@@week1/index.html">Read the network story <span aria-hidden="true">↗</span></a><a class="cw-text-link" href="@@REPO@@/blob/main/scripts/puzzles.py">Peek at the Python <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
   @@FOOTER@@

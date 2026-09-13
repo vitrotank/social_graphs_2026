@@ -143,6 +143,10 @@ class SiteTests(unittest.TestCase):
         self.assertIn('href="../index.html"', (self.root / "week2/index.html").read_text(encoding="utf-8"))
 
     def test_browser_payload_preserves_raw_nodes_edges_and_measured_degrees(self):
+        config_path = self.root / "site.json"
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config["arcade"] = {"release_hour": 18, "week_count": 3, "first_release": "2026-09-09"}
+        config_path.write_text(json.dumps(config), encoding="utf-8")
         build.render()
         javascript = (self.root / "assets/data/network.js").read_text(encoding="utf-8")
         prefix = "window.CROSSTALK_DATA = "
@@ -171,6 +175,10 @@ class SiteTests(unittest.TestCase):
         self.assertTrue(javascript.startswith(prefix) and javascript.endswith(";\n"))
         self.assertEqual(json.loads(javascript[len(prefix):-2]),
                          json.loads((self.root / "assets/data/puzzles.json").read_text(encoding="utf-8")))
+        puzzles = json.loads(javascript[len(prefix):-2])
+        self.assertEqual(puzzles["schedule"]["release_hour"], 18)
+        self.assertEqual(len(puzzles["weeks"]), 3)
+        self.assertEqual(puzzles["weeks"][0]["release_at"], "2026-09-09T16:00:00Z")
 
     def test_staging_publishes_only_the_allowlist_and_preserves_its_bytes(self):
         # A workspace may contain control files that must never reach Pages.

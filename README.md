@@ -10,7 +10,7 @@ The site is a little telephone switchboard: a simple homepage connects the weekl
 
 - **Home — `index.html`:** the group, latest published post, and all eight week slots. Unwritten weeks have no broken or empty links.
 - **Week 1 — `week1/index.html`:** the complete Marvel analysis, searchable network, linear/log–log degree plots, isolates, and hub-removal experiment.
-- **Crossed Wires — `play/index.html`:** twelve logic puzzles made from real links. Restore erased arrow directions to match the displayed incoming/outgoing counts.
+- **Crossed Wires — `play/index.html`:** a weekly three-round night shift, plus twelve always-open practice puzzles. Restore real arrow directions on an interactive switchboard, deduce a missing socket's targets in the blackout finale, and earn a shareable repair receipt.
 
 ## Run locally
 
@@ -49,6 +49,16 @@ For optional browser checks, run `python scripts/build.py --output _site`, then 
 Edit `site.json` for names, the site identity, and the week registry. Shared styling lives in `style.css`; Week 1 interactions in `app.js`; the game in `game.js` and `game.css`. The small `home.js` preserves bookmarks to the original report's anchors by taking visitors to Week 1.
 
 ## Where the numbers and puzzles come from
+
+### Wednesday night shifts
+
+A fresh three-round challenge unlocks every **Wednesday at 19:00 Copenhagen / Paris time**. The first shift opened on 9 September 2026; 52 distinct shifts are prepared through 1 September 2027. The release calendar and countdown appear in the game. Completed rounds unlock the next stage, older shifts stay playable, and the practice desk is always open.
+
+The static site checks precomputed UTC timestamps, including the October and March daylight-saving changes. It unlocks an open tab automatically, without needing a Wednesday deployment or a scheduled server. Everyone gets the same weekly boards. The device clock controls availability; this is a casual puzzle release calendar, not access control.
+
+Edit the `arcade` entry in `site.json` to change `release_hour` (Copenhagen local time), `first_release` (a Wednesday), or `week_count`. Increase `week_count` and rebuild to extend the calendar, up to 260 weeks; earlier puzzle IDs and solutions remain stable. Keep `first_release` fixed once players have started. The Python generator uses system timezone data when available, with a documented 2026–2031 Copenhagen calendar fallback for Windows without timezone data. No package installation is required.
+
+Tap numbered wires directly or use their keyboard-accessible buttons. Undo, explanation-based hints, unfinished boards, and best ratings are supported. A clean solve earns three stars; one or two hints/failed tests earns two; more earns one. Unfinished test attempts do not penalize the rating. Progress stays in the browser, including achievements imported from the original twelve-board game. Copying a receipt is optional and does not publish anything.
 
 `scripts/analyze.py` loads the complete node roster before adding edges, preserving the 17 isolated characters. It writes `assets/data/network.json`, `summary.json`, and downloadable SVG plots. The frozen release contains 303 nodes, 1,784 directed links, and weak component sizes of 277, 9, and seventeen singletons.
 

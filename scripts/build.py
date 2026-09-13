@@ -177,7 +177,7 @@ def render() -> list[Path]:
         target.write_text(result, encoding="utf-8", newline="\n")
     payload = json.dumps({"network": network, "summary": summary}, ensure_ascii=True, separators=(",", ":"))
     (ROOT / "assets/data/network.js").write_text("window.CROSSTALK_DATA = " + payload + ";\n", encoding="utf-8", newline="\n")
-    puzzles = make_puzzles(network)
+    puzzles = make_puzzles(network, **config.get("arcade", {}))
     (ROOT / "assets/data/puzzles.json").write_text(json.dumps(puzzles, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     (ROOT / "assets/data/puzzles.js").write_text("window.CROSSTALK_PUZZLES = " + json.dumps(puzzles, ensure_ascii=True, separators=(",", ":")) + ";\n", encoding="utf-8", newline="\n")
     (ROOT / "assets/figures/hero-network.svg").write_text(hero_svg(network, summary), encoding="utf-8", newline="\n")
