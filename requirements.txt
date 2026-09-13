@@ -1,0 +1,2 @@
+# Python 3.10+; the analysis and local preview use only the standard library.
+# No pip dependencies are required.

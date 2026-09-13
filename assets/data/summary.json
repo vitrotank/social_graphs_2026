@@ -1,0 +1,1386 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-08-26",
+  "source_url": "https://sunelehmann.com/socialgraphs2026-web/data/",
+  "nodes": 303,
+  "edges": 1784,
+  "isolates": [
+    "Baymax",
+    "Bird-Brain_(Marvel_Comics)",
+    "Black_Fox_(Robert_Paine)",
+    "Brain_Drain_(character)",
+    "Breeze_Barton",
+    "Captain_Midlands",
+    "Charcoal_(comics)",
+    "Father_Time_(Marvel_Comics)",
+    "Happy_Sam_Sawyer",
+    "Hellfire_(J._T._Slade)",
+    "Illuminator_(Marvel_Comics)",
+    "Miracleman_(character)",
+    "Ogre_(Marvel_Comics)",
+    "Sean_and_Chris",
+    "Solarman",
+    "Super_Rabbit",
+    "Yo-Yo_Rodriguez"
+  ],
+  "isolate_count": 17,
+  "weak_component_count": 19,
+  "largest_component": 277,
+  "weak_components": [
+    {
+      "id": 0,
+      "size": 277,
+      "nodes": [
+        "Abomination_(character)",
+        "Adam_Warlock",
+        "Agent_X_(Marvel_Comics)",
+        "Ajak",
+        "Alex_Wilder",
+        "Anne_Weying",
+        "Anole_(character)",
+        "Anya_Corazon",
+        "Arabian_Knight_(character)",
+        "Ares_(Marvel_Comics)",
+        "Balder_the_Brave",
+        "Battlestar_(character)",
+        "Beta_Ray_Bill",
+        "Betsy_Braddock",
+        "Bill_Foster_(character)",
+        "Black_Bolt",
+        "Black_Cat_(Marvel_Comics)",
+        "Black_Jack_Tarr",
+        "Black_Knight_(Marvel_Comics)",
+        "Black_Marvel",
+        "Black_Panther_(character)",
+        "Black_Rider_(character)",
+        "Black_Widow_(Natasha_Romanova)",
+        "Blackwulf",
+        "Blade_(character)",
+        "Blazing_Skull",
+        "Blue_Bullet",
+        "Blue_Diamond_(character)",
+        "Blue_Eagle_(character)",
+        "Blue_Marvel",
+        "Bob,_Agent_of_Hydra",
+        "Box_(comics)",
+        "Brian_Braddock",
+        "Bucky_(Marvel_Comics)",
+        "Bug_(Marvel_Comics)",
+        "Cable_(character)",
+        "Cammi_(character)",
+        "Captain_Marvel_(Khn'nr)",
+        "Captain_Marvel_(Marvel_Comics)",
+        "Captain_Ultra",
+        "Captain_Universe",
+        "Caretaker_(comics)",
+        "Ch'od",
+        "Chase_Stein",
+        "Citizen_V",
+        "Cloak_and_Dagger_(characters)",
+        "Coldblood",
+        "Crane_Mother",
+        "Crippler_(character)",
+        "Cyclops_(Marvel_Comics)",
+        "Dargo_Ktor",
+        "Darkdevil",
+        "Darkhawk",
+        "Deadpool",
+        "Deathlok",
+        "Debrii",
+        "Delroy_Garrett",
+        "Detroit_Steel",
+        "Devil_Dinosaur",
+        "Devil_Hulk",
+        "Digitek_(character)",
+        "Doctor_Druid",
+        "Doctor_Nemesis",
+        "Doctor_Spectrum",
+        "Doctor_Strange",
+        "Dogpool",
+        "Doom_2099",
+        "Dragon_Lord_(character)",
+        "Dusk_(comics)",
+        "Eddie_Brock",
+        "Elsa_Bloodstone",
+        "Emma_Frost",
+        "Empath_(character)",
+        "Emrys_Killebrew",
+        "Enigma_(Marvel_Comics)",
+        "Ethan_Edwards",
+        "Fabio_Medina",
+        "Fandral",
+        "Fin_Fang_Foom",
+        "Firebird_(Marvel_Comics)",
+        "Firelord_(character)",
+        "Flatman_(character)",
+        "Force_(comics)",
+        "Frankenstein's_Monster_(Marvel_Comics)",
+        "Franklin_Richards_(character)",
+        "Frog-Man",
+        "G._W._Bridge",
+        "Gargoyle_(comics)",
+        "Garrison_Kane",
+        "Gauntlet_(Joseph_Green)",
+        "Genis-Vell",
+        "Ghost_Rider",
+        "Ghost_Rider_(Danny_Ketch)",
+        "Ghost_Rider_(Johnny_Blaze)",
+        "Gladiator_(Kallark)",
+        "Golem_(Marvel_Comics)",
+        "Gorgon_(Inhuman)",
+        "Gremlin_(comics)",
+        "Guardian_(Marvel_Comics)",
+        "Guardsman_(character)",
+        "Gwenpool",
+        "Hank_Pym",
+        "Hawkeye_(comics)",
+        "Helix_(Marvel_Comics)",
+        "Hellion_(character)",
+        "Hercules_(Marvel_Comics)",
+        "Hit-Monkey",
+        "Hornet_(comics)",
+        "Hrimhari",
+        "Hulk",
+        "Hulk_2099",
+        "Hulkling",
+        "Human_Fly_(character)",
+        "Human_Torch",
+        "Human_Torch_(android)",
+        "Hybrid_(Scott_Washington)",
+        "Hyperion_(character)",
+        "Ikaris",
+        "Inferno_(Dante_Pertuz)",
+        "Iron_Fist_(character)",
+        "Iron_Lad",
+        "Iron_Man_(Ultimate_Marvel_character)",
+        "Iron_Man_2020",
+        "Isaiah_Bradley",
+        "Jack_Frost_(Marvel_Comics)",
+        "Jack_Monroe_(character)",
+        "Janice_Lincoln",
+        "Jean_Grey",
+        "Jean_Grey_(X-Men_film_series)",
+        "Jeffrey_Mace",
+        "Jericho_Drumm",
+        "Jessica_Jones",
+        "John_Jameson_(character)",
+        "Jubilee_(character)",
+        "Junior_Juniper",
+        "Justice_(New_Universe)",
+        "Karnak_(character)",
+        "Kid_Colt",
+        "Killpower",
+        "Killraven",
+        "Kismet_(Marvel_Comics)",
+        "Korvus",
+        "Kristoff_Vernard",
+        "Leech_(character)",
+        "Lei_Kung_(character)",
+        "Living_Lightning",
+        "Luke_Cage",
+        "Machine_Man",
+        "Magician_(Marvel_Comics)",
+        "Mahr_Vehl",
+        "Makkari_(character)",
+        "Man-Thing",
+        "Mania_(character)",
+        "Mark_Hazzard:_Merc",
+        "Marvel_Boy_(Robert_Grayson)",
+        "Mayday_Parker",
+        "Misty_Knight",
+        "Mockingbird_(Marvel_Comics)",
+        "Moon_Knight",
+        "Moondragon",
+        "Moonglow_(comics)",
+        "Morbius",
+        "Motormouth_(comics)",
+        "Ms._Marvel",
+        "NFL_SuperPro",
+        "Nightmask",
+        "Nightwatch_(character)",
+        "Noh-Varr",
+        "Nomad_(Marvel_Comics)",
+        "Northstar_(character)",
+        "Nova_(Richard_Rider)",
+        "Outlaw_(Marvel_Comics)",
+        "Oya_(comics)",
+        "Paladin_(comics)",
+        "Patsy_Walker",
+        "Peggy_Carter",
+        "Phil_Urich",
+        "Phoenix_Force",
+        "Phyla-Vell",
+        "Power_Man_(Victor_Alvarez)",
+        "Powerhouse_(Marvel_Comics)",
+        "Puck_(Marvel_Comics)",
+        "Quasar_(character)",
+        "Quicksilver_(Marvel_Comics)",
+        "Rachel_Summers",
+        "Radioactive_Man_(comics)",
+        "Ravage_2099",
+        "Raza_Longknife",
+        "Red_Guardian",
+        "Red_Raven_(Marvel_Comics)",
+        "Red_Wolf_(comics)",
+        "Redneck_(comics)",
+        "Ricochet_(comics)",
+        "Rikki_Barnes",
+        "Robbie_Baldwin",
+        "Rocket_Raccoon",
+        "Rockman_(character)",
+        "Rockslide_(character)",
+        "Rom_the_Space_Knight",
+        "Ronin_(Marvel_Comics)",
+        "Ruby_Summers",
+        "Rusty_Collins",
+        "Sabra_(character)",
+        "Satana_(Marvel_Comics)",
+        "Scarlet_Scarab",
+        "Scarlet_Spider",
+        "Scarlet_Witch",
+        "Scorpio_(Marvel_Comics)",
+        "Sentry_(Robert_Reynolds)",
+        "Shamrock_(comics)",
+        "Shang-Chi",
+        "Shatterstar",
+        "She-Hulk",
+        "She-Hulk_(Lyra)",
+        "Shuri_(character)",
+        "Silencer_(comics)",
+        "Silhouette_(comics)",
+        "Silk_(character)",
+        "Skull_the_Slayer",
+        "Solo_(Marvel_Comics)",
+        "Solomon_Kane_(comics)",
+        "Speed_(character)",
+        "Spider-Bitch_(Ashley_Barton)",
+        "Spider-Girl",
+        "Spider-Man",
+        "Spider-Man_(Marvel_Mangaverse)",
+        "Spider-Man_Noir",
+        "Spider-UK",
+        "Spider-Woman",
+        "Spider-Woman_(Gwen_Stacy)",
+        "Spider-Woman_(Jessica_Drew)",
+        "Spitfire_(character)",
+        "Star-Lord",
+        "Star_Brand",
+        "Starhawk_(character)",
+        "Starr_the_Slayer",
+        "Steel_Spider",
+        "Stingray_(Marvel_Comics)",
+        "Storm_(Marvel_Comics)",
+        "Straw_Man_(comics)",
+        "Surge_(Marvel_Comics)",
+        "Synapse_(character)",
+        "Tarantula_(Marvel_Comics)",
+        "The_Union_(Marvel)",
+        "The_Witness_(character)",
+        "Thena",
+        "Thin_Man_(character)",
+        "Thor_Girl",
+        "Thunderbolt_(Marvel_Comics)",
+        "Thunderclap_(comics)",
+        "Timeslip_(comics)",
+        "Toro_(character)",
+        "Turbo_(comics)",
+        "Two-Gun_Kid",
+        "Typeface_(character)",
+        "U.S._Agent",
+        "Ulysses_Bloodstone",
+        "Union_Jack_(Joseph_Chapman)",
+        "Union_Jack_(Marvel_Comics)",
+        "Ursa_Major_(character)",
+        "Vance_Astrovik",
+        "Venom_(character)",
+        "Vindicator_(comics)",
+        "Vulcan_(Marvel_Comics)",
+        "War_Machine",
+        "Werewolf_by_Night",
+        "White_Tiger_(Heroes_for_Hire)",
+        "White_Tiger_(comics)",
+        "Whizzer_(Robert_Frank)",
+        "Wild_Child_(character)",
+        "Will_o'_the_Wisp_(comics)",
+        "William_Burnside_(character)",
+        "Wolverine_(Ultimate_Marvel_character)",
+        "Wolverine_(character)",
+        "Xorn",
+        "Yelena_Belova",
+        "Zombie_(comics)"
+      ]
+    },
+    {
+      "id": 1,
+      "size": 9,
+      "nodes": [
+        "Backhand_(character)",
+        "Blackthorn_(character)",
+        "Radian_(Morituri)",
+        "Scaredycat",
+        "Scatterbrain_(Morituri)",
+        "Shear_(character)",
+        "Snapdragon_(Morituri)",
+        "Toxyn",
+        "Vyking"
+      ]
+    },
+    {
+      "id": 2,
+      "size": 1,
+      "nodes": [
+        "Baymax"
+      ]
+    },
+    {
+      "id": 3,
+      "size": 1,
+      "nodes": [
+        "Bird-Brain_(Marvel_Comics)"
+      ]
+    },
+    {
+      "id": 4,
+      "size": 1,
+      "nodes": [
+        "Black_Fox_(Robert_Paine)"
+      ]
+    },
+    {
+      "id": 5,
+      "size": 1,
+      "nodes": [
+        "Brain_Drain_(character)"
+      ]
+    },
+    {
+      "id": 6,
+      "size": 1,
+      "nodes": [
+        "Breeze_Barton"
+      ]
+    },
+    {
+      "id": 7,
+      "size": 1,
+      "nodes": [
+        "Captain_Midlands"
+      ]
+    },
+    {
+      "id": 8,
+      "size": 1,
+      "nodes": [
+        "Charcoal_(comics)"
+      ]
+    },
+    {
+      "id": 9,
+      "size": 1,
+      "nodes": [
+        "Father_Time_(Marvel_Comics)"
+      ]
+    },
+    {
+      "id": 10,
+      "size": 1,
+      "nodes": [
+        "Happy_Sam_Sawyer"
+      ]
+    },
+    {
+      "id": 11,
+      "size": 1,
+      "nodes": [
+        "Hellfire_(J._T._Slade)"
+      ]
+    },
+    {
+      "id": 12,
+      "size": 1,
+      "nodes": [
+        "Illuminator_(Marvel_Comics)"
+      ]
+    },
+    {
+      "id": 13,
+      "size": 1,
+      "nodes": [
+        "Miracleman_(character)"
+      ]
+    },
+    {
+      "id": 14,
+      "size": 1,
+      "nodes": [
+        "Ogre_(Marvel_Comics)"
+      ]
+    },
+    {
+      "id": 15,
+      "size": 1,
+      "nodes": [
+        "Sean_and_Chris"
+      ]
+    },
+    {
+      "id": 16,
+      "size": 1,
+      "nodes": [
+        "Solarman"
+      ]
+    },
+    {
+      "id": 17,
+      "size": 1,
+      "nodes": [
+        "Super_Rabbit"
+      ]
+    },
+    {
+      "id": 18,
+      "size": 1,
+      "nodes": [
+        "Yo-Yo_Rodriguez"
+      ]
+    }
+  ],
+  "strong_component_count": 66,
+  "largest_strong_component": 229,
+  "strong_component_sizes": [
+    229,
+    9,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "self_loops": 0,
+  "reciprocity": 0.3923766816143498,
+  "reciprocal_pairs": 350,
+  "mean_in_degree": 5.887788778877888,
+  "mean_out_degree": 5.887788778877888,
+  "median_in_degree": 3,
+  "median_out_degree": 4,
+  "zero_in_degree": 58,
+  "zero_out_degree": 20,
+  "top_in": [
+    {
+      "id": "Spider-Man",
+      "label": "Spider-Man",
+      "value": 106,
+      "in_degree": 106,
+      "out_degree": 9
+    },
+    {
+      "id": "Hulk",
+      "label": "Hulk",
+      "value": 64,
+      "in_degree": 64,
+      "out_degree": 10
+    },
+    {
+      "id": "Wolverine_(character)",
+      "label": "Wolverine",
+      "value": 60,
+      "in_degree": 60,
+      "out_degree": 17
+    },
+    {
+      "id": "Doctor_Strange",
+      "label": "Doctor Strange",
+      "value": 50,
+      "in_degree": 50,
+      "out_degree": 17
+    },
+    {
+      "id": "Deadpool",
+      "label": "Deadpool",
+      "value": 33,
+      "in_degree": 33,
+      "out_degree": 19
+    },
+    {
+      "id": "She-Hulk",
+      "label": "She-Hulk",
+      "value": 29,
+      "in_degree": 29,
+      "out_degree": 20
+    },
+    {
+      "id": "Scarlet_Witch",
+      "label": "Scarlet Witch",
+      "value": 28,
+      "in_degree": 28,
+      "out_degree": 14
+    },
+    {
+      "id": "Black_Panther_(character)",
+      "label": "Black Panther",
+      "value": 27,
+      "in_degree": 27,
+      "out_degree": 11
+    },
+    {
+      "id": "Cyclops_(Marvel_Comics)",
+      "label": "Cyclops",
+      "value": 26,
+      "in_degree": 26,
+      "out_degree": 11
+    },
+    {
+      "id": "Luke_Cage",
+      "label": "Luke Cage",
+      "value": 25,
+      "in_degree": 25,
+      "out_degree": 9
+    }
+  ],
+  "top_out": [
+    {
+      "id": "Betsy_Braddock",
+      "label": "Betsy Braddock",
+      "value": 28,
+      "in_degree": 7,
+      "out_degree": 28
+    },
+    {
+      "id": "Cloak_and_Dagger_(characters)",
+      "label": "Cloak and Dagger",
+      "value": 24,
+      "in_degree": 11,
+      "out_degree": 24
+    },
+    {
+      "id": "Adam_Warlock",
+      "label": "Adam Warlock",
+      "value": 22,
+      "in_degree": 8,
+      "out_degree": 22
+    },
+    {
+      "id": "Venom_(character)",
+      "label": "Venom",
+      "value": 21,
+      "in_degree": 17,
+      "out_degree": 21
+    },
+    {
+      "id": "She-Hulk",
+      "label": "She-Hulk",
+      "value": 20,
+      "in_degree": 29,
+      "out_degree": 20
+    },
+    {
+      "id": "U.S._Agent",
+      "label": "U.S. Agent",
+      "value": 20,
+      "in_degree": 6,
+      "out_degree": 20
+    },
+    {
+      "id": "Deadpool",
+      "label": "Deadpool",
+      "value": 19,
+      "in_degree": 33,
+      "out_degree": 19
+    },
+    {
+      "id": "Rachel_Summers",
+      "label": "Rachel Summers",
+      "value": 19,
+      "in_degree": 16,
+      "out_degree": 19
+    },
+    {
+      "id": "Noh-Varr",
+      "label": "Noh-Varr",
+      "value": 18,
+      "in_degree": 4,
+      "out_degree": 18
+    },
+    {
+      "id": "Doctor_Strange",
+      "label": "Doctor Strange",
+      "value": 17,
+      "in_degree": 50,
+      "out_degree": 17
+    }
+  ],
+  "degree_distributions": {
+    "in": [
+      {
+        "degree": 0,
+        "count": 58,
+        "probability": 0.19141914191419143
+      },
+      {
+        "degree": 1,
+        "count": 41,
+        "probability": 0.1353135313531353
+      },
+      {
+        "degree": 2,
+        "count": 43,
+        "probability": 0.1419141914191419
+      },
+      {
+        "degree": 3,
+        "count": 28,
+        "probability": 0.0924092409240924
+      },
+      {
+        "degree": 4,
+        "count": 21,
+        "probability": 0.06930693069306931
+      },
+      {
+        "degree": 5,
+        "count": 22,
+        "probability": 0.07260726072607261
+      },
+      {
+        "degree": 6,
+        "count": 13,
+        "probability": 0.0429042904290429
+      },
+      {
+        "degree": 7,
+        "count": 10,
+        "probability": 0.033003300330033
+      },
+      {
+        "degree": 8,
+        "count": 7,
+        "probability": 0.0231023102310231
+      },
+      {
+        "degree": 9,
+        "count": 7,
+        "probability": 0.0231023102310231
+      },
+      {
+        "degree": 10,
+        "count": 7,
+        "probability": 0.0231023102310231
+      },
+      {
+        "degree": 11,
+        "count": 4,
+        "probability": 0.013201320132013201
+      },
+      {
+        "degree": 12,
+        "count": 3,
+        "probability": 0.009900990099009901
+      },
+      {
+        "degree": 13,
+        "count": 6,
+        "probability": 0.019801980198019802
+      },
+      {
+        "degree": 14,
+        "count": 2,
+        "probability": 0.006600660066006601
+      },
+      {
+        "degree": 15,
+        "count": 2,
+        "probability": 0.006600660066006601
+      },
+      {
+        "degree": 16,
+        "count": 3,
+        "probability": 0.009900990099009901
+      },
+      {
+        "degree": 17,
+        "count": 4,
+        "probability": 0.013201320132013201
+      },
+      {
+        "degree": 19,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 20,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 21,
+        "count": 4,
+        "probability": 0.013201320132013201
+      },
+      {
+        "degree": 22,
+        "count": 2,
+        "probability": 0.006600660066006601
+      },
+      {
+        "degree": 23,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 24,
+        "count": 3,
+        "probability": 0.009900990099009901
+      },
+      {
+        "degree": 25,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 26,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 27,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 28,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 29,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 33,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 50,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 60,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 64,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 106,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      }
+    ],
+    "out": [
+      {
+        "degree": 0,
+        "count": 20,
+        "probability": 0.066006600660066
+      },
+      {
+        "degree": 1,
+        "count": 31,
+        "probability": 0.10231023102310231
+      },
+      {
+        "degree": 2,
+        "count": 37,
+        "probability": 0.12211221122112212
+      },
+      {
+        "degree": 3,
+        "count": 40,
+        "probability": 0.132013201320132
+      },
+      {
+        "degree": 4,
+        "count": 31,
+        "probability": 0.10231023102310231
+      },
+      {
+        "degree": 5,
+        "count": 21,
+        "probability": 0.06930693069306931
+      },
+      {
+        "degree": 6,
+        "count": 16,
+        "probability": 0.052805280528052806
+      },
+      {
+        "degree": 7,
+        "count": 14,
+        "probability": 0.0462046204620462
+      },
+      {
+        "degree": 8,
+        "count": 17,
+        "probability": 0.056105610561056105
+      },
+      {
+        "degree": 9,
+        "count": 14,
+        "probability": 0.0462046204620462
+      },
+      {
+        "degree": 10,
+        "count": 6,
+        "probability": 0.019801980198019802
+      },
+      {
+        "degree": 11,
+        "count": 12,
+        "probability": 0.039603960396039604
+      },
+      {
+        "degree": 12,
+        "count": 11,
+        "probability": 0.036303630363036306
+      },
+      {
+        "degree": 13,
+        "count": 3,
+        "probability": 0.009900990099009901
+      },
+      {
+        "degree": 14,
+        "count": 9,
+        "probability": 0.0297029702970297
+      },
+      {
+        "degree": 15,
+        "count": 3,
+        "probability": 0.009900990099009901
+      },
+      {
+        "degree": 16,
+        "count": 4,
+        "probability": 0.013201320132013201
+      },
+      {
+        "degree": 17,
+        "count": 5,
+        "probability": 0.0165016501650165
+      },
+      {
+        "degree": 18,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 19,
+        "count": 2,
+        "probability": 0.006600660066006601
+      },
+      {
+        "degree": 20,
+        "count": 2,
+        "probability": 0.006600660066006601
+      },
+      {
+        "degree": 21,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 22,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 24,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      },
+      {
+        "degree": 28,
+        "count": 1,
+        "probability": 0.0033003300330033004
+      }
+    ]
+  },
+  "hub_removal": {
+    "method": "Remove nodes by initial in-degree, descending; ties by node_id. Ranking is not recomputed. Connectivity ignores arrow direction.",
+    "random_trials": 100,
+    "seed": 2026,
+    "ranking": [
+      "Spider-Man",
+      "Hulk",
+      "Wolverine_(character)",
+      "Doctor_Strange",
+      "Deadpool",
+      "She-Hulk",
+      "Scarlet_Witch",
+      "Black_Panther_(character)",
+      "Cyclops_(Marvel_Comics)",
+      "Luke_Cage",
+      "Hank_Pym",
+      "Phoenix_Force",
+      "Quasar_(character)",
+      "Jean_Grey",
+      "Black_Widow_(Natasha_Romanova)",
+      "Moon_Knight",
+      "Black_Cat_(Marvel_Comics)",
+      "Cable_(character)",
+      "Emma_Frost",
+      "Iron_Fist_(character)",
+      "Storm_(Marvel_Comics)",
+      "Hercules_(Marvel_Comics)",
+      "Blade_(character)",
+      "Deathlok",
+      "Human_Torch",
+      "Venom_(character)",
+      "Nova_(Richard_Rider)",
+      "Rachel_Summers",
+      "Spider-Woman_(Jessica_Drew)",
+      "Man-Thing",
+      "Misty_Knight",
+      "Human_Torch_(android)",
+      "Mayday_Parker",
+      "Black_Bolt",
+      "Franklin_Richards_(character)",
+      "Ghost_Rider",
+      "Jericho_Drumm",
+      "Mockingbird_(Marvel_Comics)",
+      "Shang-Chi",
+      "Spider-Woman_(Gwen_Stacy)",
+      "Star-Lord",
+      "War_Machine",
+      "Cloak_and_Dagger_(characters)",
+      "Eddie_Brock",
+      "Moondragon",
+      "Ms._Marvel",
+      "Anya_Corazon",
+      "Ghost_Rider_(Johnny_Blaze)",
+      "Jubilee_(character)",
+      "Quicksilver_(Marvel_Comics)",
+      "Rocket_Raccoon",
+      "Silk_(character)",
+      "Spider-Woman",
+      "Bill_Foster_(character)",
+      "Bucky_(Marvel_Comics)",
+      "Captain_Marvel_(Marvel_Comics)",
+      "John_Jameson_(character)",
+      "Morbius",
+      "Sentry_(Robert_Reynolds)",
+      "Vulcan_(Marvel_Comics)",
+      "Adam_Warlock",
+      "Darkhawk",
+      "Jessica_Jones",
+      "Rom_the_Space_Knight",
+      "Scarlet_Spider",
+      "Star_Brand",
+      "Union_Jack_(Marvel_Comics)",
+      "Betsy_Braddock",
+      "Doctor_Nemesis",
+      "Genis-Vell",
+      "Ghost_Rider_(Danny_Ketch)",
+      "Hyperion_(character)",
+      "Jeffrey_Mace",
+      "Patsy_Walker",
+      "Phyla-Vell",
+      "Spider-Man_Noir",
+      "Werewolf_by_Night",
+      "Anole_(character)",
+      "Captain_Universe",
+      "Gladiator_(Kallark)",
+      "Guardian_(Marvel_Comics)",
+      "Gwenpool",
+      "Machine_Man",
+      "Outlaw_(Marvel_Comics)",
+      "Robbie_Baldwin",
+      "Tarantula_(Marvel_Comics)",
+      "U.S._Agent",
+      "Union_Jack_(Joseph_Chapman)",
+      "Whizzer_(Robert_Frank)",
+      "Wolverine_(Ultimate_Marvel_character)",
+      "Abomination_(character)",
+      "Arabian_Knight_(character)",
+      "Ares_(Marvel_Comics)",
+      "Black_Marvel",
+      "Delroy_Garrett",
+      "Doctor_Druid",
+      "Elsa_Bloodstone",
+      "Fin_Fang_Foom",
+      "Gargoyle_(comics)",
+      "Gorgon_(Inhuman)",
+      "Hulkling",
+      "Makkari_(character)",
+      "Nightmask",
+      "Nomad_(Marvel_Comics)",
+      "Paladin_(comics)",
+      "Phil_Urich",
+      "Puck_(Marvel_Comics)",
+      "Red_Guardian",
+      "Spider-Girl",
+      "Spitfire_(character)",
+      "Vance_Astrovik",
+      "Vindicator_(comics)",
+      "Agent_X_(Marvel_Comics)",
+      "Black_Knight_(Marvel_Comics)",
+      "Ch'od",
+      "Chase_Stein",
+      "Devil_Dinosaur",
+      "Empath_(character)",
+      "Guardsman_(character)",
+      "Hellion_(character)",
+      "Hornet_(comics)",
+      "Iron_Man_2020",
+      "Karnak_(character)",
+      "Kristoff_Vernard",
+      "Noh-Varr",
+      "Northstar_(character)",
+      "Radian_(Morituri)",
+      "Radioactive_Man_(comics)",
+      "Ronin_(Marvel_Comics)",
+      "Satana_(Marvel_Comics)",
+      "Toro_(character)",
+      "Two-Gun_Kid",
+      "Xorn",
+      "Anne_Weying",
+      "Balder_the_Brave",
+      "Battlestar_(character)",
+      "Blazing_Skull",
+      "Captain_Marvel_(Khn'nr)",
+      "Gauntlet_(Joseph_Green)",
+      "Jack_Monroe_(character)",
+      "Kid_Colt",
+      "Kismet_(Marvel_Comics)",
+      "Korvus",
+      "Lei_Kung_(character)",
+      "Living_Lightning",
+      "Peggy_Carter",
+      "Ravage_2099",
+      "Rikki_Barnes",
+      "Rockslide_(character)",
+      "Sabra_(character)",
+      "Scaredycat",
+      "Shatterstar",
+      "Shuri_(character)",
+      "Speed_(character)",
+      "Surge_(Marvel_Comics)",
+      "Thin_Man_(character)",
+      "Thor_Girl",
+      "Toxyn",
+      "Turbo_(comics)",
+      "Vyking",
+      "William_Burnside_(character)",
+      "Backhand_(character)",
+      "Beta_Ray_Bill",
+      "Blackthorn_(character)",
+      "Blue_Bullet",
+      "Blue_Marvel",
+      "Bob,_Agent_of_Hydra",
+      "Cammi_(character)",
+      "Caretaker_(comics)",
+      "Citizen_V",
+      "Doctor_Spectrum",
+      "Dusk_(comics)",
+      "Firebird_(Marvel_Comics)",
+      "Firelord_(character)",
+      "Frankenstein's_Monster_(Marvel_Comics)",
+      "Frog-Man",
+      "Hulk_2099",
+      "Hybrid_(Scott_Washington)",
+      "Ikaris",
+      "Iron_Lad",
+      "Justice_(New_Universe)",
+      "Killpower",
+      "Killraven",
+      "Leech_(character)",
+      "Marvel_Boy_(Robert_Grayson)",
+      "Power_Man_(Victor_Alvarez)",
+      "Raza_Longknife",
+      "Red_Raven_(Marvel_Comics)",
+      "Ricochet_(comics)",
+      "Rusty_Collins",
+      "Scatterbrain_(Morituri)",
+      "She-Hulk_(Lyra)",
+      "Snapdragon_(Morituri)",
+      "Spider-Bitch_(Ashley_Barton)",
+      "Spider-UK",
+      "Starhawk_(character)",
+      "Starr_the_Slayer",
+      "Steel_Spider",
+      "Synapse_(character)",
+      "The_Union_(Marvel)",
+      "Thena",
+      "Ulysses_Bloodstone",
+      "White_Tiger_(comics)",
+      "Yelena_Belova",
+      "Ajak",
+      "Alex_Wilder",
+      "Black_Jack_Tarr",
+      "Black_Rider_(character)",
+      "Blue_Diamond_(character)",
+      "Box_(comics)",
+      "Brian_Braddock",
+      "Bug_(Marvel_Comics)",
+      "Crane_Mother",
+      "Darkdevil",
+      "Debrii",
+      "Devil_Hulk",
+      "Doom_2099",
+      "Dragon_Lord_(character)",
+      "Fandral",
+      "Flatman_(character)",
+      "Force_(comics)",
+      "G._W._Bridge",
+      "Garrison_Kane",
+      "Golem_(Marvel_Comics)",
+      "Hit-Monkey",
+      "Hrimhari",
+      "Iron_Man_(Ultimate_Marvel_character)",
+      "Jack_Frost_(Marvel_Comics)",
+      "Janice_Lincoln",
+      "Jean_Grey_(X-Men_film_series)",
+      "Magician_(Marvel_Comics)",
+      "Mania_(character)",
+      "Motormouth_(comics)",
+      "Nightwatch_(character)",
+      "Powerhouse_(Marvel_Comics)",
+      "Red_Wolf_(comics)",
+      "Shear_(character)",
+      "Skull_the_Slayer",
+      "Solo_(Marvel_Comics)",
+      "Stingray_(Marvel_Comics)",
+      "The_Witness_(character)",
+      "Timeslip_(comics)",
+      "Typeface_(character)",
+      "White_Tiger_(Heroes_for_Hire)",
+      "Will_o'_the_Wisp_(comics)",
+      "Baymax",
+      "Bird-Brain_(Marvel_Comics)",
+      "Black_Fox_(Robert_Paine)",
+      "Blackwulf",
+      "Blue_Eagle_(character)",
+      "Brain_Drain_(character)",
+      "Breeze_Barton",
+      "Captain_Midlands",
+      "Captain_Ultra",
+      "Charcoal_(comics)",
+      "Coldblood",
+      "Crippler_(character)",
+      "Dargo_Ktor",
+      "Detroit_Steel",
+      "Digitek_(character)",
+      "Dogpool",
+      "Emrys_Killebrew",
+      "Enigma_(Marvel_Comics)",
+      "Ethan_Edwards",
+      "Fabio_Medina",
+      "Father_Time_(Marvel_Comics)",
+      "Gremlin_(comics)",
+      "Happy_Sam_Sawyer",
+      "Hawkeye_(comics)",
+      "Helix_(Marvel_Comics)",
+      "Hellfire_(J._T._Slade)",
+      "Human_Fly_(character)",
+      "Illuminator_(Marvel_Comics)",
+      "Inferno_(Dante_Pertuz)",
+      "Isaiah_Bradley",
+      "Junior_Juniper",
+      "Mahr_Vehl",
+      "Mark_Hazzard:_Merc",
+      "Miracleman_(character)",
+      "Moonglow_(comics)",
+      "NFL_SuperPro",
+      "Ogre_(Marvel_Comics)",
+      "Oya_(comics)",
+      "Redneck_(comics)",
+      "Rockman_(character)",
+      "Ruby_Summers",
+      "Scarlet_Scarab",
+      "Scorpio_(Marvel_Comics)",
+      "Sean_and_Chris",
+      "Shamrock_(comics)",
+      "Silencer_(comics)",
+      "Silhouette_(comics)",
+      "Solarman",
+      "Solomon_Kane_(comics)",
+      "Spider-Man_(Marvel_Mangaverse)",
+      "Straw_Man_(comics)",
+      "Super_Rabbit",
+      "Thunderbolt_(Marvel_Comics)",
+      "Thunderclap_(comics)",
+      "Ursa_Major_(character)",
+      "Wild_Child_(character)",
+      "Yo-Yo_Rodriguez",
+      "Zombie_(comics)"
+    ],
+    "steps": [
+      {
+        "removed": 0,
+        "remaining_nodes": 303,
+        "targeted_largest_component": 277,
+        "targeted_fraction_original": 0.9141914191419142,
+        "targeted_fraction_remaining": 0.9141914191419142,
+        "random_mean_largest_component": 277,
+        "random_p05_largest_component": 277,
+        "random_p95_largest_component": 277
+      },
+      {
+        "removed": 1,
+        "remaining_nodes": 302,
+        "targeted_largest_component": 271,
+        "targeted_fraction_original": 0.8943894389438944,
+        "targeted_fraction_remaining": 0.8973509933774835,
+        "random_mean_largest_component": 276,
+        "random_p05_largest_component": 275,
+        "random_p95_largest_component": 277
+      },
+      {
+        "removed": 3,
+        "remaining_nodes": 300,
+        "targeted_largest_component": 268,
+        "targeted_fraction_original": 0.8844884488448845,
+        "targeted_fraction_remaining": 0.8933333333333333,
+        "random_mean_largest_component": 274.02,
+        "random_p05_largest_component": 273,
+        "random_p95_largest_component": 275
+      },
+      {
+        "removed": 5,
+        "remaining_nodes": 298,
+        "targeted_largest_component": 262,
+        "targeted_fraction_original": 0.8646864686468647,
+        "targeted_fraction_remaining": 0.8791946308724832,
+        "random_mean_largest_component": 272.03,
+        "random_p05_largest_component": 270,
+        "random_p95_largest_component": 273
+      },
+      {
+        "removed": 10,
+        "remaining_nodes": 293,
+        "targeted_largest_component": 256,
+        "targeted_fraction_original": 0.8448844884488449,
+        "targeted_fraction_remaining": 0.8737201365187713,
+        "random_mean_largest_component": 267.13,
+        "random_p05_largest_component": 265,
+        "random_p95_largest_component": 269
+      },
+      {
+        "removed": 20,
+        "remaining_nodes": 283,
+        "targeted_largest_component": 236,
+        "targeted_fraction_original": 0.7788778877887789,
+        "targeted_fraction_remaining": 0.833922261484099,
+        "random_mean_largest_component": 257.54,
+        "random_p05_largest_component": 253,
+        "random_p95_largest_component": 260
+      },
+      {
+        "removed": 40,
+        "remaining_nodes": 263,
+        "targeted_largest_component": 203,
+        "targeted_fraction_original": 0.66996699669967,
+        "targeted_fraction_remaining": 0.7718631178707225,
+        "random_mean_largest_component": 238.05,
+        "random_p05_largest_component": 232,
+        "random_p95_largest_component": 242
+      },
+      {
+        "removed": 80,
+        "remaining_nodes": 223,
+        "targeted_largest_component": 135,
+        "targeted_fraction_original": 0.44554455445544555,
+        "targeted_fraction_remaining": 0.6053811659192825,
+        "random_mean_largest_component": 198.37,
+        "random_p05_largest_component": 192,
+        "random_p95_largest_component": 204
+      }
+    ]
+  },
+  "definitions": {
+    "edge": "A directed edge A -> B means A's article links to B's article within the frozen roster.",
+    "in_degree": "Number of roster pages linking to this page.",
+    "out_degree": "Number of roster pages this page links to.",
+    "degree": "Number of distinct neighbors, ignoring arrow direction and excluding self-loops.",
+    "total_degree": "In-degree plus out-degree.",
+    "weak_component": "Pages connected by paths when arrow direction is ignored.",
+    "reciprocity": "Fraction of directed, non-self edges with a reverse edge.",
+    "distribution": "P(k) = number of nodes of degree k / complete roster size. Zero degrees remain in the data; omitted on logarithmic axes."
+  },
+  "provenance": {
+    "nodes": {
+      "file": "week1_nodes.tsv",
+      "sha256": "a10ec309ac60ea8b72bcc1a18aba801414896676dac172619def0435e585391e"
+    },
+    "edges": {
+      "file": "week1_edges.tsv",
+      "sha256": "87be017a35e8f27a1f1bc0912ebb5723c0084e460cb2dbd0d2abd0e83fc644b2"
+    },
+    "source": "https://sunelehmann.com/socialgraphs2026-web/data/",
+    "snapshot_date": "2026-08-26"
+  }
+}

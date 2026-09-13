@@ -1,0 +1,66 @@
+name: Publish EARTH—303
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      pages_mode: ${{ steps.pages_mode.outputs.mode }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Recompute the frozen network
+        run: python scripts/analyze.py
+      - name: Build the public site
+        run: python scripts/build.py --output _site
+      - name: Check analysis and site
+        run: python -m unittest discover -s tests
+      - name: Read the existing Pages publishing mode
+        id: pages_mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          mode=$(gh api "repos/$REPOSITORY/pages" --jq '.build_type')
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+      - name: Upload the public site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    # Branch-based Pages publishes the committed root automatically. Avoid a
+    # second deployment competing with that existing publishing mechanism.
+    if: needs.build.outputs.pages_mode == 'workflow'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
