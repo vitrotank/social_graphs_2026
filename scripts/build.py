@@ -26,9 +26,20 @@ def read_json(path: Path) -> dict:
 
 
 def header(config: dict, prefix: str, current: str) -> str:
-    routes = [("home", "index.html", "Home"), ("journal", "index.html#journal", "Weekly journal"),
-              ("play", "play/index.html", "Crossed Wires")]
-    links = ''.join(f'<a href="{prefix}{url}"' + (' aria-current="page"' if key == current else '') + f'>{label}</a>' for key, url, label in routes)
+    routes = [
+        ("home", "index.html", "Home", None),
+        ("journal", "index.html#journal", "Weekly journal", None),
+        ("play", "play/index.html", "Crossed Wires", "Week 1"),
+        ("cerebro", "play/cerebro.html", "Popularity Trap", "Week 2")
+    ]
+    items = []
+    for key, url, label, week in routes:
+        active = ' aria-current="page"' if key == current else ''
+        if week:
+            items.append(f'<a href="{prefix}{url}" class="nav-game-link"{active}><span class="nav-game-title">{label}</span><small class="nav-game-badge">{week}</small></a>')
+        else:
+            items.append(f'<a href="{prefix}{url}"{active}>{label}</a>')
+    links = ''.join(items)
     mark = '<svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg>'
     return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div></header>'
 
@@ -163,7 +174,8 @@ def render() -> list[Path]:
         "LATEST_TITLE": escape(latest["title"]), "LATEST_SUMMARY": escape(latest["summary"]),
     })
     pages = [(Path("home.html"), Path("index.html"), "home"),
-             (Path("play.html"), Path("play/index.html"), "play")]
+             (Path("play.html"), Path("play/index.html"), "play"),
+             (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro")]
     pages += [(Path(week["template"]), Path(week["path"]), "journal") for week in published]
     if len({destination for _, destination, _ in pages}) != len(pages):
         raise ValueError("Every page needs a unique output path.")
@@ -185,10 +197,15 @@ def render() -> list[Path]:
     (ROOT / "assets/favicon.svg").write_text(favicon, encoding="utf-8", newline="\n")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
-        "style.css", "app.js", "home.js", "game.js", "game.css", ".nojekyll", "assets/favicon.svg",
+        "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",
         "assets/data/network.js", "assets/data/network.json", "assets/data/summary.json",
         "assets/data/puzzles.js", "assets/data/puzzles.json",
         "assets/figures/hero-network.svg", "assets/figures/degree-linear.svg", "assets/figures/degree-loglog.svg",
+        "assets/figures/hero-models.svg", "assets/figures/ccdf-models.svg", "assets/figures/ccdf-fit.svg",
+        "assets/figures/clustering-nulls.svg", "assets/figures/growth-models.svg",
+        "assets/figures/marvel_vs_ba_vs_er_ccdf.png", "assets/figures/marvel_ccdf_vs_pdf.png",
+        "assets/figures/clustering_null_models_comparison.png", "assets/figures/friendship_paradox_simulation.png",
+        "assets/figures/transitivity_and_isolates_nulls.png", "assets/figures/ba_vs_uniform_growth.png",
         "data/raw/week1_nodes.tsv", "data/raw/week1_edges.tsv", "data/raw/README.md"
     )]
 

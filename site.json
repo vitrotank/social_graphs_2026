@@ -9,7 +9,7 @@
   "arcade": {"first_release": "2026-09-09", "release_hour": 19, "week_count": 52},
   "weeks": [
     {"number": 1, "title": "Some heroes never get the call.", "summary": "Who's on everyone's speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.", "status": "published", "path": "week1/index.html", "template": "week1.html"},
-    {"number": 2, "status": "upcoming"},
+    {"number": 2, "title": "Compared to what? Models, nulls, and the popularity trap.", "summary": "Does Marvel look more like Barabási–Albert or pure chance? Why do your superhero friends have more friends than you? And what survives when you rewire 1,784 hyperlinks?", "status": "published", "path": "week2/index.html", "template": "week2.html"},
     {"number": 3, "status": "upcoming"},
     {"number": 4, "status": "upcoming"},
     {"number": 5, "status": "upcoming"},

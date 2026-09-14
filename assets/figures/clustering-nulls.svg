@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title-c desc-c">
+<title id="title-c">Clustering Coefficient vs Null Models</title>
+<desc id="desc-c">Clustering distributions across Erdős-Rényi, Double Edge Swap, and the observed Marvel network.</desc>
+<rect width="960" height="600" fill="#f6f1e7"/>
+<g font-family="Arial, sans-serif" fill="#232927">
+<text x="40" y="38" font-size="24" font-weight="700">Testing clustering against null models</text>
+<text x="40" y="65" font-size="13" fill="#586866">Clustering coefficient distributions: Erdős–Rényi G(n, m) vs Double Edge Swap vs Observed Marvel</text>
+<path d="M88.00,92 V490" stroke="#d5d9cf"/><text x="88.00" y="514" text-anchor="middle" font-size="12">0.00</text>
+<path d="M196.95,92 V490" stroke="#d5d9cf"/><text x="196.95" y="514" text-anchor="middle" font-size="12">0.05</text>
+<path d="M305.89,92 V490" stroke="#d5d9cf"/><text x="305.89" y="514" text-anchor="middle" font-size="12">0.10</text>
+<path d="M414.84,92 V490" stroke="#d5d9cf"/><text x="414.84" y="514" text-anchor="middle" font-size="12">0.15</text>
+<path d="M523.79,92 V490" stroke="#d5d9cf"/><text x="523.79" y="514" text-anchor="middle" font-size="12">0.20</text>
+<path d="M632.74,92 V490" stroke="#d5d9cf"/><text x="632.74" y="514" text-anchor="middle" font-size="12">0.25</text>
+<path d="M741.68,92 V490" stroke="#d5d9cf"/><text x="741.68" y="514" text-anchor="middle" font-size="12">0.30</text>
+<path d="M850.63,92 V490" stroke="#d5d9cf"/><text x="850.63" y="514" text-anchor="middle" font-size="12">0.35</text>
+<path d="M88,490 H916" stroke="#d5d9cf"/>
+<path d="M88,390 H916" stroke="#d5d9cf"/>
+<path d="M88,290 H916" stroke="#d5d9cf"/>
+<path d="M88,190 H916" stroke="#d5d9cf"/>
+<text x="502" y="545" text-anchor="middle" font-size="12" fill="#586866" font-family="SFMono-Regular, Consolas, monospace">CLUSTERING COEFFICIENT C</text>
+<path d="M142.47,490 L142.47,489.93 L143.56,489.86 L144.65,489.74 L145.74,489.53 L146.83,489.17 L147.92,488.57 L149.01,487.59 L150.10,486.06 L151.19,483.73 L152.28,480.30 L153.37,475.41 L154.46,468.66 L155.55,459.63 L156.64,447.97 L157.73,433.42 L158.82,415.92 L159.91,395.67 L160.99,373.18 L162.08,349.28 L163.17,325.14 L164.26,302.15 L165.35,281.82 L166.44,265.60 L167.53,254.75 L168.62,250.13 L169.71,252.12 L170.80,260.56 L171.89,274.76 L172.98,293.61 L174.07,315.72 L175.16,339.58 L176.25,363.73 L177.34,386.91 L178.43,408.13 L179.52,426.77 L180.61,442.50 L181.69,455.30 L182.78,465.34 L183.87,472.96 L184.96,478.55 L186.05,482.51 L187.14,485.24 L188.23,487.06 L189.32,488.23 L190.41,488.96 L191.50,489.41 L192.59,489.67 L193.68,489.82 L194.77,489.91 L195.86,489.95 L196.95,490 Z" fill="#486452" fill-opacity="0.35" stroke="#486452" stroke-width="2"/>
+<text x="168.84" y="240" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#486452" font-weight="bold">Erdős–Rényi G(n, m)</text>
+<text x="168.84" y="255" text-anchor="middle" font-size="9" fill="#486452">C = 0.037 ± 0.003</text>
+<path d="M360.37,490 L360.37,489.81 L362.55,489.71 L364.73,489.54 L366.91,489.29 L369.08,488.93 L371.26,488.41 L373.44,487.67 L375.62,486.63 L377.80,485.21 L379.98,483.30 L382.16,480.77 L384.34,477.49 L386.52,473.29 L388.69,468.04 L390.87,461.58 L393.05,453.79 L395.23,444.58 L397.41,433.92 L399.59,421.82 L401.77,408.40 L403.95,393.85 L406.13,378.47 L408.31,362.63 L410.48,346.79 L412.66,331.48 L414.84,317.26 L417.02,304.68 L419.20,294.26 L421.38,286.46 L423.56,281.63 L425.74,280.00 L427.92,281.63 L430.09,286.46 L432.27,294.26 L434.45,304.68 L436.63,317.26 L438.81,331.48 L440.99,346.79 L443.17,362.63 L445.35,378.47 L447.53,393.85 L449.71,408.40 L451.88,421.82 L454.06,433.92 L456.24,444.58 L458.42,453.79 L460.60,461.58 L462.78,468.04 L464.96,473.29 L467.14,477.49 L469.32,480.77 L471.49,483.30 L473.67,485.21 L475.85,486.63 L478.03,487.67 L480.21,488.41 L482.39,488.93 L484.57,489.29 L486.75,489.54 L488.93,489.71 L491.11,490 Z" fill="#2849c7" fill-opacity="0.3" stroke="#2849c7" stroke-width="2"/>
+<text x="425.74" y="270" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Degree-Preserving Swap Null</text>
+<text x="425.74" y="285" text-anchor="middle" font-size="9" fill="#2849c7">C = 0.155 ± 0.008 (z = 19.6)</text>
+<line x1="785.26" y1="132" x2="785.26" y2="490" stroke="#dc512f" stroke-width="3.5"/>
+<circle cx="785.26" cy="132" r="6" fill="#dc512f"/>
+<rect x="650.26" y="112" width="130" height="50" rx="3" fill="#dc512f"/>
+<text x="715.26" y="130" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#fff" font-weight="bold">REAL MARVEL</text>
+<text x="715.26" y="146" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#fff">C = 0.320 (z = 19.6)</text>
+<path d="M425.74,350 H785.26" stroke="#a93419" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="605.50" y="342" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419" font-weight="bold">+106% UNEXPLAINED CLUSTERING (TRIADIC CLOSURE)</text>
+</g></svg>

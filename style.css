@@ -571,11 +571,10 @@ a.log-entry:hover .log-title { color: var(--signal-dark); }
 .brand { gap: 11px; }
 .brand-mark { width: 35px; height: 35px; color: var(--cobalt); stroke-width: 2; }
 .brand-copy strong { font-size: 19px; letter-spacing: -.045em; font-weight: 800; }
-.brand-copy small { font-size: 7px; letter-spacing: .07em; margin-top: 6px; }
-.nav-links { gap: 28px; }
-.nav-links a { font-size: 11px; padding-block: 12px; }
-.nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--cobalt); }
-.nav-links a[aria-current="page"] { text-decoration: underline; text-underline-offset: 7px; }
+.nav-links { gap: 24px; align-items: center; }
+.nav-links a { font-size: 11px; padding-block: 8px; text-decoration: none; border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--cobalt); text-decoration: none; }
+.nav-links a[aria-current="page"] { border-bottom-color: var(--cobalt); }
 .button { min-height: 44px; border-radius: 3px; font-size: 11px; padding: 13px 19px; }
 .button-primary { background: var(--cobalt); border-color: var(--cobalt); }
 .button-primary:hover { background: #203b9f; border-color: #203b9f; }
@@ -862,3 +861,218 @@ a.log-entry:hover .log-title { color: var(--signal-dark); }
   .site-footer { background: white; color: black; }
   .report-page .hero-figure { transform: none; }
 }
+
+/* ==========================================================================
+   Week 2: The Cerebro Paradox, Multiverse Rewirer, and Null-Model Lab
+   ========================================================================== */
+.arena-section { padding-top: 20px; }
+.arena-shell { border: 1px solid var(--ink); background: var(--paper-light); box-shadow: 6px 6px 0 #2329270a; }
+.arena-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; padding: 16px 24px; background: var(--ink); color: var(--paper-light); }
+.arena-header .eyebrow { color: #b0bdd9; font-size: 9px; }
+.arena-header h2 { font-family: var(--serif); font-size: 24px; margin: 0; }
+.duel-scoreboard { display: flex; align-items: center; gap: 20px; font-family: var(--mono); font-size: 10px; }
+.duel-score-item span { color: #8fa0b5; margin-right: 5px; }
+.duel-score-item strong { color: #f2a078; font-size: 13px; }
+
+.arena-controls { padding: 18px 24px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; background: #faf8f2; }
+.arena-toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.duel-chip-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; }
+.duel-chip-bar .eyebrow { font-size: 9px; margin-right: 4px; }
+.hero-chip { border: 1px solid var(--line); background: var(--paper); padding: 5px 10px; font-family: var(--mono); font-size: 10px; border-radius: 2px; transition: all .14s; }
+.hero-chip:hover { border-color: var(--copper); color: var(--copper); }
+
+.arena-stage { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; padding: 24px; align-items: start; }
+@media (max-width: 860px) { .arena-stage { grid-template-columns: 1fr; } }
+
+.duel-hero-card { border: 1px solid var(--line); padding: 22px; background: var(--paper); display: flex; flex-direction: column; gap: 16px; }
+.duel-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.duel-hero-name { font-family: var(--serif); font-size: 32px; line-height: 1.1; margin: 4px 0 0; }
+.status-badge { display: inline-block; font-family: var(--mono); font-size: 8.5px; padding: 4px 8px; font-weight: bold; letter-spacing: .05em; border-radius: 2px; }
+.apex-badge { background: #dc512f; color: #fff; }
+.island-badge { background: #a97d2e; color: #fff; }
+.titan-badge { background: #2849c7; color: #fff; }
+.trapped-badge { background: #486452; color: #fff; }
+.isolate-badge { background: #60645c; color: #fff; }
+
+.duel-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 12px; background: #fffcf7; border: 1px dashed var(--line); }
+.duel-stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.duel-stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--ink); }
+.duel-stat-label { font-family: var(--mono); font-size: 8px; color: var(--ink-muted); margin-top: 2px; }
+.duel-card-prompt { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+
+.duel-action-panel { display: flex; flex-direction: column; gap: 16px; }
+.duel-choice-box { border: 1px solid var(--line); padding: 20px; background: var(--paper); display: flex; flex-direction: column; gap: 12px; }
+.duel-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 500px) { .duel-choices { grid-template-columns: 1fr; } }
+.duel-choice-btn { padding: 14px 12px; border: 2px solid var(--ink); background: var(--paper-light); font-family: var(--mono); font-size: 11px; font-weight: 600; text-align: center; cursor: pointer; transition: all .15s; }
+.duel-choice-btn:hover:not(:disabled) { border-color: var(--copper); color: var(--copper); background: #f0f3fa; }
+.duel-choice-btn.selected { border-color: var(--copper); background: #e8eef8; }
+.duel-choice-btn.correct { border-color: #2b7a4b; background: #eef7f1; color: #1e5835; }
+.duel-choice-btn.wrong { border-color: #dc512f; background: #fdf2ef; color: #a93419; }
+
+.duel-reveal-panel { border: 1px solid var(--line); padding: 20px; background: var(--paper); display: flex; flex-direction: column; gap: 14px; animation: fadeIn .2s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.verdict-banner { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-family: var(--mono); font-size: 11px; border-radius: 2px; }
+.verdict-correct { background: #e8f5e9; color: #1b5e20; border-left: 4px solid #2e7d32; }
+.verdict-wrong { background: #ffebee; color: #b71c1c; border-left: 4px solid #c62828; }
+.verdict-icon { font-size: 16px; font-weight: bold; }
+
+.duel-comparison-cards { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-block: 4px; }
+.duel-comp-card { padding: 12px; border: 1px solid var(--line); text-align: center; background: #fffdfa; }
+.comp-degree { font-family: var(--mono); font-size: 26px; font-weight: bold; color: var(--ink); margin: 3px 0; }
+.comp-degree.higher { color: #dc512f; }
+.comp-degree.lower { color: #2849c7; }
+.comp-label { font-family: var(--mono); font-size: 8px; color: var(--ink-muted); }
+.duel-comp-vs { font-family: var(--mono); font-size: 12px; font-weight: bold; color: var(--ink-muted); }
+
+.easter-egg-banner { padding: 12px 14px; font-size: 12.5px; line-height: 1.6; border: 1px dashed; border-radius: 2px; }
+.easter-egg-banner.apex { background: #fdf3ed; border-color: #dc512f; color: #8f2913; }
+.easter-egg-banner.island { background: #fbf7ee; border-color: #b58f3e; color: #6b5119; }
+.easter-egg-banner.titan { background: #edf2fb; border-color: #2849c7; color: #18318f; }
+.duel-explanation { font-size: 12.5px; line-height: 1.65; color: var(--ink); }
+
+.duel-math-box { background: #f3f2ec; padding: 11px 14px; font-size: 11px; line-height: 1.6; border-left: 3px solid var(--ink); }
+.duel-math-box code { font-family: var(--mono); background: #eae8df; padding: 1px 4px; font-size: 10px; }
+.duel-next-action { margin-top: 4px; }
+
+/* Multiverse Rewirer Lab */
+.rewirer-section { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+.rewirer-top { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.rewirer-modes { display: flex; gap: 10px; flex-wrap: wrap; }
+.rewirer-btn { border: 1px solid var(--ink); padding: 10px 16px; background: var(--paper); font-family: var(--mono); font-size: 10px; font-weight: 600; cursor: pointer; transition: all .15s; }
+.rewirer-btn:hover { background: #eceae0; }
+.rewirer-btn.active { background: var(--ink); color: var(--paper-light); }
+
+.null-dashboard { border: 1px solid var(--line); background: var(--paper); padding: 22px; }
+.null-meta-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.null-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); margin-bottom: 20px; max-width: 800px; }
+
+.null-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.null-metric-card { border: 1px solid var(--line); padding: 14px; background: #fffdf9; display: flex; flex-direction: column; gap: 8px; cursor: pointer; transition: all .15s; }
+.null-metric-card:hover { border-color: var(--copper); transform: translateY(-1px); }
+.null-metric-header { display: flex; justify-content: space-between; align-items: baseline; }
+.null-metric-val { font-family: var(--mono); font-size: 22px; font-weight: bold; color: var(--ink); }
+.metric-gauge { height: 6px; background: #e6e3d8; border-radius: 3px; overflow: hidden; }
+.gauge-bar { height: 100%; background: var(--copper); transition: width .3s ease; }
+.gauge-bar.orange-gauge { background: var(--signal); }
+.gauge-bar.mint-gauge { background: var(--leaf); }
+.null-metric-hint { font-family: var(--mono); font-size: 8px; color: var(--ink-muted); }
+
+.quiz-feedback-box { margin-top: 18px; padding: 14px 18px; font-size: 12.5px; line-height: 1.65; border-radius: 2px; }
+.quiz-feedback-box.correct { background: #e8f5e9; color: #1b5e20; border: 1px solid #81c784; }
+.quiz-feedback-box.wrong { background: #ffebee; color: #b71c1c; border: 1px solid #e57373; }
+
+/* Comparison Matrix Table */
+.matrix-card { border: 1px solid var(--line); background: var(--paper-light); margin-top: 24px; overflow-x: auto; }
+.matrix-table { width: 100%; border-collapse: collapse; font-size: 12.5px; line-height: 1.6; text-align: left; }
+.matrix-table th, .matrix-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.matrix-table th { font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; background: #eae6da; color: var(--ink); }
+.matrix-table tbody tr:hover { background: #f2efe4; }
+.survive-tag { display: inline-block; font-family: var(--mono); font-size: 8.5px; padding: 2px 6px; font-weight: bold; background: #e8f5e9; color: #1e5835; border-radius: 2px; }
+.casualty-tag { display: inline-block; font-family: var(--mono); font-size: 8.5px; padding: 2px 6px; font-weight: bold; background: #ffebee; color: #a93419; border-radius: 2px; }
+
+/* Navigation game links with week sub-label */
+.nav-game-link { display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1.15; padding-block: 4px 6px; text-decoration: none !important; border-bottom: 2px solid transparent; }
+.nav-game-link * { text-decoration: none !important; }
+.nav-game-title { font-size: 11px; font-weight: 600; text-decoration: none; }
+.nav-game-badge { font-family: var(--mono); font-size: 8px; color: var(--signal); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; text-decoration: none; margin-top: 2px; }
+.nav-game-link:hover .nav-game-badge { color: var(--signal-dark); }
+.nav-game-link[aria-current="page"] { border-bottom-color: var(--cobalt); }
+.nav-game-link[aria-current="page"] .nav-game-badge { color: var(--cobalt); }
+
+/* Weekly Arcade Hero Banner */
+.weekly-arcade-banner { border: 2px solid var(--ink); background: #132238; color: var(--paper-light); padding: clamp(20px, 3.5vw, 32px); margin-bottom: 32px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; align-items: center; box-shadow: 6px 6px 0 var(--signal); }
+@media (max-width: 780px) { .weekly-arcade-banner { grid-template-columns: 1fr; } }
+.arcade-banner-copy h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); margin: 4px 0 10px; color: #fff; line-height: 1.1; }
+.arcade-banner-copy p { font-size: 13.5px; line-height: 1.65; color: #b5c4db; max-width: 520px; }
+.arcade-banner-art { display: flex; justify-content: center; align-items: center; min-width: 0; }
+.arcade-badge-chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 9px; color: #ffbc94; }
+
+/* Cerebro Radar Scope */
+.radar-console-box { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.radar-screen-wrapper { border: 1px solid var(--line); background: #0e1b2e; color: #f6f1e7; padding: 16px; position: relative; overflow: hidden; }
+.radar-hud-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-family: var(--mono); font-size: 8.5px; color: #8fa0b5; }
+.radar-canvas-container { position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 440px; margin-inline: auto; background: #08111d; border-radius: 50%; border: 2px solid #2849c7; box-shadow: inset 0 0 35px #132238, 0 0 18px #2849c730; overflow: hidden; }
+#cerebro-radar-svg { width: 100%; height: 100%; display: block; }
+.radar-scan-line { position: absolute; inset: 0; pointer-events: none; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 300deg, #2849c715 330deg, #2849c755 360deg); animation: radar-spin 4.5s linear infinite; }
+@keyframes radar-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.radar-blip { fill: #99d5c6; }
+.radar-wire { stroke-dasharray: 3 3; }
+.radar-wave { pointer-events: none; }
+.radar-beam-wedge { pointer-events: none; }
+.radar-beam-line { pointer-events: none; }
+
+/* Versus Dual Radars Stage */
+.versus-radars-stage { margin-block: 20px 16px; }
+.versus-radar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 720px) {
+  .versus-radar-grid { grid-template-columns: 1fr; }
+}
+.radar-box-a .radar-screen-wrapper { border-color: #2849c7; }
+.radar-box-a .radar-canvas-container {
+  border-color: #2849c7;
+  box-shadow: inset 0 0 35px #132238, 0 0 16px #2849c735;
+}
+.radar-box-b .radar-screen-wrapper { border-color: #dc512f; }
+.radar-box-b .radar-canvas-container {
+  border-color: #dc512f;
+  box-shadow: inset 0 0 35px #241310, 0 0 16px #dc512f35;
+}
+
+/* Voltmeter Analog Dial */
+.voltmeter-card { border: 1px solid var(--line); background: var(--paper); padding: 16px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.voltmeter-header { display: flex; justify-content: space-between; align-items: center; }
+.voltmeter-dial { width: 100%; max-width: 270px; margin-inline: auto; overflow: hidden; }
+.voltmeter-svg { width: 100%; height: auto; display: block; overflow: hidden; }
+.voltmeter-legend { display: flex; justify-content: center; gap: 16px; font-family: var(--mono); font-size: 8.5px; color: var(--ink-muted); margin-top: 4px; }
+#needle-hero, #needle-friend { stroke-linecap: round; }
+
+/* Cerebro Operator Briefing Strip (Permanently Visible at Top) */
+.cerebro-briefing-strip { border: 1px solid var(--line); background: var(--paper-light); padding: 18px 22px; margin-bottom: 24px; box-shadow: 4px 4px 0 #23292708; }
+.briefing-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+.briefing-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.briefing-step { display: flex; gap: 12px; align-items: flex-start; }
+.briefing-step .step-num { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--signal); background: #fdf0ec; border: 1px solid #f2cfc6; padding: 2px 7px; border-radius: 2px; flex-shrink: 0; line-height: 1.4; }
+.briefing-step strong { display: block; font-size: 13px; margin-bottom: 3px; color: var(--ink); }
+.briefing-step p { font-size: 12px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+
+/* Cerebro Game Mode Tab Bar */
+.cerebro-tab-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--ink); background: var(--paper-dark); margin-bottom: 22px; }
+@media (max-width: 650px) { .cerebro-tab-bar { grid-template-columns: 1fr; } }
+.cerebro-tab { display: flex; flex-direction: column; align-items: flex-start; padding: 14px 18px; border: 0; border-right: 1px solid var(--ink); background: var(--paper-dark); color: var(--ink); text-align: left; transition: all .15s; }
+.cerebro-tab:last-child { border-right: 0; }
+.cerebro-tab:hover { background: #e3dfd3; }
+.cerebro-tab.active { background: var(--ink); color: var(--paper-light); }
+.cerebro-tab.active .tab-badge { background: var(--signal); color: #fff; }
+.cerebro-tab.active small { color: #adc0d9; }
+.tab-badge { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 2px 6px; background: #ccd2c4; border-radius: 2px; margin-bottom: 4px; }
+.cerebro-tab strong { font-size: 13px; font-weight: 700; }
+.cerebro-tab small { font-size: 10.5px; color: var(--ink-muted); line-height: 1.4; margin-top: 2px; }
+
+/* Mode 1: Popular Friends Versus Grid */
+.duel-versus-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; margin-bottom: 20px; }
+@media (max-width: 680px) { .duel-versus-grid { grid-template-columns: 1fr; } }
+.duel-versus-divider { display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: var(--mono); font-weight: 800; font-size: 16px; color: var(--signal); padding-inline: 4px; }
+.duel-hero-choice-card { border: 2px solid var(--ink); background: var(--paper-light); padding: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; transition: transform .15s, border-color .15s; }
+.duel-hero-choice-card:hover { border-color: var(--copper); transform: translateY(-2px); }
+.choice-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.choice-hero-name { font-family: var(--serif); font-size: 20px; line-height: 1.2; font-weight: 700; margin: 0; }
+.choice-hero-meta { font-family: var(--mono); font-size: 9px; color: var(--ink-muted); margin-top: 4px; }
+.choice-stat-row { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); padding-top: 8px; font-family: var(--mono); font-size: 11px; }
+.choice-pick-btn { width: 100%; min-height: 42px; border: 2px solid var(--ink); background: var(--paper); font-family: var(--mono); font-size: 11px; font-weight: 700; cursor: pointer; transition: all .15s; text-align: center; }
+.choice-pick-btn:hover:not(:disabled) { background: var(--copper); border-color: var(--copper); color: #fff; }
+.choice-pick-btn.selected-winner { background: #2b7a4b !important; border-color: #2b7a4b !important; color: #fff !important; }
+.choice-pick-btn.selected-loser { background: #dc512f !important; border-color: #dc512f !important; color: #fff !important; }
+
+/* Verdict Bar & Immediate Action */
+.verdict-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+.verdict-bar .verdict-banner { flex: 1; min-width: 200px; margin-bottom: 0; }
+.verdict-bar .button { flex-shrink: 0; }
+
+

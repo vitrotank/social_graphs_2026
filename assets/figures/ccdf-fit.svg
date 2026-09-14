@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title-fit desc-fit">
+<title id="title-fit">Fitted Power-Law &amp; Tail Truncation</title>
+<desc id="desc-fit">Empirical power-law fit slope of -1.35 and the discrete quantal staircase breakdown past k=35.</desc>
+<rect width="960" height="600" fill="#f6f1e7"/>
+<g font-family="Arial, sans-serif" fill="#232927">
+<text x="40" y="38" font-size="24" font-weight="700">The limits of scale-free claims</text>
+<text x="40" y="65" font-size="13" fill="#586866">Fitted power-law slope = −1.351 (implied γ = 2.351) · discrete quantal steps in the tail</text>
+<path d="M88.00,92 V490" stroke="#d5d9cf"/><text x="88.00" y="514" text-anchor="middle" font-size="12">1</text>
+<path d="M207.88,92 V490" stroke="#d5d9cf"/><text x="207.88" y="514" text-anchor="middle" font-size="12">2</text>
+<path d="M366.35,92 V490" stroke="#d5d9cf"/><text x="366.35" y="514" text-anchor="middle" font-size="12">5</text>
+<path d="M486.23,92 V490" stroke="#d5d9cf"/><text x="486.23" y="514" text-anchor="middle" font-size="12">10</text>
+<path d="M606.11,92 V490" stroke="#d5d9cf"/><text x="606.11" y="514" text-anchor="middle" font-size="12">20</text>
+<path d="M764.59,92 V490" stroke="#d5d9cf"/><text x="764.59" y="514" text-anchor="middle" font-size="12">50</text>
+<path d="M884.47,92 V490" stroke="#d5d9cf"/><text x="884.47" y="514" text-anchor="middle" font-size="12">100</text>
+<path d="M88,455.00 H916" stroke="#d5d9cf"/><text x="76" y="459.00" text-anchor="end" font-size="12">0.005</text>
+<path d="M88,407.51 H916" stroke="#d5d9cf"/><text x="76" y="411.51" text-anchor="end" font-size="12">0.01</text>
+<path d="M88,360.02 H916" stroke="#d5d9cf"/><text x="76" y="364.02" text-anchor="end" font-size="12">0.02</text>
+<path d="M88,297.25 H916" stroke="#d5d9cf"/><text x="76" y="301.25" text-anchor="end" font-size="12">0.05</text>
+<path d="M88,249.76 H916" stroke="#d5d9cf"/><text x="76" y="253.76" text-anchor="end" font-size="12">0.1</text>
+<path d="M88,202.27 H916" stroke="#d5d9cf"/><text x="76" y="206.27" text-anchor="end" font-size="12">0.2</text>
+<path d="M88,139.49 H916" stroke="#d5d9cf"/><text x="76" y="143.49" text-anchor="end" font-size="12">0.5</text>
+<path d="M88,92.00 H916" stroke="#d5d9cf"/><text x="76" y="96.00" text-anchor="end" font-size="12">1.0</text>
+<text x="502" y="545" text-anchor="middle" font-size="12" fill="#586866" font-family="SFMono-Regular, Consolas, monospace">DEGREE k</text>
+<text x="24" y="291" text-anchor="middle" font-size="12" fill="#586866" font-family="SFMono-Regular, Consolas, monospace" transform="rotate(-90 24 291)">P(K ≥ k)</text>
+<rect x="207.88" y="92" width="495.02" height="398" fill="#dc512f" fill-opacity="0.06"/>
+<text x="455.39" y="112" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419">FITTED REGIME [k = 2 to 35]</text>
+<line x1="158.13" y1="92.00" x2="746.36" y2="392.95" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="6 4"/>
+<path d="M88.00,92.00 L207.88,104.55 L278.01,120.77 L327.76,133.86 L366.35,145.63 L397.89,160.61 L424.55,171.30 L447.64,180.83 L468.01,188.39 L486.23,196.89 L502.72,206.60 L517.77,212.83 L531.61,217.91 L544.43,229.35 L556.36,233.63 L567.52,238.20 L578.01,245.69 L597.24,257.13 L606.11,260.32 L614.55,263.66 L622.60,278.95 L630.29,288.10 L637.65,293.17 L644.71,311.15 L651.49,318.37 L658.02,326.44 L664.31,335.59 L670.38,346.15 L692.72,358.64 L764.59,373.93 L796.12,393.64 L807.28,421.42 L894.55,468.91" fill="none" stroke="#dc512f" stroke-width="2.2"/>
+<circle cx="88.00" cy="92.00" r="3.5" fill="#dc512f"/>
+<circle cx="207.88" cy="104.55" r="3.5" fill="#dc512f"/>
+<circle cx="278.01" cy="120.77" r="3.5" fill="#dc512f"/>
+<circle cx="327.76" cy="133.86" r="3.5" fill="#dc512f"/>
+<circle cx="366.35" cy="145.63" r="3.5" fill="#dc512f"/>
+<circle cx="397.89" cy="160.61" r="3.5" fill="#dc512f"/>
+<circle cx="424.55" cy="171.30" r="3.5" fill="#dc512f"/>
+<circle cx="447.64" cy="180.83" r="3.5" fill="#dc512f"/>
+<circle cx="468.01" cy="188.39" r="3.5" fill="#dc512f"/>
+<circle cx="486.23" cy="196.89" r="3.5" fill="#dc512f"/>
+<circle cx="502.72" cy="206.60" r="3.5" fill="#dc512f"/>
+<circle cx="517.77" cy="212.83" r="3.5" fill="#dc512f"/>
+<circle cx="531.61" cy="217.91" r="3.5" fill="#dc512f"/>
+<circle cx="544.43" cy="229.35" r="3.5" fill="#dc512f"/>
+<circle cx="556.36" cy="233.63" r="3.5" fill="#dc512f"/>
+<circle cx="567.52" cy="238.20" r="3.5" fill="#dc512f"/>
+<circle cx="578.01" cy="245.69" r="3.5" fill="#dc512f"/>
+<circle cx="597.24" cy="257.13" r="3.5" fill="#dc512f"/>
+<circle cx="606.11" cy="260.32" r="3.5" fill="#dc512f"/>
+<circle cx="614.55" cy="263.66" r="3.5" fill="#dc512f"/>
+<circle cx="622.60" cy="278.95" r="3.5" fill="#dc512f"/>
+<circle cx="630.29" cy="288.10" r="3.5" fill="#dc512f"/>
+<circle cx="637.65" cy="293.17" r="3.5" fill="#dc512f"/>
+<circle cx="644.71" cy="311.15" r="3.5" fill="#dc512f"/>
+<circle cx="651.49" cy="318.37" r="3.5" fill="#dc512f"/>
+<circle cx="658.02" cy="326.44" r="3.5" fill="#dc512f"/>
+<circle cx="664.31" cy="335.59" r="3.5" fill="#dc512f"/>
+<circle cx="670.38" cy="346.15" r="3.5" fill="#dc512f"/>
+<circle cx="692.72" cy="358.64" r="3.5" fill="#dc512f"/>
+<circle cx="764.59" cy="373.93" r="3.5" fill="#dc512f"/>
+<circle cx="796.12" cy="393.64" r="3.5" fill="#dc512f"/>
+<circle cx="807.28" cy="421.42" r="3.5" fill="#dc512f"/>
+<circle cx="894.55" cy="468.91" r="3.5" fill="#dc512f"/>
+<text x="486.23" y="237.26" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Fitted Slope = −1.351 (γ = 2.351)</text>
+<text x="707.77" y="442.51" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#8f2913">Only 5 hubs exist past k = 33 (1/245 discrete quanta)</text>
+<circle cx="680" cy="37" r="5" fill="#dc512f"/><text x="692" y="42" font-size="12">Marvel Empirical CCDF</text>
+<line x1="680" y1="58" x2="700" y2="58" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="5 3"/><text x="706" y="63" font-size="12">Power-Law Fit (k ∈ [2, 35])</text>
+</g></svg>

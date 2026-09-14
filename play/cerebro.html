@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f1e7">
+  <meta name="description" content="Step inside Cerebro's telepathic radar console: a superhero popularity showdown and multiverse rewirer. Test the friendship paradox against the entire Marvel universe.">
+  <meta property="og:title" content="The Popularity Trap — Week 2 Game · CROSSTALK">
+  <meta property="og:description" content="Can you deduce which superhero has more popular friends, or will network variance trick your intuition? Step inside the dual-radar arcade console.">
+  <meta property="og:type" content="website">
+  <title>The Popularity Trap — Week 2 Game · CROSSTALK</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../game.css">
+  <script defer src="../assets/data/network.js"></script>
+  <script defer src="../week2.js"></script>
+</head>
+<body class="play-page" data-root="../">
+  <a class="skip-link" href="#cerebro-game">Skip to Cerebro console</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Crosstalk home"><svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg><span class="brand-copy"><strong>CROSSTALK</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../index.html#journal">Weekly journal</a><a href="../play/index.html" class="nav-game-link"><span class="nav-game-title">Crossed Wires</span><small class="nav-game-badge">Week 1</small></a><a href="../play/cerebro.html" class="nav-game-link" aria-current="page"><span class="nav-game-title">Popularity Trap</span><small class="nav-game-badge">Week 2</small></a><a href="https://github.com/vitrotank/social_graphs_2026">Source ↗</a></nav></div></header>
+  <main id="top" class="shell cw-page">
+    <section class="cw-intro" aria-labelledby="cerebro-title">
+      <div class="cw-intro-copy">
+        <p class="cw-eyebrow"><span class="cw-signal" aria-hidden="true"></span> THE ARCADE / WEEK 02 GAME</p>
+        <h1 id="cerebro-title">The Popularity <em>Trap.</em><span class="cw-title-star" aria-hidden="true">⚡</span></h1>
+        <p class="cw-deck">Who has more friends: you, or the heroes you talk to?<br>Step inside Cerebro’s dual-radar console and escape the popularity trap.</p>
+        <div class="hero-actions" style="margin-top: 18px;">
+          <a class="button button-ghost" href="../week2/index.html">← Back to Week 2 Field Notes</a>
+          <a class="button button-ghost" href="../play/index.html">Play Week 1: Crossed Wires ↗</a>
+        </div>
+      </div>
+      <div class="cw-intro-side">
+        <div class="cw-shift-stamp" aria-hidden="true">
+          <span class="cw-stamp-line"></span>
+          <span>DEPARTMENT OF<br>TELEPATHIC TELEMETRY</span>
+          <span class="cw-stamp-line"></span>
+        </div>
+        <p class="chart-note" style="margin-top: 10px;">MISSION: BENCHMARK THE POPULARITY PARADOX · DTU 02805</p>
+      </div>
+    </section>
+
+    <!-- OPERATOR BRIEFING (DYNAMICALLY SWITCHES WITH GAME TAB) -->
+    <div class="cerebro-briefing-strip" id="cerebro-briefing" aria-label="Operator briefing protocol">
+      <div class="briefing-header">
+        <span class="eyebrow" id="briefing-title"><span class="signal"><span class="legend-dot"></span></span> MISSION PROTOCOL // POPULARITY DUEL (CONTENDER A VS CONTENDER B)</span>
+        <span class="chart-note" id="briefing-code">MODE 01 · DUAL RADARS</span>
+      </div>
+      <div class="briefing-steps" id="briefing-steps-container">
+        <div class="briefing-step">
+          <span class="step-num">01</span>
+          <div class="step-copy">
+            <strong>Inspect the Dual Radars</strong>
+            <p>Two superheroes are pitted head-to-head. Compare their direct connections (<em>k<sub>A</sub></em> vs <em>k<sub>B</sub></em>) on the twin tactical radar screens.</p>
+          </div>
+        </div>
+        <div class="briefing-step">
+          <span class="step-num">02</span>
+          <div class="step-copy">
+            <strong>Deduce Friend Popularity</strong>
+            <p>Guess which hero's friends have a higher average degree (⟨<em>k</em><sub>friends</sub>⟩). Don't fall for the trap: fewer direct links can still connect to titan mega-hubs!</p>
+          </div>
+        </div>
+        <div class="briefing-step">
+          <span class="step-num">03</span>
+          <div class="step-copy">
+            <strong>Score the Multiverse</strong>
+            <p>Lock in your choice to reveal the true network averages, test your intuition against variance, and build your win streak.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE CEREBRO MACHINE CONSOLE -->
+    <section id="cerebro-game" class="cw-machine" aria-label="Cerebro Console">
+      <div class="cw-machine-top">
+        <div class="cw-machine-label">
+          <span class="cw-signal" aria-hidden="true"></span> CROSSTALK / CEREBRO RADAR CONSOLE <span class="cw-machine-serial">SYS-02 · DTU 02805</span>
+        </div>
+        <div class="duel-scoreboard">
+          <div class="duel-score-item"><span>STREAK:</span><strong id="duel-streak">0</strong></div>
+          <div class="duel-score-item"><span>SCORE:</span><strong id="duel-score">0</strong></div>
+          <div class="duel-score-item"><span>INSPECTED:</span><strong id="duel-inspected">0</strong></div>
+        </div>
+      </div>
+
+      <!-- GAME MODE SELECTOR TABS -->
+      <div class="cerebro-tab-bar" role="tablist" aria-label="Cerebro Game Modes">
+        <button type="button" class="cerebro-tab active" id="tab-duel-mode" role="tab" aria-selected="true" aria-controls="mode-duel-panel">
+          <span class="tab-badge">MODE 01 · VERSUS DUEL</span>
+          <strong>Who Has More Popular Friends?</strong>
+          <small>Compare two heroes: which one's comic friends have a higher average degree?</small>
+        </button>
+        <button type="button" class="cerebro-tab" id="tab-paradox-mode" role="tab" aria-selected="false" aria-controls="mode-paradox-panel">
+          <span class="tab-badge">MODE 02 · PARADOX SCAN</span>
+          <strong>The Paradox Scan</strong>
+          <small>Inspect any single hero: do their friends beat their own link count?</small>
+        </button>
+      </div>
+
+      <!-- MODE 1: POPULAR FRIENDS VERSUS PANEL -->
+      <div id="mode-duel-panel" class="tab-panel">
+        <div class="arena-controls" style="margin-bottom: 20px;">
+          <div class="arena-toolbar" style="justify-content: space-between; width: 100%;">
+            <p class="chart-note" style="margin: 0; font-family: var(--mono); font-size: 10.5px;">
+              CEREBRO DETECTS TWO CONTENDERS — WHOSE COMIC FRIENDS AVERAGE MORE CONNECTIONS?
+            </p>
+            <button type="button" class="button button-small" id="versus-random-btn">Surprise Me</button>
+          </div>
+        </div>
+
+        <div class="duel-versus-grid">
+          <!-- HERO A CARD -->
+          <div class="duel-hero-choice-card" id="card-hero-a">
+            <div class="choice-card-head">
+              <div>
+                <span class="eyebrow" style="color: var(--copper);">CONTENDER A</span>
+                <h3 class="choice-hero-name" id="versus-name-a">Loading…</h3>
+                <div class="choice-hero-meta" id="versus-meta-a">Direct Links: —</div>
+              </div>
+              <span class="badge" id="versus-badge-a" style="background: var(--copper);">A</span>
+            </div>
+            <div class="choice-stat-row">
+              <span class="eyebrow">FRIENDS' AVERAGE</span>
+              <strong id="versus-avg-a" style="font-size: 15px;">???</strong>
+            </div>
+            <button type="button" class="choice-pick-btn" id="pick-hero-a-btn">
+              Contender A Has More Popular Friends! ↗
+            </button>
+          </div>
+
+          <div class="duel-versus-divider">VS</div>
+
+          <!-- HERO B CARD -->
+          <div class="duel-hero-choice-card" id="card-hero-b">
+            <div class="choice-card-head">
+              <div>
+                <span class="eyebrow" style="color: var(--signal);">CONTENDER B</span>
+                <h3 class="choice-hero-name" id="versus-name-b">Loading…</h3>
+                <div class="choice-hero-meta" id="versus-meta-b">Direct Links: —</div>
+              </div>
+              <span class="badge" id="versus-badge-b" style="background: var(--signal);">B</span>
+            </div>
+            <div class="choice-stat-row">
+              <span class="eyebrow">FRIENDS' AVERAGE</span>
+              <strong id="versus-avg-b" style="font-size: 15px;">???</strong>
+            </div>
+            <button type="button" class="choice-pick-btn" id="pick-hero-b-btn">
+              Contender B Has More Popular Friends! ↗
+            </button>
+          </div>
+        </div>
+
+        <!-- DUAL TACTICAL RADAR CONSOLE (MODE 1: NO VOLTMETER) -->
+        <div class="versus-radars-stage">
+          <div class="versus-radar-grid">
+            <!-- RADAR A -->
+            <div class="radar-console-box radar-box-a">
+              <div class="radar-screen-wrapper">
+                <div class="radar-hud-bar">
+                  <span class="eyebrow" style="color: #7fa5f7;">RADAR A // CONTENDER A CONTACTS</span>
+                  <span class="mono chart-note" id="radar-label-a">FOCUS: SCANNING…</span>
+                </div>
+                <div class="radar-canvas-container">
+                  <svg id="versus-radar-svg-a" viewBox="0 0 500 500" role="img" aria-label="Contender A Radar Scope">
+                    <title>Contender A Radar Scope</title>
+                  </svg>
+                </div>
+                <p class="map-hint">ANONYMOUS CONTACTS DETECTED · RADAR A LIVE SWEEP</p>
+              </div>
+            </div>
+
+            <!-- RADAR B -->
+            <div class="radar-console-box radar-box-b">
+              <div class="radar-screen-wrapper">
+                <div class="radar-hud-bar">
+                  <span class="eyebrow" style="color: #ff9e88;">RADAR B // CONTENDER B CONTACTS</span>
+                  <span class="mono chart-note" id="radar-label-b">FOCUS: SCANNING…</span>
+                </div>
+                <div class="radar-canvas-container">
+                  <svg id="versus-radar-svg-b" viewBox="0 0 500 500" role="img" aria-label="Contender B Radar Scope">
+                    <title>Contender B Radar Scope</title>
+                  </svg>
+                </div>
+                <p class="map-hint">ANONYMOUS CONTACTS DETECTED · RADAR B LIVE SWEEP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="duel-reveal-panel" id="versus-reveal-panel" hidden>
+          <!-- Rendered dynamically upon pick -->
+        </div>
+      </div>
+
+      <!-- MODE 2: SINGLE HERO PARADOX PANEL -->
+      <div id="mode-paradox-panel" class="tab-panel" hidden>
+        <div class="arena-controls">
+          <div class="arena-toolbar">
+            <form class="control-group" id="duel-search-form">
+              <label class="sr-only" for="duel-search-input">Search for a superhero</label>
+              <input class="search-input" id="duel-search-input" list="duel-character-options" placeholder="Search a hero (e.g. Wolverine)…" autocomplete="off">
+              <datalist id="duel-character-options"><option value="Abomination">Abomination (character)</option>
+<option value="Adam Warlock">Adam Warlock</option>
+<option value="Agent X">Agent X (Marvel Comics)</option>
+<option value="Ajak">Ajak</option>
+<option value="Alex Wilder">Alex Wilder</option>
+<option value="Alice Nugent">Alice Nugent</option>
+<option value="Anole">Anole (character)</option>
+<option value="Anya Corazon">Anya Corazon</option>
+<option value="Arabian Knight">Arabian Knight (character)</option>
+<option value="Ares">Ares (Marvel Comics)</option>
+<option value="Backhand">Backhand (character)</option>
+<option value="Balder the Brave">Balder the Brave</option>
+<option value="Battlestar">Battlestar (character)</option>
+<option value="Baymax">Baymax</option>
+<option value="Beta Ray Bill">Beta Ray Bill</option>
+<option value="Betsy Braddock">Betsy Braddock</option>
+<option value="Bill Foster">Bill Foster (character)</option>
+<option value="Bird-Brain">Bird-Brain (Marvel Comics)</option>
+<option value="Black Bolt">Black Bolt</option>
+<option value="Black Cat">Black Cat (Marvel Comics)</option>
+<option value="Black Fox">Black Fox (Robert Paine)</option>
+<option value="Black Jack Tarr">Black Jack Tarr</option>
+<option value="Black Knight">Black Knight (Marvel Comics)</option>
+<option value="Black Marvel">Black Marvel</option>
+<option value="Black Panther">Black Panther (character)</option>
+<option value="Black Rider">Black Rider (character)</option>
+<option value="Black Widow">Black Widow (Natasha Romanova)</option>
+<option value="Blackthorn">Blackthorn (character)</option>
+<option value="Blackwulf">Blackwulf</option>
+<option value="Blade">Blade (character)</option>
+<option value="Blazing Skull">Blazing Skull</option>
+<option value="Blue Bullet">Blue Bullet</option>
+<option value="Blue Diamond">Blue Diamond (character)</option>
+<option value="Blue Eagle">Blue Eagle (character)</option>
+<option value="Blue Marvel">Blue Marvel</option>
+<option value="Bob, Agent of Hydra">Bob, Agent of Hydra</option>
+<option value="Box">Box (comics)</option>
+<option value="Brain Drain">Brain Drain (character)</option>
+<option value="Breeze Barton">Breeze Barton</option>
+<option value="Brian Braddock">Brian Braddock</option>
+<option value="Bucky">Bucky (Marvel Comics)</option>
+<option value="Bug">Bug (Marvel Comics)</option>
+<option value="Cable">Cable (character)</option>
+<option value="Cammi">Cammi (character)</option>
+<option value="Captain Marvel (Khn&#x27;nr)">Captain Marvel (Khn&#x27;nr)</option>
+<option value="Captain Marvel (Marvel Comics)">Captain Marvel (Marvel Comics)</option>
+<option value="Captain Midlands">Captain Midlands</option>
+<option value="Captain Ultra">Captain Ultra</option>
+<option value="Captain Universe">Captain Universe</option>
+<option value="Caretaker">Caretaker (comics)</option>
+<option value="Ch&#x27;od">Ch&#x27;od</option>
+<option value="Charcoal">Charcoal (comics)</option>
+<option value="Chase Stein">Chase Stein</option>
+<option value="Citizen V">Citizen V</option>
+<option value="Cloak and Dagger">Cloak and Dagger (characters)</option>
+<option value="Coldblood">Coldblood</option>
+<option value="Crane Mother">Crane Mother</option>
+<option value="Crippler">Crippler (character)</option>
+<option value="Cyclops">Cyclops (Marvel Comics)</option>
+<option value="Dargo Ktor">Dargo Ktor</option>
+<option value="Darkdevil">Darkdevil</option>
+<option value="Darkhawk">Darkhawk</option>
+<option value="Deadpool">Deadpool</option>
+<option value="Deathlok">Deathlok</option>
+<option value="Debrii">Debrii</option>
+<option value="Delroy Garrett">Delroy Garrett</option>
+<option value="Detroit Steel">Detroit Steel</option>
+<option value="Devil Dinosaur">Devil Dinosaur</option>
+<option value="Devil Hulk">Devil Hulk</option>
+<option value="Digitek">Digitek (character)</option>
+<option value="Doctor Druid">Doctor Druid</option>
+<option value="Doctor Nemesis">Doctor Nemesis</option>
+<option value="Doctor Strange">Doctor Strange</option>
+<option value="Dogpool">Dogpool</option>
+<option value="Doom 2099">Doom 2099</option>
+<option value="Dragon Lord">Dragon Lord (character)</option>
+<option value="Dusk">Dusk (comics)</option>
+<option value="Eddie Brock">Eddie Brock</option>
+<option value="Elsa Bloodstone">Elsa Bloodstone</option>
+<option value="Emma Frost">Emma Frost</option>
+<option value="Empath">Empath (character)</option>
+<option value="Emrys Killebrew">Emrys Killebrew</option>
+<option value="Enigma">Enigma (Marvel Comics)</option>
+<option value="Ethan Edwards">Ethan Edwards</option>
+<option value="Fabio Medina">Fabio Medina</option>
+<option value="Fandral">Fandral</option>
+<option value="Father Time">Father Time (Marvel Comics)</option>
+<option value="Fin Fang Foom">Fin Fang Foom</option>
+<option value="Firebird">Firebird (Marvel Comics)</option>
+<option value="Firelord">Firelord (character)</option>
+<option value="Flatman">Flatman (character)</option>
+<option value="Force">Force (comics)</option>
+<option value="Frankenstein&#x27;s Monster">Frankenstein&#x27;s Monster (Marvel Comics)</option>
+<option value="Franklin Richards">Franklin Richards (character)</option>
+<option value="Frog-Man">Frog-Man</option>
+<option value="G. W. Bridge">G. W. Bridge</option>
+<option value="Gargoyle">Gargoyle (comics)</option>
+<option value="Garrison Kane">Garrison Kane</option>
+<option value="Gauntlet">Gauntlet (Joseph Green)</option>
+<option value="Genis-Vell">Genis-Vell</option>
+<option value="Ghost Rider">Ghost Rider</option>
+<option value="Ghost Rider (Danny Ketch)">Ghost Rider (Danny Ketch)</option>
+<option value="Ghost Rider (Johnny Blaze)">Ghost Rider (Johnny Blaze)</option>
+<option value="Gladiator">Gladiator (Kallark)</option>
+<option value="Golem">Golem (Marvel Comics)</option>
+<option value="Gorgon">Gorgon (Inhuman)</option>
+<option value="Gremlin">Gremlin (comics)</option>
+<option value="Guardian">Guardian (Marvel Comics)</option>
+<option value="Guardsman">Guardsman (character)</option>
+<option value="Gwenpool">Gwenpool</option>
+<option value="Hank Pym">Hank Pym</option>
+<option value="Happy Sam Sawyer">Happy Sam Sawyer</option>
+<option value="Hawkeye">Hawkeye (comics)</option>
+<option value="Helix">Helix (Marvel Comics)</option>
+<option value="Hellfire">Hellfire (J. T. Slade)</option>
+<option value="Hellion">Hellion (character)</option>
+<option value="Hercules">Hercules (Marvel Comics)</option>
+<option value="Hit-Monkey">Hit-Monkey</option>
+<option value="Hornet">Hornet (comics)</option>
+<option value="Hrimhari">Hrimhari</option>
+<option value="Hulk">Hulk</option>
+<option value="Hulk 2099">Hulk 2099</option>
+<option value="Hulkling">Hulkling</option>
+<option value="Human Fly">Human Fly (character)</option>
+<option value="Human Torch">Human Torch</option>
+<option value="Human Torch (android)">Human Torch (android)</option>
+<option value="Hybrid">Hybrid (Scott Washington)</option>
+<option value="Hyperion">Hyperion (character)</option>
+<option value="Ikaris">Ikaris</option>
+<option value="Illuminator">Illuminator (Marvel Comics)</option>
+<option value="Inferno">Inferno (Dante Pertuz)</option>
+<option value="Iron Fist">Iron Fist (character)</option>
+<option value="Iron Lad">Iron Lad</option>
+<option value="Iron Man">Iron Man (Ultimate Marvel character)</option>
+<option value="Iron Man 2020">Iron Man 2020</option>
+<option value="Isaiah Bradley">Isaiah Bradley</option>
+<option value="Jack Frost">Jack Frost (Marvel Comics)</option>
+<option value="Jack Monroe">Jack Monroe (character)</option>
+<option value="Janice Lincoln">Janice Lincoln</option>
+<option value="Jean Grey">Jean Grey</option>
+<option value="Jean Grey (X-Men film series)">Jean Grey (X-Men film series)</option>
+<option value="Jeffrey Mace">Jeffrey Mace</option>
+<option value="Jericho Drumm">Jericho Drumm</option>
+<option value="Jessica Jones">Jessica Jones</option>
+<option value="John Jameson">John Jameson (character)</option>
+<option value="Jubilee">Jubilee (character)</option>
+<option value="Junior Juniper">Junior Juniper</option>
+<option value="Justice">Justice (New Universe)</option>
+<option value="Karnak">Karnak (character)</option>
+<option value="Kid Colt">Kid Colt</option>
+<option value="Killpower">Killpower</option>
+<option value="Killraven">Killraven</option>
+<option value="Kismet">Kismet (Marvel Comics)</option>
+<option value="Korvus">Korvus</option>
+<option value="Kristoff Vernard">Kristoff Vernard</option>
+<option value="Leech">Leech (character)</option>
+<option value="Lei Kung">Lei Kung (character)</option>
+<option value="Living Lightning">Living Lightning</option>
+<option value="Luke Cage">Luke Cage</option>
+<option value="Machine Man">Machine Man</option>
+<option value="Magician">Magician (Marvel Comics)</option>
+<option value="Mahr Vehl">Mahr Vehl</option>
+<option value="Makkari">Makkari (character)</option>
+<option value="Man-Thing">Man-Thing</option>
+<option value="Mania">Mania (character)</option>
+<option value="Mark Hazzard: Merc">Mark Hazzard: Merc</option>
+<option value="Marvel Boy">Marvel Boy (Robert Grayson)</option>
+<option value="Mayday Parker">Mayday Parker</option>
+<option value="Miracleman">Miracleman (character)</option>
+<option value="Misty Knight">Misty Knight</option>
+<option value="Mockingbird">Mockingbird (Marvel Comics)</option>
+<option value="Moon Knight">Moon Knight</option>
+<option value="Moondragon">Moondragon</option>
+<option value="Moonglow">Moonglow (comics)</option>
+<option value="Morbius">Morbius</option>
+<option value="Motormouth">Motormouth (comics)</option>
+<option value="Ms. Marvel">Ms. Marvel</option>
+<option value="Nightmask">Nightmask</option>
+<option value="Nightwatch">Nightwatch (character)</option>
+<option value="Noh-Varr">Noh-Varr</option>
+<option value="Nomad">Nomad (Marvel Comics)</option>
+<option value="Northstar">Northstar (character)</option>
+<option value="Nova">Nova (Richard Rider)</option>
+<option value="Ogre">Ogre (Marvel Comics)</option>
+<option value="Outlaw">Outlaw (Marvel Comics)</option>
+<option value="Oya">Oya (comics)</option>
+<option value="Paladin">Paladin (comics)</option>
+<option value="Patsy Walker">Patsy Walker</option>
+<option value="Peggy Carter">Peggy Carter</option>
+<option value="Phil Grayfield">Phil Grayfield</option>
+<option value="Phil Urich">Phil Urich</option>
+<option value="Phoenix">Phoenix (Guardians of the Galaxy)</option>
+<option value="Phyla-Vell">Phyla-Vell</option>
+<option value="Power Man">Power Man (Victor Alvarez)</option>
+<option value="Powerhouse">Powerhouse (Marvel Comics)</option>
+<option value="Puck">Puck (Marvel Comics)</option>
+<option value="Quasar">Quasar (character)</option>
+<option value="Quicksilver">Quicksilver (Marvel Comics)</option>
+<option value="Rachel Summers">Rachel Summers</option>
+<option value="Radian">Radian (Morituri)</option>
+<option value="Radioactive Man">Radioactive Man (comics)</option>
+<option value="Ravage 2099">Ravage 2099</option>
+<option value="Raza Longknife">Raza Longknife</option>
+<option value="Red Guardian">Red Guardian</option>
+<option value="Red Raven">Red Raven (Dania)</option>
+<option value="Red Wolf">Red Wolf (comics)</option>
+<option value="Redneck">Redneck (comics)</option>
+<option value="Ricochet">Ricochet (comics)</option>
+<option value="Rikki Barnes">Rikki Barnes</option>
+<option value="Robbie Baldwin">Robbie Baldwin</option>
+<option value="Rocket Raccoon">Rocket Raccoon</option>
+<option value="Rockman">Rockman (character)</option>
+<option value="Rockslide">Rockslide (character)</option>
+<option value="Rom the Space Knight">Rom the Space Knight</option>
+<option value="Ronin">Ronin (Marvel Comics)</option>
+<option value="Ruby Summers">Ruby Summers</option>
+<option value="Rusty Collins">Rusty Collins</option>
+<option value="Sabra">Sabra (character)</option>
+<option value="Satana">Satana (Marvel Comics)</option>
+<option value="Scaredycat">Scaredycat</option>
+<option value="Scarlet Scarab">Scarlet Scarab</option>
+<option value="Scarlet Spider">Scarlet Spider</option>
+<option value="Scarlet Witch">Scarlet Witch</option>
+<option value="Scatterbrain">Scatterbrain (Morituri)</option>
+<option value="Scorpio">Scorpio (Marvel Comics)</option>
+<option value="Sean and Chris">Sean and Chris</option>
+<option value="Sentry">Sentry (Robert Reynolds)</option>
+<option value="Shamrock">Shamrock (comics)</option>
+<option value="Shang-Chi">Shang-Chi</option>
+<option value="Shatterstar">Shatterstar</option>
+<option value="She-Hulk">She-Hulk</option>
+<option value="She-Hulk (Lyra)">She-Hulk (Lyra)</option>
+<option value="She-Venom">She-Venom (Patricia Robertson)</option>
+<option value="Shear">Shear (character)</option>
+<option value="Shuri">Shuri (character)</option>
+<option value="Silencer">Silencer (comics)</option>
+<option value="Silhouette">Silhouette (comics)</option>
+<option value="Silk">Silk (character)</option>
+<option value="Skull the Slayer">Skull the Slayer</option>
+<option value="Snapdragon">Snapdragon (Morituri)</option>
+<option value="Solarman">Solarman</option>
+<option value="Solo">Solo (Marvel Comics)</option>
+<option value="Solomon Kane">Solomon Kane (comics)</option>
+<option value="Speed">Speed (character)</option>
+<option value="Spider-Bitch">Spider-Bitch (Ashley Barton)</option>
+<option value="Spider-Girl">Spider-Girl</option>
+<option value="Spider-Man">Spider-Man</option>
+<option value="Spider-Man (Marvel Mangaverse)">Spider-Man (Marvel Mangaverse)</option>
+<option value="Spider-Man Noir">Spider-Man Noir</option>
+<option value="Spider-UK">Spider-UK</option>
+<option value="Spider-Woman">Spider-Woman</option>
+<option value="Spider-Woman (Gwen Stacy)">Spider-Woman (Gwen Stacy)</option>
+<option value="Spider-Woman (Jessica Drew)">Spider-Woman (Jessica Drew)</option>
+<option value="Spitfire">Spitfire (character)</option>
+<option value="Star Brand">Star Brand</option>
+<option value="Star-Lord">Star-Lord</option>
+<option value="Starhawk">Starhawk (character)</option>
+<option value="Starr the Slayer">Starr the Slayer</option>
+<option value="Steel Spider">Steel Spider</option>
+<option value="Stingray">Stingray (Marvel Comics)</option>
+<option value="Storm">Storm (Marvel Comics)</option>
+<option value="Straw Man">Straw Man (comics)</option>
+<option value="Super Rabbit">Super Rabbit</option>
+<option value="Surge">Surge (Marvel Comics)</option>
+<option value="Synapse">Synapse (character)</option>
+<option value="Tarantula">Tarantula (Marvel Comics)</option>
+<option value="The Union">The Union (Marvel)</option>
+<option value="The Witness">The Witness (character)</option>
+<option value="Thena">Thena</option>
+<option value="Thin Man">Thin Man (character)</option>
+<option value="Thor Girl">Thor Girl</option>
+<option value="Thunderbolt">Thunderbolt (Marvel Comics)</option>
+<option value="Thunderclap">Thunderclap (comics)</option>
+<option value="Timeslip">Timeslip (comics)</option>
+<option value="Toro">Toro (character)</option>
+<option value="Toxyn">Toxyn</option>
+<option value="Turbo">Turbo (comics)</option>
+<option value="Two-Gun Kid">Two-Gun Kid</option>
+<option value="Typeface">Typeface (character)</option>
+<option value="U.S. Agent">U.S. Agent</option>
+<option value="Ulysses Bloodstone">Ulysses Bloodstone</option>
+<option value="Union Jack (Joseph Chapman)">Union Jack (Joseph Chapman)</option>
+<option value="Union Jack (Marvel Comics)">Union Jack (Marvel Comics)</option>
+<option value="Ursa Major">Ursa Major (character)</option>
+<option value="Vance Astrovik">Vance Astrovik</option>
+<option value="Venom">Venom (character)</option>
+<option value="Vindicator">Vindicator (comics)</option>
+<option value="Vulcan">Vulcan (Marvel Comics)</option>
+<option value="Vyking">Vyking</option>
+<option value="War Machine">War Machine</option>
+<option value="Werewolf by Night">Werewolf by Night</option>
+<option value="White Tiger (Heroes for Hire)">White Tiger (Heroes for Hire)</option>
+<option value="White Tiger (comics)">White Tiger (comics)</option>
+<option value="Whizzer">Whizzer (Robert Frank)</option>
+<option value="Wild Child">Wild Child (character)</option>
+<option value="Will o&#x27; the Wisp">Will o&#x27; the Wisp (comics)</option>
+<option value="William Burnside">William Burnside (character)</option>
+<option value="Wolverine (Ultimate Marvel character)">Wolverine (Ultimate Marvel character)</option>
+<option value="Wolverine (character)">Wolverine (character)</option>
+<option value="Xorn">Xorn</option>
+<option value="Yelena Belova">Yelena Belova</option>
+<option value="Yo-Yo Rodriguez">Yo-Yo Rodriguez</option>
+<option value="Zombie">Zombie (comics)</option></datalist>
+              <button type="submit" class="button button-small">Scan Hero ↗</button>
+            </form>
+            <button type="button" class="button button-small" id="duel-random-btn">Surprise Me</button>
+          </div>
+          <div class="duel-chip-bar">
+            <span class="eyebrow">QUICK SCANS:</span>
+            <button type="button" class="hero-chip" data-hero="Spider-Man">Spider-Man (Apex)</button>
+            <button type="button" class="hero-chip" data-hero="Wolverine_(character)">Wolverine (Titan)</button>
+            <button type="button" class="hero-chip" data-hero="Betsy_Braddock">Betsy Braddock (Trapped)</button>
+            <button type="button" class="hero-chip" data-hero="Radian_(Morituri)">Radian (Island King)</button>
+            <button type="button" class="hero-chip" data-hero="Baymax">Baymax (Isolate)</button>
+          </div>
+        </div>
+
+        <div class="arena-stage" style="margin-top: 18px;">
+          <!-- SINGLE HERO DOSSIER -->
+          <div class="duel-hero-card" id="duel-hero-card">
+            <!-- Rendered dynamically by week2.js -->
+          </div>
+
+          <!-- SINGLE HERO PREDICTION -->
+          <div class="duel-action-panel">
+            <div class="duel-choice-box">
+              <p class="eyebrow">YOUR PREDICTION</p>
+              <p class="chart-note">Will this superhero's connected partners have MORE links on average than the hero, or does this hero beat the average?</p>
+              <div class="duel-choices">
+                <button type="button" class="duel-choice-btn" id="guess-friend-btn">
+                  Friends Have More!<br><small>PARADOX WINS</small>
+                </button>
+                <button type="button" class="duel-choice-btn" id="guess-hero-btn">
+                  Hero Beats Friends!<br><small>PARADOX DEFIED</small>
+                </button>
+              </div>
+            </div>
+
+            <div class="duel-reveal-panel" id="duel-reveal-panel" hidden>
+              <!-- Rendered dynamically upon guess -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 2 TELEMETRY STAGE (SINGLE RADAR & VOLTMETER) -->
+        <div class="arena-stage" style="margin-top: 28px; border-top: 1px solid var(--line); padding-top: 24px;">
+          <!-- LEFT: CEREBRO RADAR SCOPE -->
+          <div class="radar-console-box">
+            <div class="radar-screen-wrapper">
+              <div class="radar-hud-bar">
+                <span class="eyebrow">CEREBRO RADAR SCOPE // LIVE SWEEP TELEMETRY</span>
+                <span class="mono chart-note" id="radar-target-label">FOCUS: SCANNING…</span>
+              </div>
+              <div class="radar-canvas-container">
+                <svg id="cerebro-radar-svg" viewBox="0 0 500 500" role="img" aria-label="Cerebro Radar Scope">
+                  <title>Cerebro Telepathic Radar Scope</title>
+                </svg>
+              </div>
+              <p class="map-hint">ANONYMOUS CONTACTS DETECTED · RADAR SWEEP LIGHTS UP TARGETS</p>
+            </div>
+          </div>
+
+          <!-- RIGHT: POPULARITY VOLTMETER -->
+          <div class="duel-action-panel">
+            <div class="voltmeter-card" id="voltmeter-card">
+              <div class="voltmeter-header">
+                <span class="eyebrow">POPULARITY VOLTMETER</span>
+                <span class="status-light" id="voltmeter-lamp" aria-hidden="true"></span>
+              </div>
+              <div class="voltmeter-dial">
+                <svg viewBox="0 0 300 160" class="voltmeter-svg" aria-hidden="true">
+                  <!-- Neutral Arc background -->
+                  <path d="M 30 140 A 120 120 0 0 1 270 140" fill="none" stroke="#d5d9cf" stroke-width="14" stroke-linecap="round"/>
+                  <!-- Dial tick marks -->
+                  <line x1="30" y1="140" x2="42" y2="140" stroke="#60645c" stroke-width="2"/>
+                  <line x1="150" y1="20" x2="150" y2="34" stroke="#60645c" stroke-width="2"/>
+                  <line x1="270" y1="140" x2="258" y2="140" stroke="#60645c" stroke-width="2"/>
+                  <text x="30" y="156" font-size="9" font-family="Consolas, monospace" fill="#60645c">0</text>
+                  <text x="150" y="16" font-size="9" font-family="Consolas, monospace" fill="#60645c" text-anchor="middle">k = 25</text>
+                  <text x="270" y="156" font-size="9" font-family="Consolas, monospace" fill="#60645c" text-anchor="end">k = 50+</text>
+                  <!-- Needle A (blue) -->
+                  <line id="needle-hero" x1="150" y1="140" x2="55" y2="140" stroke="#2849c7" stroke-width="3.5" stroke-linecap="round"/>
+                  <!-- Needle B (orange) -->
+                  <line id="needle-friend" x1="150" y1="140" x2="50" y2="140" stroke="#dc512f" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="150" cy="140" r="7" fill="#232927"/>
+                </svg>
+              </div>
+              <div class="voltmeter-legend" id="voltmeter-legend">
+                <span><i class="legend-dot cobalt"></i> <span id="label-legend-a">Hero Degree (<em>k</em>)</span></span>
+                <span><i class="legend-dot orange"></i> <span id="label-legend-b">Friends' Avg (⟨<em>k</em><sub>friends</sub>⟩)</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 1B: MULTIVERSE REWIRER LAB -->
+      <div class="rewirer-section shell">
+        <div class="rewirer-top">
+          <div>
+            <p class="eyebrow">MODULE 1B / NULL MODEL LAB</p>
+            <h3>Rewire the Multiverse</h3>
+            <p class="chart-note">Switch the wiring rule to watch how triangles collapse while degree sequence invariants hold fast.</p>
+          </div>
+          <div class="rewirer-modes" role="group" aria-label="Null model selector">
+            <button type="button" class="rewirer-btn active" data-null-mode="0" aria-pressed="true">Real Marvel</button>
+            <button type="button" class="rewirer-btn" data-null-mode="1" aria-pressed="false">Degree-Preserving Shuffle</button>
+            <button type="button" class="rewirer-btn" data-null-mode="2" aria-pressed="false">Erdős–Rényi G(n, m)</button>
+          </div>
+        </div>
+
+        <div class="null-dashboard">
+          <div class="null-meta-bar">
+            <span class="status-badge titan-badge" id="null-mode-badge">OBSERVED UNIVERSE</span>
+            <span class="mono chart-note">N = 303 NODES · M = 1,784 DIRECTED LINKS</span>
+          </div>
+          <p class="null-desc" id="null-mode-desc">The frozen Wikipedia hyperlink network with all human, thematic, and comic crossover relationships intact.</p>
+
+          <div class="null-metrics-grid">
+            <div class="null-metric-card" data-survives="false" data-metric-name="Clustering Coefficient">
+              <div class="null-metric-header">
+                <span class="eyebrow">CLUSTERING C</span>
+                <span class="null-metric-val" id="null-val-c">0.320</span>
+              </div>
+              <div class="metric-gauge"><div class="gauge-bar orange-gauge" id="null-fill-c" style="width: 100%;"></div></div>
+              <span class="null-metric-hint">Click to test survival ↗</span>
+            </div>
+
+            <div class="null-metric-card" data-survives="false" data-metric-name="Transitivity">
+              <div class="null-metric-header">
+                <span class="eyebrow">TRANSITIVITY T</span>
+                <span class="null-metric-val" id="null-val-t">0.182</span>
+              </div>
+              <div class="metric-gauge"><div class="gauge-bar" id="null-fill-t" style="width: 100%;"></div></div>
+              <span class="null-metric-hint">Click to test survival ↗</span>
+            </div>
+
+            <div class="null-metric-card" data-survives="true" data-metric-name="Friendship Paradox">
+              <div class="null-metric-header">
+                <span class="eyebrow">PARADOX TRAP</span>
+                <span class="null-metric-val" id="null-val-paradox">87.4%</span>
+              </div>
+              <div class="metric-gauge"><div class="gauge-bar mint-gauge" id="null-fill-paradox" style="width: 87.4%;"></div></div>
+              <span class="null-metric-hint">Click to test survival ↗</span>
+            </div>
+
+            <div class="null-metric-card" data-survives="true" data-metric-name="Isolated Nodes">
+              <div class="null-metric-header">
+                <span class="eyebrow">ISOLATES</span>
+                <span class="null-metric-val" id="null-val-isolates">17</span>
+              </div>
+              <div class="metric-gauge"><div class="gauge-bar" id="null-fill-isolates" style="width: 100%;"></div></div>
+              <span class="null-metric-hint">Click to test survival ↗</span>
+            </div>
+
+            <div class="null-metric-card" data-survives="false" data-metric-name="Reciprocity">
+              <div class="null-metric-header">
+                <span class="eyebrow">RECIPROCITY</span>
+                <span class="null-metric-val" id="null-val-reciprocity">39.0%</span>
+              </div>
+              <div class="metric-gauge"><div class="gauge-bar orange-gauge" id="null-fill-reciprocity" style="width: 100%;"></div></div>
+              <span class="null-metric-hint">Click to test survival ↗</span>
+            </div>
+          </div>
+
+          <div class="quiz-feedback-box" id="quiz-feedback" hidden>
+            <!-- Populated on metric card click -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos &amp; Dávid.</p></div><div class="footer-members"><div class="member"><strong>Christos Diamantis</strong><small>s253102</small></div><div class="member"><strong>Dávid Weiner</strong><small>s253347</small></div></div></div><div class="footer-bottom"><span>02805 · Social Graphs and Interactions · Fall 2026</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="../index.html">Back to the switchboard ↗</a></div></div></footer>
+</body>
+</html>
+

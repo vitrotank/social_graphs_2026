@@ -65,10 +65,15 @@ class SiteTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
-            "site.json", "templates/home.html", "templates/week1.html", "templates/play.html",
-            "style.css", "app.js", "home.js", "game.css", "game.js",
+            "site.json", "templates/home.html", "templates/week1.html", "templates/week2.html", "templates/play.html", "templates/cerebro.html",
+            "style.css", "app.js", "home.js", "game.css", "game.js", "week2.js",
             "assets/data/network.json", "assets/data/summary.json",
             "assets/figures/degree-linear.svg", "assets/figures/degree-loglog.svg",
+            "assets/figures/hero-models.svg", "assets/figures/ccdf-models.svg", "assets/figures/ccdf-fit.svg",
+            "assets/figures/clustering-nulls.svg", "assets/figures/growth-models.svg",
+            "assets/figures/marvel_vs_ba_vs_er_ccdf.png", "assets/figures/marvel_ccdf_vs_pdf.png",
+            "assets/figures/clustering_null_models_comparison.png", "assets/figures/friendship_paradox_simulation.png",
+            "assets/figures/transitivity_and_isolates_nulls.png", "assets/figures/ba_vs_uniform_growth.png",
             "data/raw/week1_nodes.tsv", "data/raw/week1_edges.tsv", "data/raw/README.md",
         ):
             target = self.root / relative
