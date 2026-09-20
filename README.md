@@ -13,10 +13,11 @@ The front page is a directory: every published week has an explicit story link a
 | `index.html` | Latest story, all eight week slots, and the games room |
 | `week1/index.html` | Marvel's 303 pages, degree, isolates, searchable network, hub removal |
 | `week2/index.html` | Models, friendship paradox, and what a null comparison can establish |
-| `week3/index.html` | Exact centrality, single-character damage, removal curves, and a route finder to Spider-Man |
+| `week3/index.html` | The paths and centrality story: bridge characters, removal curves, and shortest-route findings |
 | `play/index.html` | Crossed Wires: three weekly rounds and twelve practice puzzles |
 | `play/cerebro.html` | The Popularity Trap: prediction game and model illustration console |
-| `grunge/index.html` | The B-side: a separate Wikipedia musician network and grunge radio |
+| `play/switchboard.html` | The Switchboard: Week 3's character-removal experiment, blackout dial, and route finder to Spider-Man |
+| `grunge/index.html` | The Week 3 B-side: paths and centrality in a separate Wikipedia musician network, plus grunge radio |
 
 Body text is larger, stories have contents links, and extended explanations use expandable panels. The Marvel journal retains its cream, ink, blue, and orange telephone identity; the extra uses charcoal and acid yellow with a record-store treatment.
 
@@ -53,7 +54,7 @@ The browser check uses an existing Chrome or Chromium installation. Pass `--brow
 
 The Marvel source is the course's frozen **26 August 2026** roster: **303 nodes, 1,784 directed edges, 17 isolates**. Its weak components contain 277 pages, 9 pages, and seventeen singletons. Raw TSV files, provenance, and checksums live in [data/raw](data/raw/README.md). The graph measures Wikipedia references, not friendships or alliances.
 
-Week 3 collapses reciprocal edges for its undirected removal experiments. Betweenness is exact, normalized over the full roster, and excludes endpoints. Targeted removal ranks are fixed at the start. The random comparison uses 200 reproducible permutations. The route finder lets readers choose real arrow directions or the undirected projection and reports unreachable pages explicitly. Methods, raw results, and the downloadable figure are linked from the issue.
+Week 3 collapses reciprocal edges for its undirected removal experiments. Betweenness is exact, normalized over the full roster, and excludes endpoints. Targeted removal ranks are fixed at the start. The random comparison uses 200 reproducible permutations. The separate Switchboard page lets readers disconnect characters, compare removal orders, and find routes using real arrow directions or the undirected projection; unreachable pages are reported explicitly. Methods, raw results, and the downloadable figure remain in the issue, which links directly to both the game and its grunge B-side.
 
 Week 2's empirical friendship-paradox results come from the real graph. Its model curves and preset shuffle gauges are labeled **illustrative**; they are not fitted models or retained null ensembles. The report makes no significance claim from those sketches.
 

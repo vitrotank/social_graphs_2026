@@ -1030,7 +1030,7 @@ body { font-size: 18px; line-height: 1.7; }
 .week-entry.upcoming .week-number { font: 25px var(--serif); color: #687073; }
 .week-entry.upcoming .week-label, .week-entry.upcoming .week-state { font-size: 12px; color: var(--ink-muted); }
 .directory-footnote { font-size: 13px; color: var(--ink-muted); margin-top: 18px; }
-.games-catalogue { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.games-catalogue { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 30px; }
 .game-ad { position: relative; display: flex; flex-direction: column; align-items: start; padding: 30px; border: 1px solid var(--ink); min-width: 0; }
 .game-ad h3 { font: 600 34px/1.15 var(--serif); letter-spacing: -.045em; margin: 22px 0 15px; }
 .game-ad > p { font-size: 17px; max-width: 46ch; margin-bottom: 28px; }
@@ -1042,6 +1042,8 @@ body { font-size: 18px; line-height: 1.7; }
 .trap-ad { background: #202f49; color: var(--paper-light); }
 .trap-ad .eyebrow, .trap-ad .game-ad-footer > span { color: #c5cede; }
 .trap-ad .button { background: var(--paper); border-color: var(--paper); color: #202f49; }
+.switchboard-ad { background: #e6eade; }
+.switchboard-ad .game-ad-symbol { color: #426950; letter-spacing: 0; }
 .editors-note { display: grid; grid-template-columns: 160px 1fr 160px; gap: 32px; align-items: center; padding: 35px 0 48px; border-top: 1px solid var(--line); }
 .editors-note p { font: 20px/1.55 var(--serif); }
 /* Generous type throughout the older field notes and game interfaces. */

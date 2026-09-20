@@ -45,12 +45,12 @@
       "status": "published",
       "title": "Who holds this universe together?",
       "short_title": "Who holds this universe together?",
-      "summary": "Pull a character out of Marvel. Watch the network unravel. Then find your own shortest route to Spider-Man.",
+      "summary": "Who keeps Marvel connected? Follow the bridges, compare network blackouts, and trace the shortest routes to Spider-Man.",
       "path": "week3/index.html",
       "template": "week3.html",
       "topic": "THE CONNECTIONS",
-      "experience_path": "week3/index.html#pathfinder",
-      "experience_label": "Dial Spider-Man"
+      "experience_path": "play/switchboard.html",
+      "experience_label": "Play The Switchboard"
     },
     {
       "number": 4,

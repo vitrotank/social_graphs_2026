@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f1e7">
+  <meta name="description" content="The Week 3 Switchboard: disconnect a Marvel character, compare network blackouts, and find the shortest route to Spider-Man.">
+  <title>The Switchboard - Week 3 Game · @@TITLE@@</title>
+  <link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="@@ROOT@@style.css">
+  <link rel="stylesheet" href="@@ROOT@@week3.css">
+  <script defer src="@@ROOT@@assets/data/network.js"></script>
+  <script defer src="@@ROOT@@assets/data/week3.js"></script>
+  <script defer src="@@ROOT@@week3.js"></script>
+</head>
+<body class="play-page week3-game-page" data-root="@@ROOT@@">
+  <a class="skip-link" href="#blackout">Skip to the switchboard</a>
+  @@HEADER@@
+  <main id="switchboard" class="w3-main shell">
+    <nav class="issue-context" aria-label="Breadcrumb"><a href="@@ROOT@@index.html#games">Games desk</a><span aria-hidden="true">/</span><a href="@@ROOT@@week3/index.html">Week 3</a><span aria-hidden="true">/</span><span aria-current="page">The Switchboard</span></nav>
+    <header class="w3-game-intro">
+      <p class="eyebrow">THE ARCADE / WEEK 03 GAME</p>
+      <h1>The Switchboard.</h1>
+      <p class="w3-deck">303 characters. Who can you afford to disconnect?</p>
+      <nav class="issue-navigation" aria-label="Game navigation"><a href="#blackout">Pull the plug ↓</a><a href="#pathfinder">Dial Spider-Man ↓</a><a href="@@ROOT@@week3/index.html">Read the Week 3 story ↗</a><a href="@@ROOT@@grunge/index.html">Week 3 B-side ↗</a></nav>
+    </header>
+
+    <section id="blackout" class="w3-section" aria-labelledby="blackout-title">
+      <div class="w3-section-heading"><p class="eyebrow">01 / NETWORK BLACKOUT</p><h2 id="blackout-title">Pull the plug.</h2></div>
+      <div class="w3-disconnect-console">
+        <div class="w3-console-controls">
+          <span class="w3-panel-label">SINGLE-LINE DISCONNECTION</span>
+          <label for="w3-remove-character">Character to disconnect</label>
+          <select id="w3-remove-character" disabled><option>Loading the directory...</option></select>
+          <button type="button" id="w3-disconnect" class="button w3-danger" disabled>Disconnect this character ↗</button>
+          <button type="button" id="w3-reconnect" class="w3-text-button" disabled>Restore the original network</button>
+          <p>Each experiment starts from the full 303-page roster. Connectivity ignores link direction.</p>
+        </div>
+        <div id="w3-removal-result" class="w3-removal-result" aria-live="polite" aria-atomic="true">
+          <p class="w3-console-status">ALL ORIGINAL LINES CONNECTED</p>
+          <p class="w3-giant-number">277 <span>/ 303 pages</span></p>
+          <p>in the largest component</p>
+          <div class="w3-signal-track" aria-hidden="true"><i style="width:91.419%"></i></div>
+          <p>26 pages already sit outside the giant: a nine-page island and 17 isolates.</p>
+        </div>
+      </div>
+      <div class="w3-comparison-heading"><h3>Now keep pulling.</h3><p>Three deletion orders. One frozen network.</p></div>
+      <figure class="w3-removal-figure">
+        <div class="w3-chart-scroll" role="region" aria-label="Network-removal chart; scroll horizontally on narrow screens" tabindex="0"><div class="w3-chart-wrap"><img src="@@ROOT@@assets/figures/week3-removal.svg" width="1000" height="620" alt="Node-removal experiment: static degree and betweenness attacks reduce Marvel's largest component faster than the mean of 200 random deletion orders. The shaded random band is the pointwise fifth to ninety-fifth percentiles."><div id="w3-chart-cursor" class="w3-chart-cursor" aria-hidden="true"></div></div></div>
+        <figcaption>Exact trajectories for every number of removals. The random band shows variation across 200 trials, not uncertainty in the two targeted curves. <a href="@@ROOT@@assets/figures/week3-removal.svg" download>Download figure ↗</a></figcaption>
+      </figure>
+      <div class="w3-dial"><label for="w3-removal-count">Characters removed <output id="w3-count-label" for="w3-removal-count">30 of 303</output></label><input id="w3-removal-count" type="range" min="0" max="303" value="30" disabled><div class="w3-dial-ticks" aria-hidden="true"><span>0 · intact</span><span>303 · all removed</span></div></div>
+      <div id="w3-order-results" class="w3-order-results" aria-live="polite" aria-atomic="true"></div>
+      <p class="w3-chart-note">The denominator stays at <strong>303 original pages</strong>, including isolates. Orders use the <strong>original</strong> degree or betweenness ranking; they are not recalculated after removal. Random orders sample all 303 pages uniformly. Seed: 2026.</p>
+    </section>
+
+    <section id="pathfinder" class="w3-section" aria-labelledby="route-title">
+      <div class="w3-section-heading"><p class="eyebrow">02 / DIRECTORY ASSISTANCE</p><h2 id="route-title">Get me Spider-Man.</h2></div>
+      <div class="w3-route-console">
+        <div class="w3-panel-label"><span>YOUR CALL IS BEING CONNECTED</span><span>DESTINATION: SPIDER-MAN</span></div>
+        <form id="w3-route-form" class="w3-route-form">
+          <div><label for="w3-route-character">Start with a character</label><input id="w3-route-character" name="character" type="text" list="w3-directory" value="Mahr Vehl" placeholder="Try Wolverine or Thena" autocomplete="off" required disabled><datalist id="w3-directory"></datalist></div>
+          <div><label for="w3-route-mode">Which connections count?</label><select id="w3-route-mode" disabled><option value="directed">Follow hyperlinks →</option><option value="undirected">Either direction ↔</option></select></div>
+          <button type="submit" class="button button-primary" disabled>Connect my call ↗</button>
+        </form>
+        <div class="w3-route-presets"><span>QUICK DIAL</span><button type="button" data-route-id="Mahr_Vehl" disabled>Longest route</button><button type="button" data-route-id="Spider-Man" disabled>Call yourself</button><button type="button" id="w3-isolate-preset" disabled>A silent line</button></div>
+        <div id="w3-route-result" class="w3-route-result" aria-live="polite" aria-atomic="true"><p>Loading the character directory...</p></div>
+      </div>
+      <p class="w3-chart-note">These are Wikipedia article links, not friendships. Following hyperlinks respects their direction; either direction may traverse a link backwards. The result shows one shortest route, with ties broken by page ID.</p>
+      <div class="w3-source-links"><a href="@@ROOT@@week3/index.html#pathfinder">Read the shortest-path findings ↗</a><a href="@@ROOT@@week3/index.html#week3-method">Methods &amp; interpretation ↗</a><a href="@@ROOT@@assets/data/week3.json" download>All results (JSON) ↗</a></div>
+    </section>
+    <nav class="issue-navigation" aria-label="Related pages"><a href="@@ROOT@@play/cerebro.html">← Week 2 game</a><a href="@@ROOT@@week3/index.html">Read Week 3 ↗</a><a href="@@ROOT@@grunge/index.html">Explore the Week 3 B-side ↗</a></nav>
+    <noscript><p class="w3-noscript">The switchboard needs JavaScript. Read <a href="@@ROOT@@week3/index.html">the Week 3 story</a> or <a href="@@ROOT@@assets/data/week3.json">download the computed results</a>.</p></noscript>
+  </main>
+  @@FOOTER@@
+</body>
+</html>

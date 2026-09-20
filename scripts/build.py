@@ -29,7 +29,7 @@ def header(config: dict, prefix: str, current: str) -> str:
     routes = [
         ("home", "index.html", "Front page", None),
         ("games", "index.html#games", "The games room", None),
-        ("grunge", "grunge/index.html", "The B-side ↗", None),
+        ("grunge", "grunge/index.html", "Week 3 B-side ↗", None),
     ]
     items = []
     for key, url, label, week in routes:
@@ -41,7 +41,7 @@ def header(config: dict, prefix: str, current: str) -> str:
     links = ''.join(items)
     mark = '<svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg>'
     issues = ''.join(f'<a href="{prefix}{escape(w["path"], quote=True)}"' + (' aria-current="page"' if current == f'week{w["number"]}' else '') + f'><span>{w["number"]:02}</span> Week {w["number"]}</a>' for w in config["weeks"] if w["status"] == "published")
-    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues"><span class="issue-nav-label">OPEN AN ISSUE</span>{issues}<a class="all-issues" href="{prefix}index.html#journal">All weeks ↓</a></nav></div></header>'
+    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues">{issues}<a class="all-issues" href="{prefix}index.html#journal">All weeks ↓</a></nav></div></header>'
 
 
 def footer(config: dict, prefix: str) -> str:
@@ -182,6 +182,7 @@ def render() -> list[Path]:
     pages = [(Path("home.html"), Path("index.html"), "home"),
              (Path("play.html"), Path("play/index.html"), "play"),
              (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro"),
+             (Path("switchboard.html"), Path("play/switchboard.html"), "games"),
              (Path("grunge.html"), Path("grunge/index.html"), "grunge")]
     pages += [(Path(week["template"]), Path(week["path"]), f'week{week["number"]}') for week in published]
     if len({destination for _, destination, _ in pages}) != len(pages):

@@ -65,7 +65,7 @@ class SiteTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
-            "templates/week3.html", "templates/grunge.html",
+            "templates/week3.html", "templates/switchboard.html", "templates/grunge.html",
             "week3.css", "week3.js", "grunge.css", "grunge.js",
             "assets/data/week3.json", "assets/data/week3.js", "assets/figures/week3-removal.svg",
             "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
@@ -90,12 +90,14 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(build.render(), public_files)
         self.assertEqual(first, {name: (self.root / name).read_bytes() for name in public_files})
         pages = {path for path in public_files if path.suffix == ".html"}
-        self.assertTrue({Path("index.html"), Path("week1/index.html"), Path("play/index.html")} <= pages)
+        self.assertTrue({Path("index.html"), Path("week1/index.html"), Path("week3/index.html"),
+                         Path("play/index.html"), Path("play/switchboard.html"), Path("grunge/index.html")} <= pages)
         documents = {}
         for relative in pages:
             html = (self.root / relative).read_text(encoding="utf-8")
             self.assertIsNone(re.search(r"@@[A-Z_]+@@", html), f"Unresolved template value in {relative}")
             self.assertNotIn("polyfill.io", html)
+            self.assertNotIn("open an issue", html.casefold())
             documents[self.root / relative] = Document(html)
         linked_pages = {}
         for path, document in documents.items():
@@ -130,6 +132,22 @@ class SiteTests(unittest.TestCase):
             page = self.root / relative
             self.assertIn(page, linked_pages[home], f"Homepage must link to {relative}")
             self.assertIn(home, linked_pages[page], f"{relative} must link back home")
+        story = self.root / "week3/index.html"
+        game = self.root / "play/switchboard.html"
+        b_side = self.root / "grunge/index.html"
+        self.assertIn(game, linked_pages[home], "Homepage must expose the separate Week 3 game")
+        for companion in (game, b_side):
+            self.assertIn(companion, linked_pages[story], "Week 3 must link to its companions")
+            self.assertIn(story, linked_pages[companion], "Week 3 companions must link back to the story")
+        self.assertTrue({"blackout", "pathfinder"} <= set(documents[story].ids), "Existing story bookmarks must remain valid")
+        for control in ("w3-disconnect", "w3-remove-character", "w3-removal-count", "w3-route-form", "w3-route-character"):
+            self.assertNotIn(control, documents[story].ids, "Game controls belong on their separate page")
+            self.assertIn(control, documents[game].ids, "The separate game must retain its controls")
+        self.assertFalse(any(source.endswith("week3.js") for source in documents[story].scripts),
+                         "The story must not load game scripts or data")
+        self.assertIn("../week3.js", documents[game].scripts)
+        self.assertTrue(any(image.get("src", "").endswith("week3-removal.svg") for image in documents[story].images),
+                        "The story must retain its static removal figure")
 
     def test_new_published_week_updates_homepage_and_creates_its_page(self):
         config_path = self.root / "site.json"

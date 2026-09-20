@@ -179,6 +179,7 @@ def main():
                 raise AssertionError(f"Browser check failed: {name}")
         def check_grunge():
             navigate(base_url + "grunge/index.html", "document.readyState==='complete' && document.querySelector('#grunge-from')?.options.length===15")
+            check("B-side visibly links back to Week 3", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/week3/index.html') && a.getClientRects().length>0)")
             check("grunge sample has its own real data", "CROSSTALK_GRUNGE.nodes.length===15 && CROSSTALK_GRUNGE.edges.length===55 && document.querySelectorAll('#grunge-map circle').length===15")
             check("grunge initial chain spans three hops", "document.querySelectorAll('.grunge-chain li').length===4")
             client.js("document.querySelector('#grunge-from').value='Mark Arm';document.querySelector('#grunge-to').value='Dave Grohl';document.querySelector('#grunge-direction').value='directed';document.querySelector('#grunge-route-form').requestSubmit()")
@@ -221,6 +222,8 @@ def main():
         check("home stays lightweight", "!window.CROSSTALK_DATA && !document.querySelector('#network-atlas')")
         check("group names rendered", "document.body.textContent.includes('Christos Diamantis') && document.body.textContent.includes('s253102') && document.body.textContent.includes('Dávid Weiner') && document.body.textContent.includes('s253347')")
         check("clear direct week navigation", "document.querySelectorAll('.issue-nav a').length===4 && !!document.querySelector('#games')")
+        check("header no longer offers Open an issue", "!document.querySelector('header').textContent.toLowerCase().includes('open an issue')")
+        check("homepage lists the separate Week 3 game", "!!document.querySelector('#games a[href=\"play/switchboard.html\"]')")
         screenshot("homepage.png", full=True)
         for width in (390, 360, 768):
             client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
@@ -463,8 +466,23 @@ def main():
                 client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
                 check(f"{route} {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
         client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
-        navigate(base_url + "week3/index.html", "document.readyState==='complete' && !document.querySelector('#w3-disconnect')?.disabled")
-        check("Week 3 has every character", "document.querySelector('#w3-remove-character').options.length===303 && document.querySelector('#w3-directory').options.length===303")
+        navigate(base_url + "week3/index.html")
+        check("Week 3 keeps story chapters and the static removal figure", "!!document.querySelector('#blackout img[src$=\"week3-removal.svg\"]') && !!document.querySelector('#pathfinder') && document.querySelectorAll('.issue-directory a').length>=4")
+        check("Week 3 story is separate from game controls and data", "!document.querySelector('#w3-disconnect, #w3-route-form, #w3-removal-count, script[src$=\"week3.js\"]') && !window.CROSSTALK_WEEK3")
+        check("Week 3 visibly links to its game", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/play/switchboard.html') && a.getClientRects().length>0)")
+        check("Week 3 visibly links to the B-side", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/grunge/index.html') && a.getClientRects().length>0)")
+        check("Week 3 story desktop has no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        screenshot("week3.png", full=True)
+        for width in (390,360,768):
+            client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+            check(f"Week 3 story {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+            if width == 390:
+                screenshot("week3-mobile.png", full=True)
+        client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+        switchboard_ready = "document.readyState==='complete' && !!document.querySelector('#w3-disconnect') && !document.querySelector('#w3-disconnect').disabled"
+        navigate(base_url + "play/switchboard.html", switchboard_ready)
+        check("Switchboard visibly links back to Week 3", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/week3/index.html') && a.getClientRects().length>0)")
+        check("Switchboard has every character", "document.querySelector('#w3-remove-character').options.length===303 && document.querySelector('#w3-directory').options.length===303")
         client.js("document.querySelector('#w3-disconnect').click()")
         check("Black Widow detaches three survivors", "document.querySelector('.w3-giant-number').textContent.startsWith('273 ') && document.querySelectorAll('.w3-detached-list li').length===3")
         client.js("document.querySelector('#w3-remove-character').value='Spider-Man'; document.querySelector('#w3-disconnect').click()")
@@ -483,12 +501,13 @@ def main():
         client.js("document.querySelector('#w3-removal-count').value=303; document.querySelector('#w3-removal-count').dispatchEvent(new Event('input'))")
         check("all removals leave zero pages in every curve", "Array.from(document.querySelectorAll('.w3-order-result strong')).every(e=>Number(e.textContent)===0)")
         client.js("document.querySelector('#w3-removal-count').value=30; document.querySelector('#w3-removal-count').dispatchEvent(new Event('input'))")
-        screenshot("week3.png", full=True)
+        check("Switchboard desktop has no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        screenshot("switchboard.png", full=True)
         for width in (390,360,768):
             client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
-            check(f"Week 3 {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+            check(f"Switchboard {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
             if width == 390:
-                screenshot("week3-mobile.png", full=True)
+                screenshot("switchboard-mobile.png", full=True)
         client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
         check_grunge()
         # All pages also work when opened from disk.
@@ -498,6 +517,9 @@ def main():
         check("offline report works", "location.protocol === 'file:' && document.querySelectorAll('#network-atlas [data-node]').length === 303")
         navigate((ROOT / "play/index.html").as_uri(), game_ready)
         check("offline game works", "location.protocol==='file:' && document.querySelector('#cw-select').options.length===12")
+        navigate((ROOT / "play/switchboard.html").as_uri(), switchboard_ready)
+        client.js("document.querySelector('#w3-remove-character').value='Spider-Man';document.querySelector('#w3-disconnect').click()")
+        check("offline Switchboard works", "location.protocol==='file:' && document.querySelector('#w3-remove-character').options.length===303 && document.querySelector('.w3-giant-number').textContent.startsWith('271 ') && document.querySelectorAll('.w3-route-chain li').length===5")
         failures = [event for event in client.events if event.get("method") == "Runtime.exceptionThrown"]
         if failures or QuietHandler.errors:
             raise AssertionError({"javascript_errors":failures,"http_errors":QuietHandler.errors})
