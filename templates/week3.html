@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172a48">
+  <meta name="description" content="Who holds Marvel together? Pull the plug on a superhero, compare network blackouts, and find your shortest route to Spider-Man.">
+  <title>Week 3 · Who holds this universe together? · @@TITLE@@</title>
+  <link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="@@ROOT@@style.css">
+  <link rel="stylesheet" href="@@ROOT@@week3.css">
+  <script defer src="@@ROOT@@assets/data/network.js"></script>
+  <script defer src="@@ROOT@@assets/data/week3.js"></script>
+  <script defer src="@@ROOT@@week3.js"></script>
+</head>
+<body class="week3-page" data-root="@@ROOT@@">
+  <a class="skip-link" href="#week3-main">Skip to this issue</a>
+  @@HEADER@@
+  <main id="week3-main" class="w3-main shell">
+    <div class="w3-edition"><a href="@@ROOT@@index.html#journal">← All issues</a><span>WEEK 03 / PATHS &amp; CENTRALITY</span><span>THE MARVEL EXCHANGE</span></div>
+
+    <section class="w3-cover" aria-labelledby="w3-title">
+      <div class="w3-cover-copy">
+        <p class="eyebrow">THE IRREPLACEABLE ISSUE / WEEK 03</p>
+        <h1 id="w3-title">Who holds<br>this universe<br><em>together?</em></h1>
+        <p class="w3-deck">Everyone knows the most popular hero.<br>Who do you miss when they’re gone?</p>
+        <p>We unplugged every character in the Marvel network. Then we kept pulling. A story about shortcuts, fragile connections, and getting through to Spider-Man.</p>
+        <a class="button button-primary" href="#blackout">Take over the switchboard ↗</a>
+      </div>
+      <figure class="w3-cover-art">
+        <div class="w3-panel-label"><span>OPERATOR’S DESK / 03</span><span class="w3-live-dot">LIVE EXPERIMENT</span></div>
+        <svg viewBox="0 0 520 415" role="img" aria-labelledby="connector-title connector-desc">
+          <title id="connector-title">Black Widow is a single connection to the wider network</title>
+          <desc id="connector-desc">Simplified undirected view. Blue Eagle connects to Black Widow. The Witness connects through Rockman to Black Widow. Her other 23 neighbours reach the remaining 273 pages of the original giant component. Removing her detaches three surviving pages.</desc>
+          <defs><pattern id="w3-grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#b3c5d9" stroke-opacity=".09"/></pattern></defs>
+          <rect width="520" height="415" fill="url(#w3-grid)"/>
+          <g fill="none" stroke="#f0b47d" stroke-width="3">
+            <path d="M105 84V145Q105 158 118 158H249Q262 158 262 171V194"/>
+            <path d="M410 84V145Q410 158 397 158H275Q262 158 262 171"/>
+            <path d="M262 239V315" stroke-dasharray="5 7"/>
+            <path d="M410 73V58H307"/>
+          </g>
+          <g font-family="Arial,sans-serif" text-anchor="middle">
+            <g fill="#f6f1e7"><circle cx="105" cy="73" r="10"/><circle cx="410" cy="73" r="10"/><circle cx="300" cy="58" r="7"/></g>
+            <text x="105" y="108" fill="#f6f1e7" font-size="17">Blue Eagle</text>
+            <text x="410" y="108" fill="#f6f1e7" font-size="17">Rockman</text>
+            <text x="273" y="34" fill="#e0e6ee" font-size="16">The Witness</text>
+            <circle cx="262" cy="215" r="39" fill="#ed784d" fill-opacity=".13"/>
+            <circle cx="262" cy="215" r="24" fill="#ed784d"/>
+            <circle cx="262" cy="215" r="9" fill="#172a48"/>
+            <text x="104" y="209" fill="#ffac81" font-size="20" font-weight="700">BLACK</text>
+            <text x="104" y="233" fill="#ffac81" font-size="20" font-weight="700">WIDOW</text>
+            <text x="369" y="220" fill="#e0e6ee" font-size="16">the only way out</text>
+            <text x="354" y="282" fill="#aebfd2" font-size="14">23 other neighbours</text>
+            <rect x="151" y="315" width="222" height="65" rx="5" fill="#233e5b" stroke="#849bac"/>
+            <text x="262" y="342" fill="#f6f1e7" font-size="17">THE MAIN EXCHANGE</text>
+            <text x="262" y="365" fill="#bac8d5" font-size="15">273 other pages</text>
+          </g>
+        </svg>
+        <figcaption><strong>One missing operator. Three stranded pages.</strong><span>A simplified detail of real links; arrows ignored. The main exchange is collapsed into one box.</span></figcaption>
+      </figure>
+    </section>
+
+    <nav class="w3-contents" aria-label="Inside Week 3">
+      <a href="#the-finding"><span>01 / THE STORY</span><strong>Who holds it together?</strong><small>Read the result ↓</small></a>
+      <a href="#blackout"><span>02 / YOUR EXPERIMENT</span><strong>Pull the plug.</strong><small>Run a network blackout ↓</small></a>
+      <a href="#pathfinder"><span>03 / DIRECTORY ASSISTANCE</span><strong>Get me Spider-Man.</strong><small>Find a route ↓</small></a>
+    </nav>
+
+    <section id="the-finding" class="w3-section" aria-labelledby="finding-title">
+      <div class="w3-section-heading"><p class="eyebrow">01 / THE STORY</p><h2 id="finding-title">The obvious answer.<br>The interesting runner-up.</h2></div>
+      <div class="w3-editorial">
+        <div class="w3-prose">
+          <p class="w3-lead">Spider-Man really does hold the most together. Removing him shrinks the largest component from <strong>277 to 271 pages</strong>: one deleted hero, five other pages cut off.</p>
+          <p>He also has the highest undirected degree and the highest betweenness. So, yes: the character whose absence fragments the network most is also the one on the greatest share of shortest routes.</p>
+          <p>But look at <strong>Black Widow (Natasha Romanova)</strong>. She has 25 neighbours, placing her <strong>23rd by degree</strong>. Count how often a shortest route needs her, and she rises to <strong>8th by betweenness</strong>. Remove her, and the giant shrinks to 273: the second largest single-character loss.</p>
+          <p>What does she bridge? In this frozen link list, Blue Eagle has only her to turn to. Rockman connects to her and The Witness; The Witness connects only to Rockman. Remove Black Widow and these three pages become a singleton and a pair, detached from the main network. That is a precise structural claim. The links alone do not tell us why Wikipedia connects those characters.</p>
+          <p>This rank gap is a useful clue, not a significance test. We do not claim Black Widow is unusually central against a degree-preserving null. Our random baseline below asks a different question: how much worse is a targeted blackout than random failure?</p>
+        </div>
+        <aside class="w3-margin-note" aria-label="How we measure importance">
+          <span class="w3-stamp">FIELD NOTE № 03</span>
+          <h3>Busy isn’t the whole story.</h3>
+          <dl><dt>Degree</dt><dd>How many distinct neighbours does a page have?</dd><dt>Betweenness</dt><dd>What share of shortest routes between other pages passes through it? Tied routes split their credit.</dd><dt>Removal damage</dt><dd>How big is the largest connected component after a page disappears?</dd></dl>
+          <p>All three use the same undirected projection. A hyperlink in either direction counts as one connection.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="blackout" class="w3-section" aria-labelledby="blackout-title">
+      <div class="w3-section-heading"><p class="eyebrow">02 / YOUR EXPERIMENT</p><h2 id="blackout-title">Pull the plug.</h2><p>Choose one character. See exactly who loses their connection to the main exchange.</p></div>
+      <div class="w3-disconnect-console">
+        <div class="w3-console-controls">
+          <span class="w3-panel-label">SINGLE-LINE DISCONNECTION</span>
+          <label for="w3-remove-character">Character to disconnect</label>
+          <select id="w3-remove-character" disabled><option>Loading the directory…</option></select>
+          <button type="button" id="w3-disconnect" class="button w3-danger" disabled>Disconnect this character ↗</button>
+          <button type="button" id="w3-reconnect" class="w3-text-button" disabled>Restore the original network</button>
+          <p>Each experiment starts from the full 303-page roster. Connectivity ignores link direction.</p>
+        </div>
+        <div id="w3-removal-result" class="w3-removal-result" aria-live="polite" aria-atomic="true">
+          <p class="w3-console-status">ALL ORIGINAL LINES CONNECTED</p>
+          <p class="w3-giant-number">277 <span>/ 303 pages</span></p>
+          <p>in the largest component</p>
+          <div class="w3-signal-track" aria-hidden="true"><i style="width:91.419%"></i></div>
+          <p>26 pages already sit outside the giant: a nine-page island and 17 isolates.</p>
+        </div>
+      </div>
+
+      <div class="w3-comparison-heading"><h3>Now keep pulling.</h3><p>Three deletion orders. One frozen network. Move the dial to compare the damage at any point.</p></div>
+      <figure class="w3-removal-figure">
+        <div class="w3-chart-scroll" role="region" aria-label="Network-removal chart; scroll horizontally on narrow screens" tabindex="0"><div class="w3-chart-wrap"><img src="@@ROOT@@assets/figures/week3-removal.svg" width="1000" height="620" alt="Node-removal experiment: static degree and betweenness attacks reduce Marvel’s largest component faster than the mean of 200 random deletion orders. The shaded random band is the pointwise fifth to ninety-fifth percentiles."><div id="w3-chart-cursor" class="w3-chart-cursor" aria-hidden="true"></div></div></div>
+        <p class="w3-chart-scroll-hint">Swipe the figure to read both axes. The dial below gives the exact values.</p>
+        <figcaption>Exact trajectories for every number of removals. The random band shows variation across 200 trials, not uncertainty in the two targeted curves. <a href="@@ROOT@@assets/figures/week3-removal.svg" download>Download figure ↗</a></figcaption>
+      </figure>
+      <div class="w3-dial"><label for="w3-removal-count">Characters removed <output id="w3-count-label" for="w3-removal-count">30 of 303</output></label><input id="w3-removal-count" type="range" min="0" max="303" value="30" disabled><div class="w3-dial-ticks" aria-hidden="true"><span>0 · intact</span><span>303 · all removed</span></div></div>
+      <div id="w3-order-results" class="w3-order-results" aria-live="polite" aria-atomic="true"></div>
+      <p class="w3-chart-note">The denominator stays at <strong>303 original pages</strong>, including isolates. Orders use the <strong>original</strong> degree or betweenness ranking; they are not recalculated after removal. Random orders sample all 303 pages uniformly. Seed: 2026.</p>
+      <p class="w3-prose w3-chart-reading">At 30 removals, degree leaves a giant of <strong>222</strong>, betweenness leaves <strong>225</strong>, and random failure leaves <strong>247.6 on average</strong>. Betweenness does not win every round. At 150 removals, both targeted orders leave a largest component of just <strong>9</strong>, while random removal averages <strong>128.0</strong>. The outcome depends on the deletion budget and whether rankings adapt.</p>
+    </section>
+
+    <section id="pathfinder" class="w3-section" aria-labelledby="route-title">
+      <div class="w3-section-heading"><p class="eyebrow">03 / DIRECTORY ASSISTANCE</p><h2 id="route-title">Get me Spider-Man.</h2><p>Six degrees? Among pages that can reach Spider-Man, this exchange needs at most four. Dial a character and follow the shortest chain of Wikipedia links.</p></div>
+      <div class="w3-route-console">
+        <div class="w3-panel-label"><span>YOUR CALL IS BEING CONNECTED</span><span>DESTINATION: SPIDER-MAN</span></div>
+        <form id="w3-route-form" class="w3-route-form">
+          <div><label for="w3-route-character">Start with a character</label><input id="w3-route-character" name="character" type="text" list="w3-directory" value="Mahr Vehl" placeholder="Try Wolverine or Thena" autocomplete="off" required disabled><datalist id="w3-directory"></datalist></div>
+          <div><label for="w3-route-mode">Which connections count?</label><select id="w3-route-mode" disabled><option value="directed">Follow hyperlinks →</option><option value="undirected">Either direction ↔</option></select></div>
+          <button type="submit" class="button button-primary" disabled>Connect my call ↗</button>
+        </form>
+        <div class="w3-route-presets"><span>QUICK DIAL</span><button type="button" data-route-id="Mahr_Vehl" disabled>Longest route</button><button type="button" data-route-id="Spider-Man" disabled>Call yourself</button><button type="button" id="w3-isolate-preset" disabled>A silent line</button></div>
+        <div id="w3-route-result" class="w3-route-result" aria-live="polite" aria-atomic="true"><p>Loading the character directory…</p></div>
+      </div>
+      <div class="w3-editorial w3-route-story">
+        <div class="w3-prose"><h3>Four hops from the edge.</h3><p><strong>Mahr Vehl, Thena, and Thin Man</strong> tie for the longest shortest directed route to Spider-Man: four links. Mahr Vehl’s selected route is Mahr Vehl → Genis-Vell → Captain Marvel → Machine Man → Spider-Man. These are article links, not a chain of people who have met.</p><p>Why start there? <a href="https://en.wikipedia.org/wiki/Mahr_Vehl">Mahr Vehl’s article</a> describes him as the Ultimate version of Mar-Vell and mentions a game costume for Genis-Vell. That gives context for the first link: a connection between versions and adaptations can join the network just as a shared team can. It does not prove what produced every edge in the frozen snapshot.</p><p>Ignore direction, and the maximum falls to <strong>three hops</strong>, shared by 18 pages. There are <strong>26 unreachable pages</strong> in that mode; following arrows makes <strong>29</strong> unreachable. We keep those failed calls visible instead of quietly leaving them out of the story.</p></div>
+        <aside class="w3-margin-note"><span class="w3-stamp">MIND THE ARROW</span><h3>A link is a one-way street.</h3><p>In “Follow hyperlinks”, every step goes from the current article to an article it links to.</p><p>In “Either direction”, a step may traverse a link backwards. Each connection in the result names its actual orientation.</p><p>There may be several equally short routes. We show one, breaking ties by page ID. “Longest” means the largest of these <em>shortest</em> distances among pages that can reach Spider-Man.</p></aside>
+      </div>
+    </section>
+
+    <section id="week3-method" class="w3-section w3-method" aria-labelledby="method-title"><p class="eyebrow">THE SMALL PRINT, AT A READABLE SIZE</p><h2 id="method-title">What went into this issue.</h2><div class="w3-prose"><p><strong>Data:</strong> the course’s frozen 26 August 2026 Marvel Wikipedia roster: 303 pages and 1,784 directed links. All characters are retained, including isolates. The removal and centrality experiments collapse reciprocal links into one undirected edge and exclude loops. Routes offer both orientations.</p><p><strong>Computation:</strong> exact Brandes betweenness, with endpoints excluded and normalization over pairs from the full roster; exact breadth-first shortest paths; complete static removal trajectories; 200 seeded random permutations with pointwise empirical 5th–95th percentile bands. No centrality is estimated by sampling. Single-removal “detached” counts surviving pages split off the original giant, excluding the character removed.</p><p><strong>Interpretation:</strong> hyperlinks describe Wikipedia’s coverage, not friendship, strength, or influence in Marvel stories. The roster boundary and snapshot affect the answer. Live articles provide reading context and may differ from the frozen links. This is a deletion-order comparison, not a degree-preserving centrality null or a claim that one attack strategy is optimal.</p><div class="w3-source-links"><a href="@@ROOT@@assets/data/week3.json" download>All results (JSON) ↗</a><a href="@@ROOT@@data/raw/week1_nodes.tsv" download>Original roster ↗</a><a href="@@ROOT@@data/raw/week1_edges.tsv" download>Original links ↗</a><a href="@@REPO@@/blob/main/scripts/analyze_week3.py">Reproduce the analysis ↗</a><a href="https://sunelehmann.com/socialgraphs2026-web/weeks/week3.html">Course: Week 3 ↗</a></div></div></section>
+    <nav class="w3-next-issue" aria-label="Browse issues"><a href="@@ROOT@@week2/index.html">← Week 2: Compared to what?</a><a href="@@ROOT@@index.html#journal">Back to the issue directory ↗</a></nav>
+    <noscript><p class="w3-noscript">The story and downloadable figure work without JavaScript. Enable JavaScript to disconnect characters and use the route finder. All computed paths are also available in the results JSON.</p></noscript>
+  </main>
+  @@FOOTER@@
+</body>
+</html>

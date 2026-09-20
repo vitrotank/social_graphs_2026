@@ -1,0 +1,625 @@
+{
+  "category": "Category:Grunge musicians",
+  "category_url": "https://en.wikipedia.org/wiki/Category:Grunge_musicians",
+  "retrieved_at": "2026-09-20 18:30:29 UTC",
+  "mode": "sampled_browser_excerpts",
+  "extraction": "Purposive selection of 15 directly categorized musicians. Only exact roster-name hyperlink labels visible in browser-retrieved excerpts are recorded. All included hyperlink destinations were resolved and checked. Neither a complete category crawl nor a complete article-link census.",
+  "category_observation": {
+    "visible_members": 68,
+    "source_url": "https://en.wikipedia.org/wiki/Category:Grunge_musicians",
+    "excluded_nonmusician": "List of grunge bands",
+    "subcategories_followed": false
+  },
+  "sampling_rule": "15 selected recognizable musicians from the direct category roster, spanning Nirvana, Soundgarden, Pearl Jam, Alice in Chains, Melvins, Mudhoney, Screaming Trees and recording production; this is an editorial purposive sample, not a random sample.",
+  "limitation": "Article excerpts can omit links. No revision IDs were exposed for this collection and none are invented. Ranking and reachability apply only to this observed sample; no claim of statistical significance or population centrality.",
+  "pages": [
+    {
+      "title": "Buzz Osborne",
+      "url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+      "revision_id": null,
+      "links": [
+        "Chris Cornell",
+        "Dale Crover",
+        "Dave Grohl",
+        "Krist Novoselic",
+        "Kurt Cobain"
+      ],
+      "evidence": [
+        {
+          "target": "Dale Crover",
+          "link_text": "Dale Crover",
+          "source_url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+          "target_url": "https://en.wikipedia.org/wiki/Dale_Crover"
+        },
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        },
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        },
+        {
+          "target": "Chris Cornell",
+          "link_text": "Chris Cornell",
+          "source_url": "https://en.wikipedia.org/wiki/Buzz_Osborne",
+          "target_url": "https://en.wikipedia.org/wiki/Chris_Cornell"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        329
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Chad Channing",
+      "url": "https://en.wikipedia.org/wiki/Chad_Channing",
+      "revision_id": null,
+      "links": [
+        "Dale Crover",
+        "Dave Grohl",
+        "Jack Endino",
+        "Krist Novoselic",
+        "Kurt Cobain"
+      ],
+      "evidence": [
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Chad_Channing",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Chad_Channing",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        },
+        {
+          "target": "Dale Crover",
+          "link_text": "Dale Crover",
+          "source_url": "https://en.wikipedia.org/wiki/Chad_Channing",
+          "target_url": "https://en.wikipedia.org/wiki/Dale_Crover"
+        },
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Chad_Channing",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        },
+        {
+          "target": "Jack Endino",
+          "link_text": "Jack Endino",
+          "source_url": "https://en.wikipedia.org/wiki/Chad_Channing",
+          "target_url": "https://en.wikipedia.org/wiki/Jack_Endino"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        321
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Chris Cornell",
+      "url": "https://en.wikipedia.org/wiki/Chris_Cornell",
+      "revision_id": null,
+      "links": [
+        "Matt Cameron"
+      ],
+      "evidence": [
+        {
+          "target": "Matt Cameron",
+          "link_text": "Matt Cameron",
+          "source_url": "https://en.wikipedia.org/wiki/Chris_Cornell",
+          "target_url": "https://en.wikipedia.org/wiki/Matt_Cameron"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        296
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Dale Crover",
+      "url": "https://en.wikipedia.org/wiki/Dale_Crover",
+      "revision_id": null,
+      "links": [
+        "Buzz Osborne",
+        "Dave Grohl",
+        "Kurt Cobain"
+      ],
+      "evidence": [
+        {
+          "target": "Buzz Osborne",
+          "link_text": "Buzz Osborne",
+          "source_url": "https://en.wikipedia.org/wiki/Dale_Crover",
+          "target_url": "https://en.wikipedia.org/wiki/Buzz_Osborne"
+        },
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Dale_Crover",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Dale_Crover",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        337
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Dave Grohl",
+      "url": "https://en.wikipedia.org/wiki/Dave_Grohl",
+      "revision_id": null,
+      "links": [
+        "Buzz Osborne",
+        "Krist Novoselic",
+        "Kurt Cobain",
+        "Pat Smear"
+      ],
+      "evidence": [
+        {
+          "target": "Buzz Osborne",
+          "link_text": "Buzz Osborne",
+          "source_url": "https://en.wikipedia.org/wiki/Dave_Grohl",
+          "target_url": "https://en.wikipedia.org/wiki/Buzz_Osborne"
+        },
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Dave_Grohl",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Dave_Grohl",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        },
+        {
+          "target": "Pat Smear",
+          "link_text": "Pat Smear",
+          "source_url": "https://en.wikipedia.org/wiki/Dave_Grohl",
+          "target_url": "https://en.wikipedia.org/wiki/Pat_Smear"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        326
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Eddie Vedder",
+      "url": "https://en.wikipedia.org/wiki/Eddie_Vedder",
+      "revision_id": null,
+      "links": [
+        "Chris Cornell",
+        "Matt Cameron"
+      ],
+      "evidence": [
+        {
+          "target": "Chris Cornell",
+          "link_text": "Chris Cornell",
+          "source_url": "https://en.wikipedia.org/wiki/Eddie_Vedder",
+          "target_url": "https://en.wikipedia.org/wiki/Chris_Cornell"
+        },
+        {
+          "target": "Matt Cameron",
+          "link_text": "Matt Cameron",
+          "source_url": "https://en.wikipedia.org/wiki/Eddie_Vedder",
+          "target_url": "https://en.wikipedia.org/wiki/Matt_Cameron"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        309
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Jack Endino",
+      "url": "https://en.wikipedia.org/wiki/Jack_Endino",
+      "revision_id": null,
+      "links": [
+        "Krist Novoselic",
+        "Matt Cameron"
+      ],
+      "evidence": [
+        {
+          "target": "Matt Cameron",
+          "link_text": "Matt Cameron",
+          "source_url": "https://en.wikipedia.org/wiki/Jack_Endino",
+          "target_url": "https://en.wikipedia.org/wiki/Matt_Cameron"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Jack_Endino",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        251
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Jerry Cantrell",
+      "url": "https://en.wikipedia.org/wiki/Jerry_Cantrell",
+      "revision_id": null,
+      "links": [
+        "Chris Cornell",
+        "Layne Staley",
+        "Mark Arm"
+      ],
+      "evidence": [
+        {
+          "target": "Layne Staley",
+          "link_text": "Layne Staley",
+          "source_url": "https://en.wikipedia.org/wiki/Jerry_Cantrell",
+          "target_url": "https://en.wikipedia.org/wiki/Layne_Staley"
+        },
+        {
+          "target": "Mark Arm",
+          "link_text": "Mark Arm",
+          "source_url": "https://en.wikipedia.org/wiki/Jerry_Cantrell",
+          "target_url": "https://en.wikipedia.org/wiki/Mark_Arm"
+        },
+        {
+          "target": "Chris Cornell",
+          "link_text": "Chris Cornell",
+          "source_url": "https://en.wikipedia.org/wiki/Jerry_Cantrell",
+          "target_url": "https://en.wikipedia.org/wiki/Chris_Cornell"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        274
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Krist Novoselic",
+      "url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+      "revision_id": null,
+      "links": [
+        "Buzz Osborne",
+        "Chad Channing",
+        "Dale Crover",
+        "Dave Grohl",
+        "Jack Endino",
+        "Kurt Cobain",
+        "Matt Cameron",
+        "Pat Smear"
+      ],
+      "evidence": [
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Dale Crover",
+          "link_text": "Dale Crover",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Dale_Crover"
+        },
+        {
+          "target": "Chad Channing",
+          "link_text": "Chad Channing",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Chad_Channing"
+        },
+        {
+          "target": "Buzz Osborne",
+          "link_text": "Buzz Osborne",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Buzz_Osborne"
+        },
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        },
+        {
+          "target": "Pat Smear",
+          "link_text": "Pat Smear",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Pat_Smear"
+        },
+        {
+          "target": "Matt Cameron",
+          "link_text": "Matt Cameron",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Matt_Cameron"
+        },
+        {
+          "target": "Jack Endino",
+          "link_text": "Jack Endino",
+          "source_url": "https://en.wikipedia.org/wiki/Krist_Novoselic",
+          "target_url": "https://en.wikipedia.org/wiki/Jack_Endino"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        290
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Kurt Cobain",
+      "url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+      "revision_id": null,
+      "links": [
+        "Buzz Osborne",
+        "Chad Channing",
+        "Dale Crover",
+        "Dave Grohl",
+        "Krist Novoselic",
+        "Mark Lanegan"
+      ],
+      "evidence": [
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        },
+        {
+          "target": "Buzz Osborne",
+          "link_text": "Buzz Osborne",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Buzz_Osborne"
+        },
+        {
+          "target": "Dale Crover",
+          "link_text": "Dale Crover",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Dale_Crover"
+        },
+        {
+          "target": "Chad Channing",
+          "link_text": "Chad Channing",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Chad_Channing"
+        },
+        {
+          "target": "Mark Lanegan",
+          "link_text": "Mark Lanegan",
+          "source_url": "https://en.wikipedia.org/wiki/Kurt_Cobain",
+          "target_url": "https://en.wikipedia.org/wiki/Mark_Lanegan"
+        }
+      ],
+      "observed_excerpt_lines": [
+        63,
+        332
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Layne Staley",
+      "url": "https://en.wikipedia.org/wiki/Layne_Staley",
+      "revision_id": null,
+      "links": [
+        "Jerry Cantrell",
+        "Kurt Cobain",
+        "Mark Lanegan"
+      ],
+      "evidence": [
+        {
+          "target": "Jerry Cantrell",
+          "link_text": "Jerry Cantrell",
+          "source_url": "https://en.wikipedia.org/wiki/Layne_Staley",
+          "target_url": "https://en.wikipedia.org/wiki/Jerry_Cantrell"
+        },
+        {
+          "target": "Mark Lanegan",
+          "link_text": "Mark Lanegan",
+          "source_url": "https://en.wikipedia.org/wiki/Layne_Staley",
+          "target_url": "https://en.wikipedia.org/wiki/Mark_Lanegan"
+        },
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Layne_Staley",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        271
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Mark Arm",
+      "url": "https://en.wikipedia.org/wiki/Mark_Arm",
+      "revision_id": null,
+      "links": [],
+      "evidence": [],
+      "observed_excerpt_lines": [
+        0,
+        263
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Mark Lanegan",
+      "url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+      "revision_id": null,
+      "links": [
+        "Chris Cornell",
+        "Jack Endino",
+        "Krist Novoselic",
+        "Kurt Cobain",
+        "Layne Staley"
+      ],
+      "evidence": [
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Layne Staley",
+          "link_text": "Layne Staley",
+          "source_url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+          "target_url": "https://en.wikipedia.org/wiki/Layne_Staley"
+        },
+        {
+          "target": "Chris Cornell",
+          "link_text": "Chris Cornell",
+          "source_url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+          "target_url": "https://en.wikipedia.org/wiki/Chris_Cornell"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        },
+        {
+          "target": "Jack Endino",
+          "link_text": "Jack Endino",
+          "source_url": "https://en.wikipedia.org/wiki/Mark_Lanegan",
+          "target_url": "https://en.wikipedia.org/wiki/Jack_Endino"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        276
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Matt Cameron",
+      "url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+      "revision_id": null,
+      "links": [
+        "Buzz Osborne",
+        "Chris Cornell",
+        "Eddie Vedder",
+        "Jack Endino",
+        "Krist Novoselic"
+      ],
+      "evidence": [
+        {
+          "target": "Chris Cornell",
+          "link_text": "Chris Cornell",
+          "source_url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+          "target_url": "https://en.wikipedia.org/wiki/Chris_Cornell"
+        },
+        {
+          "target": "Jack Endino",
+          "link_text": "Jack Endino",
+          "source_url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+          "target_url": "https://en.wikipedia.org/wiki/Jack_Endino"
+        },
+        {
+          "target": "Eddie Vedder",
+          "link_text": "Eddie Vedder",
+          "source_url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+          "target_url": "https://en.wikipedia.org/wiki/Eddie_Vedder"
+        },
+        {
+          "target": "Buzz Osborne",
+          "link_text": "Buzz Osborne",
+          "source_url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+          "target_url": "https://en.wikipedia.org/wiki/Buzz_Osborne"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Matt_Cameron",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        313
+      ],
+      "retrieved_at": "2026-09-20 18:30:29 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Every observed link target was clicked and resolved to the target article. Omitted links are unobserved, not confirmed absent."
+    },
+    {
+      "title": "Pat Smear",
+      "url": "https://en.wikipedia.org/wiki/Pat_Smear",
+      "revision_id": null,
+      "links": [
+        "Dave Grohl",
+        "Krist Novoselic",
+        "Kurt Cobain"
+      ],
+      "evidence": [
+        {
+          "target": "Kurt Cobain",
+          "link_text": "Kurt Cobain",
+          "source_url": "https://en.wikipedia.org/wiki/Pat_Smear",
+          "target_url": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+        },
+        {
+          "target": "Dave Grohl",
+          "link_text": "Dave Grohl",
+          "source_url": "https://en.wikipedia.org/wiki/Pat_Smear",
+          "target_url": "https://en.wikipedia.org/wiki/Dave_Grohl"
+        },
+        {
+          "target": "Krist Novoselic",
+          "link_text": "Krist Novoselic",
+          "source_url": "https://en.wikipedia.org/wiki/Pat_Smear",
+          "target_url": "https://en.wikipedia.org/wiki/Krist_Novoselic"
+        }
+      ],
+      "observed_excerpt_lines": [
+        0,
+        387
+      ],
+      "retrieved_at": "2026-09-20 18:27:19 UTC",
+      "extraction": "Exact roster-name hyperlink labels visible in a browser-retrieved Wikipedia excerpt. Omitted links are unobserved, not confirmed absent."
+    }
+  ]
+}

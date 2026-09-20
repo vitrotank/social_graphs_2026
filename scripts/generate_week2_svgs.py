@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate publication-ready vector SVGs for Week 2 matching Crosstalk's visual style."""
+"""Generate Week 2 vector teaching sketches; only Marvel CCDF points are empirical."""
 
 import json
 import math
@@ -43,12 +43,12 @@ def y_px(p: float) -> float:
 # -------------------------------------------------------------------------
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title-ccdf desc-ccdf">',
-    '<title id="title-ccdf">Marvel vs Barabási–Albert vs Erdős–Rényi</title>',
-    '<desc id="desc-ccdf">Log-log CCDF showing Marvel tracking Barabási-Albert power-law tail and decisively rejecting thin-tailed Erdős-Rényi.</desc>',
+    '<title id="title-ccdf">Marvel and illustrative reference curves</title>',
+    '<desc id="desc-ccdf">Measured positive in-degree CCDF with illustrative reference curves; no model fit or significance test.</desc>',
     '<rect width="960" height="600" fill="#f6f1e7"/>',
     '<g font-family="Arial, sans-serif" fill="#232927">',
-    '<text x="40" y="38" font-size="24" font-weight="700">Does Marvel follow a power law or random chance?</text>',
-    '<text x="40" y="65" font-size="13" fill="#586866">Complementary cumulative distribution (CCDF) · Marvel in-degree vs Barabási–Albert vs Erdős–Rényi · log–log axes</text>'
+    '<text x="40" y="38" font-size="24" font-weight="700">Compare the shapes</text>',
+    '<text x="40" y="65" font-size="13" fill="#586866">Measured positive in-degree CCDF. Other curves are chosen references, not fitted models.</text>'
 ]
 
 for xt in [1, 2, 5, 10, 20, 50, 100]:
@@ -71,7 +71,7 @@ for k in range(1, 10):
 er_d = "M" + " L".join(f"{x:.2f},{y:.2f}" for x, y in er_pts)
 parts.append(f'<path d="{er_d}" fill="none" stroke="#486452" stroke-width="2.5" stroke-dasharray="5 4" opacity="0.85"/>')
 
-# Barabási-Albert power law theoretical curve: P(K >= k) ~ (m / k)^2 for m=6, scaled
+# Chosen heavy-tail reference shape; this is not the BA degree distribution.
 ba_pts = []
 for k in [1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 110]:
     prob = min(1.0, (2.0 / k)**1.35)
@@ -104,12 +104,12 @@ for k, (name, dx, dy) in offsets.items():
 # Annotation for finite size knee
 knee_x, knee_y = x_px(35), y_px(0.02)
 parts.append(f'<path d="M{knee_x:.2f},{knee_y:.2f} l-35,-35 h-95" fill="none" stroke="#60645c" stroke-width="1.2" stroke-dasharray="3 3"/>')
-parts.append(f'<text x="{knee_x-135:.2f}" y="{knee_y-40:.2f}" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#60645c">Finite-size cutoff (k ≈ 35)</text>')
+parts.append(f'<text x="{knee_x-135:.2f}" y="{knee_y-40:.2f}" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#60645c">Sparse tail (k > 35)</text>')
 
 # Legends
 parts.append('<circle cx="580" cy="37" r="5" fill="#dc512f"/><text x="592" y="42" font-size="12">Marvel In-Degree (Empirical)</text>')
-parts.append('<line x1="770" y1="37" x2="790" y2="37" stroke="#2849c7" stroke-width="2.5"/><text x="796" y="42" font-size="12">Barabási–Albert</text>')
-parts.append('<line x1="770" y1="58" x2="790" y2="58" stroke="#486452" stroke-width="2.5" stroke-dasharray="4 3"/><text x="796" y="63" font-size="12">Erdős–Rényi</text>')
+parts.append('<line x1="770" y1="37" x2="790" y2="37" stroke="#2849c7" stroke-width="2.5"/><text x="796" y="42" font-size="12">Heavy-tail sketch</text>')
+parts.append('<line x1="770" y1="58" x2="790" y2="58" stroke="#486452" stroke-width="2.5" stroke-dasharray="4 3"/><text x="796" y="63" font-size="12">Poisson reference</text>')
 
 parts.append('</g></svg>\n')
 (FIG_DIR / "ccdf-models.svg").write_text("\n".join(parts), encoding="utf-8")
@@ -120,12 +120,12 @@ print("Wrote assets/figures/ccdf-models.svg")
 # -------------------------------------------------------------------------
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title-fit desc-fit">',
-    '<title id="title-fit">Fitted Power-Law &amp; Tail Truncation</title>',
-    '<desc id="desc-fit">Empirical power-law fit slope of -1.35 and the discrete quantal staircase breakdown past k=35.</desc>',
+    '<title id="title-fit">A guide line and a sparse tail</title>',
+    '<desc id="desc-fit">Measured positive in-degree CCDF beside a line with a chosen slope; no fitting procedure is performed.</desc>',
     '<rect width="960" height="600" fill="#f6f1e7"/>',
     '<g font-family="Arial, sans-serif" fill="#232927">',
     '<text x="40" y="38" font-size="24" font-weight="700">The limits of scale-free claims</text>',
-    '<text x="40" y="65" font-size="13" fill="#586866">Fitted power-law slope = −1.351 (implied γ = 2.351) · discrete quantal steps in the tail</text>'
+    '<text x="40" y="65" font-size="13" fill="#586866">Chosen guide slope = -1.351. The line is illustrative, not an estimated exponent.</text>'
 ]
 
 for xt in [1, 2, 5, 10, 20, 50, 100]:
@@ -141,7 +141,7 @@ parts.append('<text x="24" y="291" text-anchor="middle" font-size="12" fill="#58
 
 rx1, rx2 = x_px(2), x_px(35)
 parts.append(f'<rect x="{rx1:.2f}" y="{TOP}" width="{rx2-rx1:.2f}" height="{BOTTOM-TOP}" fill="#dc512f" fill-opacity="0.06"/>')
-parts.append(f'<text x="{(rx1+rx2)/2:.2f}" y="{TOP+20}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419">FITTED REGIME [k = 2 to 35]</text>')
+parts.append(f'<text x="{(rx1+rx2)/2:.2f}" y="{TOP+20}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419">HIGHLIGHTED RANGE [k = 2 to 35]</text>')
 
 fit_x1, fit_y1 = x_px(1.5), y_px(0.83 * (1.5/2.0)**-1.351)
 fit_x2, fit_y2 = x_px(45), y_px(0.83 * (45.0/2.0)**-1.351)
@@ -156,11 +156,11 @@ for k, p in marvel_ccdf:
     xp, yp = x_px(k), y_px(p)
     parts.append(f'<circle cx="{xp:.2f}" cy="{yp:.2f}" r="3.5" fill="#dc512f"/>')
 
-parts.append(f'<text x="{x_px(10):.2f}" y="{y_px(0.12):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Fitted Slope = −1.351 (γ = 2.351)</text>')
+parts.append(f'<text x="{x_px(10):.2f}" y="{y_px(0.12):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Chosen guide slope = −1.351</text>')
 parts.append(f'<text x="{x_px(36):.2f}" y="{y_px(0.006):.2f}" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#8f2913">Only 5 hubs exist past k = 33 (1/245 discrete quanta)</text>')
 
 parts.append('<circle cx="680" cy="37" r="5" fill="#dc512f"/><text x="692" y="42" font-size="12">Marvel Empirical CCDF</text>')
-parts.append('<line x1="680" y1="58" x2="700" y2="58" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="5 3"/><text x="706" y="63" font-size="12">Power-Law Fit (k ∈ [2, 35])</text>')
+parts.append('<line x1="680" y1="58" x2="700" y2="58" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="5 3"/><text x="706" y="63" font-size="12">Illustrative guide line</text>')
 
 parts.append('</g></svg>\n')
 (FIG_DIR / "ccdf-fit.svg").write_text("\n".join(parts), encoding="utf-8")
@@ -171,12 +171,12 @@ print("Wrote assets/figures/ccdf-fit.svg")
 # -------------------------------------------------------------------------
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title-c desc-c">',
-    '<title id="title-c">Clustering Coefficient vs Null Models</title>',
-    '<desc id="desc-c">Clustering distributions across Erdős-Rényi, Double Edge Swap, and the observed Marvel network.</desc>',
+    '<title id="title-c">Illustrative clustering comparison</title>',
+    '<desc id="desc-c">Schematic reference distributions with chosen centres and widths; these are not sampled null ensembles.</desc>',
     '<rect width="960" height="600" fill="#f6f1e7"/>',
     '<g font-family="Arial, sans-serif" fill="#232927">',
-    '<text x="40" y="38" font-size="24" font-weight="700">Testing clustering against null models</text>',
-    '<text x="40" y="65" font-size="13" fill="#586866">Clustering coefficient distributions: Erdős–Rényi G(n, m) vs Double Edge Swap vs Observed Marvel</text>'
+    '<text x="40" y="38" font-size="24" font-weight="700">A null-model sketch</text>',
+    '<text x="40" y="65" font-size="13" fill="#586866">Illustrative distributions only. Centres and widths are chosen constants, not simulation results.</text>'
 ]
 
 C_MIN, C_MAX = 0.0, 0.38
@@ -200,8 +200,8 @@ for i in range(50):
     er_curve.append((cx_px(val), BOTTOM - h))
 er_path = f"M{cx_px(0.025):.2f},{BOTTOM} " + " ".join(f"L{x:.2f},{y:.2f}" for x, y in er_curve) + f" L{cx_px(0.05):.2f},{BOTTOM} Z"
 parts.append(f'<path d="{er_path}" fill="#486452" fill-opacity="0.35" stroke="#486452" stroke-width="2"/>')
-parts.append(f'<text x="{cx_px(0.0371):.2f}" y="{BOTTOM-250}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#486452" font-weight="bold">Erdős–Rényi G(n, m)</text>')
-parts.append(f'<text x="{cx_px(0.0371):.2f}" y="{BOTTOM-235}" text-anchor="middle" font-size="9" fill="#486452">C = 0.037 ± 0.003</text>')
+parts.append(f'<text x="{cx_px(0.0371):.2f}" y="{BOTTOM-250}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#486452" font-weight="bold">Random-edge sketch</text>')
+parts.append(f'<text x="{cx_px(0.0371):.2f}" y="{BOTTOM-235}" text-anchor="middle" font-size="9" fill="#486452">Chosen centre: 0.037</text>')
 
 swap_curve = []
 for i in range(60):
@@ -210,18 +210,18 @@ for i in range(60):
     swap_curve.append((cx_px(val), BOTTOM - h))
 swap_path = f"M{cx_px(0.125):.2f},{BOTTOM} " + " ".join(f"L{x:.2f},{y:.2f}" for x, y in swap_curve) + f" L{cx_px(0.185):.2f},{BOTTOM} Z"
 parts.append(f'<path d="{swap_path}" fill="#2849c7" fill-opacity="0.3" stroke="#2849c7" stroke-width="2"/>')
-parts.append(f'<text x="{cx_px(0.155):.2f}" y="{BOTTOM-220}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Degree-Preserving Swap Null</text>')
-parts.append(f'<text x="{cx_px(0.155):.2f}" y="{BOTTOM-205}" text-anchor="middle" font-size="9" fill="#2849c7">C = 0.155 ± 0.008 (z = 19.6)</text>')
+parts.append(f'<text x="{cx_px(0.155):.2f}" y="{BOTTOM-220}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Swap-null sketch</text>')
+parts.append(f'<text x="{cx_px(0.155):.2f}" y="{BOTTOM-205}" text-anchor="middle" font-size="9" fill="#2849c7">Chosen centre: 0.155</text>')
 
 rx = cx_px(0.320)
 parts.append(f'<line x1="{rx:.2f}" y1="{TOP+40}" x2="{rx:.2f}" y2="{BOTTOM}" stroke="#dc512f" stroke-width="3.5"/>')
 parts.append(f'<circle cx="{rx:.2f}" cy="{TOP+40}" r="6" fill="#dc512f"/>')
 parts.append(f'<rect x="{rx-135:.2f}" y="{TOP+20}" width="130" height="50" rx="3" fill="#dc512f"/>')
-parts.append(f'<text x="{rx-70:.2f}" y="{TOP+38}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#fff" font-weight="bold">REAL MARVEL</text>')
-parts.append(f'<text x="{rx-70:.2f}" y="{TOP+54}" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#fff">C = 0.320 (z = 19.6)</text>')
+parts.append(f'<text x="{rx-70:.2f}" y="{TOP+38}" text-anchor="middle" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#fff" font-weight="bold">EXAMPLE VALUE</text>')
+parts.append(f'<text x="{rx-70:.2f}" y="{TOP+54}" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#fff">Preset C = 0.320</text>')
 
 parts.append(f'<path d="M{cx_px(0.155):.2f},350 H{rx:.2f}" stroke="#a93419" stroke-width="1.5" stroke-dasharray="3 3"/>')
-parts.append(f'<text x="{(cx_px(0.155)+rx)/2:.2f}" y="342" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419" font-weight="bold">+106% UNEXPLAINED CLUSTERING (TRIADIC CLOSURE)</text>')
+parts.append(f'<text x="{(cx_px(0.155)+rx)/2:.2f}" y="342" text-anchor="middle" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#a93419" font-weight="bold">A GAP TO INVESTIGATE</text>')
 
 parts.append('</g></svg>\n')
 (FIG_DIR / "clustering-nulls.svg").write_text("\n".join(parts), encoding="utf-8")
@@ -232,12 +232,12 @@ print("Wrote assets/figures/clustering-nulls.svg")
 # -------------------------------------------------------------------------
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title-growth desc-growth">',
-    '<title id="title-growth">Preferential Attachment vs Uniform Growth</title>',
-    '<desc id="desc-growth">Degree distribution comparison showing preferential attachment power law tail versus exponential uniform growth.</desc>',
+    '<title id="title-growth">Illustrative tail shapes</title>',
+    '<desc id="desc-growth">Chosen power-law and exponential reference curves; no graph-growth simulation is run.</desc>',
     '<rect width="960" height="600" fill="#f6f1e7"/>',
     '<g font-family="Arial, sans-serif" fill="#232927">',
-    '<text x="40" y="38" font-size="24" font-weight="700">Preferential attachment vs uniform growth</text>',
-    '<text x="40" y="65" font-size="13" fill="#586866">Network growth to N = 303: rich-get-richer hub emergence vs uniform exponential tail</text>'
+    '<text x="40" y="38" font-size="24" font-weight="700">Two contrasting tails</text>',
+    '<text x="40" y="65" font-size="13" fill="#586866">Illustrative mathematical shapes. These curves are not measured growth experiments.</text>'
 ]
 
 for xt in [1, 2, 5, 10, 20, 50, 100]:
@@ -268,11 +268,11 @@ parts.append('<path d="M' + " L".join(f"{x:.2f},{y:.2f}" for x, y in unif_curve)
 for x, y in unif_curve:
     parts.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="4" fill="#2849c7"/>')
 
-parts.append(f'<text x="{x_px(35):.2f}" y="{y_px(0.03):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#dc512f" font-weight="bold">Preferential Attachment (Hubs reach k = 106)</text>')
-parts.append(f'<text x="{x_px(12):.2f}" y="{y_px(0.008):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Uniform Growth (Dies at k ≈ 20)</text>')
+parts.append(f'<text x="{x_px(35):.2f}" y="{y_px(0.03):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#dc512f" font-weight="bold">Chosen power-law shape</text>')
+parts.append(f'<text x="{x_px(12):.2f}" y="{y_px(0.008):.2f}" font-size="11" font-family="SFMono-Regular, Consolas, monospace" fill="#2849c7" font-weight="bold">Chosen exponential shape</text>')
 
-parts.append('<circle cx="680" cy="37" r="5" fill="#dc512f"/><text x="692" y="42" font-size="12">Preferential Attachment (BA)</text>')
-parts.append('<line x1="680" y1="58" x2="700" y2="58" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="5 3"/><text x="706" y="63" font-size="12">Uniform Growth (No Hubs)</text>')
+parts.append('<circle cx="680" cy="37" r="5" fill="#dc512f"/><text x="692" y="42" font-size="12">Power-law sketch</text>')
+parts.append('<line x1="680" y1="58" x2="700" y2="58" stroke="#2849c7" stroke-width="2.5" stroke-dasharray="5 3"/><text x="706" y="63" font-size="12">Exponential sketch</text>')
 
 parts.append('</g></svg>\n')
 (FIG_DIR / "growth-models.svg").write_text("\n".join(parts), encoding="utf-8")

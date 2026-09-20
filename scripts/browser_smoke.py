@@ -111,6 +111,7 @@ class QuietHandler(SimpleHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--browser", help="Path to Chrome or Chromium executable")
+    parser.add_argument("--grunge-only", action="store_true", help="Run just the B-side and provider-control checks")
     args = parser.parse_args()
     browser = args.browser or shutil.which("chromium") or shutil.which("google-chrome")
     if not browser:
@@ -173,11 +174,53 @@ def main():
             result = client.js(expression)
             checks[name] = result
             if not result:
+                print("Failure details:", client.js("JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth,offenders:Array.from(document.querySelectorAll('body *')).filter(e=>e.getBoundingClientRect().right>document.documentElement.clientWidth+1).slice(0,12).map(e=>({tag:e.tagName,cls:String(e.className),text:e.textContent.slice(0,90)}))})"), flush=True)
+                screenshot("failure.png", full=True)
                 raise AssertionError(f"Browser check failed: {name}")
+        def check_grunge():
+            navigate(base_url + "grunge/index.html", "document.readyState==='complete' && document.querySelector('#grunge-from')?.options.length===15")
+            check("grunge sample has its own real data", "CROSSTALK_GRUNGE.nodes.length===15 && CROSSTALK_GRUNGE.edges.length===55 && document.querySelectorAll('#grunge-map circle').length===15")
+            check("grunge initial chain spans three hops", "document.querySelectorAll('.grunge-chain li').length===4")
+            client.js("document.querySelector('#grunge-from').value='Mark Arm';document.querySelector('#grunge-to').value='Dave Grohl';document.querySelector('#grunge-direction').value='directed';document.querySelector('#grunge-route-form').requestSubmit()")
+            check("grunge explicitly handles no directed route", "document.querySelector('#grunge-route-result').textContent.includes('No observed route')")
+            client.js("document.querySelector('#grunge-to').value='Mark Arm';document.querySelector('#grunge-route-form').requestSubmit()")
+            check("grunge same-node route has zero hops", "document.querySelectorAll('.grunge-chain li').length===1 && document.querySelector('#grunge-route-result').textContent.includes('Zero hops')")
+            check("radio waits for an interaction before loading YouTube", "!document.querySelector('#radio-player-wrap iframe') && !document.querySelector('script[src*=youtube]') && !document.querySelector('.grunge-radio.is-playing')")
+            old_station=client.js("document.querySelector('#radio-external').href")
+            client.js("document.querySelector('#radio-next').click()")
+            check("radio station buttons change the listening link", "document.querySelector('#radio-external').href !== " + json.dumps(old_station))
+            screenshot("grunge.png", full=True)
+            for width in (390,360,768):
+                client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+                check(f"grunge {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+                if width==390: screenshot("grunge-mobile.png", full=True)
+            # Simulate provider events to test controls deterministically without
+            # claiming that an external video stream was played by this check.
+            client.js("window.YT={Player:function(id,options){window.__radioEvents=options.events;const frame=document.createElement('iframe');document.getElementById(id).replaceWith(frame);this.getIframe=()=>frame;this.setVolume=()=>{};this.playVideo=()=>{window.__radioCommand='play'};this.pauseVideo=()=>{window.__radioCommand='pause'};this.loadVideoById=(id)=>{window.__radioCommand=id};this.cueVideoById=this.loadVideoById;window.__radioMock=this}};document.querySelector('#radio-play').click()")
+            client.js("window.__radioEvents.onReady({target:window.__radioMock})")
+            check("radio requests playback after provider ready", "window.__radioCommand===new URL(document.querySelector('#radio-external').href).searchParams.get('v') && !document.querySelector('.grunge-radio.is-playing')")
+            client.js("window.__radioEvents.onStateChange({data:1})")
+            check("radio shows playing only on provider playback event", "!!document.querySelector('.grunge-radio.is-playing') && document.querySelector('#radio-play').textContent.includes('Pause')")
+            client.js("document.querySelector('#radio-play').click();window.__radioEvents.onStateChange({data:2})")
+            check("radio pause works through provider", "window.__radioCommand==='pause' && !document.querySelector('.grunge-radio.is-playing')")
+            client.js("window.__radioEvents.onError({data:150})")
+            check("radio provides an external fallback on playback failure", "document.querySelector('#radio-status').textContent.includes('cannot play') && document.querySelector('#radio-external').href.startsWith('https://www.youtube.com/watch')")
+            client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+        if args.grunge_only:
+            check_grunge()
+            failures = [event for event in client.events if event.get("method") == "Runtime.exceptionThrown"]
+            if failures or QuietHandler.errors:
+                raise AssertionError({"javascript_errors":failures,"http_errors":QuietHandler.errors})
+            (preview / "grunge-checks.json").write_text(json.dumps(checks,indent=2)+"\n",encoding="utf-8")
+            print(json.dumps(checks,indent=2))
+            return
+
         check("homepage is Crosstalk", "document.title.includes('CROSSTALK') && !!document.querySelector('.home-page')")
-        check("eight week slots, only published week linked", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 1")
+        check("eight week slots, three published issues", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 3")
         check("home stays lightweight", "!window.CROSSTALK_DATA && !document.querySelector('#network-atlas')")
         check("group names rendered", "document.body.textContent.includes('Christos Diamantis') && document.body.textContent.includes('s253102') && document.body.textContent.includes('Dávid Weiner') && document.body.textContent.includes('s253347')")
+        check("clear direct week navigation", "document.querySelectorAll('.issue-nav a').length===4 && !!document.querySelector('#games')")
         screenshot("homepage.png", full=True)
         for width in (390, 360, 768):
             client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
@@ -403,6 +446,51 @@ def main():
         client.call("Page.removeScriptToEvaluateOnNewDocument", {"identifier":clock_script})
         navigate(base_url + "#atlas", "location.pathname.endsWith('/week1/index.html') && !!document.querySelector('#network-atlas [data-node]')")
         check("old report bookmarks still work", "location.hash==='#atlas'")
+        # The later issues keep their story controls separate from the game.
+        navigate(base_url + "week2/index.html")
+        check("Week 2 has chapter navigation", "document.querySelectorAll('.issue-directory a').length >= 6")
+        client.js("document.querySelector('[data-ccdf-view=fit]').click()")
+        check("Week 2 figure switch works", "document.querySelector('#ccdf-switch-img').getAttribute('src').includes('ccdf-fit.svg')")
+        screenshot("week2.png", full=True)
+        navigate(base_url + "play/cerebro.html", "document.readyState==='complete' && document.querySelector('#tab-paradox-mode') !== null")
+        client.js("document.querySelector('#tab-paradox-mode').click()")
+        check("Popularity Trap switches modes", "document.querySelector('#tab-paradox-mode').getAttribute('aria-selected')==='true'")
+        client.js("document.querySelector('#tab-duel-mode').click()")
+        screenshot("popularity-trap.png", full=True)
+        for route in ("week2/index.html", "play/cerebro.html"):
+            navigate(base_url + route)
+            for width in (390, 360, 768):
+                client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+                check(f"{route} {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+        navigate(base_url + "week3/index.html", "document.readyState==='complete' && !document.querySelector('#w3-disconnect')?.disabled")
+        check("Week 3 has every character", "document.querySelector('#w3-remove-character').options.length===303 && document.querySelector('#w3-directory').options.length===303")
+        client.js("document.querySelector('#w3-disconnect').click()")
+        check("Black Widow detaches three survivors", "document.querySelector('.w3-giant-number').textContent.startsWith('273 ') && document.querySelectorAll('.w3-detached-list li').length===3")
+        client.js("document.querySelector('#w3-remove-character').value='Spider-Man'; document.querySelector('#w3-disconnect').click()")
+        check("Spider-Man removal matches analysis", "document.querySelector('.w3-giant-number').textContent.startsWith('271 ') && document.querySelectorAll('.w3-detached-list li').length===5")
+        client.js("document.querySelector('#w3-reconnect').click()")
+        check("restoring the network resets damage", "document.querySelector('.w3-giant-number').textContent.startsWith('277 ') && !document.querySelector('.w3-detached-list')")
+        check("directed longest route has four real hops", "document.querySelectorAll('.w3-route-chain li').length===5 && document.querySelector('#w3-route-result').textContent.includes('4 hops')")
+        client.js("document.querySelector('#w3-isolate-preset').click()")
+        check("route finder explains isolates", "document.querySelector('#w3-route-result').textContent.includes('isolate') && !document.querySelector('.w3-route-chain')")
+        client.js("document.querySelector('#w3-route-character').value='not a character'; document.querySelector('#w3-route-form').requestSubmit()")
+        check("route finder handles invalid names", "document.querySelector('#w3-route-character').getAttribute('aria-invalid')==='true'")
+        client.js("document.querySelector('[data-route-id=\"Spider-Man\"]').click()")
+        check("calling Spider-Man from himself is zero hops", "document.querySelectorAll('.w3-route-chain li').length===1 && !document.querySelector('#w3-route-character').hasAttribute('aria-invalid')")
+        client.js("document.querySelector('#w3-route-mode').value='undirected'; document.querySelector('#w3-route-mode').dispatchEvent(new Event('change')); document.querySelector('[data-route-id]').click()")
+        check("undirected longest route has three hops", "document.querySelectorAll('.w3-route-chain li').length===4")
+        client.js("document.querySelector('#w3-removal-count').value=303; document.querySelector('#w3-removal-count').dispatchEvent(new Event('input'))")
+        check("all removals leave zero pages in every curve", "Array.from(document.querySelectorAll('.w3-order-result strong')).every(e=>Number(e.textContent)===0)")
+        client.js("document.querySelector('#w3-removal-count').value=30; document.querySelector('#w3-removal-count').dispatchEvent(new Event('input'))")
+        screenshot("week3.png", full=True)
+        for width in (390,360,768):
+            client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+            check(f"Week 3 {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+            if width == 390:
+                screenshot("week3-mobile.png", full=True)
+        client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+        check_grunge()
         # All pages also work when opened from disk.
         navigate((ROOT / "index.html").as_uri())
         check("offline home works", "location.protocol === 'file:' && !!document.querySelector('.home-page')")

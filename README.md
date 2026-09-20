@@ -1,80 +1,83 @@
 # Crosstalk
 
-**Small signals. Strange connections.** A playful network science notebook by Christos Diamantis (s253102) and Dávid Weiner (s253347), for DTU 02805 Social Graphs and Interactions.
+**Small signals. Strange connections.** A newspaper of network investigations by Christos Diamantis (s253102), Dávid Weiner (s253347), and Evangelos Panagiotopoulos (s263125), for DTU 02805 Social Graphs and Interactions, Fall 2026.
 
-[Visit the website](https://vitrotank.github.io/social_graphs_2026/)
+[Website](https://vitrotank.github.io/social_graphs_2026/) · [Source](https://github.com/vitrotank/social_graphs_2026)
 
-The site is a little telephone switchboard: a simple homepage connects the weekly journal and an original game. The telephone language is a visual metaphor. The actual network consists of directed references between Wikipedia pages, not conversations, friendships, or Marvel alliances.
+## Read, explore, or play
 
-## Three places to explore
+The front page is a directory: every published week has an explicit story link and an experiment or game link. The shared header links directly to Weeks 1–3. Future weeks remain visibly unpublished.
 
-- **Home — `index.html`:** the group, latest published post, and all eight week slots. Unwritten weeks have no broken or empty links.
-- **Week 1 — `week1/index.html`:** the complete Marvel analysis, searchable network, linear/log–log degree plots, isolates, and hub-removal experiment.
-- **Crossed Wires — `play/index.html`:** a weekly three-round night shift, plus twelve always-open practice puzzles. Restore real arrow directions on an interactive switchboard, deduce a missing socket's targets in the blackout finale, and earn a shareable repair receipt.
+| Destination | What is there |
+| --- | --- |
+| `index.html` | Latest story, all eight week slots, and the games room |
+| `week1/index.html` | Marvel's 303 pages, degree, isolates, searchable network, hub removal |
+| `week2/index.html` | Models, friendship paradox, and what a null comparison can establish |
+| `week3/index.html` | Exact centrality, single-character damage, removal curves, and a route finder to Spider-Man |
+| `play/index.html` | Crossed Wires: three weekly rounds and twelve practice puzzles |
+| `play/cerebro.html` | The Popularity Trap: prediction game and model illustration console |
+| `grunge/index.html` | The B-side: a separate Wikipedia musician network and grunge radio |
+
+Body text is larger, stories have contents links, and extended explanations use expandable panels. The Marvel journal retains its cream, ink, blue, and orange telephone identity; the extra uses charcoal and acid yellow with a record-store treatment.
 
 ## Run locally
 
-Python 3.10 or newer is sufficient. The analysis, site builder, and puzzle generator use only the standard library. Run these commands from the repository directory:
+Python 3.10+ is sufficient. There are no pip or npm dependencies.
 
 ```sh
-python scripts/analyze.py
 python scripts/build.py
-python -m unittest discover -s tests
 python -m http.server 8000
 ```
 
-Open [localhost:8000](http://localhost:8000). You can also open `index.html` directly: the three pages use relative links and bundled JavaScript data, so the site works offline. No external fonts, API keys, or package downloads are required. Python prepares the data and pages; JavaScript handles the browser interactions.
+Open [localhost:8000](http://localhost:8000). Committed data makes the build independent of Wikipedia access. Local relative links and bundled JavaScript also let you open `index.html` directly from disk.
 
-For optional browser checks, run `python scripts/build.py --output _site`, then `python scripts/browser_smoke.py`. An existing Chrome or Chromium installation is required; pass `--browser PATH` if needed. Screenshots and results go in the ignored `.preview/` folder. The checks do not install anything.
+The grunge radio uses external YouTube playback and needs a connection. Browsers can block sound until a visitor interacts: use **Play radio** to start, and the player controls to pause or change tracks. A direct listening link remains available when embedding is blocked. The network analysis itself runs offline.
 
-## Add the next week
-
-1. Create `templates/week2.html` with the next story. Use `@@HEADER@@`, `@@FOOTER@@`, and the `@@ROOT@@` prefix on shared asset and navigation paths; see `templates/week1.html` for an example.
-2. Update the Week 2 entry in `site.json`:
-
-```json
-{
-  "number": 2,
-  "title": "Your next question",
-  "summary": "A short invitation to read the new experiment.",
-  "status": "published",
-  "path": "week2/index.html",
-  "template": "week2.html"
-}
-```
-
-3. Run the build and tests. The builder creates the new page, links it in the archive, and features the latest published week on the homepage.
-4. Commit the generated pages along with their templates and push to `main`.
-
-Edit `site.json` for names, the site identity, and the week registry. Shared styling lives in `style.css`; Week 1 interactions in `app.js`; the game in `game.js` and `game.css`. The small `home.js` preserves bookmarks to the original report's anchors by taking visitors to Week 1.
-
-## Where the numbers and puzzles come from
-
-### Wednesday night shifts
-
-A fresh three-round challenge unlocks every **Wednesday at 19:00 Copenhagen / Paris time**. The first shift opened on 9 September 2026; 52 distinct shifts are prepared through 1 September 2027. The release calendar and countdown appear in the game. Completed rounds unlock the next stage, older shifts stay playable, and the practice desk is always open.
-
-The static site checks precomputed UTC timestamps, including the October and March daylight-saving changes. It unlocks an open tab automatically, without needing a Wednesday deployment or a scheduled server. Everyone gets the same weekly boards. The device clock controls availability; this is a casual puzzle release calendar, not access control.
-
-Edit the `arcade` entry in `site.json` to change `release_hour` (Copenhagen local time), `first_release` (a Wednesday), or `week_count`. Increase `week_count` and rebuild to extend the calendar, up to 260 weeks; earlier puzzle IDs and solutions remain stable. Keep `first_release` fixed once players have started. The Python generator uses system timezone data when available, with a documented 2026–2031 Copenhagen calendar fallback for Windows without timezone data. No package installation is required.
-
-Tap numbered wires directly or use their keyboard-accessible buttons. Undo, explanation-based hints, unfinished boards, and best ratings are supported. A clean solve earns three stars; one or two hints/failed tests earns two; more earns one. Unfinished test attempts do not penalize the rating. Progress stays in the browser, including achievements imported from the original twelve-board game. Copying a receipt is optional and does not publish anything.
-
-`scripts/analyze.py` loads the complete node roster before adding edges, preserving the 17 isolated characters. It writes `assets/data/network.json`, `summary.json`, and downloadable SVG plots. The frozen release contains 303 nodes, 1,784 directed links, and weak component sizes of 277, 9, and seventeen singletons.
-
-`scripts/puzzles.py` selects small connected sets of real, non-reciprocal links. The clues are the incoming/outgoing degrees **within the selected puzzle**, not the full graph and not necessarily the entire induced subgraph. Exhaustive enumeration verifies that each puzzle has exactly one solution. Generation is deterministic. No Marvel trivia or live Wikipedia access is needed to solve them.
-
-`scripts/build.py` renders all published pages, generates the puzzle payload, and bundles data for offline use. Its publication allowlist excludes repository metadata, control files, source scripts, tests, and browser profiles. The full source remains available in GitHub.
-
-The data is the frozen 26 August 2026 Week 1 release from the [course data page](https://sunelehmann.com/socialgraphs2026-web/data/), based on Wikipedia's [Marvel Comics superheroes category](https://en.wikipedia.org/wiki/Category:Marvel_Comics_superheroes). Original TSV files, provenance, and checksums are in [data/raw](data/raw/README.md). Git attributes preserve the raw release bytes across operating systems.
-
-## GitHub Pages
-
-The public repository already publishes from **main → / (root)**. Push generated HTML, CSS, JavaScript, and data along with the Python source. GitHub Pages publishes the committed pages; the **Publish Crosstalk** workflow separately rebuilds and tests them.
-
-If the repository is switched to **GitHub Actions** as its Pages source, the same workflow detects that mode and deploys the allowlisted `_site` artifact. To inspect that artifact locally:
+## Reproduce the analyses and check the site
 
 ```sh
+python scripts/analyze.py
+python scripts/analyze_week3.py
+python scripts/crawl_grunge.py
+python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
-python -m http.server 8000 --directory _site
+python -m unittest discover -s tests
+python scripts/browser_smoke.py
 ```
+
+`crawl_grunge.py` rebuilds from the frozen snapshot by default; `--refresh` explicitly fetches a new Wikipedia snapshot. Its provenance and inclusion rules are in [data/grunge/README.md](data/grunge/README.md). The public extra is separate from the shared Marvel assignment data.
+
+The browser check uses an existing Chrome or Chromium installation. Pass `--browser PATH` if necessary. Its ignored `.preview/` folder contains screenshots and check results. No browser or dependencies are installed by the check.
+
+## Data and interpretation
+
+The Marvel source is the course's frozen **26 August 2026** roster: **303 nodes, 1,784 directed edges, 17 isolates**. Its weak components contain 277 pages, 9 pages, and seventeen singletons. Raw TSV files, provenance, and checksums live in [data/raw](data/raw/README.md). The graph measures Wikipedia references, not friendships or alliances.
+
+Week 3 collapses reciprocal edges for its undirected removal experiments. Betweenness is exact, normalized over the full roster, and excludes endpoints. Targeted removal ranks are fixed at the start. The random comparison uses 200 reproducible permutations. The route finder lets readers choose real arrow directions or the undirected projection and reports unreachable pages explicitly. Methods, raw results, and the downloadable figure are linked from the issue.
+
+Week 2's empirical friendship-paradox results come from the real graph. Its model curves and preset shuffle gauges are labeled **illustrative**; they are not fitted models or retained null ensembles. The report makes no significance claim from those sketches.
+
+The B-side uses an explicitly sampled set of 15 musicians and 55 observed links. The full Wikipedia API crawl was unavailable; the snapshot preserves browser-observed hyperlink evidence and its sampling limits. A hyperlink between musician pages does not establish a musical collaboration.
+
+## Add an issue
+
+1. Create `templates/week4.html` with `@@HEADER@@`, `@@FOOTER@@`, and `@@ROOT@@` for shared paths.
+2. Set its entry in `site.json` to `published`, with `title`, `summary`, `path`, and `template`. Optional `topic`, `short_title`, `experience_path`, and `experience_label` control its directory listing.
+3. Add any new assets to the explicit publication allowlist in `scripts/build.py` and the isolated build inputs in `tests/test_site.py`.
+4. Build and check; commit both templates and generated pages for root-based GitHub Pages publishing.
+
+The header, latest story, quick directory, and full archive follow the registry. Shared layout lives in `style.css`; each experiment keeps its own JavaScript. The old homepage's report bookmarks still redirect through `home.js`.
+
+## Crossed Wires schedule
+
+A new three-round shift opens every **Wednesday at 19:00 Copenhagen / Paris time**. The configured 52 shifts run from 9 September 2026 through 1 September 2027; old shifts and practice stay available. UTC release timestamps account for daylight saving. Availability uses the device clock. The schedule is configured in `site.json`.
+
+Puzzle generation is deterministic and checks unique solutions. Clues describe the selected puzzle edges. Progress, hints, ratings, and unfinished boards stay in the browser. Copying a repair receipt does not publish anything.
+
+## Repository and publishing
+
+Templates and generated HTML are both intentional: templates keep editing consistent, while generated pages support the repository's current **main → / (root)** Pages configuration. JSON downloads and their JavaScript bundles are likewise intentional; bundles support offline use. The raw datasets, generators, and tests are retained for reproducibility.
+
+Unused legacy raster figures, the obsolete homepage CSS, and the empty dependency manifest have been removed. `_site`, `.preview`, Python caches, credentials, and local environments are ignored.
+
+The **Publish Crosstalk** workflow recomputes the frozen analyses, builds, and tests. If Pages uses GitHub Actions as its source, the workflow also deploys the allowlisted `_site` artifact. With branch-based Pages, committed root files are published by Pages itself. The allowlist keeps scripts, tests, repository metadata, and browser profiles out of the staged artifact.

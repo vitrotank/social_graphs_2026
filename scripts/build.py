@@ -27,10 +27,9 @@ def read_json(path: Path) -> dict:
 
 def header(config: dict, prefix: str, current: str) -> str:
     routes = [
-        ("home", "index.html", "Home", None),
-        ("journal", "index.html#journal", "Weekly journal", None),
-        ("play", "play/index.html", "Crossed Wires", "Week 1"),
-        ("cerebro", "play/cerebro.html", "Popularity Trap", "Week 2")
+        ("home", "index.html", "Front page", None),
+        ("games", "index.html#games", "The games room", None),
+        ("grunge", "grunge/index.html", "The B-side ↗", None),
     ]
     items = []
     for key, url, label, week in routes:
@@ -41,15 +40,21 @@ def header(config: dict, prefix: str, current: str) -> str:
             items.append(f'<a href="{prefix}{url}"{active}>{label}</a>')
     links = ''.join(items)
     mark = '<svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg>'
-    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div></header>'
+    issues = ''.join(f'<a href="{prefix}{escape(w["path"], quote=True)}"' + (' aria-current="page"' if current == f'week{w["number"]}' else '') + f'><span>{w["number"]:02}</span> Week {w["number"]}</a>' for w in config["weeks"] if w["status"] == "published")
+    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues"><span class="issue-nav-label">OPEN AN ISSUE</span>{issues}<a class="all-issues" href="{prefix}index.html#journal">All weeks ↓</a></nav></div></header>'
 
 
 def footer(config: dict, prefix: str) -> str:
     members = []
     for member in config["members"]:
         match = re.fullmatch(r"(.+?)\s*\((s\d+)\)", member)
-        members.append(f'<div class="member"><strong>{escape(match[1] if match else member)}</strong><small>{escape(match[2] if match else "")}</small></div>')
-    return f'<footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos &amp; Dávid.</p></div><div class="footer-members">{"".join(members)}</div></div><div class="footer-bottom"><span>{escape(config["course"])} · {escape(config["semester"])}</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="{prefix}index.html">Back to the switchboard ↗</a></div></div></footer>'
+        name = escape(match[1] if match else member)
+        student_id = match[2] if match else ""
+        profile_url = config.get("member_urls", {}).get(student_id)
+        if profile_url:
+            name = f'<a href="{escape(profile_url, quote=True)}">{name}</a>'
+        members.append(f'<div class="member"><strong>{name}</strong><small>{escape(student_id)}</small></div>')
+    return f'<footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos, Dávid &amp; Evangelos.</p></div><div class="footer-members">{"".join(members)}</div></div><div class="footer-bottom"><span>{escape(config["course"])} · {escape(config["semester"])}</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="{prefix}index.html">Back to the switchboard ↗</a></div></div></footer>'
 
 
 def page_path(value: str, parent: Path) -> Path:
@@ -164,19 +169,21 @@ def render() -> list[Path]:
         number = week["number"]
         content = f'<span class="week-number">{number:02}</span><span class="week-label">Week {number}</span>'
         if week["status"] == "published":
-            archive.append(f'<a class="week-entry published" href="{escape(week["path"], quote=True)}" aria-label="Week {number}: {escape(week["title"], quote=True)}">{content}<span class="week-state">Read the story ↗</span></a>')
+            archive.append(f'<div class="directory-row"><a class="week-entry published" href="{escape(week["path"], quote=True)}" aria-label="Read Week {number}: {escape(week["title"], quote=True)}"><span class="week-number">{number:02}</span><span class="directory-copy"><span class="week-label">WEEK {number} / {escape(week.get("topic", "FIELD NOTES"))}</span><strong>{escape(week.get("short_title", week["title"]))}</strong><span>{escape(week["summary"])}</span></span><span class="week-state">Read Week {number} ↗</span></a><a class="directory-extra" href="{escape(week.get("experience_path", week["path"]), quote=True)}">{escape(week.get("experience_label", "Explore the issue"))} <span aria-hidden="true">↗</span></a></div>')
         else:
             archive.append(f'<div class="week-entry upcoming">{content}<span class="week-state">Coming soon</span></div>')
     values.update({
         "WEEK_ENTRIES": "\n".join(archive),
+        "QUICK_ISSUES": ''.join(f'<a class="quick-issue" href="{escape(w["path"], quote=True)}"><span>{w["number"]:02}</span><div><small>WEEK {w["number"]} / {escape(w.get("topic", "FIELD NOTES"))}</small><strong>{escape(w.get("short_title", w["title"]))}</strong></div><b aria-hidden="true">↗</b></a>' for w in published[-3:]),
         "PUBLISHED_COUNT": str(len(published)), "UPCOMING_COUNT": str(len(weeks) - len(published)),
         "LATEST_NUMBER": str(latest["number"]), "LATEST_URL": escape(latest["path"], quote=True),
         "LATEST_TITLE": escape(latest["title"]), "LATEST_SUMMARY": escape(latest["summary"]),
     })
     pages = [(Path("home.html"), Path("index.html"), "home"),
              (Path("play.html"), Path("play/index.html"), "play"),
-             (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro")]
-    pages += [(Path(week["template"]), Path(week["path"]), "journal") for week in published]
+             (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro"),
+             (Path("grunge.html"), Path("grunge/index.html"), "grunge")]
+    pages += [(Path(week["template"]), Path(week["path"]), f'week{week["number"]}') for week in published]
     if len({destination for _, destination, _ in pages}) != len(pages):
         raise ValueError("Every page needs a unique output path.")
     for source, destination, current in pages:
@@ -197,15 +204,15 @@ def render() -> list[Path]:
     (ROOT / "assets/favicon.svg").write_text(favicon, encoding="utf-8", newline="\n")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
+        "week3.css", "week3.js", "grunge.css", "grunge.js",
+        "assets/data/week3.json", "assets/data/week3.js", "assets/figures/week3-removal.svg",
+        "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
         "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",
         "assets/data/network.js", "assets/data/network.json", "assets/data/summary.json",
         "assets/data/puzzles.js", "assets/data/puzzles.json",
         "assets/figures/hero-network.svg", "assets/figures/degree-linear.svg", "assets/figures/degree-loglog.svg",
         "assets/figures/hero-models.svg", "assets/figures/ccdf-models.svg", "assets/figures/ccdf-fit.svg",
         "assets/figures/clustering-nulls.svg", "assets/figures/growth-models.svg",
-        "assets/figures/marvel_vs_ba_vs_er_ccdf.png", "assets/figures/marvel_ccdf_vs_pdf.png",
-        "assets/figures/clustering_null_models_comparison.png", "assets/figures/friendship_paradox_simulation.png",
-        "assets/figures/transitivity_and_isolates_nulls.png", "assets/figures/ba_vs_uniform_growth.png",
         "data/raw/week1_nodes.tsv", "data/raw/week1_edges.tsv", "data/raw/README.md"
     )]
 

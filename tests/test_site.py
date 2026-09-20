@@ -65,15 +65,16 @@ class SiteTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
+            "templates/week3.html", "templates/grunge.html",
+            "week3.css", "week3.js", "grunge.css", "grunge.js",
+            "assets/data/week3.json", "assets/data/week3.js", "assets/figures/week3-removal.svg",
+            "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
             "site.json", "templates/home.html", "templates/week1.html", "templates/week2.html", "templates/play.html", "templates/cerebro.html",
             "style.css", "app.js", "home.js", "game.css", "game.js", "week2.js",
             "assets/data/network.json", "assets/data/summary.json",
             "assets/figures/degree-linear.svg", "assets/figures/degree-loglog.svg",
             "assets/figures/hero-models.svg", "assets/figures/ccdf-models.svg", "assets/figures/ccdf-fit.svg",
             "assets/figures/clustering-nulls.svg", "assets/figures/growth-models.svg",
-            "assets/figures/marvel_vs_ba_vs_er_ccdf.png", "assets/figures/marvel_ccdf_vs_pdf.png",
-            "assets/figures/clustering_null_models_comparison.png", "assets/figures/friendship_paradox_simulation.png",
-            "assets/figures/transitivity_and_isolates_nulls.png", "assets/figures/ba_vs_uniform_growth.png",
             "data/raw/week1_nodes.tsv", "data/raw/week1_edges.tsv", "data/raw/README.md",
         ):
             target = self.root / relative
@@ -133,19 +134,19 @@ class SiteTests(unittest.TestCase):
     def test_new_published_week_updates_homepage_and_creates_its_page(self):
         config_path = self.root / "site.json"
         config = json.loads(config_path.read_text(encoding="utf-8"))
-        config["weeks"][1].update({"status": "published", "title": "Second dispatch",
+        config["weeks"][3].update({"status": "published", "title": "Fourth dispatch",
                                    "summary": "A new question for the journal.",
-                                   "path": "week2/index.html", "template": "week2.html"})
+                                   "path": "week4/index.html", "template": "week4.html"})
         config_path.write_text(json.dumps(config), encoding="utf-8")
-        (self.root / "templates/week2.html").write_text(
-            '<!doctype html><html><body>@@HEADER@@<h1>Second dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
+        (self.root / "templates/week4.html").write_text(
+            '<!doctype html><html><body>@@HEADER@@<h1>Fourth dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
         files = build.render()
-        self.assertIn(Path("week2/index.html"), files)
+        self.assertIn(Path("week4/index.html"), files)
         home = (self.root / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Second dispatch", home)
-        self.assertIn('href="week2/index.html"', home)
-        self.assertIn("Read Week 2", home)
-        self.assertIn('href="../index.html"', (self.root / "week2/index.html").read_text(encoding="utf-8"))
+        self.assertIn("Fourth dispatch", home)
+        self.assertIn('href="week4/index.html"', home)
+        self.assertIn("Read Week 4", home)
+        self.assertIn('href="../index.html"', (self.root / "week4/index.html").read_text(encoding="utf-8"))
 
     def test_browser_payload_preserves_raw_nodes_edges_and_measured_degrees(self):
         config_path = self.root / "site.json"

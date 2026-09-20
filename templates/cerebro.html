@@ -19,15 +19,13 @@
   <a class="skip-link" href="#cerebro-game">Skip to Cerebro console</a>
   @@HEADER@@
   <main id="top" class="shell cw-page">
+    <nav class="issue-context" aria-label="Breadcrumb"><a href="@@ROOT@@index.html#games">Games desk</a><span aria-hidden="true">/</span><a href="@@ROOT@@week2/index.html">Week 2</a><span aria-hidden="true">/</span><span aria-current="page">The Popularity Trap</span></nav>
     <section class="cw-intro" aria-labelledby="cerebro-title">
       <div class="cw-intro-copy">
         <p class="cw-eyebrow"><span class="cw-signal" aria-hidden="true"></span> THE ARCADE / WEEK 02 GAME</p>
         <h1 id="cerebro-title">The Popularity <em>Trap.</em><span class="cw-title-star" aria-hidden="true">⚡</span></h1>
-        <p class="cw-deck">Who has more friends: you, or the heroes you talk to?<br>Step inside Cerebro’s dual-radar console and escape the popularity trap.</p>
-        <div class="hero-actions" style="margin-top: 18px;">
-          <a class="button button-ghost" href="@@ROOT@@week2/index.html">← Back to Week 2 Field Notes</a>
-          <a class="button button-ghost" href="@@ROOT@@play/index.html">Play Week 1: Crossed Wires ↗</a>
-        </div>
+        <p class="cw-deck">Two heroes. One prediction: whose neighbours have more links? Pick a contender, then reveal the network behind your guess.</p>
+        <nav class="issue-navigation" aria-label="Game navigation"><a href="#cerebro-game">Start playing ↓</a><a href="@@ROOT@@week2/index.html">Read the Week 2 story ↗</a><a href="@@ROOT@@play/index.html">← Week 1 game</a></nav>
       </div>
       <div class="cw-intro-side">
         <div class="cw-shift-stamp" aria-hidden="true">
@@ -40,6 +38,8 @@
     </section>
 
     <!-- OPERATOR BRIEFING (DYNAMICALLY SWITCHES WITH GAME TAB) -->
+    <details class="reading-details">
+      <summary>How to play · open the operator’s handbook</summary>
     <div class="cerebro-briefing-strip" id="cerebro-briefing" aria-label="Operator briefing protocol">
       <div class="briefing-header">
         <span class="eyebrow" id="briefing-title"><span class="signal"><span class="legend-dot"></span></span> MISSION PROTOCOL // POPULARITY DUEL (CONTENDER A VS CONTENDER B)</span>
@@ -70,6 +70,7 @@
       </div>
     </div>
 
+    </details>
     <!-- THE CEREBRO MACHINE CONSOLE -->
     <section id="cerebro-game" class="cw-machine" aria-label="Cerebro Console">
       <div class="cw-machine-top">
@@ -88,12 +89,12 @@
         <button type="button" class="cerebro-tab active" id="tab-duel-mode" role="tab" aria-selected="true" aria-controls="mode-duel-panel">
           <span class="tab-badge">MODE 01 · VERSUS DUEL</span>
           <strong>Who Has More Popular Friends?</strong>
-          <small>Compare two heroes: which one's comic friends have a higher average degree?</small>
+          <small>Guess whose neighbours have more links.</small>
         </button>
         <button type="button" class="cerebro-tab" id="tab-paradox-mode" role="tab" aria-selected="false" aria-controls="mode-paradox-panel">
           <span class="tab-badge">MODE 02 · PARADOX SCAN</span>
           <strong>The Paradox Scan</strong>
-          <small>Inspect any single hero: do their friends beat their own link count?</small>
+          <small>Explore one hero and their neighbours.</small>
         </button>
       </div>
 
@@ -298,11 +299,11 @@
         <div class="rewirer-top">
           <div>
             <p class="eyebrow">MODULE 1B / NULL MODEL LAB</p>
-            <h3>Rewire the Multiverse</h3>
-            <p class="chart-note">Switch the wiring rule to watch how triangles collapse while degree sequence invariants hold fast.</p>
+            <h3>The model sketchbook</h3>
+            <p class="chart-note">Explore illustrative presets, then select a metric to learn whether degree-preserving swaps must keep it. These gauges are teaching examples, not live simulations.</p>
           </div>
           <div class="rewirer-modes" role="group" aria-label="Null model selector">
-            <button type="button" class="rewirer-btn active" data-null-mode="0" aria-pressed="true">Real Marvel</button>
+            <button type="button" class="rewirer-btn active" data-null-mode="0" aria-pressed="true">Marvel preset</button>
             <button type="button" class="rewirer-btn" data-null-mode="1" aria-pressed="false">Degree-Preserving Shuffle</button>
             <button type="button" class="rewirer-btn" data-null-mode="2" aria-pressed="false">Erdős–Rényi G(n, m)</button>
           </div>
@@ -310,10 +311,10 @@
 
         <div class="null-dashboard">
           <div class="null-meta-bar">
-            <span class="status-badge titan-badge" id="null-mode-badge">OBSERVED UNIVERSE</span>
+            <span class="status-badge titan-badge" id="null-mode-badge">ILLUSTRATIVE PRESET · MARVEL</span>
             <span class="mono chart-note">N = 303 NODES · M = 1,784 DIRECTED LINKS</span>
           </div>
-          <p class="null-desc" id="null-mode-desc">The frozen Wikipedia hyperlink network with all human, thematic, and comic crossover relationships intact.</p>
+          <p class="null-desc" id="null-mode-desc">Teaching presets retained from the original exhibit. The hero game above computes neighbour degrees from the actual graph; these gauges are illustrative.</p>
 
           <div class="null-metrics-grid">
             <div class="null-metric-card" data-survives="false" data-metric-name="Clustering Coefficient">
@@ -334,7 +335,7 @@
               <span class="null-metric-hint">Click to test survival ↗</span>
             </div>
 
-            <div class="null-metric-card" data-survives="true" data-metric-name="Friendship Paradox">
+            <div class="null-metric-card" data-survives="false" data-metric-name="Fraction experiencing the friendship paradox">
               <div class="null-metric-header">
                 <span class="eyebrow">PARADOX TRAP</span>
                 <span class="null-metric-val" id="null-val-paradox">87.4%</span>
@@ -372,4 +373,3 @@
   @@FOOTER@@
 </body>
 </html>
-

@@ -31,6 +31,10 @@ jobs:
           python-version: "3.12"
       - name: Recompute the frozen network
         run: python scripts/analyze.py
+      - name: Recompute paths and removal experiments
+        run: python scripts/analyze_week3.py
+      - name: Rebuild the grunge extra from its frozen snapshot
+        run: python scripts/crawl_grunge.py
       - name: Build the public site
         run: python scripts/build.py --output _site
       - name: Check analysis and site

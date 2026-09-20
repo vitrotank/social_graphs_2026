@@ -1,20 +1,76 @@
 {
   "title": "CROSSTALK",
   "group_name": "Crosstalk",
-  "members": ["Christos Diamantis (s253102)", "Dávid Weiner (s253347)"],
+  "members": [
+    "Christos Diamantis (s253102)",
+    "Dávid Weiner (s253347)",
+    "Evangelos Panagiotopoulos (s263125)"
+  ],
   "course": "02805 · Social Graphs and Interactions",
   "semester": "Fall 2026",
   "repository_url": "https://github.com/vitrotank/social_graphs_2026",
   "site_url": "https://vitrotank.github.io/social_graphs_2026/",
-  "arcade": {"first_release": "2026-09-09", "release_hour": 19, "week_count": 52},
+  "arcade": {
+    "first_release": "2026-09-09",
+    "release_hour": 19,
+    "week_count": 52
+  },
   "weeks": [
-    {"number": 1, "title": "Some heroes never get the call.", "summary": "Who's on everyone's speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.", "status": "published", "path": "week1/index.html", "template": "week1.html"},
-    {"number": 2, "title": "Compared to what? Models, nulls, and the popularity trap.", "summary": "Does Marvel look more like Barabási–Albert or pure chance? Why do your superhero friends have more friends than you? And what survives when you rewire 1,784 hyperlinks?", "status": "published", "path": "week2/index.html", "template": "week2.html"},
-    {"number": 3, "status": "upcoming"},
-    {"number": 4, "status": "upcoming"},
-    {"number": 5, "status": "upcoming"},
-    {"number": 6, "status": "upcoming"},
-    {"number": 7, "status": "upcoming"},
-    {"number": 8, "status": "upcoming"}
+    {
+      "number": 1,
+      "title": "Some heroes never get the call.",
+      "summary": "Who's on everyone's speed dial? Follow the links, meet the hubs, and find the 17 characters in complete silence.",
+      "status": "published",
+      "path": "week1/index.html",
+      "template": "week1.html",
+      "topic": "THE NETWORK",
+      "short_title": "Some heroes never get the call.",
+      "experience_path": "play/index.html",
+      "experience_label": "Play Crossed Wires"
+    },
+    {
+      "number": 2,
+      "title": "Compared to what? Models, nulls, and the popularity trap.",
+      "summary": "Meet the models, test the friendship paradox, and ask what a fair comparison looks like.",
+      "status": "published",
+      "path": "week2/index.html",
+      "template": "week2.html",
+      "topic": "THE MODELS",
+      "short_title": "Compared to what?",
+      "experience_path": "play/cerebro.html",
+      "experience_label": "Play The Popularity Trap"
+    },
+    {
+      "number": 3,
+      "status": "published",
+      "title": "Who holds this universe together?",
+      "short_title": "Who holds this universe together?",
+      "summary": "Pull a character out of Marvel. Watch the network unravel. Then find your own shortest route to Spider-Man.",
+      "path": "week3/index.html",
+      "template": "week3.html",
+      "topic": "THE CONNECTIONS",
+      "experience_path": "week3/index.html#pathfinder",
+      "experience_label": "Dial Spider-Man"
+    },
+    {
+      "number": 4,
+      "status": "upcoming"
+    },
+    {
+      "number": 5,
+      "status": "upcoming"
+    },
+    {
+      "number": 6,
+      "status": "upcoming"
+    },
+    {
+      "number": 7,
+      "status": "upcoming"
+    },
+    {
+      "number": 8,
+      "status": "upcoming"
+    }
   ]
 }

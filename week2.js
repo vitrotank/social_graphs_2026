@@ -122,6 +122,8 @@
   const radarTargetLabel = document.getElementById("radar-target-label");
   const needleHero = document.getElementById("needle-hero");
   const needleFriend = document.getElementById("needle-friend");
+  const labelLegendA = document.getElementById("label-legend-a");
+  const labelLegendB = document.getElementById("label-legend-b");
   const voltmeterLamp = document.getElementById("voltmeter-lamp");
   // Mode 1: Dual Radar elements
   const versusRadarSvgA = document.getElementById("versus-radar-svg-a");
@@ -613,8 +615,9 @@
       <div class="duel-math-box">
         <p class="eyebrow">THE SCIENCE BEHIND IT</p>
         <p>
-          Formula: <code>⟨<em>k</em><sub>friends</sub>⟩ = ⟨<em>k</em>⟩ + (σ² / ⟨<em>k</em>⟩)</code>. In Marvel's giant component, average degree is <code>10.26</code>,
-          and variance boost <code>σ² / ⟨<em>k</em>⟩</code> is <code>11.99</code>, giving an expected friend degree of <strong>22.25</strong>!
+          A uniformly sampled edge endpoint has expected degree <code>⟨k²⟩ / ⟨k⟩</code>.
+          For the full undirected roster this is <strong>22.08</strong>, compared with a mean node degree of <strong>9.47</strong>.
+          Your selected hero's neighbour average is computed separately from their actual links.
         </p>
       </div>
     `;
@@ -920,9 +923,9 @@ https://vitrotank.github.io/social_graphs_2026/
   const nullModes = [
     {
       id: "real",
-      name: "Real Marvel Network",
-      badge: "OBSERVED UNIVERSE",
-      desc: "The frozen Wikipedia hyperlink network with all human, thematic, and comic crossover relationships intact.",
+      name: "Marvel reference preset",
+      badge: "ILLUSTRATIVE PRESET · MARVEL",
+      desc: "Teaching preset retained from the original exhibit. These gauges mix reference quantities and are not a new calculation. The hero game above computes neighbour degrees from the actual frozen graph.",
       c: "0.320",
       cFill: "100%",
       t: "0.182",
@@ -937,8 +940,8 @@ https://vitrotank.github.io/social_graphs_2026/
     {
       id: "swap",
       name: "Degree-Preserving Shuffle (Double Edge Swap)",
-      badge: "NULL MODEL 01 · DEGREE CONSERVED",
-      desc: "1,000 double edge swaps: (u,v) + (x,y) → (u,y) + (x,v). Degrees and variance remain mathematically identical; triad wiring is randomized.",
+      badge: "ILLUSTRATIVE PRESET · EDGE SWAPS",
+      desc: "Concept sketch with chosen gauge values, not a sampled shuffle. Degree-preserving swaps keep each degree and the isolate count; clustering and the fraction experiencing the paradox can change.",
       c: "0.155",
       cFill: "48.4%",
       t: "0.119",
@@ -953,8 +956,8 @@ https://vitrotank.github.io/social_graphs_2026/
     {
       id: "er",
       name: "Erdős–Rényi Randomizer G(n, m)",
-      badge: "NULL MODEL 02 · UNIFORM RANDOM",
-      desc: "All nodes have identical link probabilities p ≈ 〈k〉/N. Degree distribution collapses to thin-tailed Poisson; zero hubs.",
+      badge: "ILLUSTRATIVE PRESET · RANDOM EDGES",
+      desc: "Concept sketch with chosen gauge values, not a generated G(n, m) network. Uniformly placed edges provide a baseline without preserving individual node degrees.",
       c: "0.037",
       cFill: "11.6%",
       t: "0.037",
@@ -1031,15 +1034,14 @@ https://vitrotank.github.io/social_graphs_2026/
       if (survives) {
         quizFeedback.className = "quiz-feedback-box correct";
         quizFeedback.innerHTML = `
-          <strong>✓ CORRECT: ${name} SURVIVES!</strong>
-          Because a degree-preserving edge swap strictly conserves the degree sequence of every node,
-          degree-dependent properties (such as the 17 isolated heroes and the variance-driven Friendship Paradox) remain 100% intact!
+          <strong>Preserved by degree-preserving swaps: ${name}.</strong>
+          Each node keeps its degree. Degree-zero nodes therefore remain isolated, and quantities depending only on the degree sequence are unchanged.
         `;
       } else {
         quizFeedback.className = "quiz-feedback-box wrong";
         quizFeedback.innerHTML = `
-          <strong>✗ CASUALTY: ${name} DIES!</strong>
-          Double edge swaps rewire links across disparate parts of the universe. Triads and reciprocal handshakes shatter, cutting clustering in half and destroying reciprocity.
+          <strong>Not fixed by the degree sequence: ${name}.</strong>
+          Changing neighbours can change this quantity. Its direction and size of change require an appropriate randomization experiment; the preset gauges do not establish them. Reciprocity additionally requires a directed null model.
         `;
       }
     });
@@ -1057,13 +1059,13 @@ https://vitrotank.github.io/social_graphs_2026/
     const views = {
       models: {
         src: "assets/figures/ccdf-models.svg",
-        alt: "Log-log CCDF comparison between Marvel in-degree, Barabási-Albert, and Erdős-Rényi.",
-        caption: "Marvel closely follows the Barabási–Albert heavy tail up to k ≈ 35, completely separating from the thin-tailed Poisson distribution of Erdős–Rényi."
+        alt: "Measured positive in-degree CCDF with illustrative heavy-tail and Poisson reference curves.",
+        caption: "Orange points are measured. The other curves are schematic references; they are not simulated or fitted null models."
       },
       fit: {
         src: "assets/figures/ccdf-fit.svg",
-        alt: "Empirical power-law fit slope of -1.35 and the discrete quantal steps in the tail past k=35.",
-        caption: "Fitted power-law slope = −1.351 (implied γ = 2.351) over [2, 35]. Past k = 35, the tail shatters into discrete steps because only 5 characters exist."
+        alt: "Measured positive in-degree CCDF beside a guide line with a chosen slope of -1.351.",
+        caption: "The dashed line has a chosen slope of −1.351. It is a visual guide, not a fitted exponent. Sparse observations make the far tail especially uncertain."
       }
     };
 
@@ -1096,13 +1098,13 @@ https://vitrotank.github.io/social_graphs_2026/
     const nullViews = {
       clustering: {
         src: "assets/figures/clustering-nulls.svg",
-        alt: "Histograms of clustering coefficient across Erdős-Rényi, Double Edge Swap, and real Marvel.",
-        caption: "Double edge swap null (C ≈ 0.155) explains half of clustering via degree sequence; real Marvel (C = 0.320) has double that due to team alliances."
+        alt: "Schematic clustering reference curves with chosen centres and widths; no sampled null ensemble.",
+        caption: "Teaching illustration: the reference distributions are drawn from chosen constants. They are not retained randomization trials or evidence for a significance claim."
       },
       growth: {
         src: "assets/figures/growth-models.svg",
-        alt: "Preferential attachment growth versus uniform growth.",
-        caption: "Preferential attachment is the essential ingredient that creates heavy tails; uniform growth produces an exponential cutoff dying at k ≈ 20."
+        alt: "Illustrative power-law and exponential reference shapes.",
+        caption: "Chosen power-law and exponential reference shapes illustrate contrasting tails. No network is grown or fitted by this figure."
       }
     };
 

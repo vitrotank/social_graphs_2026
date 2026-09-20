@@ -18,11 +18,12 @@
   <a class="skip-link" href="#report">Skip to field report</a>
   @@HEADER@@
   <main id="top">
+    <nav class="issue-context shell" aria-label="Breadcrumb"><a href="@@ROOT@@index.html#journal">All issues</a><span aria-hidden="true">/</span><span aria-current="page">Week 1 · The network</span></nav>
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="hero-kicker"><span class="legend-dot orange"></span> LINE 01 / WEEK ONE <span> / </span> FALL 2026</p>
         <h1 class="hero-title" id="hero-title">Some heroes<br>never get<br><em>the call.</em></h1>
-        <p class="hero-deck">303 characters. A universe of hyperlinks.<br>And <strong>@@ISOLATE_COUNT@@ heroes in complete silence.</strong><br>We went looking for the connections—and the missing ones.</p>
+        <p class="hero-deck">303 characters. A universe of hyperlinks. And <strong>@@ISOLATE_COUNT@@ heroes in complete silence.</strong> Follow the connections—and the missing ones.</p>
         <div class="hero-actions"><a class="button button-primary" href="#atlas">Explore the switchboard <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#report">Read the field notes <span aria-hidden="true">↓</span></a></div>
         <p class="hero-annotation">A switchboard made from Wikipedia’s Marvel pages.<br>Mapped with Python. Investigated with curiosity.</p>
       </div>
@@ -32,6 +33,18 @@
         <figcaption class="orbit-caption"><span>FIG. 001 — NOT EVERY LINE CONNECTS</span><span>303 NODES · @@EDGES@@ LINKS</span></figcaption>
       </figure>
     </section>
+    <aside class="issue-directory shell" aria-label="Week 1 contents">
+      <div><p class="eyebrow">CONTENTS / ISSUE 01</p><p class="reading-intro">Start with the story, jump into the map, or take the puzzle to the games desk. Each has its own place.</p></div>
+      <nav class="issue-navigation" aria-label="In this issue">
+        <a href="#report"><span>01</span> The story</a>
+        <a href="#atlas"><span>02</span> Interactive map</a>
+        <a href="#degrees"><span>03</span> Who gets attention?</a>
+        <a href="#islands"><span>04</span> The isolated pages</a>
+        <a href="#experiment"><span>05</span> Remove a hero</a>
+        <a href="#methods"><span>06</span> Data &amp; methods</a>
+      </nav>
+      <a class="button button-primary" href="@@ROOT@@play/index.html">Play Crossed Wires ↗</a>
+    </aside>
     <div class="issue-strip shell" aria-label="Snapshot statistics">
       <div class="issue-item"><span>THE PLAYGROUND</span><strong>@@NODES@@ <small>characters</small></strong></div>
       <div class="issue-item"><span>THE CONVERSATION</span><strong>@@EDGES@@ <small>directed links</small></strong></div>
@@ -84,7 +97,7 @@ for source, target in read_edges(...):
 python scripts/analyze.py
 python scripts/build.py</code></pre><p class="chart-note">Illustrative loader above; the full script validates IDs, preserves isolated nodes, and computes the figures. No Python packages required.</p></section><section class="method-card"><p class="eyebrow">03 / THE LIMITS</p><h3>A map has a point of view.</h3><p>Category membership and Wikipedia’s editorial choices shape the network. Coordinates are a deterministic drawing, not physical distance or measured communities. Small components are arranged separately for visibility.</p><p>We did not recrawl the live API or test a power-law model. Claims about why editors link characters remain hypotheses for a later text-based investigation.</p><a class="text-link" href="@@ROOT@@assets/data/summary.json" download>Download every computed result · JSON ↓</a></section></div></section>
 
-    <section class="shell section report-outro"><p class="eyebrow">ONE MORE THING / THE GO-NUTS EXTRA</p><h2 class="section-title">A few wires got crossed.</h2><p>We turned incoming and outgoing degree into a little logic puzzle. Real characters, real links—and some missing arrowheads. Can you reconnect the switchboard?</p><div class="hero-actions"><a class="button button-primary" href="@@ROOT@@play/index.html">Play Crossed Wires ↗</a><a class="text-link" href="@@ROOT@@index.html#journal">Back to all eight weeks ←</a></div></section>
+    <nav class="shell section report-outro issue-navigation" aria-label="Continue reading"><a href="@@ROOT@@index.html#journal">← All weekly issues</a><a href="@@ROOT@@week2/index.html">Next: Week 2 · Compared to what? →</a><a href="#top">Back to contents ↑</a></nav>
   </main>
   @@FOOTER@@
 </body>

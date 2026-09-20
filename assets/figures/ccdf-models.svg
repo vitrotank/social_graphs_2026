@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title-ccdf desc-ccdf">
-<title id="title-ccdf">Marvel vs Barabási–Albert vs Erdős–Rényi</title>
-<desc id="desc-ccdf">Log-log CCDF showing Marvel tracking Barabási-Albert power-law tail and decisively rejecting thin-tailed Erdős-Rényi.</desc>
+<title id="title-ccdf">Marvel and illustrative reference curves</title>
+<desc id="desc-ccdf">Measured positive in-degree CCDF with illustrative reference curves; no model fit or significance test.</desc>
 <rect width="960" height="600" fill="#f6f1e7"/>
 <g font-family="Arial, sans-serif" fill="#232927">
-<text x="40" y="38" font-size="24" font-weight="700">Does Marvel follow a power law or random chance?</text>
-<text x="40" y="65" font-size="13" fill="#586866">Complementary cumulative distribution (CCDF) · Marvel in-degree vs Barabási–Albert vs Erdős–Rényi · log–log axes</text>
+<text x="40" y="38" font-size="24" font-weight="700">Compare the shapes</text>
+<text x="40" y="65" font-size="13" fill="#586866">Measured positive in-degree CCDF. Other curves are chosen references, not fitted models.</text>
 <path d="M88.00,92 V490" stroke="#d5d9cf"/><text x="88.00" y="514" text-anchor="middle" font-size="12">1</text>
 <path d="M207.88,92 V490" stroke="#d5d9cf"/><text x="207.88" y="514" text-anchor="middle" font-size="12">2</text>
 <path d="M366.35,92 V490" stroke="#d5d9cf"/><text x="366.35" y="514" text-anchor="middle" font-size="12">5</text>
@@ -69,8 +69,8 @@
 <circle cx="894.55" cy="468.91" r="6" fill="none" stroke="#dc512f" stroke-width="1.8"/>
 <text x="804.55" y="454.91" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#8f2913" font-weight="bold">Spider-Man (k=106)</text>
 <path d="M702.90,360.02 l-35,-35 h-95" fill="none" stroke="#60645c" stroke-width="1.2" stroke-dasharray="3 3"/>
-<text x="567.90" y="320.02" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#60645c">Finite-size cutoff (k ≈ 35)</text>
+<text x="567.90" y="320.02" font-size="10" font-family="SFMono-Regular, Consolas, monospace" fill="#60645c">Sparse tail (k > 35)</text>
 <circle cx="580" cy="37" r="5" fill="#dc512f"/><text x="592" y="42" font-size="12">Marvel In-Degree (Empirical)</text>
-<line x1="770" y1="37" x2="790" y2="37" stroke="#2849c7" stroke-width="2.5"/><text x="796" y="42" font-size="12">Barabási–Albert</text>
-<line x1="770" y1="58" x2="790" y2="58" stroke="#486452" stroke-width="2.5" stroke-dasharray="4 3"/><text x="796" y="63" font-size="12">Erdős–Rényi</text>
+<line x1="770" y1="37" x2="790" y2="37" stroke="#2849c7" stroke-width="2.5"/><text x="796" y="42" font-size="12">Heavy-tail sketch</text>
+<line x1="770" y1="58" x2="790" y2="58" stroke="#486452" stroke-width="2.5" stroke-dasharray="4 3"/><text x="796" y="63" font-size="12">Poisson reference</text>
 </g></svg>
