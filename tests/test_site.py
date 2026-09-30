@@ -65,9 +65,9 @@ class SiteTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
-            "templates/week3.html", "templates/switchboard.html", "templates/grunge.html",
-            "week3.css", "week3.js", "grunge.css", "grunge.js",
-            "assets/data/week3.json", "assets/data/week3.js", "assets/figures/week3-removal.svg",
+            "templates/week3.html", "templates/week4.html", "templates/louvain.html", "templates/switchboard.html", "templates/grunge.html",
+            "week3.css", "week3.js", "week4.css", "louvain.js", "grunge.css", "grunge.js",
+            "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
             "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
             "site.json", "templates/home.html", "templates/week1.html", "templates/week2.html", "templates/play.html", "templates/cerebro.html",
             "style.css", "app.js", "home.js", "game.css", "game.js", "week2.js",

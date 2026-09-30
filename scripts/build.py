@@ -183,6 +183,7 @@ def render() -> list[Path]:
              (Path("play.html"), Path("play/index.html"), "play"),
              (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro"),
              (Path("switchboard.html"), Path("play/switchboard.html"), "games"),
+             (Path("louvain.html"), Path("play/louvain.html"), "games"),
              (Path("grunge.html"), Path("grunge/index.html"), "grunge")]
     pages += [(Path(week["template"]), Path(week["path"]), f'week{week["number"]}') for week in published]
     if len({destination for _, destination, _ in pages}) != len(pages):
@@ -205,8 +206,8 @@ def render() -> list[Path]:
     (ROOT / "assets/favicon.svg").write_text(favicon, encoding="utf-8", newline="\n")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
-        "week3.css", "week3.js", "grunge.css", "grunge.js",
-        "assets/data/week3.json", "assets/data/week3.js", "assets/figures/week3-removal.svg",
+        "week3.css", "week3.js", "week4.css", "louvain.js", "grunge.css", "grunge.js",
+        "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
         "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
         "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",
         "assets/data/network.js", "assets/data/network.json", "assets/data/summary.json",

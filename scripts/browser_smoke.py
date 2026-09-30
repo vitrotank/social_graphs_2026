@@ -218,10 +218,10 @@ def main():
             return
 
         check("homepage is Crosstalk", "document.title.includes('CROSSTALK') && !!document.querySelector('.home-page')")
-        check("eight week slots, three published issues", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 3")
+        check("eight week slots, four published issues", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 4")
         check("home stays lightweight", "!window.CROSSTALK_DATA && !document.querySelector('#network-atlas')")
         check("group names rendered", "document.body.textContent.includes('Christos Diamantis') && document.body.textContent.includes('s253102') && document.body.textContent.includes('Dávid Weiner') && document.body.textContent.includes('s253347')")
-        check("clear direct week navigation", "document.querySelectorAll('.issue-nav a').length===4 && !!document.querySelector('#games')")
+        check("clear direct week navigation", "document.querySelectorAll('.issue-nav a').length===5 && !!document.querySelector('#games')")
         check("header no longer offers Open an issue", "!document.querySelector('header').textContent.toLowerCase().includes('open an issue')")
         check("homepage lists the separate Week 3 game", "!!document.querySelector('#games a[href=\"play/switchboard.html\"]')")
         screenshot("homepage.png", full=True)
@@ -478,6 +478,11 @@ def main():
             check(f"Week 3 story {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
             if width == 390:
                 screenshot("week3-mobile.png", full=True)
+        navigate(base_url + "week4/index.html")
+        check("Week 4 article and Louvain link", "document.title.includes('The schools hiding in the links') && !!document.querySelector('a[href$=\"play/louvain.html\"]')")
+        check("Week 4 article desktop has no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+        navigate(base_url + "play/louvain.html", "document.readyState==='complete' && !!document.querySelector('#w4-canvas circle')")
+        check("Louvain explorable has controls", "!!document.querySelector('#w4-step') && !!document.querySelector('#w4-aggregate') && !!document.querySelector('#w4-canvas circle')")
         client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
         switchboard_ready = "document.readyState==='complete' && !!document.querySelector('#w3-disconnect') && !document.querySelector('#w3-disconnect').disabled"
         navigate(base_url + "play/switchboard.html", switchboard_ready)

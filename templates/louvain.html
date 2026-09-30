@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two-phase Louvain · Crosstalk</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../week4.css">
+</head>
+<body class="week4-page">
+  @@HEADER@@
+  <main class="shell w4-toy">
+    <p class="eyebrow">EXPERIENCE / 4.12</p>
+    <h1 class="section-title">Move, merge, repeat.</h1>
+    <p class="lede">A tiny weighted graph makes the two phases visible. Click a node to move it to the neighbouring community when that move improves modularity; then collapse each colour into a super-node.</p>
+    <div class="toy-toolbar">
+      <button class="button button-primary" id="w4-step">Run one move</button>
+      <button class="button button-ghost" id="w4-aggregate">Aggregate communities</button>
+      <button class="button button-ghost" id="w4-reset">Reset</button>
+      <output id="w4-status" aria-live="polite"></output>
+    </div>
+    <svg id="w4-canvas" viewBox="0 0 720 390" role="img" aria-label="Interactive Louvain toy graph"></svg>
+    <p class="w4-caption">Modularity: <strong id="w4-q">0.00</strong>. The real Week 4 run applies the same two phases to the 1,374-node undirected, unweighted giant component.</p>
+  </main>
+  @@FOOTER@@
+  <script src="../louvain.js"></script>
+</body>
+</html>

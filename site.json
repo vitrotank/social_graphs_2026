@@ -54,7 +54,15 @@
     },
     {
       "number": 4,
-      "status": "upcoming"
+      "status": "published",
+      "title": "The schools hiding in the links.",
+      "short_title": "The schools hiding in the links.",
+      "summary": "The giant component of a philosopher Wikipedia graph, and the communities a seeded Louvain search can—and cannot—name.",
+      "path": "week4/index.html",
+      "template": "week4.html",
+      "topic": "THE COMMUNITIES",
+      "experience_path": "play/louvain.html",
+      "experience_label": "Explore Louvain"
     },
     {
       "number": 5,

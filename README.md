@@ -14,6 +14,8 @@ The front page is a directory: every published week has an explicit story link a
 | `week1/index.html` | Marvel's 303 pages, degree, isolates, searchable network, hub removal |
 | `week2/index.html` | Models, friendship paradox, and what a null comparison can establish |
 | `week3/index.html` | The paths and centrality story: bridge characters, removal curves, and shortest-route findings |
+| `week4/index.html` | Philosopher communities: weighted seeded Louvain, null comparison, and interpretation |
+| `play/louvain.html` | Exercise 4.12: a vanilla JavaScript two-phase Louvain toy |
 | `play/index.html` | Crossed Wires: three weekly rounds and twelve practice puzzles |
 | `play/cerebro.html` | The Popularity Trap: prediction game and model illustration console |
 | `play/switchboard.html` | The Switchboard: Week 3's character-removal experiment, blackout dial, and route finder to Spider-Man |
@@ -39,6 +41,7 @@ The grunge radio uses external YouTube playback and needs a connection. Browsers
 ```sh
 python scripts/analyze.py
 python scripts/analyze_week3.py
+python scripts/analyze_week4.py
 python scripts/crawl_grunge.py
 python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
@@ -59,6 +62,8 @@ Week 3 collapses reciprocal edges for its undirected removal experiments. Betwee
 Week 2's empirical friendship-paradox results come from the real graph. Its model curves and preset shuffle gauges are labeled **illustrative**; they are not fitted models or retained null ensembles. The report makes no significance claim from those sketches.
 
 The B-side uses an explicitly sampled set of 15 musicians and 55 observed links. The full Wikipedia API crawl was unavailable; the snapshot preserves browser-observed hyperlink evidence and its sampling limits. A hyperlink between musician pages does not establish a musical collaboration.
+
+Week 4 uses the course's **15 September 2026** philosopher release (1,444 nodes and 11,135 directed links). Directed links are projected to an undirected weighted graph; reciprocal links add weight. The seeded (2026) Louvain run reports modularity and six degree-preserving approximate stub-shuffle nulls. The null is a comparison baseline, not a significance test. Exercise 4.13 applies the result in the article; exercise 4.12 is the standalone browser toy.
 
 ## Add an issue
 

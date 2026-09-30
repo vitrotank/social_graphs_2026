@@ -39,3 +39,17 @@ The JSON provides incoming, outgoing, total and distinct-neighbor degrees
 explicitly to avoid confusing their definitions. Logarithmic degree figures
 omit zero-degree points, state how many were omitted, and retain all 303 pages
 in the probability denominator. They do not claim a fitted power law.
+
+## Week 4 philosopher input
+
+The philosopher files are the course's frozen **2026-09-15** release, downloaded
+from the [course data page](https://sunelehmann.com/socialgraphs2026-web/data/)
+when Week 4 was implemented. It contains 1,444 philosophers (the seven
+pre-1900 lists) and 11,135 weighted directed links. SHA-256:
+
+| File | SHA-256 |
+| --- | --- |
+| `week4_philosophers_nodes.tsv` | `c5bd92ba8319fed505cc1a67f02fb3c62691595175c55abed2144140cfaac45` |
+| `week4_philosophers_edges.tsv` | `ddc0cac2c763e6ade9acb336ffb391af43952a0c0fc75c4c370bd593b16e438b` |
+
+Run `python scripts/analyze_week4.py` to regenerate the committed browser JSON.
