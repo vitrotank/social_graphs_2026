@@ -116,7 +116,7 @@ def main():
     parser.add_argument("--browser", help="Path to Chrome or Chromium executable")
     parser.add_argument("--grunge-only", action="store_true", help="Run just the B-side and provider-control checks")
     parser.add_argument("--week4-only", action="store_true", help="Run just the philosopher atlas, comparison, and backbone checks")
-    parser.add_argument("--editorial-only", action="store_true", help="Run just the homepage and Week 1–3 editorial figure checks")
+    parser.add_argument("--editorial-only", action="store_true", help="Run just the homepage, network cabinet, and Week 1–3 editorial figure checks")
     args = parser.parse_args()
     browser = args.browser or shutil.which("chromium") or shutil.which("google-chrome")
     if not browser:
@@ -206,7 +206,8 @@ def main():
         def check_editorial():
             """Exercise real figure data, pointer/keyboard controls, and disk use."""
             ready = {
-                "index.html": "document.readyState==='complete' && document.querySelectorAll('#cover-nodes [data-node]').length>0",
+                "index.html": "document.readyState==='complete' && !!document.querySelector('#latest-title')",
+                "explore/index.html": "document.readyState==='complete' && document.querySelectorAll('#cover-nodes [data-node]').length>0",
                 "week1/index.html": "document.readyState==='complete' && document.querySelectorAll('#degree-scatter [data-degree-character]').length===303",
                 "week2/index.html": "document.readyState==='complete' && document.querySelector('#w2-ccdf-plot')?.dataset.state==='ready'",
                 "week3/index.html": "document.readyState==='complete' && document.querySelector('#w3-story-explorer')?.hidden===false && document.querySelectorAll('#w3-story-rank-names button').length===8",
@@ -217,6 +218,7 @@ def main():
             # Capture every redesigned figure before assertions, so visual review
             # remains available if a later interaction reveals a regression.
             figures = (("index.html","editorial-home",None),
+                       ("explore/index.html","editorial-cabinet",".cover-observatory"),
                        ("week1/index.html","editorial-week1",".degree-portrait"),
                        ("week2/index.html","editorial-week2",".week2-ccdf-panel"),
                        ("week3/index.html","editorial-week3","#w3-story-figure"))
@@ -232,12 +234,9 @@ def main():
                     else:
                         client.js(f"document.querySelector({json.dumps(target)}).scrollIntoView({{block:'start',behavior:'instant'}})")
                     next_frame()
-                    screenshot(name + ("-scatter.png" if route.startswith("week1/") else "-plot.png" if route.startswith("week2/") else "-curve.png"))
+                    screenshot(name + ("-scatter.png" if route.startswith("week1/") else "-plot.png" if route.startswith("week2/") else "-map.png" if route.startswith("explore/") else "-curve.png"))
                 else:
                     screenshot(name + "-hero.png")
-                    client.js("document.querySelector('.cover-observatory').scrollIntoView({block:'start',behavior:'instant'})")
-                    next_frame()
-                    screenshot(name + "-map.png")
                     client.call("Emulation.setDeviceMetricsOverride", {"width":390,"height":844,"deviceScaleFactor":1,"mobile":True})
                     client.js("window.scrollTo({top:0,behavior:'instant'})")
                     next_frame()
@@ -245,25 +244,27 @@ def main():
                     client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
 
             navigate(base_url, ready["index.html"])
-            check("editorial home defaults to the real philosopher preview", "document.querySelector('[data-cover-world=philosophers]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='1,374' && document.querySelector('#cover-total-edges').textContent==='9,139' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.philosophers.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.philosophers.edges.length")
-            check("editorial home uses a compact exhibit without the full graph payload", "!window.CROSSTALK_DATA && !window.CROSSTALK_WEEK4 && CROSSTALK_COVER.philosophers.nodes.length<200 && CROSSTALK_COVER.philosophers.edges.length<=500 && document.querySelector('#cover-person').options.length===CROSSTALK_COVER.philosophers.nodes.length+1 && document.querySelector('#cover-sample-note').textContent.includes('Selected')")
+            check("homepage gives the latest story a direct entry", "!!document.querySelector('.latest-spread a[href]') && !!document.querySelector('.latest-plate svg') && !document.querySelector('#cover-map') && !window.CROSSTALK_COVER")
             check("reading rail is confined to stories on the homepage", "!document.querySelector('.journal-rail') && !document.documentElement.classList.contains('journal-reader')")
+            navigate(base_url + "explore/index.html", ready["explore/index.html"])
+            check("network cabinet defaults to the real philosopher preview", "document.querySelector('[data-cover-world=philosophers]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='1,374' && document.querySelector('#cover-total-edges').textContent==='9,139' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.philosophers.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.philosophers.edges.length")
+            check("network cabinet uses a compact exhibit without the full graph payload", "!window.CROSSTALK_DATA && !window.CROSSTALK_WEEK4 && CROSSTALK_COVER.philosophers.nodes.length<200 && CROSSTALK_COVER.philosophers.edges.length<=500 && document.querySelector('#cover-person').options.length===CROSSTALK_COVER.philosophers.nodes.length+1 && document.querySelector('#cover-sample-note').textContent.includes('Selected')")
             client.js("document.querySelector('#cover-groups button:not([data-group=all])').click()")
-            check("home community focus preserves cross-group links and dims the rest", "document.querySelector('#cover-groups button[aria-pressed=true]').dataset.group!=='all' && document.querySelectorAll('#cover-nodes .is-muted').length>0 && document.querySelectorAll('#cover-edges .is-active').length>0 && document.querySelectorAll('#cover-edges .is-muted').length>0 && document.querySelector('#cover-person-note').textContent.includes('stay visible')")
+            check("cabinet community focus preserves cross-group links and dims the rest", "document.querySelector('#cover-groups button[aria-pressed=true]').dataset.group!=='all' && document.querySelectorAll('#cover-nodes .is-muted').length>0 && document.querySelectorAll('#cover-edges .is-active').length>0 && document.querySelectorAll('#cover-edges .is-muted').length>0 && document.querySelector('#cover-person-note').textContent.includes('stay visible')")
             client.js("document.querySelector('#cover-person').value='Aristotle';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
-            check("home named picker follows Aristotle's real links", "document.querySelector('#cover-person-note h3').textContent==='Aristotle' && document.querySelector('#cover-person-note').textContent.includes('300 neighbors') && document.querySelector('#cover-nodes [data-node=Aristotle]').getAttribute('aria-pressed')==='true' && document.querySelectorAll('#cover-edges .is-active').length===CROSSTALK_COVER.philosophers.edges.filter(e=>e.source==='Aristotle'||e.target==='Aristotle').length")
+            check("cabinet named picker follows Aristotle's real links", "document.querySelector('#cover-person-note h3').textContent==='Aristotle' && document.querySelector('#cover-person-note').textContent.includes('300 neighbors') && document.querySelector('#cover-nodes [data-node=Aristotle]').getAttribute('aria-pressed')==='true' && document.querySelectorAll('#cover-edges .is-active').length===CROSSTALK_COVER.philosophers.edges.filter(e=>e.source==='Aristotle'||e.target==='Aristotle').length")
             client.js("document.querySelector('#cover-nodes [tabindex=\"0\"]').focus()")
             press_key("ArrowRight", "ArrowRight", 39)
             client.js("window.__editorialCoverFocus=document.activeElement.dataset.node")
-            check("home map arrow key moves to another named dot", "!!window.__editorialCoverFocus && window.__editorialCoverFocus!=='Aristotle' && document.activeElement.closest('#cover-nodes')!==null")
+            check("cabinet map arrow key moves to another named dot", "!!window.__editorialCoverFocus && window.__editorialCoverFocus!=='Aristotle' && document.activeElement.closest('#cover-nodes')!==null")
             press_key("Enter", "Enter", 13)
-            check("home map Enter selects the focused dot", "document.querySelector('#cover-person').value===window.__editorialCoverFocus && document.querySelector('#cover-nodes [aria-pressed=true]').dataset.node===window.__editorialCoverFocus")
+            check("cabinet map Enter selects the focused dot", "document.querySelector('#cover-person').value===window.__editorialCoverFocus && document.querySelector('#cover-nodes [aria-pressed=true]').dataset.node===window.__editorialCoverFocus")
             press_key("Escape", "Escape", 27)
-            check("home map Escape restores the preview", "document.querySelector('#cover-person').value==='' && document.querySelector('#cover-groups [data-group=all]').getAttribute('aria-pressed')==='true' && !document.querySelector('#cover-nodes .is-muted')")
+            check("cabinet map Escape restores the preview", "document.querySelector('#cover-person').value==='' && document.querySelector('#cover-groups [data-group=all]').getAttribute('aria-pressed')==='true' && !document.querySelector('#cover-nodes .is-muted')")
             client.js("document.querySelector('[data-cover-world=marvel]').click()")
-            check("home Marvel lens shows the real roster totals and selected pairs", "document.querySelector('[data-cover-world=marvel]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='303' && document.querySelector('#cover-total-edges').textContent==='1,784' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.marvel.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.marvel.edges.length && document.querySelector('#cover-open').href.endsWith('/week1/index.html#atlas')")
+            check("cabinet Marvel lens shows the real roster totals and selected pairs", "document.querySelector('[data-cover-world=marvel]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='303' && document.querySelector('#cover-total-edges').textContent==='1,784' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.marvel.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.marvel.edges.length && document.querySelector('#cover-open').href.endsWith('/week1/index.html#atlas')")
             client.js("document.querySelector('#cover-person').value='Baymax';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
-            check("home preview includes an actual isolate", "document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-person-note').textContent.includes('0 neighbors') && !document.querySelector('#cover-edges .is-active')")
+            check("cabinet preview includes an actual isolate", "document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-person-note').textContent.includes('0 neighbors') && !document.querySelector('#cover-edges .is-active')")
 
             navigate(base_url + "week1/index.html", ready["week1/index.html"])
             check("Week 1 scatter represents all 303 real character pages", "document.querySelectorAll('#degree-scatter [data-degree-character]').length===303 && document.querySelector('#degree-character').options.length===303 && Array.from(document.querySelectorAll('#degree-scatter [data-degree-character]')).every(e=>{const n=CROSSTALK_DATA.network.nodes.find(n=>n.id===e.dataset.degreeCharacter);return n&&Number(e.dataset.inDegree)===n.in_degree&&Number(e.dataset.outDegree)===n.out_degree})")
@@ -392,7 +393,7 @@ def main():
                     client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
                     next_frame()
                     check(f"editorial {route} at {width}px has no horizontal overflow", "document.documentElement.scrollWidth<=document.documentElement.clientWidth")
-                    check(f"editorial {route} at {width}px keeps its primary figure within the viewport", "(()=>{const e=document.querySelector('#cover-map,#degree-scatter,#w2-ccdf-live,#w3-story-explorer'),r=e.getBoundingClientRect();return r.left>=-1&&r.right<=document.documentElement.clientWidth+1})()")
+                    check(f"editorial {route} at {width}px keeps its primary figure within the viewport", "(()=>{const e=document.querySelector('.latest-plate,#cover-map,#degree-scatter,#w2-ccdf-live,#w3-story-explorer'),r=e.getBoundingClientRect();return r.left>=-1&&r.right<=document.documentElement.clientWidth+1})()")
                     if width == 390 and route == "week1/index.html":
                         check("Week 1 mobile plots preserve readable 680px graphics within scrollable regions", "['distribution-chart','degree-scatter'].every(id=>{const e=document.getElementById(id);return e.scrollWidth>e.clientWidth && parseFloat(getComputedStyle(e.querySelector('svg')).width)>=680 && getComputedStyle(e).overflowX==='auto'})")
                         check("Week 1 mobile plots visibly explain sideways scrolling", "['distribution-scroll-hint','degree-scatter-scroll-hint'].every(id=>{const hint=document.getElementById(id);return hint.getClientRects().length>0 && hint.textContent.includes('Scroll sideways')})")
@@ -403,15 +404,17 @@ def main():
                         if route.startswith("week2/"):
                             client.js("document.querySelector('#w2-ccdf-plot').closest('figure').scrollIntoView({block:'start',behavior:'instant'})")
                         else:
-                            figure = ".degree-portrait" if route.startswith("week1/") else "#w3-story-figure"
+                            figure = ".degree-portrait" if route.startswith("week1/") else ".cover-observatory" if route.startswith("explore/") else "#w3-story-figure"
                             client.js(f"document.querySelector({json.dumps(figure)}).scrollIntoView({{block:'start',behavior:'instant'}})")
                         next_frame()
                         screenshot("editorial-" + route.split('/')[0] + "-mobile-figure.png")
                 client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
 
             navigate((ROOT / "_site/index.html").as_uri(), ready["index.html"])
+            check("offline editorial home keeps the reading room and cabinet link", "location.protocol==='file:' && !!document.querySelector('.latest-spread') && !!document.querySelector('a[href=\"explore/index.html\"]') && !window.CROSSTALK_COVER")
+            navigate((ROOT / "_site/explore/index.html").as_uri(), ready["explore/index.html"])
             client.js("document.querySelector('[data-cover-world=marvel]').click();document.querySelector('#cover-person').value='Baymax';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
-            check("offline editorial home switches real networks and follows a name", "location.protocol==='file:' && !window.CROSSTALK_DATA && document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-total-nodes').textContent==='303'")
+            check("offline network cabinet switches real networks and follows a name", "location.protocol==='file:' && !window.CROSSTALK_DATA && document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-total-nodes').textContent==='303' && document.querySelector('#cover-open').href.endsWith('/week1/index.html#atlas')")
             navigate((ROOT / "_site/week1/index.html").as_uri(), ready["week1/index.html"])
             client.js("document.querySelector('[data-degree-view=local]').click();document.querySelector('[data-degree-scale=sqrt]').click();document.querySelector('#degree-character').value='Baymax';document.querySelector('#degree-character').dispatchEvent(new Event('change'))")
             check("offline Week 1 scatter keeps the real close-up and isolate readout", "location.protocol==='file:' && document.querySelectorAll('#degree-scatter [data-degree-character]').length===279 && document.querySelector('#degree-scatter svg').dataset.axisScale==='sqrt' && document.querySelector('#degree-character-readout').textContent.includes('17 pages')")
@@ -560,11 +563,14 @@ def main():
 
         check_editorial()
         navigate(base_url)
+        registry = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
+        published_weeks = sorted(week["number"] for week in registry["weeks"] if week["status"] == "published")
         check("homepage is Crosstalk", "document.title.includes('CROSSTALK') && !!document.querySelector('.home-page')")
-        check("eight week slots, four published issues", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 4")
+        check("homepage exposes every registry week and published issue", f"document.querySelectorAll('.week-entry').length==={len(registry['weeks'])} && document.querySelectorAll('a.week-entry').length==={len(published_weeks)}")
+        check("homepage leads with the latest published week", f"document.querySelector('.latest-spread a[href]').getAttribute('href')==='week{published_weeks[-1]}/index.html'")
         check("home stays lightweight", "!window.CROSSTALK_DATA && !document.querySelector('#network-atlas')")
         check("group names rendered", "document.body.textContent.includes('Christos Diamantis') && document.body.textContent.includes('s253102') && document.body.textContent.includes('Dávid Weiner') && document.body.textContent.includes('s253347')")
-        check("clear direct week navigation", "document.querySelectorAll('.issue-nav a').length===5 && !!document.querySelector('#games')")
+        check("clear direct week navigation", f"document.querySelectorAll('.issue-nav a').length==={len(published_weeks)+1} && !!document.querySelector('#games')")
         check("header no longer offers Open an issue", "!document.querySelector('header').textContent.toLowerCase().includes('open an issue')")
         check("homepage lists the separate Week 3 game", "!!document.querySelector('#games a[href=\"play/switchboard.html\"]')")
         screenshot("homepage.png", full=True)
@@ -794,7 +800,7 @@ def main():
         check("old report bookmarks still work", "location.hash==='#atlas'")
         # The later issues keep their story controls separate from the game.
         navigate(base_url + "week2/index.html")
-        check("Week 2 has chapter navigation", "document.querySelectorAll('.issue-directory a').length >= 6")
+        check("Week 2 has chapter navigation", "document.querySelector('.journal-rail select').options.length>=4")
         client.js("document.querySelector('[data-ccdf-view=fit]').click()")
         check("Week 2 figure switch works", "document.querySelector('#ccdf-switch-img').getAttribute('src').includes('ccdf-fit.svg')")
         screenshot("week2.png", full=True)
@@ -810,7 +816,7 @@ def main():
                 check(f"{route} {width}px no horizontal overflow", "document.documentElement.scrollWidth <= document.documentElement.clientWidth")
         client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
         navigate(base_url + "week3/index.html")
-        check("Week 3 keeps story chapters and the static removal figure", "!!document.querySelector('#blackout img[src$=\"week3-removal.svg\"]') && !!document.querySelector('#pathfinder') && document.querySelectorAll('.issue-directory a').length>=4")
+        check("Week 3 keeps story chapters and the static removal figure", "!!document.querySelector('#blackout img[src$=\"week3-removal.svg\"]') && !!document.querySelector('#pathfinder') && document.querySelector('.journal-rail select').options.length>=4")
         check("Week 3 story is separate from game controls and data", "!document.querySelector('#w3-disconnect, #w3-route-form, #w3-removal-count, script[src$=\"week3.js\"]') && !window.CROSSTALK_WEEK3")
         check("Week 3 visibly links to its game", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/play/switchboard.html') && a.getClientRects().length>0)")
         check("Week 3 visibly links to the B-side", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/grunge/index.html') && a.getClientRects().length>0)")

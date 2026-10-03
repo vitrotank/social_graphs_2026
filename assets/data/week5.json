@@ -1,0 +1,3590 @@
+{
+  "schema_version": 1,
+  "question": "When Marvel pages share words, are they sharing stories?",
+  "title": "An editorial accent. A shared universe.",
+  "corpus": {
+    "documents": 303,
+    "tokens": 727203,
+    "types": 27020,
+    "snapshot_date": "2026-08-26",
+    "download_date": "2026-10-03",
+    "source_url": "https://sunelehmann.com/socialgraphs2026-web/data/marvel_pages.zip",
+    "archive": "data/raw/marvel_pages.zip",
+    "sha256": "36023ca077053b3df5bd55630754cb514c3f9dbecbd70afcb2283e5bcc0017ee",
+    "smallest": {
+      "node": "Helix_(Marvel_Comics)",
+      "tokens": 194
+    },
+    "largest": {
+      "node": "Scarlet_Witch",
+      "tokens": 14164
+    }
+  },
+  "result": {
+    "possible_pairs": 45753,
+    "pairs_at_8": 40570,
+    "pairs_at_20": 71,
+    "pairs_at_40": 13,
+    "standard_phrase_documents": 282,
+    "standard_phrase_pairs": 39621,
+    "standard_phrase_lead_documents": 282,
+    "standard_phrase_body_documents": 0,
+    "standard_phrase_fraction_of_8_pairs": 0.9766083312792704,
+    "longest_words": 166,
+    "both_leads_at_20": 31,
+    "linked_at_20": 44,
+    "takeaway": "Short shared phrases mostly capture Wikipedia’s editorial voice. Longer runs reveal a small mixture of shared stories, publication history and reference material; length alone does not identify their meaning."
+  },
+  "thresholds": [
+    {
+      "length": 8,
+      "pairs": 40570,
+      "articles": 302,
+      "percent": 88.6717810853933,
+      "without_lead_pairs": 8649,
+      "with_numerals_pairs": 40581
+    },
+    {
+      "length": 9,
+      "pairs": 40166,
+      "articles": 301,
+      "percent": 87.7887788778878,
+      "without_lead_pairs": 7574,
+      "with_numerals_pairs": 40162
+    },
+    {
+      "length": 10,
+      "pairs": 19136,
+      "articles": 296,
+      "percent": 41.82457980897428,
+      "without_lead_pairs": 3325,
+      "with_numerals_pairs": 19124
+    },
+    {
+      "length": 11,
+      "pairs": 11404,
+      "articles": 290,
+      "percent": 24.925141520774595,
+      "without_lead_pairs": 979,
+      "with_numerals_pairs": 11545
+    },
+    {
+      "length": 12,
+      "pairs": 8111,
+      "articles": 286,
+      "percent": 17.727799269993223,
+      "without_lead_pairs": 655,
+      "with_numerals_pairs": 8158
+    },
+    {
+      "length": 13,
+      "pairs": 4095,
+      "articles": 266,
+      "percent": 8.950232771621533,
+      "without_lead_pairs": 476,
+      "with_numerals_pairs": 4134
+    },
+    {
+      "length": 14,
+      "pairs": 2095,
+      "articles": 244,
+      "percent": 4.57893471466352,
+      "without_lead_pairs": 335,
+      "with_numerals_pairs": 2140
+    },
+    {
+      "length": 15,
+      "pairs": 761,
+      "articles": 221,
+      "percent": 1.6632789106725243,
+      "without_lead_pairs": 173,
+      "with_numerals_pairs": 789
+    },
+    {
+      "length": 16,
+      "pairs": 344,
+      "articles": 184,
+      "percent": 0.7518632657967783,
+      "without_lead_pairs": 132,
+      "with_numerals_pairs": 358
+    },
+    {
+      "length": 17,
+      "pairs": 219,
+      "articles": 155,
+      "percent": 0.4786571372369025,
+      "without_lead_pairs": 95,
+      "with_numerals_pairs": 227
+    },
+    {
+      "length": 18,
+      "pairs": 142,
+      "articles": 120,
+      "percent": 0.31036216204401895,
+      "without_lead_pairs": 62,
+      "with_numerals_pairs": 146
+    },
+    {
+      "length": 19,
+      "pairs": 114,
+      "articles": 97,
+      "percent": 0.2491639892466068,
+      "without_lead_pairs": 52,
+      "with_numerals_pairs": 118
+    },
+    {
+      "length": 20,
+      "pairs": 71,
+      "articles": 77,
+      "percent": 0.15518108102200948,
+      "without_lead_pairs": 37,
+      "with_numerals_pairs": 82
+    },
+    {
+      "length": 21,
+      "pairs": 62,
+      "articles": 67,
+      "percent": 0.13551023976569843,
+      "without_lead_pairs": 32,
+      "with_numerals_pairs": 72
+    },
+    {
+      "length": 22,
+      "pairs": 56,
+      "articles": 57,
+      "percent": 0.12239634559482439,
+      "without_lead_pairs": 26,
+      "with_numerals_pairs": 67
+    },
+    {
+      "length": 23,
+      "pairs": 51,
+      "articles": 50,
+      "percent": 0.11146810045242934,
+      "without_lead_pairs": 23,
+      "with_numerals_pairs": 62
+    },
+    {
+      "length": 24,
+      "pairs": 42,
+      "articles": 45,
+      "percent": 0.09179725919611828,
+      "without_lead_pairs": 23,
+      "with_numerals_pairs": 47
+    },
+    {
+      "length": 25,
+      "pairs": 41,
+      "articles": 44,
+      "percent": 0.08961161016763929,
+      "without_lead_pairs": 23,
+      "with_numerals_pairs": 43
+    },
+    {
+      "length": 26,
+      "pairs": 40,
+      "articles": 43,
+      "percent": 0.08742596113916028,
+      "without_lead_pairs": 22,
+      "with_numerals_pairs": 41
+    },
+    {
+      "length": 27,
+      "pairs": 39,
+      "articles": 41,
+      "percent": 0.08524031211068127,
+      "without_lead_pairs": 22,
+      "with_numerals_pairs": 39
+    },
+    {
+      "length": 28,
+      "pairs": 38,
+      "articles": 39,
+      "percent": 0.08305466308220226,
+      "without_lead_pairs": 21,
+      "with_numerals_pairs": 39
+    },
+    {
+      "length": 29,
+      "pairs": 37,
+      "articles": 39,
+      "percent": 0.08086901405372325,
+      "without_lead_pairs": 20,
+      "with_numerals_pairs": 39
+    },
+    {
+      "length": 30,
+      "pairs": 36,
+      "articles": 37,
+      "percent": 0.07868336502524424,
+      "without_lead_pairs": 19,
+      "with_numerals_pairs": 38
+    },
+    {
+      "length": 31,
+      "pairs": 36,
+      "articles": 37,
+      "percent": 0.07868336502524424,
+      "without_lead_pairs": 19,
+      "with_numerals_pairs": 37
+    },
+    {
+      "length": 32,
+      "pairs": 36,
+      "articles": 37,
+      "percent": 0.07868336502524424,
+      "without_lead_pairs": 19,
+      "with_numerals_pairs": 37
+    },
+    {
+      "length": 33,
+      "pairs": 36,
+      "articles": 37,
+      "percent": 0.07868336502524424,
+      "without_lead_pairs": 19,
+      "with_numerals_pairs": 37
+    },
+    {
+      "length": 34,
+      "pairs": 36,
+      "articles": 37,
+      "percent": 0.07868336502524424,
+      "without_lead_pairs": 19,
+      "with_numerals_pairs": 37
+    },
+    {
+      "length": 35,
+      "pairs": 18,
+      "articles": 29,
+      "percent": 0.03934168251262212,
+      "without_lead_pairs": 16,
+      "with_numerals_pairs": 19
+    },
+    {
+      "length": 36,
+      "pairs": 15,
+      "articles": 23,
+      "percent": 0.0327847354271851,
+      "without_lead_pairs": 14,
+      "with_numerals_pairs": 17
+    },
+    {
+      "length": 37,
+      "pairs": 15,
+      "articles": 23,
+      "percent": 0.0327847354271851,
+      "without_lead_pairs": 14,
+      "with_numerals_pairs": 16
+    },
+    {
+      "length": 38,
+      "pairs": 15,
+      "articles": 23,
+      "percent": 0.0327847354271851,
+      "without_lead_pairs": 14,
+      "with_numerals_pairs": 16
+    },
+    {
+      "length": 39,
+      "pairs": 14,
+      "articles": 21,
+      "percent": 0.030599086398706097,
+      "without_lead_pairs": 14,
+      "with_numerals_pairs": 16
+    },
+    {
+      "length": 40,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 41,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 42,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 43,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 44,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 45,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 46,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 14
+    },
+    {
+      "length": 47,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 13
+    },
+    {
+      "length": 48,
+      "pairs": 13,
+      "articles": 19,
+      "percent": 0.02841343737022709,
+      "without_lead_pairs": 13,
+      "with_numerals_pairs": 13
+    },
+    {
+      "length": 49,
+      "pairs": 11,
+      "articles": 17,
+      "percent": 0.024042139313269074,
+      "without_lead_pairs": 11,
+      "with_numerals_pairs": 12
+    },
+    {
+      "length": 50,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 11
+    },
+    {
+      "length": 51,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 52,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 53,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 54,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 55,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 56,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 57,
+      "pairs": 10,
+      "articles": 15,
+      "percent": 0.02185649028479007,
+      "without_lead_pairs": 10,
+      "with_numerals_pairs": 10
+    },
+    {
+      "length": 58,
+      "pairs": 9,
+      "articles": 13,
+      "percent": 0.01967084125631106,
+      "without_lead_pairs": 9,
+      "with_numerals_pairs": 9
+    },
+    {
+      "length": 59,
+      "pairs": 8,
+      "articles": 13,
+      "percent": 0.017485192227832055,
+      "without_lead_pairs": 8,
+      "with_numerals_pairs": 9
+    },
+    {
+      "length": 60,
+      "pairs": 8,
+      "articles": 13,
+      "percent": 0.017485192227832055,
+      "without_lead_pairs": 8,
+      "with_numerals_pairs": 9
+    }
+  ],
+  "pairs": [
+    {
+      "id": "Mayday_Parker::Spider-Woman",
+      "source": "Mayday_Parker",
+      "target": "Spider-Woman",
+      "length": 166,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following a traumatic incident. In 1995, Peter lets Ben Reilly take over his life as Spider-Man and CEO of Parker Industries so he could return to his family. In the mid-2000s, Claire convinces Peter to return to New York and become Spider-Man once more shortly after Morlun kills Ben Reilly so he could stop Tony Stark from taking over Parker Industries and to lure Morlun away from his family. Despite his efforts, Morlun attacks the twins and Mary Jane in Oregon as Peter gets involved in the superhero Civil War. When Benjy discovers that Morlun is vulnerable when he is feeding off someone, he uses himself as bait to allow Claire the chance to impale him on a splintered log of wood. Benjy survives the assault, but is crippled for life. By 2019, Claire has become Spider-Woman (now wearing a costume",
+          "paragraph": 24,
+          "start": 42408,
+          "end": 43335,
+          "before": "pite having a different name, Claire bears a strong resemblance in both appearance and personality to Mayday. ",
+          "after": " similar to Ultimate Jessica Drew's), and is instructed by her father to stay behind to protect her brother an",
+          "node": "Mayday_Parker",
+          "name": "Mayday Parker",
+          "url": "https://en.wikipedia.org/wiki/Mayday_Parker",
+          "section": "Spider-Man: Life Story",
+          "excerpt": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following …",
+          "normalized_words": 166
+        },
+        {
+          "text": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following a traumatic incident. In 1995, Peter lets Ben Reilly take over his life as Spider-Man and CEO of Parker Industries so he could return to his family. In the mid-2000s, Claire convinces Peter to return to New York and become Spider-Man once more shortly after Morlun kills Ben Reilly so he could stop Tony Stark from taking over Parker Industries and to lure Morlun away from his family. Despite his efforts, Morlun attacks the twins and Mary Jane in Oregon as Peter gets involved in the superhero Civil War. When Benjy discovers that Morlun is vulnerable when he is feeding off someone, he uses himself as bait to allow Claire the chance to impale him on a splintered log of wood. Benjy survives the assault, but is crippled for life. By 2019, Claire has become Spider-Woman (now wearing a costume",
+          "paragraph": 22,
+          "start": 5076,
+          "end": 6003,
+          "before": "sically designed as a composite character of Mayday Parker and the Spider-Woman (Ultimate Marvel character)). ",
+          "after": " the same as the Spider-Woman (Ultimate Marvel character)'s), and is instructed by her father to stay behind t",
+          "node": "Spider-Woman",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman",
+          "section": "Other versions",
+          "excerpt": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following …",
+          "normalized_words": 166
+        }
+      ]
+    },
+    {
+      "id": "Spider-Girl::Spider-Woman",
+      "source": "Spider-Girl",
+      "target": "Spider-Woman",
+      "length": 154,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is the daughter of Tonya Parker and Hawkeye who did not like the way that Kingpin was running Hammer Falls. She becomes \"Spider-Bitch\", allying herself with a new Punisher and Daredevil, and plans to take back Hammer Falls, only for the group to be captured and Daredevil and Punisher to be fed to the carnivorous dinosaurs. Hawkeye breaks his daughter out of her cell, whereafter Ashley immediately beheads Kingpin which avenges Daredevil and Punisher's deaths. Then she attempts to kill her father, before taking over Hammer Falls as the new Kingpin. Old Man Logan rescues Hawkeye as Ashley sends her men after them.\nThe character appears in the \"Spider-Verse\" and Spider-Geddon storylines, now referred with her father's surname as Ashley Barton, and alternately referred to as \"Spider-Girl\" and \"Spider-Woman\" due to the family-friendly nature of the narrative, and is among the spider-powered characters who are recruited by",
+          "paragraph": 20,
+          "start": 8213,
+          "end": 9142,
+          "before": "In the pages of Old Man Logan, Ashley ",
+          "after": " The Superior Spider-Man (Doctor Octopus's mind in Peter Parker's body) to help fight the Inheritors, before r",
+          "node": "Spider-Girl",
+          "name": "Spider-Girl",
+          "url": "https://en.wikipedia.org/wiki/Spider-Girl",
+          "section": "Other versions",
+          "excerpt": "is the daughter of Tonya Parker and Hawkeye who did not like the way that Kingpin was running Hammer Falls. She becomes \"Spider-Bitch\", allying …",
+          "normalized_words": 154
+        },
+        {
+          "text": "is the daughter of Tonya Parker and Hawkeye who did not like the way that Kingpin was running Hammer Falls. She becomes \"Spider-Bitch\", allying herself with a new Punisher and Daredevil, and plans to take back Hammer Falls, only for the group to be captured and Daredevil and Punisher to be fed to the carnivorous dinosaurs. Hawkeye breaks his daughter out of her cell, whereafter Ashley immediately beheads Kingpin which avenges Daredevil and Punisher's deaths. Then she attempts to kill her father, before taking over Hammer Falls as the new Kingpin. Old Man Logan rescues Hawkeye as Ashley sends her men after them. The character appears in the \"Spider-Verse\" and Spider-Geddon storylines, now referred with her father's surname as Ashley Barton, and alternately referred to as \"Spider-Girl\" and \"Spider-Woman\" due to the family-friendly nature of the narrative, and is among the spider-powered characters who are recruited by",
+          "paragraph": 21,
+          "start": 3759,
+          "end": 4688,
+          "before": "In the pages of Old Man Logan, Ashley Barton ",
+          "after": " Superior Spider-Man (Doctor Octopus's mind in Peter Parker's body) to help fight the Inheritors, before retur",
+          "node": "Spider-Woman",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman",
+          "section": "Other versions",
+          "excerpt": "is the daughter of Tonya Parker and Hawkeye who did not like the way that Kingpin was running Hammer Falls. She becomes \"Spider-Bitch\", allying …",
+          "normalized_words": 154
+        }
+      ]
+    },
+    {
+      "id": "Spider-Woman::Spider-Woman_(Jessica_Drew)",
+      "source": "Spider-Woman",
+      "target": "Spider-Woman_(Jessica_Drew)",
+      "length": 125,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "I suddenly realized that some other company may quickly put out a book like that and claim they have the right to use the name, and I thought we'd better do it real fast to copyright the name. So we just batted one quickly, and that's exactly what happened. I wanted to protect the name, because it's the type of thing [where] someone else might say, \"Hey, why don't we put out a Spider-Woman; they can't stop us.\" ... You know, years ago we brought out Wonder Man, and [DC Comics] sued us because they had Wonder Woman, and ... I said okay, I'll discontinue Wonder Man. And all of a sudden they've got Power Girl [after Marvel had introduced Power Man]. Oh, boy. How unfair",
+          "paragraph": 3,
+          "start": 717,
+          "end": 1391,
+          "before": "",
+          "after": ".\nFollowing that initial Spider-Woman series, more followed. Volume two was a miniseries published from Novemb",
+          "node": "Spider-Woman",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman",
+          "section": "Publication history",
+          "excerpt": "I suddenly realized that some other company may quickly put out a book like that and claim they have the right to use the …",
+          "normalized_words": 125
+        },
+        {
+          "text": "I suddenly realized that some other company may quickly put out a book like that and claim they have the right to use the name, and I thought we'd better do it real fast to copyright the name. So we just batted one quickly, and that's exactly what happened. I wanted to protect the name, because it's the type of thing [where] someone else might say, 'Hey, why don't we put out a Spider-Woman; they can't stop us.' ... You know, years ago we brought out Wonder Man, and [DC Comics] sued us because they had Wonder Woman, and... I said okay, I'll discontinue Wonder Man. And all of a sudden they've got Power Girl [after Marvel had introduced Power Man]. Oh, boy. How unfair",
+          "paragraph": 3,
+          "start": 1887,
+          "end": 2560,
+          "before": "",
+          "after": ".\nSpider-Woman's origin and basic character were designed by Archie Goodwin, while her visual appearance was d",
+          "node": "Spider-Woman_(Jessica_Drew)",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman_(Jessica_Drew)",
+          "section": "Lead",
+          "excerpt": "I suddenly realized that some other company may quickly put out a book like that and claim they have the right to use the …",
+          "normalized_words": 125
+        }
+      ]
+    },
+    {
+      "id": "Spitfire_(character)::Union_Jack_(Joseph_Chapman)",
+      "source": "Spitfire_(character)",
+      "target": "Union_Jack_(Joseph_Chapman)",
+      "length": 103,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, TPB includes Captain America #253-254, 1981, 208 pages, July 2007, ISBN 0-7851-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, December 1998 - February 1999, TPB, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, TPB collects New Invaders #1-9, October 2004 - June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, TPB collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 21,
+          "start": 16151,
+          "end": 16915,
+          "before": "ume 2 (includes Invaders #10-21, November 1976 - October 1977, tpb, 240 pages, July 2008, ISBN 0-7851-3120-5)\n",
+          "after": " 0-7851-2225-7)\nSpitfire (2010) #1 (October 2010) one-shot collected in Women of Marvel (Mighty Marvel) TPB th",
+          "node": "Spitfire_(character)",
+          "name": "Spitfire",
+          "url": "https://en.wikipedia.org/wiki/Spitfire_(character)",
+          "section": "Collected editions",
+          "excerpt": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, TPB includes Captain …",
+          "normalized_words": 103
+        },
+        {
+          "text": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, tpb includes Captain America #253-254, 1981, 208 pages, July 2007, ISBN 0-7851-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, tpb collects New Invaders #1-9, October 2004 -  June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, tpb collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 20,
+          "start": 9499,
+          "end": 10264,
+          "before": "",
+          "after": " 0-7851-2225-7)\nUnion Jack: London Falling (written by Christos Gage, with pencils by Mike Perkins and inks by",
+          "node": "Union_Jack_(Joseph_Chapman)",
+          "name": "Union Jack",
+          "url": "https://en.wikipedia.org/wiki/Union_Jack_(Joseph_Chapman)",
+          "section": "Collected editions",
+          "excerpt": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, tpb includes Captain …",
+          "normalized_words": 103
+        }
+      ]
+    },
+    {
+      "id": "Cyclops_(Marvel_Comics)::Jean_Grey",
+      "source": "Cyclops_(Marvel_Comics)",
+      "target": "Jean_Grey",
+      "length": 102,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Cyclops leaves his wife and child behind to lead the reunited original X-Men, under the X-Factor name. Claremont expressed dismay that Jean's resurrection ultimately resulted in Cyclops abandoning his wife and child, tarnishing his written persona as a hero and \"decent human being\". For X-Factor, writer Bob Layton was partly inspired by the film Ghostbusters; the X-Factor team advertised themselves as mutant hunters, but worked to rehabilitate and educate the mutants they discovered. Layton left the title after five issues and was replaced by Louise Simonson, who introduced the new villain Apocalypse, first appearing in X-Factor #6 (July",
+          "paragraph": 5,
+          "start": 5928,
+          "end": 6573,
+          "before": "rred the original X-Men team. Jean Grey is revealed to remain alive, while the Phoenix only assumed her form. ",
+          "after": " 1986).\nMister Sinister, a geneticist who sometimes works with Apocalypse, first appears in Uncanny X-Men #221",
+          "node": "Cyclops_(Marvel_Comics)",
+          "name": "Cyclops",
+          "url": "https://en.wikipedia.org/wiki/Cyclops_(Marvel_Comics)",
+          "section": "Publication history",
+          "excerpt": "Cyclops leaves his wife and child behind to lead the reunited original X-Men, under the X-Factor name. Claremont expressed dismay that Jean's resurrection ultimately …",
+          "normalized_words": 102
+        },
+        {
+          "text": "Cyclops leaves his wife and child behind to lead the reunited original X-Men, under the X-Factor name. Claremont expressed dismay that Jean's resurrection ultimately resulted in Cyclops abandoning his wife and child, tarnishing his written persona as a hero and \"decent human being\".\nFor X-Factor, writer Bob Layton was partly inspired by the film Ghostbusters; the X-Factor team advertised themselves as mutant hunters, but worked to rehabilitate and educate the mutants they discovered. Layton left the title after five issues and was replaced by Louise Simonson, who introduced the new villain Apocalypse, first appearing in X-Factor #6 (July",
+          "paragraph": 9,
+          "start": 13418,
+          "end": 14063,
+          "before": "ould appear in a new series. This new series, X-Factor, launched in 1986 and starred the original X-Men team. ",
+          "after": " 1986). Soon after the beginning publication of X-Factor, Marvel also reprinted and released the original X-Me",
+          "node": "Jean_Grey",
+          "name": "Jean Grey",
+          "url": "https://en.wikipedia.org/wiki/Jean_Grey",
+          "section": "Publication history",
+          "excerpt": "Cyclops leaves his wife and child behind to lead the reunited original X-Men, under the X-Factor name. Claremont expressed dismay that Jean's resurrection ultimately …",
+          "normalized_words": 102
+        }
+      ]
+    },
+    {
+      "id": "Blue_Diamond_(character)::Jack_Frost_(Marvel_Comics)",
+      "source": "Blue_Diamond_(character)",
+      "target": "Jack_Frost_(Marvel_Comics)",
+      "length": 82,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "five stories in 1976. The team was introduced in Marvel Premiere #29 and 30 (April and May 1976), as well as an issue of The Invaders and two issues of Marvel Two-in-One. The Liberty Legion returned for another four issues of The Invaders in 1978–1979, and then the team disappeared from the canvas. Thomas said that there were plans for a Liberty Legion series, but by that point, the sales figures on the Invaders comic were dropping, and Marvel decided against launching a spin-off",
+          "paragraph": 2,
+          "start": 1654,
+          "end": 2138,
+          "before": " bulked him up to make him a little more unique for that series.\"\nThe Blue Diamond fought with the Legion for ",
+          "after": ". He returned in 1981 for a one-on-one team-up with the Thing in Marvel Two-in-One #79 (Sept 1981).\nIn the 200",
+          "node": "Blue_Diamond_(character)",
+          "name": "Blue Diamond",
+          "url": "https://en.wikipedia.org/wiki/Blue_Diamond_(character)",
+          "section": "Publication history",
+          "excerpt": "five stories in 1976. The team was introduced in Marvel Premiere #29 and 30 (April and May 1976), as well as an issue of …",
+          "normalized_words": 82
+        },
+        {
+          "text": "five stories in 1976. The team was introduced in Marvel Premiere #29 and 30 (April and May 1976), as well as an issue of The Invaders and two issues of Marvel Two-in-One. The Liberty Legion returned for another four issues of The Invaders in 1978-1979, and then the team disappeared from the canvas. Thomas said that there were plans for a Liberty Legion series, but by that point, the sales figures on the Invaders comic were dropping, and Marvel decided against launching a spin-off",
+          "paragraph": 2,
+          "start": 2936,
+          "end": 3420,
+          "before": "was vague in the original stories, so I wanted to keep it vague\", said Thomas.\nJack fought with the Legion in ",
+          "after": ".\nFrost came back for one issue in April 1991 — Captain America #384, \"Lair of the Ice Worm\" — and then went b",
+          "node": "Jack_Frost_(Marvel_Comics)",
+          "name": "Jack Frost",
+          "url": "https://en.wikipedia.org/wiki/Jack_Frost_(Marvel_Comics)",
+          "section": "Publication history",
+          "excerpt": "five stories in 1976. The team was introduced in Marvel Premiere #29 and 30 (April and May 1976), as well as an issue of …",
+          "normalized_words": 82
+        }
+      ]
+    },
+    {
+      "id": "Union_Jack_(Joseph_Chapman)::Union_Jack_(Marvel_Comics)",
+      "source": "Union_Jack_(Joseph_Chapman)",
+      "target": "Union_Jack_(Marvel_Comics)",
+      "length": 76,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, tpb collects New Invaders #1-9, October 2004 -  June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, tpb collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN 0-7851-2225-7)\nUnion Jack: London Falling (written by Christos Gage, with pencils by Mike Perkins and inks by Drew Hennessy",
+          "paragraph": 20,
+          "start": 9811,
+          "end": 10388,
+          "before": "51-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, ",
+          "after": ", 4-issue mini-series, November 2006 - February 2007, tpb, 96 pages, July 2007, ISBN 0-7851-2181-1)\nThe Union:",
+          "node": "Union_Jack_(Joseph_Chapman)",
+          "name": "Union Jack",
+          "url": "https://en.wikipedia.org/wiki/Union_Jack_(Joseph_Chapman)",
+          "section": "Collected editions",
+          "excerpt": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X) New Invaders: To End All Wars (written by Allan Jacobsen, with art …",
+          "normalized_words": 76
+        },
+        {
+          "text": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, tpb collects New Invaders #1-9, October 2004 - June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, tpb collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN 0-7851-2225-7)\nUnion Jack: London Falling (written by Christos Gage, with pencils by Mike Perkins and inks by Drew Hennessy",
+          "paragraph": 21,
+          "start": 14601,
+          "end": 15177,
+          "before": "2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, three-issue miniseries, ",
+          "after": ", four-issue miniseries, November 2006 - February 2007, tpb, 96 pages, July 2007, ISBN 0-7851-2181-1)\nAvengers",
+          "node": "Union_Jack_(Marvel_Comics)",
+          "name": "Union Jack",
+          "url": "https://en.wikipedia.org/wiki/Union_Jack_(Marvel_Comics)",
+          "section": "Collected editions",
+          "excerpt": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X) New Invaders: To End All Wars (written by Allan Jacobsen, with art …",
+          "normalized_words": 76
+        }
+      ]
+    },
+    {
+      "id": "Ghost_Rider::Ghost_Rider_(Johnny_Blaze)",
+      "source": "Ghost_Rider",
+      "target": "Ghost_Rider_(Johnny_Blaze)",
+      "length": 62,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Seven riders show their flaming heads for the first time in this story arc by writer Jason Aaron and artist Tan Eng Huat. Daniel Ketch returns with a new mission: to collect the powers of all the Ghost Riders for the angel Zadkiel to prevent the corruption of the powers with their human hosts. Zadkiel has other motives he keeps to himself",
+          "paragraph": 23,
+          "start": 14750,
+          "end": 15090,
+          "before": "The last stand of the Spirits of Vengeance\n",
+          "after": ", for which he needs the powers of the riders to tear down the walls of New Jerusalem and wage war on the heav",
+          "node": "Ghost_Rider",
+          "name": "Ghost Rider",
+          "url": "https://en.wikipedia.org/wiki/Ghost_Rider",
+          "section": "Powers and abilities",
+          "excerpt": "Seven riders show their flaming heads for the first time in this story arc by writer Jason Aaron and artist Tan Eng Huat. Daniel …",
+          "normalized_words": 62
+        },
+        {
+          "text": "Seven Riders show their flaming heads for the first time in this story arc by writer Jason Aaron and artist Tan Eng Huat. Daniel Ketch returns with a new mission: to collect the powers of all the Ghost Riders for the angel Zadkiel to prevent the corruption of the powers with their human hosts. Zadkiel has other motives he keeps to himself",
+          "paragraph": 8,
+          "start": 19616,
+          "end": 19956,
+          "before": "ow possesses the full soul of the devil but is in no condition to use that power – and send him back to Hell.\n",
+          "after": ", one of which he needs the powers of the Riders for: to tear down the walls of New Jerusalem and wage war on ",
+          "node": "Ghost_Rider_(Johnny_Blaze)",
+          "name": "Ghost Rider",
+          "url": "https://en.wikipedia.org/wiki/Ghost_Rider_(Johnny_Blaze)",
+          "section": "Fictional character biography",
+          "excerpt": "Seven Riders show their flaming heads for the first time in this story arc by writer Jason Aaron and artist Tan Eng Huat. Daniel …",
+          "normalized_words": 62
+        }
+      ]
+    },
+    {
+      "id": "Spitfire_(character)::Union_Jack_(Marvel_Comics)",
+      "source": "Spitfire_(character)",
+      "target": "Union_Jack_(Marvel_Comics)",
+      "length": 58,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "December 1998 - February 1999, TPB, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, TPB collects New Invaders #1-9, October 2004 - June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, TPB collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 21,
+          "start": 16463,
+          "end": 16915,
+          "before": "51-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, ",
+          "after": " 0-7851-2225-7)\nSpitfire (2010) #1 (October 2010) one-shot collected in Women of Marvel (Mighty Marvel) TPB th",
+          "node": "Spitfire_(character)",
+          "name": "Spitfire",
+          "url": "https://en.wikipedia.org/wiki/Spitfire_(character)",
+          "section": "Collected editions",
+          "excerpt": "December 1998 - February 1999, TPB, 96 pages, April 2002, ISBN 0-7851-0934-X) New Invaders: To End All Wars (written by Allan Jacobsen, with art …",
+          "normalized_words": 58
+        },
+        {
+          "text": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, tpb collects New Invaders #1-9, October 2004 - June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, tpb collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 21,
+          "start": 14601,
+          "end": 15053,
+          "before": "2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, three-issue miniseries, ",
+          "after": " 0-7851-2225-7)\nUnion Jack: London Falling (written by Christos Gage, with pencils by Mike Perkins and inks by",
+          "node": "Union_Jack_(Marvel_Comics)",
+          "name": "Union Jack",
+          "url": "https://en.wikipedia.org/wiki/Union_Jack_(Marvel_Comics)",
+          "section": "Collected editions",
+          "excerpt": "December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X) New Invaders: To End All Wars (written by Allan Jacobsen, with art …",
+          "normalized_words": 58
+        }
+      ]
+    },
+    {
+      "id": "Eddie_Brock::Venom_(character)",
+      "source": "Eddie_Brock",
+      "target": "Venom_(character)",
+      "length": 57,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "explaining that he ended up not using the idea on that title, but that Roger Stern later asked him if he could use the idea for Spider-Man's alien costume. Stern in turn plotted the issue in which the costume first appeared but then left the title. It was writer Tom DeFalco and artist Ron Frenz who",
+          "paragraph": 3,
+          "start": 6420,
+          "end": 6719,
+          "before": "xplain how that character's costume was constantly being torn and then apparently repaired by the next issue, ",
+          "after": " had established that the costume was a sentient alien being, and that it was vulnerable to high sonic energy ",
+          "node": "Eddie_Brock",
+          "name": "Eddie Brock",
+          "url": "https://en.wikipedia.org/wiki/Eddie_Brock",
+          "section": "Publication history",
+          "excerpt": "explaining that he ended up not using the idea on that title, but that Roger Stern later asked him if he could use the …",
+          "normalized_words": 57
+        },
+        {
+          "text": "explaining that he ended up not using the idea on that title, but that Roger Stern later asked him if he could use the idea for Spider-Man's alien costume. Stern in turn plotted the issue in which the costume first appeared but then left the title. It was writer Tom DeFalco and artist Ron Frenz who",
+          "paragraph": 2,
+          "start": 4220,
+          "end": 4519,
+          "before": "that character's costume was constantly being torn and then apparently repaired by the next issue. Byrne says ",
+          "after": " established that the costume was a sentient alien being that was vulnerable to high sonic energy during their",
+          "node": "Venom_(character)",
+          "name": "Venom",
+          "url": "https://en.wikipedia.org/wiki/Venom_(character)",
+          "section": "Lead",
+          "excerpt": "explaining that he ended up not using the idea on that title, but that Roger Stern later asked him if he could use the …",
+          "normalized_words": 57
+        }
+      ]
+    },
+    {
+      "id": "Bucky_(Marvel_Comics)::Rikki_Barnes",
+      "source": "Bucky_(Marvel_Comics)",
+      "target": "Rikki_Barnes",
+      "length": 49,
+      "category": "Powers / equipment",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "As Bucky she wore a bulletproof costume modeled after the original Bucky. She also made use of a vibranium-photonic energy shield along with vibranium soled boots that allowed her to run up walls, move silently, leap greater distances and land from great heights. She also wielded a pistol",
+          "paragraph": 18,
+          "start": 13079,
+          "end": 13368,
+          "before": "gifted fighter, marksman and acrobat with the familiarity with technological devices of a S.H.I.E.L.D. agent. ",
+          "after": ".",
+          "node": "Bucky_(Marvel_Comics)",
+          "name": "Bucky",
+          "url": "https://en.wikipedia.org/wiki/Bucky_(Marvel_Comics)",
+          "section": "Powers and abilities",
+          "excerpt": "As Bucky she wore a bulletproof costume modeled after the original Bucky. She also made use of a vibranium-photonic energy shield along with vibranium …",
+          "normalized_words": 49
+        },
+        {
+          "text": "As Bucky she wore a bulletproof costume modeled after the original Bucky. She also made use of a vibranium-photonic energy shield along with vibranium soled boots that allowed her to run up walls, move silently, leap greater distances and land from great heights. She also wielded a pistol",
+          "paragraph": 12,
+          "start": 6324,
+          "end": 6613,
+          "before": "Weapons and equipment\n",
+          "after": ".\nAs Nomad, she made use of much of the same equipment with a new costume based on the Nomad identity once wor",
+          "node": "Rikki_Barnes",
+          "name": "Rikki Barnes",
+          "url": "https://en.wikipedia.org/wiki/Rikki_Barnes",
+          "section": "Powers and abilities",
+          "excerpt": "As Bucky she wore a bulletproof costume modeled after the original Bucky. She also made use of a vibranium-photonic energy shield along with vibranium …",
+          "normalized_words": 49
+        }
+      ]
+    },
+    {
+      "id": "Ch'od::Raza_Longknife",
+      "source": "Ch'od",
+      "target": "Raza_Longknife",
+      "length": 48,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Publication history\nDave Cockrum created the Starjammers with the intent of having them star in their own series. However, when he submitted the concept for Marvel's two try-out series, Marvel Spotlight and Marvel Premiere, he was repeatedly informed that these series were booked for two years solid",
+          "paragraph": 2,
+          "start": 168,
+          "end": 468,
+          "before": "",
+          "after": ". Cockrum showed the Starjammers to X-Men writer Chris Claremont and convinced him to use the characters for t",
+          "node": "Ch'od",
+          "name": "Ch'od",
+          "url": "https://en.wikipedia.org/wiki/Ch%27od",
+          "section": "Publication history",
+          "excerpt": "Publication history Dave Cockrum created the Starjammers with the intent of having them star in their own series. However, when he submitted the concept …",
+          "normalized_words": 48
+        },
+        {
+          "text": "Publication history\nDave Cockrum created the Starjammers with the intent of having them star in their own series. However, when he submitted the concept for Marvel's two try-out series, Marvel Spotlight and Marvel Premiere, he was repeatedly informed that these series were booked for two years solid",
+          "paragraph": 2,
+          "start": 396,
+          "end": 696,
+          "before": "",
+          "after": ". Running out of patience, Cockrum showed the Starjammers to X-Men writer Chris Claremont, and convinced him t",
+          "node": "Raza_Longknife",
+          "name": "Raza Longknife",
+          "url": "https://en.wikipedia.org/wiki/Raza_Longknife",
+          "section": "Publication history",
+          "excerpt": "Publication history Dave Cockrum created the Starjammers with the intent of having them star in their own series. However, when he submitted the concept …",
+          "normalized_words": 48
+        }
+      ]
+    },
+    {
+      "id": "Mayday_Parker::Spider-Girl",
+      "source": "Mayday_Parker",
+      "target": "Spider-Girl",
+      "length": 48,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "On November 8, 2008, Marvel EIC Joe Quesada confirmed that Spider-Girl would become a feature in the monthly anthology magazine Amazing Spider-Man Family. The series would replace the feature Mr. and Mrs. Spider-Man, written by DeFalco, which served as a prequel series to the Spider-Girl universe",
+          "paragraph": 3,
+          "start": 2403,
+          "end": 2700,
+          "before": "for the character, she could possibly be given a sixteen-page back-up strip in The Amazing Spider-Man Family. ",
+          "after": ".\nOn March 18, 2009, Marvel announced that Spider-Girl would continue publication as The Spectacular Spider-Gi",
+          "node": "Mayday_Parker",
+          "name": "Mayday Parker",
+          "url": "https://en.wikipedia.org/wiki/Mayday_Parker",
+          "section": "Publication history",
+          "excerpt": "On November 8, 2008, Marvel EIC Joe Quesada confirmed that Spider-Girl would become a feature in the monthly anthology magazine Amazing Spider-Man Family. The …",
+          "normalized_words": 48
+        },
+        {
+          "text": "On November 8, 2008, Marvel EIC Joe Quesada confirmed that Spider-Girl would become a feature in the monthly anthology magazine Amazing Spider-Man Family. The series would replace the feature \"Mr. and Mrs. Spider-Man\", written by DeFalco, which served as a prequel series to the Spider-Girl universe",
+          "paragraph": 2,
+          "start": 1037,
+          "end": 1336,
+          "before": "re universe were launched under the MC2 imprint with The Amazing Spider-Girl and The Spectacular Spider-Girl. ",
+          "after": ". The title would continue to be simultaneously published in paper form within Amazing Spider-Man Family. Amaz",
+          "node": "Spider-Girl",
+          "name": "Spider-Girl",
+          "url": "https://en.wikipedia.org/wiki/Spider-Girl",
+          "section": "Publication history",
+          "excerpt": "On November 8, 2008, Marvel EIC Joe Quesada confirmed that Spider-Girl would become a feature in the monthly anthology magazine Amazing Spider-Man Family. The …",
+          "normalized_words": 48
+        }
+      ]
+    },
+    {
+      "id": "Mockingbird_(Marvel_Comics)::Quicksilver_(Marvel_Comics)",
+      "source": "Mockingbird_(Marvel_Comics)",
+      "target": "Quicksilver_(Marvel_Comics)",
+      "length": 39,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "fight with the Cotati near Navojoa. When Quicksilver is hit by special spheres fired by the Cotati magicians, Mockingbird and Wonder Man come to his aid and help the Kree and the Skrull turn the tide against the Cotati",
+          "paragraph": 17,
+          "start": 29503,
+          "end": 29721,
+          "before": ".\nDuring the \"Empyre\" storyline, Quicksilver, Mockingbird, and Wonder Man deal with the Kree and the Skrulls' ",
+          "after": ".",
+          "node": "Mockingbird_(Marvel_Comics)",
+          "name": "Mockingbird",
+          "url": "https://en.wikipedia.org/wiki/Mockingbird_(Marvel_Comics)",
+          "section": "Fictional character biography",
+          "excerpt": "fight with the Cotati near Navojoa. When Quicksilver is hit by special spheres fired by the Cotati magicians, Mockingbird and Wonder Man come to …",
+          "normalized_words": 39
+        },
+        {
+          "text": "fight with the Cotati near Navojoa. When Quicksilver is hit by special spheres fired by the Cotati magicians, Mockingbird and Wonder Man come to his aid and help the Kree and the Skrull turn the tide against the Cotati",
+          "paragraph": 8,
+          "start": 20934,
+          "end": 21152,
+          "before": "eturning to the team. In Empyre, Quicksilver, Mockingbird, and Wonder Man deal with the Kree and the Skrull's ",
+          "after": ". Quicksilver recovers his stamina and uses his superspeed to break up the fight and dispose of the Kree and S",
+          "node": "Quicksilver_(Marvel_Comics)",
+          "name": "Quicksilver",
+          "url": "https://en.wikipedia.org/wiki/Quicksilver_(Marvel_Comics)",
+          "section": "Fictional character biography",
+          "excerpt": "fight with the Cotati near Navojoa. When Quicksilver is hit by special spheres fired by the Cotati magicians, Mockingbird and Wonder Man come to …",
+          "normalized_words": 39
+        }
+      ]
+    },
+    {
+      "id": "Rocket_Raccoon::Star-Lord",
+      "source": "Rocket_Raccoon",
+      "target": "Star-Lord",
+      "length": 38,
+      "category": "Screen adaptations",
+      "category_note": "Both leads enumerate the same cinematic appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "in the Marvel Cinematic Universe films Guardians of the Galaxy (2014), Guardians of the Galaxy Vol. 2 (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Thor: Love and Thunder, The Guardians of the Galaxy Holiday Special (both 2022), and Guardians of the Galaxy Vol",
+          "paragraph": 1,
+          "start": 704,
+          "end": 983,
+          "before": "ember of that team, including animated television series, toys, and video games. Bradley Cooper voices Rocket ",
+          "after": ". 3 (2023).",
+          "node": "Rocket_Raccoon",
+          "name": "Rocket Raccoon",
+          "url": "https://en.wikipedia.org/wiki/Rocket_Raccoon",
+          "section": "Lead",
+          "excerpt": "in the Marvel Cinematic Universe films Guardians of the Galaxy (2014), Guardians of the Galaxy Vol. 2 (2017), Avengers: Infinity War (2018), Avengers: Endgame …",
+          "normalized_words": 38
+        },
+        {
+          "text": "in the Marvel Cinematic Universe films Guardians of the Galaxy (2014), Guardians of the Galaxy Vol. 2 (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Thor: Love and Thunder, The Guardians of the Galaxy Holiday Special (both 2022), and Guardians of the Galaxy Vol",
+          "paragraph": 1,
+          "start": 944,
+          "end": 1223,
+          "before": "merchandise, including animated television series, toys and trading cards.\nChris Pratt portrays the character ",
+          "after": ". 3 (2023). Wyatt Oleff portrays a young Peter Quill in the first two Guardians of the Galaxy films. Quill als",
+          "node": "Star-Lord",
+          "name": "Star-Lord",
+          "url": "https://en.wikipedia.org/wiki/Star-Lord",
+          "section": "Lead",
+          "excerpt": "in the Marvel Cinematic Universe films Guardians of the Galaxy (2014), Guardians of the Galaxy Vol. 2 (2017), Avengers: Infinity War (2018), Avengers: Endgame …",
+          "normalized_words": 38
+        }
+      ]
+    },
+    {
+      "id": "Backhand_(character)::Blackthorn_(character)",
+      "source": "Backhand_(character)",
+      "target": "Blackthorn_(character)",
+      "length": 35,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 26,
+          "end": 242,
+          "before": "Backhand (Greg Mattingly) ",
+          "after": ".",
+          "node": "Backhand_(character)",
+          "name": "Backhand",
+          "url": "https://en.wikipedia.org/wiki/Backhand_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. …",
+          "normalized_words": 35
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 244,
+          "before": "Blackthorn (Aline Pagrovna) ",
+          "after": ".",
+          "node": "Blackthorn_(character)",
+          "name": "Blackthorn",
+          "url": "https://en.wikipedia.org/wiki/Blackthorn_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. …",
+          "normalized_words": 35
+        }
+      ]
+    },
+    {
+      "id": "Black_Panther_(character)::Storm_(Marvel_Comics)",
+      "source": "Black_Panther_(character)",
+      "target": "Storm_(Marvel_Comics)",
+      "length": 35,
+      "category": "Reception",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "and she appeared as a prominent supporting character in many subsequent storylines. Readers and critics compared the wedding to the relationship of Jay-Z and Beyoncé, although they did not marry until two years later",
+          "paragraph": 11,
+          "start": 17513,
+          "end": 17729,
+          "before": " world, such as Ice Cube and Ziggy Marley.\nIn 2006, during Hudlin's run, T'Challa marries Storm of the X-Men, ",
+          "after": ". This wedding takes place during Marvel's Civil War event, and presented a temporary truce in the conflict of",
+          "node": "Black_Panther_(character)",
+          "name": "Black Panther",
+          "url": "https://en.wikipedia.org/wiki/Black_Panther_(character)",
+          "section": "Publication history",
+          "excerpt": "and she appeared as a prominent supporting character in many subsequent storylines. Readers and critics compared the wedding to the relationship of Jay-Z and …",
+          "normalized_words": 35
+        },
+        {
+          "text": "and she appeared as a prominent supporting character in many subsequent storylines. Readers and critics compared the wedding to the relationship of Jay-Z and Beyoncé, although they did not marry until two years later",
+          "paragraph": 25,
+          "start": 50497,
+          "end": 50713,
+          "before": "th Black Panther. In 2006, during Reginald Hudlin's authorship of Black Panther, Storm marries Black Panther, ",
+          "after": ". The marriage was later annulled during the events of Avengers vs. X-Men. However, Storm has resumed the rela",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Powers and abilities",
+          "excerpt": "and she appeared as a prominent supporting character in many subsequent storylines. Readers and critics compared the wedding to the relationship of Jay-Z and …",
+          "normalized_words": 35
+        }
+      ]
+    },
+    {
+      "id": "Black_Rider_(character)::Two-Gun_Kid",
+      "source": "Black_Rider_(character)",
+      "target": "Two-Gun_Kid",
+      "length": 35,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "March 2012), by writer Andy Diggle and artist Davide Gianfelice, and also starring the extant female mercenary Tarantula and new contemporary versions of the Marvel Old West heroes Tex Dawson a.k.a. the Western Kid",
+          "paragraph": 5,
+          "start": 5964,
+          "end": 6178,
+          "before": "n-day version of the character stars in the five-issue ensemble miniseries Six Guns (#1-4 cover-dated January–",
+          "after": "; Matt Slade; and the Two-Gun Kid.",
+          "node": "Black_Rider_(character)",
+          "name": "Black Rider",
+          "url": "https://en.wikipedia.org/wiki/Black_Rider_(character)",
+          "section": "Other versions",
+          "excerpt": "March 2012), by writer Andy Diggle and artist Davide Gianfelice, and also starring the extant female mercenary Tarantula and new contemporary versions of the …",
+          "normalized_words": 35
+        },
+        {
+          "text": "March 2012), by writer Andy Diggle and artist Davide Gianfelice, and also starring the extant female mercenary Tarantula and new contemporary versions of the Marvel Old West heroes Tex Dawson a.k.a. the Western Kid",
+          "paragraph": 8,
+          "start": 7875,
+          "end": 8089,
+          "before": "ion of the character, a teenager, stars in the five-issue ensemble miniseries Six Guns (#1-4 cover-dated Jan.-",
+          "after": "; the Black Rider; and Matt Slade.",
+          "node": "Two-Gun_Kid",
+          "name": "Two-Gun Kid",
+          "url": "https://en.wikipedia.org/wiki/Two-Gun_Kid",
+          "section": "Other versions",
+          "excerpt": "March 2012), by writer Andy Diggle and artist Davide Gianfelice, and also starring the extant female mercenary Tarantula and new contemporary versions of the …",
+          "normalized_words": 35
+        }
+      ]
+    },
+    {
+      "id": "Rachel_Summers::Storm_(Marvel_Comics)",
+      "source": "Rachel_Summers",
+      "target": "Storm_(Marvel_Comics)",
+      "length": 34,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 16,
+          "start": 9141,
+          "end": 9316,
+          "before": "Dawn of X\n",
+          "after": ". Rachel spends some time with her family on the Summer House, the new residence of the Summers Family, locate",
+          "node": "Rachel_Summers",
+          "name": "Rachel Summers",
+          "url": "https://en.wikipedia.org/wiki/Rachel_Summers",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live …",
+          "normalized_words": 34
+        },
+        {
+          "text": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 15,
+          "start": 38161,
+          "end": 38336,
+          "before": "uring the same period, she also rekindles her friendship with a resurrected Jean Grey and joins her Red team.\n",
+          "after": ". Storm takes part in a quasi-religious ceremony to welcome their newly resurrected comrades, after an attack ",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Rachel_Summers::Wild_Child_(character)",
+      "source": "Rachel_Summers",
+      "target": "Wild_Child_(character)",
+      "length": 34,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 16,
+          "start": 9141,
+          "end": 9316,
+          "before": "Dawn of X\n",
+          "after": ". Rachel spends some time with her family on the Summer House, the new residence of the Summers Family, locate",
+          "node": "Rachel_Summers",
+          "name": "Rachel Summers",
+          "url": "https://en.wikipedia.org/wiki/Rachel_Summers",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live …",
+          "normalized_words": 34
+        },
+        {
+          "text": "In the new status quo for mutants post-House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 3,
+          "start": 3915,
+          "end": 4090,
+          "before": " that Wild Child regained his powers and his previously erased memories, along with his capability of speech.\n",
+          "after": ". Wild Child joins a loose group of outcast mutants, operating under Mister Sinister: the Hellions, which also",
+          "node": "Wild_Child_(character)",
+          "name": "Wild Child",
+          "url": "https://en.wikipedia.org/wiki/Wild_Child_(character)",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post-House of X and Powers of X, Professor X and Magneto invite all mutants to live on …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Scaredycat",
+      "source": "Radian_(Morituri)",
+      "target": "Scaredycat",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Scatterbrain_(Morituri)",
+      "source": "Radian_(Morituri)",
+      "target": "Scatterbrain_(Morituri)",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 236,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ".",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Snapdragon_(Morituri)",
+      "source": "Radian_(Morituri)",
+      "target": "Snapdragon_(Morituri)",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 33,
+          "end": 241,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ".",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Toxyn",
+      "source": "Radian_(Morituri)",
+      "target": "Toxyn",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 24,
+          "end": 232,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ".",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Vyking",
+      "source": "Radian_(Morituri)",
+      "target": "Vyking",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 29,
+          "end": 237,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ".",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scaredycat::Scatterbrain_(Morituri)",
+      "source": "Scaredycat",
+      "target": "Scatterbrain_(Morituri)",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 236,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ".",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scaredycat::Snapdragon_(Morituri)",
+      "source": "Scaredycat",
+      "target": "Snapdragon_(Morituri)",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 33,
+          "end": 241,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ".",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scaredycat::Toxyn",
+      "source": "Scaredycat",
+      "target": "Toxyn",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 24,
+          "end": 232,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ".",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scaredycat::Vyking",
+      "source": "Scaredycat",
+      "target": "Vyking",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 29,
+          "end": 237,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ".",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scatterbrain_(Morituri)::Snapdragon_(Morituri)",
+      "source": "Scatterbrain_(Morituri)",
+      "target": "Snapdragon_(Morituri)",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 236,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ".",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 33,
+          "end": 241,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ".",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scatterbrain_(Morituri)::Toxyn",
+      "source": "Scatterbrain_(Morituri)",
+      "target": "Toxyn",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 236,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ".",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 24,
+          "end": 232,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ".",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Scatterbrain_(Morituri)::Vyking",
+      "source": "Scatterbrain_(Morituri)",
+      "target": "Vyking",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 28,
+          "end": 236,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ".",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 29,
+          "end": 237,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ".",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Snapdragon_(Morituri)::Toxyn",
+      "source": "Snapdragon_(Morituri)",
+      "target": "Toxyn",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 33,
+          "end": 241,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ".",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 24,
+          "end": 232,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ".",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Snapdragon_(Morituri)::Vyking",
+      "source": "Snapdragon_(Morituri)",
+      "target": "Vyking",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 33,
+          "end": 241,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ".",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 29,
+          "end": 237,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ".",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Storm_(Marvel_Comics)::Wild_Child_(character)",
+      "source": "Storm_(Marvel_Comics)",
+      "target": "Wild_Child_(character)",
+      "length": 34,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 15,
+          "start": 38161,
+          "end": 38336,
+          "before": "uring the same period, she also rekindles her friendship with a resurrected Jean Grey and joins her Red team.\n",
+          "after": ". Storm takes part in a quasi-religious ceremony to welcome their newly resurrected comrades, after an attack ",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post House of X and Powers of X, Professor X and Magneto invite all mutants to live …",
+          "normalized_words": 34
+        },
+        {
+          "text": "In the new status quo for mutants post-House of X and Powers of X, Professor X and Magneto invite all mutants to live on Krakoa and welcome even former enemies into their fold",
+          "paragraph": 3,
+          "start": 3915,
+          "end": 4090,
+          "before": " that Wild Child regained his powers and his previously erased memories, along with his capability of speech.\n",
+          "after": ". Wild Child joins a loose group of outcast mutants, operating under Mister Sinister: the Hellions, which also",
+          "node": "Wild_Child_(character)",
+          "name": "Wild Child",
+          "url": "https://en.wikipedia.org/wiki/Wild_Child_(character)",
+          "section": "Fictional character biography",
+          "excerpt": "In the new status quo for mutants post-House of X and Powers of X, Professor X and Magneto invite all mutants to live on …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Toxyn::Vyking",
+      "source": "Toxyn",
+      "target": "Vyking",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 24,
+          "end": 232,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ".",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 29,
+          "end": 237,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ".",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    },
+    {
+      "id": "Battlestar_(character)::U.S._Agent",
+      "source": "Battlestar_(character)",
+      "target": "U.S._Agent",
+      "length": 29,
+      "category": "Powers / equipment",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "has superhuman strength (capable of lifting 10 tons under maximum exertion), agility, reflexes and endurance. His speed, dexterity, coordination, and balance are of the order of a superior Olympic athlete",
+          "paragraph": 5,
+          "start": 5572,
+          "end": 5776,
+          "before": "ntal mutagenic augmentation process conducted on him by Dr. Karl Malus on behalf of the Power Broker, Hoskins ",
+          "after": ". Aside from the above advantages, Battlestar is an exceptional hand-to-hand combatant and highly trained in g",
+          "node": "Battlestar_(character)",
+          "name": "Battlestar",
+          "url": "https://en.wikipedia.org/wiki/Battlestar_(character)",
+          "section": "Powers and abilities",
+          "excerpt": "has superhuman strength (capable of lifting 10 tons under maximum exertion), agility, reflexes and endurance. His speed, dexterity, coordination, and balance are of the …",
+          "normalized_words": 29
+        },
+        {
+          "text": "has superhuman strength (capable of lifting 10 tons under maximum exertion), agility, reflexes and endurance. His speed, dexterity, coordination, and balance are of the order of a superior Olympic athlete",
+          "paragraph": 29,
+          "start": 47562,
+          "end": 47766,
+          "before": " mutagenic augmentation process conducted on him by Dr. Karl Malus on behalf of the Power Broker, John Walker ",
+          "after": ".\nU.S. Agent is an exceptional hand-to-hand combatant and highly trained in gymnastics and acrobatics, having ",
+          "node": "U.S._Agent",
+          "name": "U.S. Agent",
+          "url": "https://en.wikipedia.org/wiki/U.S._Agent",
+          "section": "Powers and abilities",
+          "excerpt": "has superhuman strength (capable of lifting 10 tons under maximum exertion), agility, reflexes and endurance. His speed, dexterity, coordination, and balance are of the …",
+          "normalized_words": 29
+        }
+      ]
+    },
+    {
+      "id": "Cyclops_(Marvel_Comics)::Storm_(Marvel_Comics)",
+      "source": "Cyclops_(Marvel_Comics)",
+      "target": "Storm_(Marvel_Comics)",
+      "length": 28,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "ISBN 978-1-394-36274-5.\nCebulski, C.B., ed. (2024). Marvel Encyclopedia: New Edition. DK. ISBN 978-0-5938-4611-7.\nDeman, J. Andrew (2023). The Claremont Run: Subverting Gender in the X-Men. University of Texas Press. ISBN",
+          "paragraph": 26,
+          "start": 29855,
+          "end": 30076,
+          "before": "Bibliography\nBrownfield, Troy (2025). X-Men for Dummies. Marvel. ",
+          "after": " 978-1-4773-3075-3.\nRidout, Cefn, ed. (2022). Marvel Year by Year: A Visual History: New Edition. DK. ISBN 978",
+          "node": "Cyclops_(Marvel_Comics)",
+          "name": "Cyclops",
+          "url": "https://en.wikipedia.org/wiki/Cyclops_(Marvel_Comics)",
+          "section": "Bibliography",
+          "excerpt": "ISBN 978-1-394-36274-5. Cebulski, C.B., ed. (2024). Marvel Encyclopedia: New Edition. DK. ISBN 978-0-5938-4611-7. Deman, J. Andrew (2023). The Claremont Run: Subverting Gender in the …",
+          "normalized_words": 28
+        },
+        {
+          "text": "ISBN 978-1-4773-2535-3.\nCebulski, C.B., ed (2024). Marvel Encyclopedia: New Edition. DK. ISBN 978-0-5938-4611-7.\nDeman, J. Andrew (2023). The Claremont Run: Subverting Gender in the X-Men. University of Texas Press. ISBN",
+          "paragraph": 32,
+          "start": 58065,
+          "end": 58285,
+          "before": "Bibliography\nBukatman, Scott (2022). Black Panther. University of Texas Press. ",
+          "after": " 978-1-4773-3075-3.\nSanderson, Peter (2006). X-Men: The Ultimate Guide. Third Edition. DK. ISBN 978-0-7566-200",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Bibliography",
+          "excerpt": "ISBN 978-1-4773-2535-3. Cebulski, C.B., ed (2024). Marvel Encyclopedia: New Edition. DK. ISBN 978-0-5938-4611-7. Deman, J. Andrew (2023). The Claremont Run: Subverting Gender in the …",
+          "normalized_words": 28
+        }
+      ]
+    },
+    {
+      "id": "Living_Lightning::Red_Wolf_(comics)",
+      "source": "Living_Lightning",
+      "target": "Red_Wolf_(comics)",
+      "length": 27,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "Yost chose the Texas team the Rangers to come into conflict with Houston's new superhero Scarlet Spider in the story \"The Second Master\" in Scarlet Spider #7–9. In",
+          "paragraph": 5,
+          "start": 5394,
+          "end": 5557,
+          "before": "ne. It is published by Panini Comics and reprints Marvel Comics from the United States.\nIn 2012, writer Chris ",
+          "after": " an interview with Comic Book Resources, at a question about the antagonists in the story, Chris Yost answered",
+          "node": "Living_Lightning",
+          "name": "Living Lightning",
+          "url": "https://en.wikipedia.org/wiki/Living_Lightning",
+          "section": "Publication history",
+          "excerpt": "Yost chose the Texas team the Rangers to come into conflict with Houston's new superhero Scarlet Spider in the story \"The Second Master\" in …",
+          "normalized_words": 27
+        },
+        {
+          "text": "Yost chose the Texas team the Rangers to come into conflict with Houston's new superhero Scarlet Spider in the story \"The Second Master\" in Scarlet Spider #7-9.\nIn",
+          "paragraph": 2,
+          "start": 4498,
+          "end": 4661,
+          "before": " New World Avengers with Sasquatch, Red Wolf and an Aztec Ghost Rider.\nThe following year, writer Christopher ",
+          "after": " 2015, a Red Wolf from an alternate universe of Earth-51920 appears in the series 1872. In this universe, the ",
+          "node": "Red_Wolf_(comics)",
+          "name": "Red Wolf",
+          "url": "https://en.wikipedia.org/wiki/Red_Wolf_(comics)",
+          "section": "Publication history",
+          "excerpt": "Yost chose the Texas team the Rangers to come into conflict with Houston's new superhero Scarlet Spider in the story \"The Second Master\" in …",
+          "normalized_words": 27
+        }
+      ]
+    },
+    {
+      "id": "Happy_Sam_Sawyer::Scarlet_Witch",
+      "source": "Happy_Sam_Sawyer",
+      "target": "Scarlet_Witch",
+      "length": 26,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a character appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 14,
+          "end": 172,
+          "before": "Samuel Sawyer ",
+          "after": " Sgt. Fury and his Howling Commandos #1 (May 1963). Sawyer, also known as \"Happy Sam,\" served as the commandin",
+          "node": "Happy_Sam_Sawyer",
+          "name": "Happy Sam Sawyer",
+          "url": "https://en.wikipedia.org/wiki/Happy_Sam_Sawyer",
+          "section": "Lead",
+          "excerpt": "is a character appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first …",
+          "normalized_words": 26
+        },
+        {
+          "text": "is a character appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 38,
+          "end": 196,
+          "before": "Scarlet Witch (Wanda Django Maximoff) ",
+          "after": " The X-Men #4 (March 1964), in the Silver Age of Comic Books. Initially depicted as a mutant with the ability ",
+          "node": "Scarlet_Witch",
+          "name": "Scarlet Witch",
+          "url": "https://en.wikipedia.org/wiki/Scarlet_Witch",
+          "section": "Lead",
+          "excerpt": "is a character appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first …",
+          "normalized_words": 26
+        }
+      ]
+    },
+    {
+      "id": "Black_Cat_(Marvel_Comics)::Spider-Girl",
+      "source": "Black_Cat_(Marvel_Comics)",
+      "target": "Spider-Girl",
+      "length": 25,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "who inherited her father's spider-powers and her mother's white hair (cut short), helping the Next Avengers survive Ultron's rule along with Iron Man and",
+          "paragraph": 36,
+          "start": 36607,
+          "end": 36760,
+          "before": "version is Spider-Man's primary love interest, and the mother of their daughter Felicity Hardy / Spider-Girl, ",
+          "after": " Maestro after her parents' deaths, across the split timelines Earth-10943 and Earth-10071.",
+          "node": "Black_Cat_(Marvel_Comics)",
+          "name": "Black Cat",
+          "url": "https://en.wikipedia.org/wiki/Black_Cat_(Marvel_Comics)",
+          "section": "MC2",
+          "excerpt": "who inherited her father's spider-powers and her mother's white hair (cut short), helping the Next Avengers survive Ultron's rule along with Iron Man and",
+          "normalized_words": 25
+        },
+        {
+          "text": "who inherited her father's spider-powers and her mother's white hair (cut short), helping the Next Avengers survive Ultron's rule along with Iron Man and",
+          "paragraph": 23,
+          "start": 9905,
+          "end": 10058,
+          "before": "ngers: Heroes of Tomorrow continuity, the young adult daughter of Peter Parker and Felicia Hardy / Black Cat, ",
+          "after": " the Maestro after her parents' deaths.",
+          "node": "Spider-Girl",
+          "name": "Spider-Girl",
+          "url": "https://en.wikipedia.org/wiki/Spider-Girl",
+          "section": "Other versions",
+          "excerpt": "who inherited her father's spider-powers and her mother's white hair (cut short), helping the Next Avengers survive Ultron's rule along with Iron Man and",
+          "normalized_words": 25
+        }
+      ]
+    },
+    {
+      "id": "Hulk::Scarlet_Witch",
+      "source": "Hulk",
+      "target": "Scarlet_Witch",
+      "length": 24,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in the",
+          "paragraph": 1,
+          "start": 24,
+          "end": 171,
+          "before": "The Hulk is a superhero ",
+          "after": " debut issue of The Incredible Hulk (May 1962). In his comic book appearances, the character, who has dissocia",
+          "node": "Hulk",
+          "name": "Hulk",
+          "url": "https://en.wikipedia.org/wiki/Hulk",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in the",
+          "normalized_words": 24
+        },
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in The",
+          "paragraph": 1,
+          "start": 53,
+          "end": 200,
+          "before": "Scarlet Witch (Wanda Django Maximoff) is a character ",
+          "after": " X-Men #4 (March 1964), in the Silver Age of Comic Books. Initially depicted as a mutant with the ability to m",
+          "node": "Scarlet_Witch",
+          "name": "Scarlet Witch",
+          "url": "https://en.wikipedia.org/wiki/Scarlet_Witch",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in The",
+          "normalized_words": 24
+        }
+      ]
+    },
+    {
+      "id": "Black_Bolt::She-Hulk",
+      "source": "Black_Bolt",
+      "target": "She-Hulk",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "original introduction in comics, the character has been featured in various other Marvel-licensed products, including video games, animated television series, and merchandise",
+          "paragraph": 1,
+          "start": 935,
+          "end": 1109,
+          "before": "okesperson.\nBlack Bolt has been described as one of Marvel's most notable and powerful male heroes. Since his ",
+          "after": ". In the Marvel Cinematic Universe, different versions of Black Bolt were portrayed by Anson Mount in the Marv",
+          "node": "Black_Bolt",
+          "name": "Black Bolt",
+          "url": "https://en.wikipedia.org/wiki/Black_Bolt",
+          "section": "Lead",
+          "excerpt": "original introduction in comics, the character has been featured in various other Marvel-licensed products, including video games, animated television series, and merchandise",
+          "normalized_words": 23
+        },
+        {
+          "text": "original introduction in comics, the character has been featured in various other Marvel-licensed products, including video games, animated television series, and merchandise",
+          "paragraph": 1,
+          "start": 1569,
+          "end": 1743,
+          "before": "uperhumans.\nShe-Hulk has been described as one of Marvel's most notable and powerful female heroes. Since her ",
+          "after": ". Walters made her live-action debut in the Marvel Cinematic Universe (MCU) with the Disney+ original series S",
+          "node": "She-Hulk",
+          "name": "She-Hulk",
+          "url": "https://en.wikipedia.org/wiki/She-Hulk",
+          "section": "Lead",
+          "excerpt": "original introduction in comics, the character has been featured in various other Marvel-licensed products, including video games, animated television series, and merchandise",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "G._W._Bridge::Shatterstar",
+      "source": "G._W._Bridge",
+      "target": "Shatterstar",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Fabian Nicieza and artist Rob Liefeld, the character first appeared in",
+          "paragraph": 1,
+          "start": 48,
+          "end": 198,
+          "before": "George Washington \"G. W.\" Bridge is a character ",
+          "after": " X-Force #1 (August 1991). Bridge is a former mercenary and high-ranking agent of S.H.I.E.L.D., serving as an ",
+          "node": "G._W._Bridge",
+          "name": "G. W. Bridge",
+          "url": "https://en.wikipedia.org/wiki/G._W._Bridge",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Fabian Nicieza and artist Rob Liefeld, the character first appeared in",
+          "normalized_words": 23
+        },
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Fabian Nicieza and artist Rob Liefeld, the character first appeared in",
+          "paragraph": 1,
+          "start": 81,
+          "end": 231,
+          "before": "Shatterstar (Gaveedra-Seven; Earth name: Benjamin Russell) is a mutant superhero ",
+          "after": " The New Mutants #99 (March 1991), after which he became a member of the superhero team X-Force. He later beca",
+          "node": "Shatterstar",
+          "name": "Shatterstar",
+          "url": "https://en.wikipedia.org/wiki/Shatterstar",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Fabian Nicieza and artist Rob Liefeld, the character first appeared in",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Happy_Sam_Sawyer::Hulk",
+      "source": "Happy_Sam_Sawyer",
+      "target": "Hulk",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 29,
+          "end": 172,
+          "before": "Samuel Sawyer is a character ",
+          "after": " Sgt. Fury and his Howling Commandos #1 (May 1963). Sawyer, also known as \"Happy Sam,\" served as the commandin",
+          "node": "Happy_Sam_Sawyer",
+          "name": "Happy Sam Sawyer",
+          "url": "https://en.wikipedia.org/wiki/Happy_Sam_Sawyer",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "normalized_words": 23
+        },
+        {
+          "text": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 24,
+          "end": 167,
+          "before": "The Hulk is a superhero ",
+          "after": " the debut issue of The Incredible Hulk (May 1962). In his comic book appearances, the character, who has diss",
+          "node": "Hulk",
+          "name": "Hulk",
+          "url": "https://en.wikipedia.org/wiki/Hulk",
+          "section": "Lead",
+          "excerpt": "appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Radian_(Morituri)::Shear_(character)",
+      "source": "Radian_(Morituri)",
+      "target": "Shear_(character)",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 25,
+          "end": 168,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Scaredycat::Shear_(character)",
+      "source": "Scaredycat",
+      "target": "Shear_(character)",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 27,
+          "end": 170,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Scatterbrain_(Morituri)::Shear_(character)",
+      "source": "Scatterbrain_(Morituri)",
+      "target": "Shear_(character)",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 28,
+          "end": 171,
+          "before": "Scatterbrain (Will Deguchi) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Scatterbrain_(Morituri)",
+          "name": "Scatterbrain",
+          "url": "https://en.wikipedia.org/wiki/Scatterbrain_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Shear_(character)::Snapdragon_(Morituri)",
+      "source": "Shear_(character)",
+      "target": "Snapdragon_(Morituri)",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 33,
+          "end": 176,
+          "before": "Snapdragon (Lorna Leigh Raeburn) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Snapdragon_(Morituri)",
+          "name": "Snapdragon",
+          "url": "https://en.wikipedia.org/wiki/Snapdragon_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Shear_(character)::Toxyn",
+      "source": "Shear_(character)",
+      "target": "Toxyn",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 24,
+          "end": 167,
+          "before": "Toxyn (Ruth Mastorakis) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Toxyn",
+          "name": "Toxyn",
+          "url": "https://en.wikipedia.org/wiki/Toxyn",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Shear_(character)::Vyking",
+      "source": "Shear_(character)",
+      "target": "Vyking",
+      "length": 23,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 26,
+          "end": 169,
+          "before": "Shear (Walther Feyzioglu) ",
+          "after": " (a series in its own mostly self-contained continuity). The character was created by Peter B. Gillis and Bren",
+          "node": "Shear_(character)",
+          "name": "Shear",
+          "url": "https://en.wikipedia.org/wiki/Shear_(character)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "paragraph": 1,
+          "start": 29,
+          "end": 172,
+          "before": "Vyking (Harold Carl Everson) ",
+          "after": ". The character was created by Peter B. Gillis and Brent Anderson.",
+          "node": "Vyking",
+          "name": "Vyking",
+          "url": "https://en.wikipedia.org/wiki/Vyking",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri",
+          "normalized_words": 23
+        }
+      ]
+    },
+    {
+      "id": "Alex_Wilder::Chase_Stein",
+      "source": "Alex_Wilder",
+      "target": "Chase_Stein",
+      "length": 22,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "was created by author Brian K. Vaughan and artist Adrian Alphona and debuted in Runaways #1 with most of the other main characters",
+          "paragraph": 2,
+          "start": 320,
+          "end": 450,
+          "before": "Publication history\nAlex Wilder ",
+          "after": ". Like every member of the original Runaways, he is the son of villains with special abilities; in Alex's case",
+          "node": "Alex_Wilder",
+          "name": "Alex Wilder",
+          "url": "https://en.wikipedia.org/wiki/Alex_Wilder",
+          "section": "Publication history",
+          "excerpt": "was created by author Brian K. Vaughan and artist Adrian Alphona and debuted in Runaways #1 with most of the other main characters",
+          "normalized_words": 22
+        },
+        {
+          "text": "was created by author Brian K. Vaughan and artist Adrian Alphona, and debuted in Runaways #1 with most of the other main characters",
+          "paragraph": 1,
+          "start": 135,
+          "end": 266,
+          "before": "known as Talkback) is a superhero appearing in American comic books published by Marvel Comics. The character ",
+          "after": ". Along with every member of the original Runaways, he is the child of evil villains with special abilities—in",
+          "node": "Chase_Stein",
+          "name": "Chase Stein",
+          "url": "https://en.wikipedia.org/wiki/Chase_Stein",
+          "section": "Lead",
+          "excerpt": "was created by author Brian K. Vaughan and artist Adrian Alphona, and debuted in Runaways #1 with most of the other main characters",
+          "normalized_words": 22
+        }
+      ]
+    },
+    {
+      "id": "Black_Bolt::Quicksilver_(Marvel_Comics)",
+      "source": "Black_Bolt",
+      "target": "Quicksilver_(Marvel_Comics)",
+      "length": 22,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 47,
+          "end": 186,
+          "before": "Black Bolt (Blackagar Boltagon) is a fictional ",
+          "after": " Fantastic Four #45 (December 1965). Black Bolt is the ruler of Attilan, and a member of the Inhumans, a reclu",
+          "node": "Black_Bolt",
+          "name": "Black Bolt",
+          "url": "https://en.wikipedia.org/wiki/Black_Bolt",
+          "section": "Lead",
+          "excerpt": "character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby, the character first appeared in",
+          "normalized_words": 22
+        },
+        {
+          "text": "character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby, the character first appeared in",
+          "paragraph": 1,
+          "start": 17,
+          "end": 156,
+          "before": "Quicksilver is a ",
+          "after": " The X-Men #4 (cover dated March 1964). Introduced as an antagonist in Magneto's Brotherhood of Evil Mutants a",
+          "node": "Quicksilver_(Marvel_Comics)",
+          "name": "Quicksilver",
+          "url": "https://en.wikipedia.org/wiki/Quicksilver_(Marvel_Comics)",
+          "section": "Lead",
+          "excerpt": "character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby, the character first appeared in",
+          "normalized_words": 22
+        }
+      ]
+    },
+    {
+      "id": "Bucky_(Marvel_Comics)::Jack_Monroe_(character)",
+      "source": "Bucky_(Marvel_Comics)",
+      "target": "Jack_Monroe_(character)",
+      "length": 22,
+      "category": "Powers / equipment",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Monroe has extensive experience in hand-to-hand combat, having received personal tutoring by Captain America. He is also an expert marksman",
+          "paragraph": 9,
+          "start": 10237,
+          "end": 10376,
+          "before": "Powers and abilities\nMonroe had augmented strength and reflexes superior to that of any Olympic athlete. ",
+          "after": ".",
+          "node": "Bucky_(Marvel_Comics)",
+          "name": "Bucky",
+          "url": "https://en.wikipedia.org/wiki/Bucky_(Marvel_Comics)",
+          "section": "Powers and abilities",
+          "excerpt": "Monroe has extensive experience in hand-to-hand combat, having received personal tutoring by Captain America. He is also an expert marksman",
+          "normalized_words": 22
+        },
+        {
+          "text": "Monroe has extensive experience in hand-to-hand combat, having received personal tutoring by Captain America. He is also an expert marksman",
+          "paragraph": 4,
+          "start": 13704,
+          "end": 13843,
+          "before": "lder near the collarbone. These 6-inch (150 mm) tool-steel alloy discs could be thrown as projectile weapons.\n",
+          "after": ".\nAs Scourge, he had access to an array of equipment based on devices confiscated from costumed criminals, cre",
+          "node": "Jack_Monroe_(character)",
+          "name": "Jack Monroe",
+          "url": "https://en.wikipedia.org/wiki/Jack_Monroe_(character)",
+          "section": "Powers and abilities",
+          "excerpt": "Monroe has extensive experience in hand-to-hand combat, having received personal tutoring by Captain America. He is also an expert marksman",
+          "normalized_words": 22
+        }
+      ]
+    },
+    {
+      "id": "Genis-Vell::Phyla-Vell",
+      "source": "Genis-Vell",
+      "target": "Phyla-Vell",
+      "length": 22,
+      "category": "Reception",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "list, 6th in their \"The Kree: The 10 Most Powerful Members Of The Race\" list, 7th in their \"All The Captain Marvels\" list",
+          "paragraph": 15,
+          "start": 10372,
+          "end": 10493,
+          "before": "-Vell 2nd in their \"13 Strongest Members Of The Thunderbolts\" list, 5th in their \"19 Captain Marvel Costumes\" ",
+          "after": ", and 7th in their \"16 Marvel Cosmic Beings Scarier Than Thanos\" list.",
+          "node": "Genis-Vell",
+          "name": "Genis-Vell",
+          "url": "https://en.wikipedia.org/wiki/Genis-Vell",
+          "section": "Reception",
+          "excerpt": "list, 6th in their \"The Kree: The 10 Most Powerful Members Of The Race\" list, 7th in their \"All The Captain Marvels\" list",
+          "normalized_words": 22
+        },
+        {
+          "text": "list, 5th in their \"The Kree: The 10 Most Powerful Members Of The Race\" list, 6th in their \"All The Captain Marvels\" list",
+          "paragraph": 14,
+          "start": 9145,
+          "end": 9266,
+          "before": " the MCU Immediately\" list. CBR.com ranked Phyla-Vell 4th in their \"25 Most Powerful Guardians Of The Galaxy\" ",
+          "after": ", 7th in their \"Marvel's 20 Most Powerful Cosmic Heroes\" list, 8th in their \"20 Powerful Female Marvel Charact",
+          "node": "Phyla-Vell",
+          "name": "Phyla-Vell",
+          "url": "https://en.wikipedia.org/wiki/Phyla-Vell",
+          "section": "Reception",
+          "excerpt": "list, 5th in their \"The Kree: The 10 Most Powerful Members Of The Race\" list, 6th in their \"All The Captain Marvels\" list",
+          "normalized_words": 22
+        }
+      ]
+    },
+    {
+      "id": "Spider-UK::Spider-Woman_(Gwen_Stacy)",
+      "source": "Spider-UK",
+      "target": "Spider-Woman_(Gwen_Stacy)",
+      "length": 22,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Web Warriors, a name that was coined by Peter Parker from the Ultimate Spider-Man TV series during the original Spider-Verse",
+          "paragraph": 4,
+          "start": 4693,
+          "end": 4817,
+          "before": "nclusion of Secret Wars the team of six Spiders will rename itself and feature in a new ongoing series called ",
+          "after": ".\nDuring the \"Spider-Geddon\" storyline, Spider-UK has been keeping surveillance on Earth-3145 with the help of",
+          "node": "Spider-UK",
+          "name": "Spider-UK",
+          "url": "https://en.wikipedia.org/wiki/Spider-UK",
+          "section": "Fictional character biography",
+          "excerpt": "Web Warriors, a name that was coined by Peter Parker from the Ultimate Spider-Man TV series during the original Spider-Verse",
+          "normalized_words": 22
+        },
+        {
+          "text": "Web Warriors, a name that was coined by Peter Parker from the Ultimate Spider-Man TV series during the original Spider-Verse",
+          "paragraph": 5,
+          "start": 5004,
+          "end": 5128,
+          "before": "-up with the alternate Spider-Man-themed characters from the second volume of Spider-Verse in a series titled ",
+          "after": ". In 2016, the character starred alongside Miles Morales in a crossover storyline titled Sitting in a Tree, wh",
+          "node": "Spider-Woman_(Gwen_Stacy)",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman_(Gwen_Stacy)",
+          "section": "Publication history",
+          "excerpt": "Web Warriors, a name that was coined by Peter Parker from the Ultimate Spider-Man TV series during the original Spider-Verse",
+          "normalized_words": 22
+        }
+      ]
+    },
+    {
+      "id": "Abomination_(character)::Fin_Fang_Foom",
+      "source": "Abomination_(character)",
+      "target": "Fin_Fang_Foom",
+      "length": 21,
+      "category": "Screen adaptations",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "appears in The Super Hero Squad Show, voiced by Steve Blum. This version is a member of Doctor Doom's Lethal Legion",
+          "paragraph": 13,
+          "start": 16554,
+          "end": 16669,
+          "before": "Leader as one of his prime Gamma Warriors alongside Gargoyle.\nThe Emil Blonsky incarnation of the Abomination ",
+          "after": ".\nThe Emil Blonsky incarnation of the Abomination appears in The Avengers: Earth's Mightiest Heroes, voiced by",
+          "node": "Abomination_(character)",
+          "name": "Abomination",
+          "url": "https://en.wikipedia.org/wiki/Abomination_(character)",
+          "section": "Television",
+          "excerpt": "appears in The Super Hero Squad Show, voiced by Steve Blum. This version is a member of Doctor Doom's Lethal Legion",
+          "normalized_words": 21
+        },
+        {
+          "text": "appears in The Super Hero Squad Show, voiced by Steve Blum. This version is a member of Doctor Doom's Lethal Legion",
+          "paragraph": 16,
+          "start": 9709,
+          "end": 9824,
+          "before": "eated by the original Mandarin to guard one of his Makluan rings and test potential successors.\nFin Fang Foom ",
+          "after": ".\nFin Fang Foom appears in the Ultimate Spider-Man episode \"The Avenging Spider-Man\".\nFin Fang Foom appears in",
+          "node": "Fin_Fang_Foom",
+          "name": "Fin Fang Foom",
+          "url": "https://en.wikipedia.org/wiki/Fin_Fang_Foom",
+          "section": "Television",
+          "excerpt": "appears in The Super Hero Squad Show, voiced by Steve Blum. This version is a member of Doctor Doom's Lethal Legion",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Cyclops_(Marvel_Comics)::Shang-Chi",
+      "source": "Cyclops_(Marvel_Comics)",
+      "target": "Shang-Chi",
+      "length": 21,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "ISBN 978-0-14-313576-0.\nWolk, Douglas (2021). All of the Marvels: A Journey to the Ends of the Biggest Story Ever Told. Penguin Press. ISBN",
+          "paragraph": 26,
+          "start": 30254,
+          "end": 30393,
+          "before": " Visual History: New Edition. DK. ISBN 978-0-7440-5451-4.\nSaunders, Ben, ed. (2023). X-Men. Penguin Classics. ",
+          "after": " 978-0-7352-2216-8.",
+          "node": "Cyclops_(Marvel_Comics)",
+          "name": "Cyclops",
+          "url": "https://en.wikipedia.org/wiki/Cyclops_(Marvel_Comics)",
+          "section": "Bibliography",
+          "excerpt": "ISBN 978-0-14-313576-0. Wolk, Douglas (2021). All of the Marvels: A Journey to the Ends of the Biggest Story Ever Told. Penguin Press. ISBN",
+          "normalized_words": 21
+        },
+        {
+          "text": "ISBN 978-1538164969.\nWolk, Douglas (2021). All of the Marvels: A Journey to the Ends of the Biggest Story Ever Told. Penguin Press. ISBN",
+          "paragraph": 30,
+          "start": 53937,
+          "end": 54073,
+          "before": "Publishing. pp. 2–17.\nTurzi, Mariano (2021). The International Politics of Superheroes. Rowman & Littlefield. ",
+          "after": " 978-0-7352-2216-8.\nYang, Gene Luen (2019). \"Why Do Comics Matter?\". The Horn Book Magazine.",
+          "node": "Shang-Chi",
+          "name": "Shang-Chi",
+          "url": "https://en.wikipedia.org/wiki/Shang-Chi",
+          "section": "Bibliography",
+          "excerpt": "ISBN 978-1538164969. Wolk, Douglas (2021). All of the Marvels: A Journey to the Ends of the Biggest Story Ever Told. Penguin Press. ISBN",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Gorgon_(Inhuman)::Karnak_(character)",
+      "source": "Gorgon_(Inhuman)",
+      "target": "Karnak_(character)",
+      "length": 21,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "at the Comic Book DB (archived from the original)\nThe Inhumans at Don Markstein's Toonopedia. Archived from the original on September",
+          "paragraph": 11,
+          "start": 4896,
+          "end": 5029,
+          "before": "External links\nGorgon at Marvel.com\nGorgon at MarvelDatabase.com\nGorgon ",
+          "after": " 17, 2016.",
+          "node": "Gorgon_(Inhuman)",
+          "name": "Gorgon",
+          "url": "https://en.wikipedia.org/wiki/Gorgon_(Inhuman)",
+          "section": "External links",
+          "excerpt": "at the Comic Book DB (archived from the original) The Inhumans at Don Markstein's Toonopedia. Archived from the original on September",
+          "normalized_words": 21
+        },
+        {
+          "text": "at the Comic Book DB (archived from the original)\nThe Inhumans at Don Markstein's Toonopedia. Archived from the original on September",
+          "paragraph": 20,
+          "start": 12980,
+          "end": 13113,
+          "before": "External links\nKarnak at Marvel.com\nKarnak (Earth-616) at the Marvel Database\nKarnak ",
+          "after": " 17, 2016.",
+          "node": "Karnak_(character)",
+          "name": "Karnak",
+          "url": "https://en.wikipedia.org/wiki/Karnak_(character)",
+          "section": "External links",
+          "excerpt": "at the Comic Book DB (archived from the original) The Inhumans at Don Markstein's Toonopedia. Archived from the original on September",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Makkari_(character)::Thena",
+      "source": "Makkari_(character)",
+      "target": "Thena",
+      "length": 21,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "introduced in Red Raven Comics #1 (\"Mercury in the 20th Century\" by artist Kirby and writer Martin A. Bursten; August 1940), was actually",
+          "paragraph": 2,
+          "start": 1545,
+          "end": 1682,
+          "before": "Marvel Comics continuity was later retconned so that the character presented as the mythological god Mercury, ",
+          "after": " Makkari. Mercury was only seen in that single story, in which he worked to thwart the machinations of Pluto.\n",
+          "node": "Makkari_(character)",
+          "name": "Makkari",
+          "url": "https://en.wikipedia.org/wiki/Makkari_(character)",
+          "section": "Publication history",
+          "excerpt": "introduced in Red Raven Comics #1 (\"Mercury in the 20th Century\" by artist Kirby and writer Martin A. Bursten; August 1940), was actually",
+          "normalized_words": 21
+        },
+        {
+          "text": "introduced in Red Raven Comics #1 (\"Mercury in the 20th Century\" by artist Kirby and writer Martin A. Bursten; August 1940), was actually",
+          "paragraph": 3,
+          "start": 698,
+          "end": 835,
+          "before": "Marvel Comics continuity was later retconned so that the character presented as the mythological god Minerva, ",
+          "after": " Thena.\nThe character appeared in  the ongoing series The Eternals, written by Jack Kirby and later in a Thor ",
+          "node": "Thena",
+          "name": "Thena",
+          "url": "https://en.wikipedia.org/wiki/Thena",
+          "section": "Publication history",
+          "excerpt": "introduced in Red Raven Comics #1 (\"Mercury in the 20th Century\" by artist Kirby and writer Martin A. Bursten; August 1940), was actually",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Misty_Knight::Storm_(Marvel_Comics)",
+      "source": "Misty_Knight",
+      "target": "Storm_(Marvel_Comics)",
+      "length": 21,
+      "category": "Publication history",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "preceded by Teen Titans member Mal Duncan who debuted in 1970, Green Lantern wielder John Stewart (1971), and Mister Miracle protégé Shilo Norman",
+          "paragraph": 9,
+          "start": 12719,
+          "end": 12864,
+          "before": " Prowler) and Falcon (both 1969), Luke Cage (1972), Blade (1973), and Abe Brown (1974). In DC Comics, she was ",
+          "after": " (1973).\nMisty Knight and Iron Fist had the first interracial kiss between super heroes in mainstream comics i",
+          "node": "Misty_Knight",
+          "name": "Misty Knight",
+          "url": "https://en.wikipedia.org/wiki/Misty_Knight",
+          "section": "Reception",
+          "excerpt": "preceded by Teen Titans member Mal Duncan who debuted in 1970, Green Lantern wielder John Stewart (1971), and Mister Miracle protégé Shilo Norman",
+          "normalized_words": 21
+        },
+        {
+          "text": "preceded by Teen Titans member Mal Duncan who debuted in 1970, Green Lantern wielder John Stewart (1971), and Mister Miracle protégé Shilo Norman",
+          "paragraph": 27,
+          "start": 52200,
+          "end": 52345,
+          "before": " Prowler) and Falcon (1969), Luke Cage (1972), Blade (1973), and Abe Brown (1974). In DC Comics, she was also ",
+          "after": " (1973).\nSince her creation, Storm has remained one of the most prominent and recognizable Black superheroes. ",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Powers and abilities",
+          "excerpt": "preceded by Teen Titans member Mal Duncan who debuted in 1970, Green Lantern wielder John Stewart (1971), and Mister Miracle protégé Shilo Norman",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Power_Man_(Victor_Alvarez)::She-Hulk_(Lyra)",
+      "source": "Power_Man_(Victor_Alvarez)",
+      "target": "She-Hulk_(Lyra)",
+      "length": 21,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "part of the new class of students when the Avengers Academy moves to the former headquarters of the West Coast Avengers",
+          "paragraph": 5,
+          "start": 2218,
+          "end": 2337,
+          "before": "eus Cho, Spider-Girl, Thunderstrike and X-23. They end up fighting a group of samurai Shark Men. Power Man is ",
+          "after": ".\nDuring the Infinity storyline, Power Man was with Heroes for Hire while they stopped Plunderer's men from st",
+          "node": "Power_Man_(Victor_Alvarez)",
+          "name": "Power Man",
+          "url": "https://en.wikipedia.org/wiki/Power_Man_(Victor_Alvarez)",
+          "section": "Fictional character biography",
+          "excerpt": "part of the new class of students when the Avengers Academy moves to the former headquarters of the West Coast Avengers",
+          "normalized_words": 21
+        },
+        {
+          "text": "part of the new class of students when the Avengers Academy moves to the former headquarters of the West Coast Avengers",
+          "paragraph": 5,
+          "start": 3515,
+          "end": 3634,
+          "before": "bouts. She finds her in stasis in an Intelligencia base.\nFollowing the events of Fear Itself, Lyra is seen as ",
+          "after": ".\nAfter her time at the Avengers Academy, Lyra resurfaces on an environmental crusade against fracking operati",
+          "node": "She-Hulk_(Lyra)",
+          "name": "She-Hulk",
+          "url": "https://en.wikipedia.org/wiki/She-Hulk_(Lyra)",
+          "section": "Fictional character biography",
+          "excerpt": "part of the new class of students when the Avengers Academy moves to the former headquarters of the West Coast Avengers",
+          "normalized_words": 21
+        }
+      ]
+    },
+    {
+      "id": "Black_Bolt::Junior_Juniper",
+      "source": "Black_Bolt",
+      "target": "Junior_Juniper",
+      "length": 20,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "is a fictional character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby",
+          "paragraph": 1,
+          "start": 32,
+          "end": 153,
+          "before": "Black Bolt (Blackagar Boltagon) ",
+          "after": ", the character first appeared in Fantastic Four #45 (December 1965). Black Bolt is the ruler of Attilan, and ",
+          "node": "Black_Bolt",
+          "name": "Black Bolt",
+          "url": "https://en.wikipedia.org/wiki/Black_Bolt",
+          "section": "Lead",
+          "excerpt": "is a fictional character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby",
+          "normalized_words": 20
+        },
+        {
+          "text": "is a fictional character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby",
+          "paragraph": 1,
+          "start": 26,
+          "end": 147,
+          "before": "Jonathan \"Junior\" Juniper ",
+          "after": ", his first appearance was in Sgt. Fury and the Howling Commandos vol. 1 #1. He is known to be the first major",
+          "node": "Junior_Juniper",
+          "name": "Junior Juniper",
+          "url": "https://en.wikipedia.org/wiki/Junior_Juniper",
+          "section": "Lead",
+          "excerpt": "is a fictional character appearing in American comic books published by Marvel Comics. Created by Stan Lee and Jack Kirby",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Black_Marvel::Jack_Frost_(Marvel_Comics)",
+      "source": "Black_Marvel",
+      "target": "Jack_Frost_(Marvel_Comics)",
+      "length": 20,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "published by Marvel's 1930s forerunner Timely Comics during the period fans and historians call the Golden Age of Comic Books",
+          "paragraph": 1,
+          "start": 225,
+          "end": 350,
+          "before": "cs. Created by artist Al Gabriele with an unknown writer, he first appeared in Mystic Comics #5 (March 1941), ",
+          "after": ".\nDaniel Lyons and an original incarnation named Omar Mosely appeared in Spider-Man: The Animated Series, with",
+          "node": "Black_Marvel",
+          "name": "Black Marvel",
+          "url": "https://en.wikipedia.org/wiki/Black_Marvel",
+          "section": "Lead",
+          "excerpt": "published by Marvel's 1930s forerunner Timely Comics during the period fans and historians call the Golden Age of Comic Books",
+          "normalized_words": 20
+        },
+        {
+          "text": "published by Marvel's 1940s forerunner Timely Comics, during the period fans and historians call the Golden Age of comic books",
+          "paragraph": 1,
+          "start": 152,
+          "end": 278,
+          "before": "ing in American comic books published by Marvel Comics. The character first appeared in 1941 in U.S.A. Comics ",
+          "after": ".",
+          "node": "Jack_Frost_(Marvel_Comics)",
+          "name": "Jack Frost",
+          "url": "https://en.wikipedia.org/wiki/Jack_Frost_(Marvel_Comics)",
+          "section": "Lead",
+          "excerpt": "published by Marvel's 1940s forerunner Timely Comics, during the period fans and historians call the Golden Age of comic books",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Cable_(character)::Rachel_Summers",
+      "source": "Cable_(character)",
+      "target": "Rachel_Summers",
+      "length": 20,
+      "category": "Reception",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "th in their \"8 X-Men Kids Cooler Than Their Parents (And 7 Who Are Way Worse)\" list.\nIn 2018, CBR.com ranked",
+          "paragraph": 20,
+          "start": 20399,
+          "end": 20507,
+          "before": "tainment Weekly ranked Cable 6th in their \"Let's rank every X-Man ever\" list.\nIn 2018, CBR.com ranked Cable 11",
+          "after": " Cable 1st in their \"X-Force: 20 Powerful Members\" list.",
+          "node": "Cable_(character)",
+          "name": "Cable",
+          "url": "https://en.wikipedia.org/wiki/Cable_(character)",
+          "section": "Reception",
+          "excerpt": "th in their \"8 X-Men Kids Cooler Than Their Parents (And 7 Who Are Way Worse)\" list. In 2018, CBR.com ranked",
+          "normalized_words": 20
+        },
+        {
+          "text": "th in their \"8 X-Men Kids Cooler Than Their Parents (And 7 Who Are Way Worse)\" list.\nIn 2018, CBR.com ranked",
+          "paragraph": 26,
+          "start": 16894,
+          "end": 17002,
+          "before": "r \"X-Men: The Strongest Members Of The Summers Family\" list.\nIn 2018, CBR.com ranked Phoenix/Rachel Summers 13",
+          "after": " Rachel Summers 3rd in their \"20 Most Powerful Mutants From The '80s\" list.\nIn 2019, CBR.com ranked Rachel Sum",
+          "node": "Rachel_Summers",
+          "name": "Rachel Summers",
+          "url": "https://en.wikipedia.org/wiki/Rachel_Summers",
+          "section": "Accolades",
+          "excerpt": "th in their \"8 X-Men Kids Cooler Than Their Parents (And 7 Who Are Way Worse)\" list. In 2018, CBR.com ranked",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Captain_Marvel_(Marvel_Comics)::Genis-Vell",
+      "source": "Captain_Marvel_(Marvel_Comics)",
+      "target": "Genis-Vell",
+      "length": 20,
+      "category": "Identity summaries",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Created by Ron Marz and Ron Lim, the character first appeared in Silver Surfer vol. 3 Annual #6 (1993).\nGenis-Vell is the",
+          "paragraph": 8,
+          "start": 4302,
+          "end": 4423,
+          "before": "The third Captain Marvel is Genis-Vell. ",
+          "after": " genetically engineered son of Mar-Vell and his lover Elysius, created from the late Mar-Vell's cell samples a",
+          "node": "Captain_Marvel_(Marvel_Comics)",
+          "name": "Captain Marvel",
+          "url": "https://en.wikipedia.org/wiki/Captain_Marvel_(Marvel_Comics)",
+          "section": "Publication history",
+          "excerpt": "Created by Ron Marz and Ron Lim, the character first appeared in Silver Surfer vol. 3 Annual #6 (1993). Genis-Vell is the",
+          "normalized_words": 20
+        },
+        {
+          "text": "Created by Ron Marz and Ron Lim, the character first appeared in Silver Surfer vol. 3 Annual #6 (1993). Genis-Vell is the",
+          "paragraph": 1,
+          "start": 88,
+          "end": 209,
+          "before": "Genis-Vell is a superhero appearing in American comic books published by Marvel Comics. ",
+          "after": " son of superhero Mar-Vell and the brother of superhero Phyla-Vell. The character has also been known as Legac",
+          "node": "Genis-Vell",
+          "name": "Genis-Vell",
+          "url": "https://en.wikipedia.org/wiki/Genis-Vell",
+          "section": "Lead",
+          "excerpt": "Created by Ron Marz and Ron Lim, the character first appeared in Silver Surfer vol. 3 Annual #6 (1993). Genis-Vell is the",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Captain_Marvel_(Marvel_Comics)::Phyla-Vell",
+      "source": "Captain_Marvel_(Marvel_Comics)",
+      "target": "Phyla-Vell",
+      "length": 20,
+      "category": "Identity summaries",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Created by Peter David and Paul Azaceta, the character first appeared in Captain Marvel vol. 5 #16 (November 2003).\nPhyla-Vell is the",
+          "paragraph": 10,
+          "start": 5371,
+          "end": 5504,
+          "before": "The fourth Captain Marvel is Phyla-Vell. ",
+          "after": " sister of Genis-Vell. She is created when Genis, an only child, recreates the universe and, in doing so, crea",
+          "node": "Captain_Marvel_(Marvel_Comics)",
+          "name": "Captain Marvel",
+          "url": "https://en.wikipedia.org/wiki/Captain_Marvel_(Marvel_Comics)",
+          "section": "Publication history",
+          "excerpt": "Created by Peter David and Paul Azaceta, the character first appeared in Captain Marvel vol. 5 #16 (November 2003). Phyla-Vell is the",
+          "normalized_words": 20
+        },
+        {
+          "text": "Created by Peter David and Paul Azaceta, the character first appeared in Captain Marvel vol. 5 #16 (November 2003). Phyla-Vell is the",
+          "paragraph": 1,
+          "start": 88,
+          "end": 221,
+          "before": "Phyla-Vell is a character appearing in American comic books published by Marvel Comics. ",
+          "after": " daughter of superhero Mar-Vell and the sister of Genis-Vell. The character has also been known as Quasar, Cap",
+          "node": "Phyla-Vell",
+          "name": "Phyla-Vell",
+          "url": "https://en.wikipedia.org/wiki/Phyla-Vell",
+          "section": "Lead",
+          "excerpt": "Created by Peter David and Paul Azaceta, the character first appeared in Captain Marvel vol. 5 #16 (November 2003). Phyla-Vell is the",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Fin_Fang_Foom::Radioactive_Man_(comics)",
+      "source": "Fin_Fang_Foom",
+      "target": "Radioactive_Man_(comics)",
+      "length": 20,
+      "category": "Screen adaptations",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": false,
+      "sources": [
+        {
+          "text": "boss in Marvel: Ultimate Alliance, voiced by James Sie. This version is a member of Doctor Doom's Masters of Evil",
+          "paragraph": 18,
+          "start": 11160,
+          "end": 11273,
+          "before": "Video games\nFin Fang Foom appears as a ",
+          "after": ".\nFin Fang Foom makes a cameo appearance in Sir Arthur's ending in Marvel vs. Capcom 3: Fate of Two Worlds.\nFi",
+          "node": "Fin_Fang_Foom",
+          "name": "Fin Fang Foom",
+          "url": "https://en.wikipedia.org/wiki/Fin_Fang_Foom",
+          "section": "Video games",
+          "excerpt": "boss in Marvel: Ultimate Alliance, voiced by James Sie. This version is a member of Doctor Doom's Masters of Evil",
+          "normalized_words": 20
+        },
+        {
+          "text": "boss in Marvel: Ultimate Alliance, voiced by James Sie. This version is a member of Doctor Doom's Masters of Evil",
+          "paragraph": 14,
+          "start": 8375,
+          "end": 8488,
+          "before": "Video games\nThe Chen Lu incarnation of Radioactive Man appears as a mini-",
+          "after": ".\nThe Chen Lu incarnation of Radioactive Man appears as a boss in Marvel: Ultimate Alliance 2, voiced by Don L",
+          "node": "Radioactive_Man_(comics)",
+          "name": "Radioactive Man",
+          "url": "https://en.wikipedia.org/wiki/Radioactive_Man_(comics)",
+          "section": "Video games",
+          "excerpt": "boss in Marvel: Ultimate Alliance, voiced by James Sie. This version is a member of Doctor Doom's Masters of Evil",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Iron_Fist_(character)::Jessica_Jones",
+      "source": "Iron_Fist_(character)",
+      "target": "Jessica_Jones",
+      "length": 20,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "were trapped in the Darkforce dome by Blackout when his powers were enhanced by Baron Helmut Zemo using the Darkhold",
+          "paragraph": 21,
+          "start": 24868,
+          "end": 24984,
+          "before": " during Hydra's takeover of the United States where they were defeated by Nitro. Iron Fist and those with him ",
+          "after": ".\nFinding himself disconnected from K'un-Lun and struggling with summoning his chi, Iron Fist participates in ",
+          "node": "Iron_Fist_(character)",
+          "name": "Iron Fist",
+          "url": "https://en.wikipedia.org/wiki/Iron_Fist_(character)",
+          "section": "Fictional character biography",
+          "excerpt": "were trapped in the Darkforce dome by Blackout when his powers were enhanced by Baron Helmut Zemo using the Darkhold",
+          "normalized_words": 20
+        },
+        {
+          "text": "were trapped in the Darkforce dome by Blackout when his powers were enhanced by Baron Helmut Zemo using the Darkhold",
+          "paragraph": 11,
+          "start": 13159,
+          "end": 13275,
+          "before": "the Army of Evil during Hydra's rise to power where they were defeated by Nitro. Jessica and those with Nitro ",
+          "after": ".\nIn October 2016, Jessica Jones, a new ongoing series, debuted. Another title, Defenders, was launched in 201",
+          "node": "Jessica_Jones",
+          "name": "Jessica Jones",
+          "url": "https://en.wikipedia.org/wiki/Jessica_Jones",
+          "section": "Fictional character biography",
+          "excerpt": "were trapped in the Darkforce dome by Blackout when his powers were enhanced by Baron Helmut Zemo using the Darkhold",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "Storm_(Marvel_Comics)::Wolverine_(character)",
+      "source": "Storm_(Marvel_Comics)",
+      "target": "Wolverine_(character)",
+      "length": 20,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "a new nation on the living island of Krakoa, where they are capable of regularly resurrecting mutants after their death",
+          "paragraph": 12,
+          "start": 25702,
+          "end": 25821,
+          "before": "gins a new era for the X-Men. Beginning in House of X and Powers of X, by Jonathan Hickman, the mutants found ",
+          "after": ". Storm gives a rousing speech of mutant unity on the island, affirming their shared community and identity. S",
+          "node": "Storm_(Marvel_Comics)",
+          "name": "Storm",
+          "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+          "section": "Publication history",
+          "excerpt": "a new nation on the living island of Krakoa, where they are capable of regularly resurrecting mutants after their death",
+          "normalized_words": 20
+        },
+        {
+          "text": "a new nation on the living island of Krakoa, where they are capable of regularly resurrecting mutants after their death",
+          "paragraph": 10,
+          "start": 19731,
+          "end": 19850,
+          "before": ", starting with the House of X and Powers of X series. This launched the \"Krakoan Age\", with mutants founding ",
+          "after": ". Wolverine continued to appear in a number of series in the 2020s, both as a solo character and as part of mu",
+          "node": "Wolverine_(character)",
+          "name": "Wolverine",
+          "url": "https://en.wikipedia.org/wiki/Wolverine_(character)",
+          "section": "Publication history",
+          "excerpt": "a new nation on the living island of Krakoa, where they are capable of regularly resurrecting mutants after their death",
+          "normalized_words": 20
+        }
+      ]
+    },
+    {
+      "id": "White_Tiger_(Heroes_for_Hire)::White_Tiger_(comics)",
+      "source": "White_Tiger_(Heroes_for_Hire)",
+      "target": "White_Tiger_(comics)",
+      "length": 20,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Heroes for Hire. White Tiger tries to keep her origins a secret, but during a training session with Iron Fist",
+          "paragraph": 2,
+          "start": 986,
+          "end": 1095,
+          "before": "attack the Vault prison, White Tiger leaves the team. She eventually encounters Iron Fist and joins his team, ",
+          "after": ", he defeats her several times in mock combat. White Tiger's anger overwhelms her, causing her to revert to he",
+          "node": "White_Tiger_(Heroes_for_Hire)",
+          "name": "White Tiger",
+          "url": "https://en.wikipedia.org/wiki/White_Tiger_(Heroes_for_Hire)",
+          "section": "Fictional character biography",
+          "excerpt": "Heroes for Hire. White Tiger tries to keep her origins a secret, but during a training session with Iron Fist",
+          "normalized_words": 20
+        },
+        {
+          "text": "Heroes for Hire. White Tiger tries to keep her origins a secret, but during a training session with Iron Fist",
+          "paragraph": 6,
+          "start": 2124,
+          "end": 2233,
+          "before": "reflexes, and she is highly skilled in martial arts. White Tiger meets Iron Fist, and intrigued by him, joins ",
+          "after": ", she loses control and reverts to her tiger form. She is a valued member of the team, but finds that human em",
+          "node": "White_Tiger_(comics)",
+          "name": "White Tiger",
+          "url": "https://en.wikipedia.org/wiki/White_Tiger_(comics)",
+          "section": "Fictional character biography",
+          "excerpt": "Heroes for Hire. White Tiger tries to keep her origins a secret, but during a training session with Iron Fist",
+          "normalized_words": 20
+        }
+      ]
+    }
+  ],
+  "common_phrases": [
+    {
+      "text": "in american comic books published by marvel comics",
+      "length": 8,
+      "documents": 282,
+      "pairs": 39621
+    },
+    {
+      "text": "appearing in american comic books published by marvel",
+      "length": 8,
+      "documents": 281,
+      "pairs": 39340
+    },
+    {
+      "text": "character appearing in american comic books published by",
+      "length": 8,
+      "documents": 127,
+      "pairs": 8001
+    },
+    {
+      "text": "american comic books published by marvel comics created",
+      "length": 8,
+      "documents": 91,
+      "pairs": 4095
+    },
+    {
+      "text": "comic books published by marvel comics created by",
+      "length": 8,
+      "documents": 91,
+      "pairs": 4095
+    },
+    {
+      "text": "superhero appearing in american comic books published by",
+      "length": 8,
+      "documents": 90,
+      "pairs": 4005
+    },
+    {
+      "text": "at the comic book db archived from the",
+      "length": 8,
+      "documents": 85,
+      "pairs": 3570
+    },
+    {
+      "text": "the comic book db archived from the original",
+      "length": 8,
+      "documents": 85,
+      "pairs": 3570
+    }
+  ],
+  "examples": {
+    "editorial": {
+      "id": "editorial-voice",
+      "length": 12,
+      "category": "Editorial formula",
+      "sources": [
+        {
+          "text": "is a character appearing in American comic books published by Marvel Comics",
+          "paragraph": 1,
+          "start": 31,
+          "end": 106,
+          "before": "The Abomination (Emil Blonsky) ",
+          "after": ". Created by writer Stan Lee and artist Gil Kane, the character first appeared in Tales to Astonish #90 (April",
+          "node": "Abomination_(character)",
+          "name": "Abomination",
+          "url": "https://en.wikipedia.org/wiki/Abomination_(character)",
+          "section": "Lead",
+          "excerpt": "is a character appearing in American comic books published by Marvel Comics",
+          "normalized_words": 12
+        },
+        {
+          "text": "is a character appearing in American comic books published by Marvel Comics",
+          "paragraph": 1,
+          "start": 13,
+          "end": 88,
+          "before": "Adam Warlock ",
+          "after": ". The character first appeared in Fantastic Four #66–67 (cover-dates September 1967 and October 1967) created ",
+          "node": "Adam_Warlock",
+          "name": "Adam Warlock",
+          "url": "https://en.wikipedia.org/wiki/Adam_Warlock",
+          "section": "Lead",
+          "excerpt": "is a character appearing in American comic books published by Marvel Comics",
+          "normalized_words": 12
+        }
+      ]
+    },
+    "story": {
+      "id": "Mayday_Parker::Spider-Woman",
+      "source": "Mayday_Parker",
+      "target": "Spider-Woman",
+      "length": 166,
+      "category": "Shared story",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following a traumatic incident. In 1995, Peter lets Ben Reilly take over his life as Spider-Man and CEO of Parker Industries so he could return to his family. In the mid-2000s, Claire convinces Peter to return to New York and become Spider-Man once more shortly after Morlun kills Ben Reilly so he could stop Tony Stark from taking over Parker Industries and to lure Morlun away from his family. Despite his efforts, Morlun attacks the twins and Mary Jane in Oregon as Peter gets involved in the superhero Civil War. When Benjy discovers that Morlun is vulnerable when he is feeding off someone, he uses himself as bait to allow Claire the chance to impale him on a splintered log of wood. Benjy survives the assault, but is crippled for life. By 2019, Claire has become Spider-Woman (now wearing a costume",
+          "paragraph": 24,
+          "start": 42408,
+          "end": 43335,
+          "before": "pite having a different name, Claire bears a strong resemblance in both appearance and personality to Mayday. ",
+          "after": " similar to Ultimate Jessica Drew's), and is instructed by her father to stay behind to protect her brother an",
+          "node": "Mayday_Parker",
+          "name": "Mayday Parker",
+          "url": "https://en.wikipedia.org/wiki/Mayday_Parker",
+          "section": "Spider-Man: Life Story",
+          "excerpt": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following …",
+          "normalized_words": 166
+        },
+        {
+          "text": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following a traumatic incident. In 1995, Peter lets Ben Reilly take over his life as Spider-Man and CEO of Parker Industries so he could return to his family. In the mid-2000s, Claire convinces Peter to return to New York and become Spider-Man once more shortly after Morlun kills Ben Reilly so he could stop Tony Stark from taking over Parker Industries and to lure Morlun away from his family. Despite his efforts, Morlun attacks the twins and Mary Jane in Oregon as Peter gets involved in the superhero Civil War. When Benjy discovers that Morlun is vulnerable when he is feeding off someone, he uses himself as bait to allow Claire the chance to impale him on a splintered log of wood. Benjy survives the assault, but is crippled for life. By 2019, Claire has become Spider-Woman (now wearing a costume",
+          "paragraph": 22,
+          "start": 5076,
+          "end": 6003,
+          "before": "sically designed as a composite character of Mayday Parker and the Spider-Woman (Ultimate Marvel character)). ",
+          "after": " the same as the Spider-Woman (Ultimate Marvel character)'s), and is instructed by her father to stay behind t",
+          "node": "Spider-Woman",
+          "name": "Spider-Woman",
+          "url": "https://en.wikipedia.org/wiki/Spider-Woman",
+          "section": "Other versions",
+          "excerpt": "For the first ten years of their lives, the two were solely raised by Mary Jane in Portland, Oregon after she left Peter following …",
+          "normalized_words": 166
+        }
+      ]
+    },
+    "references": {
+      "id": "Spitfire_(character)::Union_Jack_(Joseph_Chapman)",
+      "source": "Spitfire_(character)",
+      "target": "Union_Jack_(Joseph_Chapman)",
+      "length": 103,
+      "category": "Bibliography / links",
+      "category_note": "Label assigned by inspecting the longest matched passage and its surrounding article section.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, TPB includes Captain America #253-254, 1981, 208 pages, July 2007, ISBN 0-7851-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, December 1998 - February 1999, TPB, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, TPB collects New Invaders #1-9, October 2004 - June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, TPB collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 21,
+          "start": 16151,
+          "end": 16915,
+          "before": "ume 2 (includes Invaders #10-21, November 1976 - October 1977, tpb, 240 pages, July 2008, ISBN 0-7851-3120-5)\n",
+          "after": " 0-7851-2225-7)\nSpitfire (2010) #1 (October 2010) one-shot collected in Women of Marvel (Mighty Marvel) TPB th",
+          "node": "Spitfire_(character)",
+          "name": "Spitfire",
+          "url": "https://en.wikipedia.org/wiki/Spitfire_(character)",
+          "section": "Collected editions",
+          "excerpt": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, TPB includes Captain …",
+          "normalized_words": 103
+        },
+        {
+          "text": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, tpb includes Captain America #253-254, 1981, 208 pages, July 2007, ISBN 0-7851-2693-7)\nUnion Jack (written by John Cassaday and Ben Raab, with art by John Cassaday, 3-issue mini-series, December 1998 - February 1999, tpb, 96 pages, April 2002, ISBN 0-7851-0934-X)\nNew Invaders: To End All Wars (written by Allan Jacobsen, with art by Jorge Lucas and C. P. Smith, tpb collects New Invaders #1-9, October 2004 -  June 2005, 216 pages, July 2005, ISBN 0-7851-1449-1)\nCaptain America: Red Menace Volume 2 (written by Ed Brubaker with art by Steve Epting, tpb collects Captain America #18-21, July - October 2006, 104 pages, December 2006, ISBN",
+          "paragraph": 20,
+          "start": 9499,
+          "end": 10264,
+          "before": "",
+          "after": " 0-7851-2225-7)\nUnion Jack: London Falling (written by Christos Gage, with pencils by Mike Perkins and inks by",
+          "node": "Union_Jack_(Joseph_Chapman)",
+          "name": "Union Jack",
+          "url": "https://en.wikipedia.org/wiki/Union_Jack_(Joseph_Chapman)",
+          "section": "Collected editions",
+          "excerpt": "Captain America: War and Remembrance (by John Byrne and Roger Stern, with pencils by John Byrne and inks by Josef Rubinstein, tpb includes Captain …",
+          "normalized_words": 103
+        }
+      ]
+    },
+    "counterexample": {
+      "id": "Radian_(Morituri)::Scaredycat",
+      "source": "Radian_(Morituri)",
+      "target": "Scaredycat",
+      "length": 34,
+      "category": "Editorial formula",
+      "category_note": "Similar introductory prose names publishers, creators, teams or media appearances.",
+      "linked": true,
+      "sources": [
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 25,
+          "end": 233,
+          "before": "Radian (Louis Armanetti) ",
+          "after": ".",
+          "node": "Radian_(Morituri)",
+          "name": "Radian",
+          "url": "https://en.wikipedia.org/wiki/Radian_(Morituri)",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        },
+        {
+          "text": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson",
+          "paragraph": 1,
+          "start": 27,
+          "end": 235,
+          "before": "Scaredycat (Pilar Lisieux) ",
+          "after": ".",
+          "node": "Scaredycat",
+          "name": "Scaredycat",
+          "url": "https://en.wikipedia.org/wiki/Scaredycat",
+          "section": "Lead",
+          "excerpt": "is a superhero appearing in American comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The …",
+          "normalized_words": 34
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "id": "length",
+      "question": "Do more connected characters receive longer articles?",
+      "method": "Token count versus undirected distinct-neighbor degree; Spearman rank correlation with average tie ranks.",
+      "spearman": 0.832069659865317,
+      "choice": "Interesting association, but article length alone cannot distinguish editorial attention from fictional importance."
+    },
+    {
+      "id": "cosine",
+      "question": "Which pages sound most alike as bags of words?",
+      "method": "Cosine similarity of raw case-folded token frequency vectors after the explicitly listed 78-word function-word stoplist. No TF-IDF or stemming.",
+      "stopwords": [
+        "a",
+        "all",
+        "also",
+        "an",
+        "and",
+        "are",
+        "as",
+        "at",
+        "be",
+        "been",
+        "being",
+        "but",
+        "by",
+        "can",
+        "could",
+        "did",
+        "do",
+        "does",
+        "each",
+        "for",
+        "from",
+        "had",
+        "has",
+        "have",
+        "he",
+        "her",
+        "his",
+        "if",
+        "in",
+        "into",
+        "is",
+        "it",
+        "its",
+        "may",
+        "might",
+        "more",
+        "most",
+        "no",
+        "not",
+        "of",
+        "on",
+        "one",
+        "or",
+        "other",
+        "our",
+        "out",
+        "over",
+        "she",
+        "should",
+        "some",
+        "such",
+        "than",
+        "that",
+        "the",
+        "their",
+        "them",
+        "then",
+        "these",
+        "they",
+        "this",
+        "those",
+        "to",
+        "two",
+        "up",
+        "us",
+        "was",
+        "we",
+        "were",
+        "what",
+        "when",
+        "where",
+        "which",
+        "while",
+        "who",
+        "whom",
+        "will",
+        "with",
+        "would"
+      ],
+      "stopword_count": 78,
+      "top_pairs": [
+        {
+          "similarity": 0.917211,
+          "source": "Eddie_Brock",
+          "target": "Venom_(character)"
+        },
+        {
+          "similarity": 0.874096,
+          "source": "Spider-Man",
+          "target": "Spider-Man_Noir"
+        },
+        {
+          "similarity": 0.871438,
+          "source": "Mayday_Parker",
+          "target": "Spider-Girl"
+        },
+        {
+          "similarity": 0.84413,
+          "source": "Jean_Grey",
+          "target": "Jean_Grey_(X-Men_film_series)"
+        },
+        {
+          "similarity": 0.843998,
+          "source": "Spider-Man",
+          "target": "Spider-Man_(Marvel_Mangaverse)"
+        }
+      ],
+      "choice": "The highest-scoring pairs concern related names or identities. Cosine loses the location and order that explain whether similarity is story or formula."
+    },
+    {
+      "id": "phrases",
+      "question": "When Marvel pages share words, are they sharing stories?",
+      "method": "Exact consecutive normalized token runs, minimum 8 words; longest run for every distinct article pair.",
+      "choice": "Selected: the enormous short-phrase overlap and tiny long-passage set can be explained directly with traceable text evidence."
+    }
+  ],
+  "definitions": {
+    "unit": "Distinct unordered article pairs. A pair is counted once when its longest common consecutive token run reaches the chosen threshold. All 303 articles remain in the denominator (45,753 pairs).",
+    "tokens": "Unicode letter sequences, with internal apostrophes retained; curly apostrophes normalized and text case-folded. Hyphens separate words. Numbers and punctuation are excluded. Stopwords, character names and headings remain; no stemming or TF-IDF.",
+    "boundary": "Runs may span sentences and single line breaks, including headings, but may not cross a blank-line paragraph boundary. Exact means identical normalized word sequences, not identical bytes.",
+    "ties": "For equal longest runs, choose the earliest paragraph/word position in the alphabetically first article, then the earliest in the second. Pair IDs and output order are deterministic.",
+    "exclusions": "README and archive directory entries are excluded. No character articles are dropped. Zip filenames are URL-decoded and must match the frozen Week 1 roster exactly.",
+    "lead_check": "Remove only the first blank-line-delimited paragraph of each article, then recompute all runs. This is a sensitivity check, not a perfect semantic extraction of introductions.",
+    "numerals_check": "Recompute with letter-or-number tokens, retaining numerals. The threshold pattern persists: 40,581 pairs at 8 tokens, 82 at 20 and 14 at 40.",
+    "categories": "A human-readable label was assigned to every longest >=20-word passage after inspecting its text and section. It is a descriptive aid, not an automated topic model. A pair can share several kinds of text; only its longest run is represented.",
+    "links": "Linked means at least one directed hyperlink between the two pages in the same frozen Week 1 roster. This is metadata, not an explanation of text reuse.",
+    "figure": "The curve is a complete census of this frozen corpus, not an estimate. The vertical count scale is logarithmic and the baseline is 1 pair. Thresholds 8 through 60 are recomputed exactly; connecting lines guide the eye."
+  },
+  "checks": [
+    "Validated archive contains exactly the same 303 decoded identifiers as the Week 1 roster.",
+    "The standard eight-word publisher phrase occurs in the first paragraph of 282 articles and in later paragraphs of 0 articles.",
+    "Inspected all 71 longest passages of at least 20 words and their surrounding sections before labeling them.",
+    "Checked longest result against both frozen source texts using stored character offsets.",
+    "Inspected counterexamples: a 34-word Morituri introductory formula survives a long threshold; a 103-word shared bibliography is not fictional narration.",
+    "Recomputed every pair after removing the first paragraph and after retaining numerals. Both preserve the steep decline."
+  ],
+  "limitation": "A match is a shared normalized word sequence, not proof of plagiarism, copying direction or a fictional relationship. Editorial formulas, quotations and bibliographies can persist at long thresholds. Paraphrases are invisible, short articles have fewer possible runs, and larger articles have more opportunities to overlap.",
+  "attribution": "Frozen course corpus of Wikipedia articles; source links identify the contributing pages. Wikipedia prose is available under its linked Creative Commons Attribution-ShareAlike license; consult article history for authors and revisions."
+}

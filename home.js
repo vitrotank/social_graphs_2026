@@ -12,6 +12,7 @@
   const data = window.CROSSTALK_COVER;
   const map = document.getElementById("cover-map");
   if (!map || !data) return;
+  const prefix = document.body.dataset.root || "";
 
   const NS = "http://www.w3.org/2000/svg";
   const colors = ["#2849c7", "#dc512f", "#486452", "#806489", "#ad792c", "#3b818a", "#92533e", "#767839", "#526575"];
@@ -242,7 +243,7 @@
     document.getElementById("cover-map-desc").textContent = `${network.sampleNote} Colors ${world === "philosophers" ? "show Louvain communities" : "distinguish components"}. Use the named selector to trace links, or focus the map and use arrow keys to move between names, Enter to select, and Escape to reset. Totals describe the full source network.`;
     document.getElementById("cover-sample-note").textContent = `${number(nodes.size)} selected pages / ${number(edges.length)} displayed ties. ${network.sampleNote}`;
     const atlas = document.getElementById("cover-open");
-    atlas.href = world === "philosophers" ? "week4/index.html#atlas" : "week1/index.html#atlas";
+    atlas.href = prefix + (world === "philosophers" ? "week4/index.html#atlas" : "week1/index.html#atlas");
     const arrow = document.createElement("span");
     arrow.setAttribute("aria-hidden", "true");
     arrow.textContent = "↗";

@@ -65,6 +65,9 @@ class SiteTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
+            "templates/explore.html", "design.css", "explore.css",
+            "templates/week5.html", "week5.css", "week5.js", "assets/data/week5.json", "assets/data/week5.js",
+            "data/raw/marvel_pages.zip", "data/week5/README.md",
             "templates/week3.html", "templates/week4.html", "templates/louvain.html", "templates/switchboard.html", "templates/grunge.html",
             "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",
             "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js", "home.css", "journal.css", "journal.js",
@@ -153,19 +156,19 @@ class SiteTests(unittest.TestCase):
     def test_new_published_week_updates_homepage_and_creates_its_page(self):
         config_path = self.root / "site.json"
         config = json.loads(config_path.read_text(encoding="utf-8"))
-        config["weeks"][3].update({"status": "published", "title": "Fourth dispatch",
+        config["weeks"][5].update({"status": "published", "title": "Sixth dispatch",
                                    "summary": "A new question for the journal.",
-                                   "path": "week4/index.html", "template": "week4.html"})
+                                   "path": "week6/index.html", "template": "week6.html"})
         config_path.write_text(json.dumps(config), encoding="utf-8")
-        (self.root / "templates/week4.html").write_text(
-            '<!doctype html><html><body>@@HEADER@@<h1>Fourth dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
+        (self.root / "templates/week6.html").write_text(
+            '<!doctype html><html><body>@@HEADER@@<h1>Sixth dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
         files = build.render()
-        self.assertIn(Path("week4/index.html"), files)
+        self.assertIn(Path("week6/index.html"), files)
         home = (self.root / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Fourth dispatch", home)
-        self.assertIn('href="week4/index.html"', home)
-        self.assertIn("Read Week 4", home)
-        self.assertIn('href="../index.html"', (self.root / "week4/index.html").read_text(encoding="utf-8"))
+        self.assertIn("Sixth dispatch", home)
+        self.assertIn('href="week6/index.html"', home)
+        self.assertIn("Read Week 6", home)
+        self.assertIn('href="../index.html"', (self.root / "week6/index.html").read_text(encoding="utf-8"))
 
     def test_browser_payload_preserves_raw_nodes_edges_and_measured_degrees(self):
         config_path = self.root / "site.json"

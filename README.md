@@ -1,93 +1,80 @@
 # Crosstalk
 
-**Small signals. Strange connections.** A newspaper of network investigations by Christos Diamantis (s253102), Dávid Weiner (s253347), and Evangelos Panagiotopoulos (s263125), for DTU 02805 Social Graphs and Interactions, Fall 2026.
+**Read between the links.** A journal of social graphs and language by Christos Diamantis (s253102), Dávid Weiner (s253347), and Evangelos Panagiotopoulos (s263125), for DTU 02805, Fall 2026.
 
-[Website](https://vitrotank.github.io/social_graphs_2026/) · [Source](https://github.com/vitrotank/social_graphs_2026)
+[Public website](https://vitrotank.github.io/social_graphs_2026/) · [Repository](https://github.com/vitrotank/social_graphs_2026)
 
-## Read, explore, or play
+The Marginalia redesign puts one investigation on the cover, gives each published week a direct navigation link, and separates reading from optional methods and experiments. Shared typography, paper, wine-red annotations, and accessible controls run through every route. Analytical figures keep their own clearly labeled encodings.
 
-The front page combines a directory with an interactive cover: switch between philosophers and Marvel, focus a group, or trace a named page's links. It uses a small, explicitly selected sample; displayed preview counts and complete-network totals are distinct. Every published week has a story link and an experiment or game link. The shared header links directly to Weeks 1–4. Future weeks remain visibly unpublished.
-
-| Destination | What is there |
+| Route | Investigation or experiment |
 | --- | --- |
-| `index.html` | Latest story, all eight week slots, and the games room |
-| `week1/index.html` | Marvel's 303 pages, degree, isolates, searchable network, hub removal |
-| `week2/index.html` | Models, friendship paradox, and what a null comparison can establish |
-| `week3/index.html` | The paths and centrality story: bridge characters, removal curves, and shortest-route findings |
-| `week4/index.html` | The Philosopher Atlas: searchable community map, weighted/unweighted overlap, and a live disparity-backbone dial |
-| `play/louvain.html` | Exercise 4.12: a vanilla JavaScript two-phase Louvain toy |
-| `play/index.html` | Crossed Wires: three weekly rounds and twelve practice puzzles |
-| `play/cerebro.html` | The Popularity Trap: prediction game and model illustration console |
-| `play/switchboard.html` | The Switchboard: Week 3's character-removal experiment, blackout dial, and route finder to Spider-Man |
-| `grunge/index.html` | The Week 3 B-side: paths and centrality in a separate Wikipedia musician network, plus grunge radio |
+| `index.html` | Latest investigation, compact Weeks 1–5 index, laboratory |
+| `week1/index.html` | Marvel degree, 17 isolates, directed atlas, hub removal |
+| `week2/index.html` | Measured friendship paradox; explicitly illustrative model comparisons |
+| `week3/index.html` | Exact paths, bridge characters, 200-trial removal comparison |
+| `week4/index.html` | Philosopher communities, weighted overlap and disparity backbone |
+| `week5/index.html` | Eight words. 282 pages. Shared phrases, with paired source evidence |
+| `explore/index.html` | Selected network previews, relocated from the cover |
+| `play/index.html` | Crossed Wires: weekly shifts and practice puzzles |
+| `play/cerebro.html` | The Popularity Trap: predictions and model illustrations |
+| `play/switchboard.html` | Marvel character removal and real shortest routes |
+| `play/louvain.html` | Two-phase Louvain workshop |
+| `grunge/index.html` | Separate Wikipedia musician sample and optional radio |
 
-The stories share newspaper typography, larger body text, a sticky chapter selector, and reading progress. Week 1 links an inspectable degree distribution and incoming/outgoing scatterplot to the character atlas. Week 2 lets readers explore exact tail counts and adjust clearly labeled illustrative guides. Week 3 adds a live removal curve with the random-trial band and a selectable degree/betweenness rank diagram. Static downloads and extended explanations remain available. The journal retains its cream, ink, blue, and orange telephone identity; the extra uses charcoal and acid yellow with a record-store treatment.
+## Preview and build
 
-## Run locally
-
-Python 3.10+ is sufficient. There are no pip or npm dependencies.
+Only Python 3.10+ is required; no npm or pip dependencies.
 
 ```sh
-python scripts/build.py
-python -m http.server 8000
+python scripts/build.py --output _site
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [localhost:8000](http://localhost:8000). Committed data makes the build independent of Wikipedia access. Local relative links and bundled JavaScript also let you open `index.html` directly from disk.
+Open [localhost:8000](http://localhost:8000/index.html). All analyses use committed snapshots. JavaScript bundles support direct disk viewing; static figures, article text and downloads remain available without JavaScript. External Wikipedia links and optional YouTube playback need a connection.
 
-The grunge radio uses external YouTube playback and needs a connection. Browsers can block sound until a visitor interacts: use **Play radio** to start, and the player controls to pause or change tracks. A direct listening link remains available when embedding is blocked. The network analysis itself runs offline.
-
-## Reproduce the analyses and check the site
+## Reproduce and check
 
 ```sh
 python scripts/analyze.py
 python scripts/analyze_week3.py
 python scripts/analyze_week4.py
+python scripts/analyze_week5.py
 python scripts/crawl_grunge.py
 python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
 python -m unittest discover -s tests
-python scripts/browser_smoke.py
 python scripts/browser_smoke.py --editorial-only
 python scripts/browser_smoke.py --week4-only
+python scripts/browser_smoke.py
+python scripts/inspect_site.py
 ```
 
-`crawl_grunge.py` rebuilds from the frozen snapshot by default; `--refresh` explicitly fetches a new Wikipedia snapshot. Its provenance and inclusion rules are in [data/grunge/README.md](data/grunge/README.md). The public extra is separate from the shared Marvel assignment data.
+Browser checks use installed Chrome/Edge and the Python standard library. They exercise keyboard/touch controls, evidence filters, responsive layouts, offline bundles, static fallbacks and exact data readouts. Screenshots and check reports are written to ignored `.preview/`. `inspect_site.py --references` records the supplied reference websites separately.
 
-The browser check uses an existing Chrome or Chromium installation. Pass `--browser PATH` if necessary. It exercises pointer and keyboard controls, phone/tablet layouts, and offline figures. Its ignored `.preview/` folder contains screenshots and check results. No browser or dependencies are installed by the check.
+## Week 5: shared words, different meanings
 
-## Data and interpretation
+The official frozen archive contains the same 303 articles as the Week 1 roster: 727,203 Unicode letter tokens under our stated tokenizer. We measure each unordered pair's longest consecutive normalized word run, keeping paragraph boundaries, and recompute thresholds 8–60.
 
-The Marvel source is the course's frozen **26 August 2026** roster: **303 nodes, 1,784 directed edges, 17 isolates**. Its weak components contain 277 pages, 9 pages, and seventeen singletons. Raw TSV files, provenance, and checksums live in [data/raw](data/raw/README.md). The graph measures Wikipedia references, not friendships or alliances.
+40,570 pairs share at least eight words. The phrase “in American comic books published by Marvel Comics” appears in 282 articles and accounts for 39,621 of those pairs (97.66%). Only 71 pairs reach twenty words and 13 reach forty. Longer matches include fictional narration, publication history, powers and bibliography; they still require reading.
 
-Week 3 collapses reciprocal edges for its undirected removal experiments. Betweenness is exact, normalized over the full roster, and excludes endpoints. Targeted removal ranks are fixed at the start. The random comparison uses 200 reproducible permutations. The separate Switchboard page lets readers disconnect characters, compare removal orders, and find routes using real arrow directions or the undirected projection; unreachable pages are reported explicitly. Methods, raw results, and the downloadable figure remain in the issue, which links directly to both the game and its grunge B-side.
+The visualization offers exact threshold counts, a comparison after removing first paragraphs, 71 inspected long-match pairs, category and frozen-hyperlink filters, short source excerpts, and expandable complete matches with paragraph/character offsets. Labels use LLM-assisted inspection. Matches establish neither copying direction nor fictional relationships.
 
-Week 2's empirical friendship-paradox results come from the real graph. Its model curves and preset shuffle gauges are labeled **illustrative**; they are not fitted models or retained null ensembles. The report makes no significance claim from those sketches.
+The compressed original corpus, SHA-256, definitions, candidate questions, sensitivity results, algorithm and counterexamples are documented in [data/week5/README.md](data/week5/README.md). Downloadable JSON and its browser bundle contain the same results. Wikipedia text is attributed to its contributing article pages and histories.
 
-The B-side uses an explicitly sampled set of 15 musicians and 55 observed links. The full Wikipedia API crawl was unavailable; the snapshot preserves browser-observed hyperlink evidence and its sampling limits. A hyperlink between musician pages does not establish a musical collaboration.
+## Earlier evidence
 
-Week 4 uses the course's **15 September 2026** philosopher release (1,444 nodes and 11,135 directed links). The primary graph is the **1,374-node unweighted undirected giant** with 9,139 ties. Seeded Louvain (2026) finds nine communities, modularity 0.5024. Aggregation retains self-loop weights correctly; ten seeds and six exact degree-preserving double-edge-swap nulls provide reproducible comparisons. The null is a baseline, not a significance test.
+The Marvel snapshot has 303 pages, 1,784 directed edges and 17 isolates. Week 3 uses exact normalized undirected betweenness, fixed original removal ranks and 200 seeded random permutations. Week 2's empirical friendship-paradox result is distinct from its illustrative model/null curves.
 
-The interactive atlas compares that partition with weighted Louvain using the observed article-link multiplicities summed across directions: eight communities, arithmetic **NMI 0.6223**, and 383 movers under one-to-one maximum-overlap alignment. Aristotle's 300 neighbors span eight primary communities. The disparity filter retains a tie when its tail probability is below alpha at either endpoint; its five course benchmark rows reproduce exactly. Three maps and a live dial share a deterministic layout based on the alpha=0.2 backbone, with colors detected on the full graph and node size based on strength. The exact half-giant breaking point is alpha=0.1695852271: the Confucius–Voltaire tie separates a 22-node component. All counts include isolates unless explicitly labeled attached nodes. The atlas runs offline; its JSON and JavaScript bundles contain matching results. Exercise 4.12 remains the separate two-phase toy.
+Week 4 uses the 1,374-node philosopher giant with 9,139 ties. Seeded Louvain finds nine communities, modularity 0.5024; weighted comparison NMI is 0.6223, with 383 movers after maximum-overlap alignment. Its disparity filter, null baselines, layout and limits remain documented in the article. The grunge sample is separate; [its provenance](data/grunge/README.md) describes its selection limits.
 
-## Add an issue
+## Structure and publication
 
-1. Create `templates/week4.html` with `@@HEADER@@`, `@@FOOTER@@`, and `@@ROOT@@` for shared paths.
-2. Set its entry in `site.json` to `published`, with `title`, `summary`, `path`, and `template`. Optional `topic`, `short_title`, `experience_path`, and `experience_label` control its directory listing.
-3. Add any new assets to the explicit publication allowlist in `scripts/build.py` and the isolated build inputs in `tests/test_site.py`.
-4. Build and check; commit both templates and generated pages for root-based GitHub Pages publishing.
+`site.json` owns published weeks and shared navigation. Templates are the editing source; generated root HTML intentionally supports the existing **main → / (root)** GitHub Pages configuration. `design.css` is injected by the builder into every page; story styles and experiments remain separate. JSON downloads and matching JavaScript bundles are intentional for reproducibility and disk mode.
 
-The header, latest story, quick directory, and full archive follow the registry. Shared layout lives in `style.css`; each experiment keeps its own JavaScript. The old homepage's report bookmarks still redirect through `home.js`.
+To add a week, create its template using `@@HEADER@@`, `@@FOOTER@@`, `@@ROOT@@`; publish its registry entry; add its assets to the explicit build allowlist and isolated test inputs; build and commit the generated pages. The homepage, navigation and latest issue follow the registry. Legacy Week 1 homepage bookmarks still redirect correctly.
 
-## Crossed Wires schedule
+The Pages workflow recomputes frozen analyses, tests and stages an allowlisted `_site`. It deploys that artifact only if the repository uses GitHub Actions for Pages; branch-based Pages publishes committed root files. Workspace metadata, scripts, tests, browser profiles and credentials are excluded from the artifact. Local builds do not push or deploy.
 
-A new three-round shift opens every **Wednesday at 19:00 Copenhagen / Paris time**. The configured 52 shifts run from 9 September 2026 through 1 September 2027; old shifts and practice stay available. UTC release timestamps account for daylight saving. Availability uses the device clock. The schedule is configured in `site.json`.
+Crossed Wires retains its 52 deterministic Wednesday 19:00 Paris/Copenhagen shifts, starting 9 September 2026, with daylight-saving-aware release timestamps. Progress stays in the visitor's browser. The grunge radio begins only after interaction and provides direct listening links.
 
-Puzzle generation is deterministic and checks unique solutions. Clues describe the selected puzzle edges. Progress, hints, ratings, and unfinished boards stay in the browser. Copying a repair receipt does not publish anything.
-
-## Repository and publishing
-
-Templates and generated HTML are both intentional: templates keep editing consistent, while generated pages support the repository's current **main → / (root)** Pages configuration. JSON downloads and their JavaScript bundles are likewise intentional; bundles support offline use. The raw datasets, generators, and tests are retained for reproducibility.
-
-Unused legacy raster figures, the obsolete homepage CSS, and the empty dependency manifest have been removed. `_site`, `.preview`, Python caches, credentials, and local environments are ignored.
-
-The **Publish Crosstalk** workflow recomputes the frozen analyses, builds, and tests. If Pages uses GitHub Actions as its source, the workflow also deploys the allowlisted `_site` artifact. With branch-based Pages, committed root files are published by Pages itself. The allowlist keeps scripts, tests, repository metadata, and browser profiles out of the staged artifact.
+[Coursework audit](docs/course-audit.md) records required public posts, optional exercises, and the remaining group actions of sharing Week 5 in Teams and giving peer feedback. [Design review](docs/design-review.md) records the concept, references and refinement decisions.

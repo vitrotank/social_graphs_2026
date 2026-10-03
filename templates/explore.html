@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Network cabinet ? @@TITLE@@</title><link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="@@ROOT@@style.css"><link rel="stylesheet" href="@@ROOT@@explore.css"><script defer src="@@ROOT@@assets/data/cover.js"></script><script defer src="@@ROOT@@home.js"></script></head><body class="cabinet-page" data-root="@@ROOT@@">@@HEADER@@<main id="main" class="shell"><section class="section"><p class="eyebrow">THE NETWORK CABINET</p><h1 class="section-title">A world of connections.</h1><p style="margin:20px 0 35px;max-width:55ch">A small selection of real links. Follow a name, then open the complete atlas to investigate further.</p>      <figure class="cover-observatory" aria-labelledby="cover-title" aria-describedby="cover-caption">
+        <div class="cover-topline"><div><p class="eyebrow">EXHIBIT A / THE LIVING FRONT PAGE</p><h2 id="cover-title">Ideas have a social life.</h2></div><div class="cover-worlds" role="group" aria-label="Choose a network"><button type="button" data-cover-world="philosophers" aria-pressed="true">Philosophers</button><button type="button" data-cover-world="marvel" aria-pressed="false">Marvel</button></div></div>
+        <div class="cover-body">
+          <div class="cover-map-panel">
+            <div id="cover-groups" class="cover-groups" role="group" aria-label="Focus a community"></div>
+            <svg id="cover-map" viewBox="0 0 900 530" role="img" aria-labelledby="cover-map-title cover-map-desc"><title id="cover-map-title">A preview of the philosopher network</title><desc id="cover-map-desc">Choose a community or a name to trace their connections. The full atlas is linked alongside the map.</desc><defs><pattern id="cover-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#d0cdbf" stroke-width=".7" stroke-opacity=".42"/></pattern></defs><rect width="900" height="530" fill="url(#cover-grid)"/><g id="cover-edges"></g><g id="cover-nodes"></g><g id="cover-labels"></g></svg>
+            <p class="cover-map-hint"><span class="cover-key-dot" aria-hidden="true"></span> Select a dot. Follow its connections.</p>
+          </div>
+          <aside class="cover-insight" aria-label="Map details">
+            <p class="eyebrow">THE NETWORK, AT A GLANCE</p>
+            <div class="cover-totals"><div><strong id="cover-total-nodes">1,374</strong><span id="cover-node-unit">philosophers in the core</span></div><div><strong id="cover-total-edges">9,139</strong><span id="cover-edge-unit">unique undirected ties</span></div></div>
+            <div class="cover-person-control"><label for="cover-person">Follow a name</label><select id="cover-person"><option value="">Choose a philosopher</option></select></div>
+            <div id="cover-person-note" class="cover-person-note" aria-live="polite"><h3>Start with a familiar name.</h3><p>Colors show communities. Click a dot to trace its links, or choose a name above.</p></div>
+            <button type="button" id="cover-reset" class="cover-reset">Show the whole preview <span aria-hidden="true">↺</span></button>
+            <a href="@@ROOT@@week4/index.html#atlas" id="cover-open" class="cover-open">Enter the full atlas <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <figcaption id="cover-caption" class="cover-caption"><span id="cover-sample-note">A selected preview of the philosopher network. Open the atlas for the complete connected core.</span><span>DOTS = PAGES / LINES = LINKS</span></figcaption>
+        <noscript><p class="cover-noscript">Explore all 1,374 philosophers in the <a href="@@ROOT@@week4/index.html#atlas">Philosopher Atlas</a>, or read the <a href="@@ROOT@@week4/index.html#finding">findings and methods</a>. The preview controls need JavaScript.</p></noscript>
+      </figure>
+</section></main>@@FOOTER@@</body></html>

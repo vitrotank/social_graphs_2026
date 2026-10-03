@@ -33,6 +33,10 @@ jobs:
         run: python scripts/analyze.py
       - name: Recompute paths and removal experiments
         run: python scripts/analyze_week3.py
+      - name: Recompute philosopher communities and backbones
+        run: python scripts/analyze_week4.py
+      - name: Recompute the Marvel text investigation
+        run: python scripts/analyze_week5.py
       - name: Rebuild the grunge extra from its frozen snapshot
         run: python scripts/crawl_grunge.py
       - name: Build the public site

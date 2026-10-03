@@ -28,7 +28,6 @@
         <h1 class="hero-title" id="hero-title">Some heroes<br>never get<br><em>the call.</em></h1>
         <p class="hero-deck">303 characters. A universe of hyperlinks. And <strong>@@ISOLATE_COUNT@@ heroes in complete silence.</strong> Follow the connections—and the missing ones.</p>
         <div class="hero-actions"><a class="button button-primary" href="#atlas">Explore the switchboard <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#report">Read the field notes <span aria-hidden="true">↓</span></a></div>
-        <p class="hero-annotation">A switchboard made from Wikipedia’s Marvel pages.<br>Mapped with Python. Investigated with curiosity.</p>
       </div>
       <figure class="hero-art hero-figure">
         <div class="figure-topline"><span>THE WIKIPEDIA EXCHANGE / LINE 01</span><span class="signal"><span class="legend-dot"></span> SNAPSHOT 26.08.26</span></div>
@@ -36,24 +35,7 @@
         <figcaption class="orbit-caption"><span>FIG. 001 — NOT EVERY LINE CONNECTS</span><span>303 NODES · @@EDGES@@ LINKS</span></figcaption>
       </figure>
     </section>
-    <aside class="issue-directory shell" aria-label="Week 1 contents">
-      <div><p class="eyebrow">CONTENTS / ISSUE 01</p><p class="reading-intro">Start with the story, jump into the map, or take the puzzle to the games desk. Each has its own place.</p></div>
-      <nav class="issue-navigation" aria-label="In this issue">
-        <a href="#report"><span>01</span> The story</a>
-        <a href="#atlas"><span>02</span> Interactive map</a>
-        <a href="#degrees"><span>03</span> Who gets attention?</a>
-        <a href="#islands"><span>04</span> The isolated pages</a>
-        <a href="#experiment"><span>05</span> Remove a hero</a>
-        <a href="#methods"><span>06</span> Data &amp; methods</a>
-      </nav>
-      <a class="button button-primary" href="@@ROOT@@play/index.html">Play Crossed Wires ↗</a>
-    </aside>
-    <div class="issue-strip shell" aria-label="Snapshot statistics">
-      <div class="issue-item"><span>THE PLAYGROUND</span><strong>@@NODES@@ <small>characters</small></strong></div>
-      <div class="issue-item"><span>THE CONVERSATION</span><strong>@@EDGES@@ <small>directed links</small></strong></div>
-      <div class="issue-item"><span>THE MAINLAND</span><strong>@@GIANT@@ <small>connected pages</small></strong></div>
-      <div class="issue-item"><span>THE SILENCE</span><strong>@@ISOLATE_COUNT@@ <small>isolated characters</small></strong></div>
-    </div>
+
 
     <article id="report" class="shell section">
       <div class="section-head"><p class="eyebrow"><span class="section-number">01 /</span> THE FIRST DISPATCH</p><span class="post-meta">WEEK 1 · THE BOOTSTRAP EDITION</span></div>
@@ -106,7 +88,12 @@
 
     <section id="experiment" class="shell section"><div class="section-head"><p class="eyebrow"><span class="section-number">05 /</span> A SMALL THOUGHT EXPERIMENT</p><span class="badge">YOU CONTROL THE COUNTERFACTUAL</span></div><div class="article-layout"><div class="article-main"><h2 class="section-title">What if the star<br>left the universe?</h2><p class="lede">Spider-Man gets the most incoming links. Does that make him the load-bearing wall?</p><p>Remove the most linked-to characters, one at a time, and recalculate the largest weakly connected component. We keep the ranking fixed at its original in-degree. All links touching a removed page disappear with it.</p><p>The surprise: remove Spider-Man and the mainland shrinks from @@GIANT@@ to <strong>@@GIANT_WITHOUT_SPIDER@@ pages</strong>. Beyond Spider-Man himself, @@DETACHED_WITHOUT_SPIDER@@ more pages detach. The broader web holds together, but some neighbours depend entirely on that one connection.</p><p>This is a structural experiment on hyperlinks, not a prediction about Marvel. A well-connected star can still be replaceable if other routes hold the web together.</p></div><div class="experiment"><label class="eyebrow" for="removal-count">REMOVE THE TOP <output id="removal-label" for="removal-count">0</output> IN-DEGREE CHARACTERS</label><input id="removal-count" type="range" min="0" max="40" value="0" step="1"><div class="range-labels"><span>Keep everyone</span><span>Remove 40</span></div><div class="experiment-result" role="status" aria-live="polite"><strong id="remaining-giant">@@GIANT@@</strong><span>pages in the largest surviving component</span><div class="component-bar"><i id="giant-bar" style="width:@@GIANT_SHARE@@%"></i></div><p id="removal-detail">@@GIANT@@ of @@NODES@@ surviving pages · @@GIANT_SHARE@@%</p><p id="removed-names" class="chart-note">Slide to begin the experiment.</p></div><button class="text-link" id="remove-spider">Try removing just Spider-Man ↗</button><noscript><p>The slider requires JavaScript. You can reproduce the experiment with the Python analysis script.</p></noscript></div></div></section>
 
-    <section id="methods" class="shell section"><div class="section-head"><p class="eyebrow"><span class="section-number">06 /</span> OPEN THE NOTEBOOK</p><a class="text-link" href="@@REPO@@">Code &amp; reproducibility ↗</a></div><div class="section-intro"><h2 class="section-title">Curiosity, with receipts.</h2><p>Every number above comes from the same two frozen TSV files.<br>Python does the analysis; the browser makes it explorable.</p></div><div class="method-grid"><section class="method-card"><p class="eyebrow">01 / THE MATERIAL</p><h3>A frozen slice of Wikipedia.</h3><p>Week 1 release, 26 August 2026. We used the course files already in our exercise folder, preserving their bytes. The roster defines our world; links beyond it are outside this analysis.</p><ul class="source-list"><li><a href="@@ROOT@@data/raw/week1_nodes.tsv" download>Node roster · TSV ↓</a></li><li><a href="@@ROOT@@data/raw/week1_edges.tsv" download>Directed edge list · TSV ↓</a></li><li><a href="https://sunelehmann.com/socialgraphs2026-web/data/">Official course data &amp; collection notes ↗</a></li></ul></section><section class="method-card"><p class="eyebrow">02 / THE RECIPE</p><h3>Keep the quiet characters.</h3><pre class="code-block"><code><span># The order is the point.</span>
+    <section id="methods" class="shell section"><div class="section-head"><p class="eyebrow"><span class="section-number">06 /</span> OPEN THE NOTEBOOK</p><a class="text-link" href="@@REPO@@">Code &amp; reproducibility ↗</a></div><div class="section-intro"><h2 class="section-title">Curiosity, with receipts.</h2><p>Every number above comes from the same two frozen TSV files.<br>Python does the analysis; the browser makes it explorable.</p></div><details class="study-notes"><summary>Source files, definitions, computation and limitations</summary><div class="issue-strip" aria-label="Snapshot statistics">
+      <div class="issue-item"><span>THE PLAYGROUND</span><strong>@@NODES@@ <small>characters</small></strong></div>
+      <div class="issue-item"><span>THE CONVERSATION</span><strong>@@EDGES@@ <small>directed links</small></strong></div>
+      <div class="issue-item"><span>THE MAINLAND</span><strong>@@GIANT@@ <small>connected pages</small></strong></div>
+      <div class="issue-item"><span>THE SILENCE</span><strong>@@ISOLATE_COUNT@@ <small>isolated characters</small></strong></div>
+    </div><div class="method-grid"><section class="method-card"><p class="eyebrow">01 / THE MATERIAL</p><h3>A frozen slice of Wikipedia.</h3><p>Week 1 release, 26 August 2026. We used the course files already in our exercise folder, preserving their bytes. The roster defines our world; links beyond it are outside this analysis.</p><ul class="source-list"><li><a href="@@ROOT@@data/raw/week1_nodes.tsv" download>Node roster · TSV ↓</a></li><li><a href="@@ROOT@@data/raw/week1_edges.tsv" download>Directed edge list · TSV ↓</a></li><li><a href="https://sunelehmann.com/socialgraphs2026-web/data/">Official course data &amp; collection notes ↗</a></li></ul></section><section class="method-card"><p class="eyebrow">02 / THE RECIPE</p><h3>Keep the quiet characters.</h3><pre class="code-block"><code><span># The order is the point.</span>
 nodes = read_roster("week1_nodes.tsv")
 graph = {node: set() for node in nodes}
 for source, target in read_edges(...):
@@ -114,9 +101,9 @@ for source, target in read_edges(...):
 
 <span># Run our full, standard-library pipeline:</span>
 python scripts/analyze.py
-python scripts/build.py</code></pre><p class="chart-note">Illustrative loader above; the full script validates IDs, preserves isolated nodes, and computes the figures. No Python packages required.</p></section><section class="method-card"><p class="eyebrow">03 / THE LIMITS</p><h3>A map has a point of view.</h3><p>Category membership and Wikipedia’s editorial choices shape the network. Coordinates are a deterministic drawing, not physical distance or measured communities. Small components are arranged separately for visibility.</p><p>We did not recrawl the live API or test a power-law model. Claims about why editors link characters remain hypotheses for a later text-based investigation.</p><a class="text-link" href="@@ROOT@@assets/data/summary.json" download>Download every computed result · JSON ↓</a></section></div></section>
+python scripts/build.py</code></pre><p class="chart-note">Illustrative loader above; the full script validates IDs, preserves isolated nodes, and computes the figures. No Python packages required.</p></section><section class="method-card"><p class="eyebrow">03 / THE LIMITS</p><h3>A map has a point of view.</h3><p>Category membership and Wikipedia’s editorial choices shape the network. Coordinates are a deterministic drawing, not physical distance or measured communities. Small components are arranged separately for visibility.</p><p>We did not recrawl the live API or test a power-law model. Claims about why editors link characters remain hypotheses for a later text-based investigation.</p><a class="text-link" href="@@ROOT@@assets/data/summary.json" download>Download every computed result · JSON ↓</a></section></div></details></section>
 
-    <nav class="shell section report-outro issue-navigation" aria-label="Continue reading"><a href="@@ROOT@@index.html#journal">← All weekly issues</a><a href="@@ROOT@@week2/index.html">Next: Week 2 · Compared to what? →</a><a href="#top">Back to contents ↑</a></nav>
+    <nav class="shell section report-outro issue-navigation" aria-label="Continue reading"><a href="@@ROOT@@index.html#journal">← All weekly issues</a><a href="@@ROOT@@week2/index.html">Next: Week 2 · Compared to what? →</a><a href="@@ROOT@@play/index.html">Play Crossed Wires ↗</a><a href="#top">Back to top ↑</a></nav>
   </main>
   @@FOOTER@@
 </body>

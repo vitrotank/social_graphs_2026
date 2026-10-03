@@ -27,9 +27,9 @@ def read_json(path: Path) -> dict:
 
 def header(config: dict, prefix: str, current: str) -> str:
     routes = [
-        ("home", "index.html", "Front page", None),
-        ("games", "index.html#games", "The games room", None),
-        ("grunge", "grunge/index.html", "Week 3 B-side ↗", None),
+        ("home", "index.html", "Journal", None),
+        ("explore", "explore/index.html", "Networks", None),
+        ("games", "index.html#games", "Laboratory", None),
     ]
     items = []
     for key, url, label, week in routes:
@@ -39,9 +39,9 @@ def header(config: dict, prefix: str, current: str) -> str:
         else:
             items.append(f'<a href="{prefix}{url}"{active}>{label}</a>')
     links = ''.join(items)
-    mark = '<svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg>'
+    mark = '<svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3v34M3 20h34M8 8l24 24M8 32 32 8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="4" fill="currentColor"/></svg>'
     issues = ''.join(f'<a href="{prefix}{escape(w["path"], quote=True)}"' + (' aria-current="page"' if current == f'week{w["number"]}' else '') + f'><span>{w["number"]:02}</span> Week {w["number"]}</a>' for w in config["weeks"] if w["status"] == "published")
-    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues">{issues}<a class="all-issues" href="{prefix}index.html#journal">All weeks ↓</a></nav></div></header>'
+    return f'<header class="site-header"><div class="shell header-inner"><a class="brand" href="{prefix}index.html" aria-label="Crosstalk home">{mark}<span class="brand-copy"><strong>{escape(config["title"])}</strong><small>LINKS, LANGUAGE &amp; THE SPACE BETWEEN</small></span></a><nav class="nav-links" aria-label="Main navigation">{links}<a href="{escape(config["repository_url"], quote=True)}">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues">{issues}<a class="all-issues" href="{prefix}index.html#journal">All issues ↓</a></nav></div></header>'
 
 
 def footer(config: dict, prefix: str) -> str:
@@ -54,7 +54,7 @@ def footer(config: dict, prefix: str) -> str:
         if profile_url:
             name = f'<a href="{escape(profile_url, quote=True)}">{name}</a>'
         members.append(f'<div class="member"><strong>{name}</strong><small>{escape(student_id)}</small></div>')
-    return f'<footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><p class="eyebrow">THE PEOPLE AT THE OTHER END</p><h2>Made by curious people.</h2><p>A student journal by Christos, Dávid &amp; Evangelos.</p></div><div class="footer-members">{"".join(members)}</div></div><div class="footer-bottom"><span>{escape(config["course"])} · {escape(config["semester"])}</span><span>Python, experiments &amp; a little help from an LLM.</span><a href="{prefix}index.html">Back to the switchboard ↗</a></div></div></footer>'
+    return f'<footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><h2>Crosstalk.</h2><p>A student journal of social graphs.<br>Made with Python, curiosity, and an LLM.</p></div><div class="footer-members">{"".join(members)}</div></div><div class="footer-bottom"><span>{escape(config["course"])} · {escape(config["semester"])}</span><a href="https://sunelehmann.com/socialgraphs2026-web/index.html">Course &amp; assignments ↗</a><a href="{prefix}index.html">Back to the journal ↑</a></div></div></footer>'
 
 
 def page_path(value: str, parent: Path) -> Path:
@@ -107,12 +107,57 @@ def hero_svg(network: dict, summary: dict) -> str:
     return "\n".join(parts) + "\n"
 
 
+def week5_svg(data: dict, *, cover: bool = False) -> str:
+    """Draw exact frozen counts; a logarithmic axis makes the survivors legible."""
+    if cover:
+        x = lambda n: 40 + (n - 8) / 52 * 360
+        y = lambda n: 250 - math.log10(max(1, n)) / 5 * 190
+        points = ' '.join(f'{x(r["length"]):.2f},{y(r["pairs"]):.2f}' for r in data['thresholds'])
+        parts = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 315" role="img" aria-label="Matching article pairs: 40,570 at eight shared words, 71 at twenty, and 13 at forty. Vertical counts use a logarithmic scale.">',
+                 '<text x="40" y="24" fill="#ead0cd" font-size="12" font-family="monospace">MATCHING PAIRS / LOG SCALE</text>',
+                 '<path d="M40 60H420M40 250H420" stroke="#ead0cd" stroke-opacity=".25"/>',
+                 f'<polyline points="{points}" fill="none" stroke="#f4f0e8" stroke-width="3"/>']
+        for length in (8, 20, 40, 60):
+            row = next(r for r in data['thresholds'] if r['length'] == length)
+            xx, yy = x(length), y(row['pairs'])
+            parts.append(f'<circle cx="{xx}" cy="{yy}" r="4" fill="#f4f0e8"/><text x="{xx}" y="277" text-anchor="middle" fill="#ead0cd" font-family="monospace" font-size="14">{length}</text>')
+            if length != 60:
+                parts.append(f'<text x="{xx+10}" y="{yy-17}" fill="#f4f0e8" font-family="Georgia" font-size="32">{row["pairs"]:,}</text>')
+        parts.append('<text x="220" y="309" text-anchor="middle" fill="#ead0cd" font-family="monospace" font-size="12">MINIMUM SHARED WORDS</text></svg>')
+        return ''.join(parts)
+    x = lambda n: 82 + (n - 8) / 52 * 810
+    y = lambda n: 335 - math.log10(max(1, n)) / 5 * 270
+    color = '#f4f0e8' if cover else '#8d293d'
+    muted = '#ead0cd' if cover else '#64645b'
+    parts = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="w5-static-title w5-static-desc">',
+             '<title id="w5-static-title">How longer shared phrases shrink the overlap</title>',
+             '<desc id="w5-static-desc">Matching unordered article pairs: 40,570 at eight words, 71 at twenty, 13 at forty, 8 at sixty. Vertical counts use a logarithmic scale. All 303 frozen articles are included.</desc>']
+    for count in (1, 10, 100, 1000, 10000, 100000):
+        yy = y(count)
+        parts.append(f'<path d="M82 {yy:.2f}H914" stroke="{muted}" opacity=".25" stroke-dasharray="2 6"/><text x="66" y="{yy+5:.2f}" text-anchor="end" fill="{muted}" font-size="14" font-family="monospace">{count:,}</text>')
+    points = ' '.join(f'{x(r["length"]):.2f},{y(r["pairs"]):.2f}' for r in data['thresholds'])
+    parts.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="4"/>')
+    for length in (8, 20, 40, 60):
+        row = next(r for r in data['thresholds'] if r['length'] == length)
+        xx, yy = x(length), y(row['pairs'])
+        parts.append(f'<circle cx="{xx}" cy="{yy}" r="5" fill="{color}"/><text x="{xx}" y="365" text-anchor="middle" fill="{muted}" font-family="monospace" font-size="16">{length}</text>')
+        if length != 60:
+            parts.append(f'<text x="{xx+15}" y="{yy-15}" fill="{color}" font-family="Georgia" font-size="31">{row["pairs"]:,}</text>')
+    parts.append(f'<text x="82" y="28" fill="{muted}" font-family="monospace" font-size="13">ARTICLE PAIRS / LOG SCALE</text><text x="500" y="405" text-anchor="middle" fill="{muted}" font-family="monospace" font-size="13">MINIMUM CONSECUTIVE WORDS SHARED</text></svg>')
+    return ''.join(parts)
+
+
 def render() -> list[Path]:
     config = read_json(ROOT / "site.json")
     network = read_json(ROOT / "assets/data/network.json")
     summary = read_json(ROOT / "assets/data/summary.json")
     week4 = read_json(ROOT / "assets/data/week4.json")
     week3 = read_json(ROOT / "assets/data/week3.json")
+    week5 = read_json(ROOT / "assets/data/week5.json")
+    if (week5['corpus']['documents'], week5['corpus']['tokens'],
+        week5['result']['pairs_at_8'], week5['result']['pairs_at_20'], week5['result']['pairs_at_40'],
+        week5['result']['standard_phrase_documents'], week5['result']['longest_words']) != (303, 727203, 40570, 71, 13, 282, 166):
+        raise ValueError('This Week 5 story expects the documented frozen corpus and tokenizer; review the narrative before changing them.')
     nodes = {n["id"]: n for n in network["nodes"]}
     # The prose is specifically a Week 1 report. A changed release needs an edit,
     # rather than silently mixing a new graph with old scientific statements.
@@ -191,7 +236,7 @@ def render() -> list[Path]:
         page_path(week["path"], ROOT)
         page_path(week["template"], ROOT / "templates")
     archive = []
-    for week in sorted(weeks, key=lambda w: w["number"]):
+    for week in published:
         number = week["number"]
         content = f'<span class="week-number">{number:02}</span><span class="week-label">Week {number}</span>'
         if week["status"] == "published":
@@ -204,8 +249,14 @@ def render() -> list[Path]:
         "PUBLISHED_COUNT": str(len(published)), "UPCOMING_COUNT": str(len(weeks) - len(published)),
         "LATEST_NUMBER": str(latest["number"]), "LATEST_URL": escape(latest["path"], quote=True),
         "LATEST_TITLE": escape(latest["title"]), "LATEST_SUMMARY": escape(latest["summary"]),
+        "LATEST_PLATE": '<svg viewBox="0 0 440 250" role="img" aria-label="The Marvel roster has 303 pages, 1784 directed links and 17 isolated pages"><text x="0" y="65" fill="currentColor" font-size="66" font-family="Georgia">303</text><text x="0" y="95" fill="currentColor" font-size="12">PAGES</text><text x="200" y="65" fill="currentColor" font-size="66" font-family="Georgia">1,784</text><text x="200" y="95" fill="currentColor" font-size="12">DIRECTED LINKS</text><path d="M0 130H440" stroke="currentColor" opacity=".4"/><text x="0" y="205" fill="currentColor" font-size="66" font-family="Georgia">17</text><text x="110" y="180" fill="currentColor" font-size="14">Pages with no links</text><text x="110" y="203" fill="currentColor" font-size="14">inside this roster.</text></svg>',
+        "LATEST_PLATE_CAPTION": 'The course’s frozen Marvel network. Links measure Wikipedia references.',
     })
+    if latest['number'] == 5:
+        values.update(LATEST_PLATE=week5_svg(week5, cover=True),
+                      LATEST_PLATE_CAPTION='Shared words, vanishing pairs. 40,570 matches at eight words; 13 at forty. Vertical scale is logarithmic.')
     pages = [(Path("home.html"), Path("index.html"), "home"),
+             (Path("explore.html"), Path("explore/index.html"), "explore"),
              (Path("play.html"), Path("play/index.html"), "play"),
              (Path("cerebro.html"), Path("play/cerebro.html"), "cerebro"),
              (Path("switchboard.html"), Path("play/switchboard.html"), "games"),
@@ -219,6 +270,7 @@ def render() -> list[Path]:
         page_values = dict(values, ROOT=prefix, HEADER=header(config, prefix, current), FOOTER=footer(config, prefix))
         template = (ROOT / "templates" / source).read_text(encoding="utf-8")
         result = re.sub(r"@@([A-Z][A-Z0-9_]*)@@", lambda match: page_values[match[1]], template)
+        result = result.replace('</head>', f'<link rel="stylesheet" href="{prefix}design.css"></head>')
         target = ROOT / destination
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(result, encoding="utf-8", newline="\n")
@@ -257,13 +309,15 @@ def render() -> list[Path]:
     (ROOT / "assets/data/puzzles.json").write_text(json.dumps(puzzles, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     (ROOT / "assets/data/puzzles.js").write_text("window.CROSSTALK_PUZZLES = " + json.dumps(puzzles, ensure_ascii=True, separators=(",", ":")) + ";\n", encoding="utf-8", newline="\n")
     (ROOT / "assets/figures/hero-network.svg").write_text(hero_svg(network, summary), encoding="utf-8", newline="\n")
-    favicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#f6f1e7"/><path d="M10 17h10c17 0 7 30 24 30h10" fill="none" stroke="#2849c7" stroke-width="5"/><path d="M10 47h10c17 0 7-30 24-30h10" fill="none" stroke="#dc512f" stroke-width="5"/><g fill="#2849c7"><circle cx="10" cy="17" r="5"/><circle cx="54" cy="47" r="5"/></g><g fill="#dc512f"><circle cx="10" cy="47" r="5"/><circle cx="54" cy="17" r="5"/></g></svg>\n'
+    (ROOT / "assets/figures/week5-sieve.svg").write_text(week5_svg(week5), encoding="utf-8", newline="\n")
+    favicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#f4f0e8"/><path d="M32 9v46M9 32h46M16 16l32 32M16 48l32-32" fill="none" stroke="#8d293d" stroke-width="3"/><circle cx="32" cy="32" r="5" fill="#8d293d"/></svg>\n'
     (ROOT / "assets/favicon.svg").write_text(favicon, encoding="utf-8", newline="\n")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
         "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js",
-        "home.css", "journal.css", "journal.js", "assets/data/cover.js", "assets/data/week3-figure.js",
-        "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",
+        "home.css", "design.css", "explore.css", "journal.css", "journal.js", "assets/data/cover.js", "assets/data/week3-figure.js",
+        "week3.css", "week3.js", "week4.css", "week4.js", "week5.css", "week5.js", "louvain.js", "grunge.css", "grunge.js",
+        "assets/data/week5.json", "assets/data/week5.js", "assets/figures/week5-sieve.svg", "data/raw/marvel_pages.zip", "data/week5/README.md",
         "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
         "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
         "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",
