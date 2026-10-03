@@ -16,6 +16,7 @@ import shutil
 import socket
 import struct
 import subprocess
+import sys
 import threading
 import time
 from urllib.parse import urlsplit
@@ -109,9 +110,13 @@ class QuietHandler(SimpleHTTPRequestHandler):
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--browser", help="Path to Chrome or Chromium executable")
     parser.add_argument("--grunge-only", action="store_true", help="Run just the B-side and provider-control checks")
+    parser.add_argument("--week4-only", action="store_true", help="Run just the philosopher atlas, comparison, and backbone checks")
+    parser.add_argument("--editorial-only", action="store_true", help="Run just the homepage and Week 1–3 editorial figure checks")
     args = parser.parse_args()
     browser = args.browser or shutil.which("chromium") or shutil.which("google-chrome")
     if not browser:
@@ -156,8 +161,18 @@ def main():
         def navigate(url, ready="document.readyState === 'complete'"):
             client.call("Page.navigate", {"url": url})
             for _ in range(100):
-                if client.js(ready):
-                    return
+                try:
+                    if client.js(ready):
+                        return
+                except RuntimeError as error:
+                    # The legacy homepage bookmarks redirect to Week 1. CDP
+                    # can briefly evaluate against the departing document.
+                    if not any(message in str(error) for message in (
+                        "Inspected target navigated or closed",
+                        "Execution context was destroyed",
+                        "Cannot find context with specified id",
+                    )):
+                        raise
                 time.sleep(.1)
             raise AssertionError(f"Page did not become ready: {url}")
 
@@ -174,9 +189,335 @@ def main():
             result = client.js(expression)
             checks[name] = result
             if not result:
-                print("Failure details:", client.js("JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth,offenders:Array.from(document.querySelectorAll('body *')).filter(e=>e.getBoundingClientRect().right>document.documentElement.clientWidth+1).slice(0,12).map(e=>({tag:e.tagName,cls:String(e.className),text:e.textContent.slice(0,90)}))})"), flush=True)
+                print("Failure details:", client.js("JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth,focus:document.activeElement.outerHTML.slice(0,350),rank:document.querySelector('#w3-story-rank-readout')?.textContent,rankChoice:document.querySelector('#w3-story-rank-names [aria-pressed=true]')?.dataset.character,offenders:Array.from(document.querySelectorAll('body *')).filter(e=>e.getBoundingClientRect().right>document.documentElement.clientWidth+1).slice(0,12).map(e=>({tag:e.tagName,cls:String(e.className),text:e.textContent.slice(0,90)}))})"), flush=True)
                 screenshot("failure.png", full=True)
                 raise AssertionError(f"Browser check failed: {name}")
+        def next_frame():
+            client.js("new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))")
+
+        def press_key(key, code, virtual_key):
+            keydown = {"type":"keyDown" if key == "Enter" else "rawKeyDown","key":key,"code":code,"windowsVirtualKeyCode":virtual_key,"nativeVirtualKeyCode":virtual_key}
+            if key == "Enter":
+                keydown.update({"text":"\r","unmodifiedText":"\r"})
+            client.call("Input.dispatchKeyEvent", keydown)
+            client.call("Input.dispatchKeyEvent", {"type":"keyUp","key":key,"code":code,"windowsVirtualKeyCode":virtual_key,"nativeVirtualKeyCode":virtual_key})
+            next_frame()
+
+        def check_editorial():
+            """Exercise real figure data, pointer/keyboard controls, and disk use."""
+            ready = {
+                "index.html": "document.readyState==='complete' && document.querySelectorAll('#cover-nodes [data-node]').length>0",
+                "week1/index.html": "document.readyState==='complete' && document.querySelectorAll('#degree-scatter [data-degree-character]').length===303",
+                "week2/index.html": "document.readyState==='complete' && document.querySelector('#w2-ccdf-plot')?.dataset.state==='ready'",
+                "week3/index.html": "document.readyState==='complete' && document.querySelector('#w3-story-explorer')?.hidden===false && document.querySelectorAll('#w3-story-rank-names button').length===8",
+            }
+            client.call("Emulation.setEmulatedMedia", {"features":[{"name":"prefers-reduced-motion","value":"reduce"}]})
+            client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+            # Capture every redesigned figure before assertions, so visual review
+            # remains available if a later interaction reveals a regression.
+            figures = (("index.html","editorial-home",None),
+                       ("week1/index.html","editorial-week1",".degree-portrait"),
+                       ("week2/index.html","editorial-week2",".week2-ccdf-panel"),
+                       ("week3/index.html","editorial-week3","#w3-story-figure"))
+            for route, name, target in figures:
+                navigate(base_url + route, ready[route])
+                next_frame()
+                screenshot(name + ".png", full=True)
+                if target:
+                    # The plot's figure is the useful viewport, rather than the
+                    # headline at the top of a long story.
+                    if route.startswith("week2/"):
+                        client.js("document.querySelector('#w2-ccdf-plot').closest('figure').scrollIntoView({block:'start',behavior:'instant'})")
+                    else:
+                        client.js(f"document.querySelector({json.dumps(target)}).scrollIntoView({{block:'start',behavior:'instant'}})")
+                    next_frame()
+                    screenshot(name + ("-scatter.png" if route.startswith("week1/") else "-plot.png" if route.startswith("week2/") else "-curve.png"))
+                else:
+                    screenshot(name + "-hero.png")
+                    client.js("document.querySelector('.cover-observatory').scrollIntoView({block:'start',behavior:'instant'})")
+                    next_frame()
+                    screenshot(name + "-map.png")
+                    client.call("Emulation.setDeviceMetricsOverride", {"width":390,"height":844,"deviceScaleFactor":1,"mobile":True})
+                    client.js("window.scrollTo({top:0,behavior:'instant'})")
+                    next_frame()
+                    screenshot(name + "-mobile.png", full=True)
+                    client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+            navigate(base_url, ready["index.html"])
+            check("editorial home defaults to the real philosopher preview", "document.querySelector('[data-cover-world=philosophers]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='1,374' && document.querySelector('#cover-total-edges').textContent==='9,139' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.philosophers.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.philosophers.edges.length")
+            check("editorial home uses a compact exhibit without the full graph payload", "!window.CROSSTALK_DATA && !window.CROSSTALK_WEEK4 && CROSSTALK_COVER.philosophers.nodes.length<200 && CROSSTALK_COVER.philosophers.edges.length<=500 && document.querySelector('#cover-person').options.length===CROSSTALK_COVER.philosophers.nodes.length+1 && document.querySelector('#cover-sample-note').textContent.includes('Selected')")
+            check("reading rail is confined to stories on the homepage", "!document.querySelector('.journal-rail') && !document.documentElement.classList.contains('journal-reader')")
+            client.js("document.querySelector('#cover-groups button:not([data-group=all])').click()")
+            check("home community focus preserves cross-group links and dims the rest", "document.querySelector('#cover-groups button[aria-pressed=true]').dataset.group!=='all' && document.querySelectorAll('#cover-nodes .is-muted').length>0 && document.querySelectorAll('#cover-edges .is-active').length>0 && document.querySelectorAll('#cover-edges .is-muted').length>0 && document.querySelector('#cover-person-note').textContent.includes('stay visible')")
+            client.js("document.querySelector('#cover-person').value='Aristotle';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
+            check("home named picker follows Aristotle's real links", "document.querySelector('#cover-person-note h3').textContent==='Aristotle' && document.querySelector('#cover-person-note').textContent.includes('300 neighbors') && document.querySelector('#cover-nodes [data-node=Aristotle]').getAttribute('aria-pressed')==='true' && document.querySelectorAll('#cover-edges .is-active').length===CROSSTALK_COVER.philosophers.edges.filter(e=>e.source==='Aristotle'||e.target==='Aristotle').length")
+            client.js("document.querySelector('#cover-nodes [tabindex=\"0\"]').focus()")
+            press_key("ArrowRight", "ArrowRight", 39)
+            client.js("window.__editorialCoverFocus=document.activeElement.dataset.node")
+            check("home map arrow key moves to another named dot", "!!window.__editorialCoverFocus && window.__editorialCoverFocus!=='Aristotle' && document.activeElement.closest('#cover-nodes')!==null")
+            press_key("Enter", "Enter", 13)
+            check("home map Enter selects the focused dot", "document.querySelector('#cover-person').value===window.__editorialCoverFocus && document.querySelector('#cover-nodes [aria-pressed=true]').dataset.node===window.__editorialCoverFocus")
+            press_key("Escape", "Escape", 27)
+            check("home map Escape restores the preview", "document.querySelector('#cover-person').value==='' && document.querySelector('#cover-groups [data-group=all]').getAttribute('aria-pressed')==='true' && !document.querySelector('#cover-nodes .is-muted')")
+            client.js("document.querySelector('[data-cover-world=marvel]').click()")
+            check("home Marvel lens shows the real roster totals and selected pairs", "document.querySelector('[data-cover-world=marvel]').getAttribute('aria-pressed')==='true' && document.querySelector('#cover-total-nodes').textContent==='303' && document.querySelector('#cover-total-edges').textContent==='1,784' && document.querySelectorAll('#cover-nodes [data-node]').length===CROSSTALK_COVER.marvel.nodes.length && document.querySelectorAll('#cover-edges line').length===CROSSTALK_COVER.marvel.edges.length && document.querySelector('#cover-open').href.endsWith('/week1/index.html#atlas')")
+            client.js("document.querySelector('#cover-person').value='Baymax';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
+            check("home preview includes an actual isolate", "document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-person-note').textContent.includes('0 neighbors') && !document.querySelector('#cover-edges .is-active')")
+
+            navigate(base_url + "week1/index.html", ready["week1/index.html"])
+            check("Week 1 scatter represents all 303 real character pages", "document.querySelectorAll('#degree-scatter [data-degree-character]').length===303 && document.querySelector('#degree-character').options.length===303 && Array.from(document.querySelectorAll('#degree-scatter [data-degree-character]')).every(e=>{const n=CROSSTALK_DATA.network.nodes.find(n=>n.id===e.dataset.degreeCharacter);return n&&Number(e.dataset.inDegree)===n.in_degree&&Number(e.dataset.outDegree)===n.out_degree})")
+            client.js("document.querySelector('[data-degree-view=local]').click()")
+            check("Week 1 close-up accurately reports its 279 included pages", "document.querySelectorAll('#degree-scatter [data-degree-character]').length===279 && document.querySelector('#degree-scatter svg').dataset.degreeScope==='local' && document.querySelector('#degree-scatter-caption').textContent.includes('279 of 303')")
+            client.js("document.querySelector('[data-degree-scale=sqrt]').click()")
+            check("Week 1 square-root axes retain original counts", "document.querySelector('#degree-scatter svg').dataset.axisScale==='sqrt' && document.querySelector('[data-degree-scale=sqrt]').getAttribute('aria-pressed')==='true' && document.querySelectorAll('#degree-scatter [data-degree-character]').length===279 && document.querySelector('#degree-scatter-caption').textContent.includes('tick labels remain original link counts')")
+            client.js("document.querySelector('#degree-character').value='Baymax';document.querySelector('#degree-character').dispatchEvent(new Event('change'))")
+            check("Week 1 named selector explains Baymax and overlapping isolates", "document.querySelector('#degree-character-readout h4').textContent==='Baymax' && document.querySelector('#degree-character-readout').textContent.includes('isolated page') && document.querySelector('#degree-character-readout').textContent.includes('17 pages') && document.querySelector('#degree-scatter [data-degree-character=Baymax]').getAttribute('aria-pressed')==='true'")
+            client.js("document.querySelector('#degree-scatter').scrollIntoView({block:'center',behavior:'instant'})")
+            next_frame()
+            point = client.js("(()=>{const e=document.querySelector('#degree-scatter [data-degree-character=Baymax] .portrait-dot');const p=new DOMPoint(Number(e.getAttribute('cx')),Number(e.getAttribute('cy'))).matrixTransform(e.getScreenCTM());return{x:p.x,y:p.y}})()")
+            client.call("Input.dispatchMouseEvent", {"type":"mousePressed",**point,"button":"left","clickCount":1})
+            client.call("Input.dispatchMouseEvent", {"type":"mouseReleased",**point,"button":"left","clickCount":1})
+            check("clicking Baymax's scatter dot opens the atlas dossier", "document.querySelector('#dossier h3').textContent==='Baymax' && document.querySelector('#dossier').textContent.includes('ISOLATED')")
+            client.js("document.querySelector('#network-atlas [data-node=Baymax]').focus()")
+            press_key("Enter", "Enter", 13)
+            check("Week 1 atlas Enter preserves focus after rebuilding its dots", "document.activeElement.dataset.node==='Baymax' && document.activeElement.closest('#network-atlas')!==null && document.activeElement.classList.contains('selected')")
+            client.js("document.querySelector('[data-degree-view=all]').click();document.querySelector('#degree-character').value='Spider-Man';document.querySelector('#degree-character').dispatchEvent(new Event('change'));document.querySelector('#degree-scatter [data-degree-character=Spider-Man]').focus()")
+            press_key("ArrowDown", "ArrowDown", 40)
+            client.js("window.__editorialDegreeFocus=document.activeElement.dataset.degreeCharacter")
+            check("Week 1 scatter arrow key reaches a different real page", "!!window.__editorialDegreeFocus && window.__editorialDegreeFocus!=='Spider-Man' && document.querySelector('#degree-character').value===window.__editorialDegreeFocus")
+            press_key("Enter", "Enter", 13)
+            check("Week 1 scatter Enter opens that page's real dossier", "document.querySelector('#network-atlas .selected').dataset.node===window.__editorialDegreeFocus && document.querySelector('#dossier h3').textContent===document.querySelector('#degree-character-readout h4').textContent")
+            check("Week 1 scatter Enter transfers focus to its selected atlas dot", "document.activeElement.dataset.node===window.__editorialDegreeFocus && document.activeElement.closest('#network-atlas')!==null && document.activeElement.classList.contains('selected')")
+            client.js("document.querySelector('[data-degree-point=in-106]').focus()")
+            check("Week 1 distribution point reports the exact Spider-Man tail", "document.querySelector('#degree-readout').textContent.includes('1 page') && document.querySelector('#degree-readout').textContent.includes('Spider-Man') && document.querySelector('#degree-readout').textContent.includes('106 LINKS')")
+            client.js("document.querySelector('[data-degree-series=in]').click()")
+            check("Week 1 distribution can show outgoing counts alone", "!document.querySelector('[data-degree-point^=in-]') && !!document.querySelector('[data-degree-point^=out-]') && document.querySelector('[data-degree-series=in]').getAttribute('aria-pressed')==='false'")
+            client.js("document.querySelector('[data-degree-series=in]').click();document.querySelector('[data-degree-series=out]').click()")
+            check("Week 1 distribution can show incoming counts alone", "!!document.querySelector('[data-degree-point^=in-]') && !document.querySelector('[data-degree-point^=out-]') && document.querySelector('[data-degree-series=out]').getAttribute('aria-pressed')==='false'")
+
+            navigate(base_url + "week2/index.html", ready["week2/index.html"])
+            client.js("document.querySelector('#w2-tail-k').value=106;document.querySelector('#w2-tail-k').dispatchEvent(new Event('input'))")
+            check("Week 2 threshold 106 identifies one measured page", "document.querySelector('#w2-tail-readout').dataset.threshold==='106' && document.querySelector('#w2-tail-readout').dataset.count==='1' && document.querySelector('#w2-tail-readout').textContent.includes('245 pages') && document.querySelectorAll('#w2-tail-links a').length===1 && document.querySelector('#w2-tail-links a').textContent.includes('Spider-Man')")
+            client.js("document.querySelector('#w2-tail-k').value=1;document.querySelector('#w2-tail-k').dispatchEvent(new Event('input'))")
+            check("Week 2 threshold one retains all 245 positive-degree pages", "document.querySelector('#w2-tail-readout').dataset.threshold==='1' && document.querySelector('#w2-tail-readout').dataset.count==='245' && document.querySelector('#w2-tail-readout').textContent.includes('100.0%')")
+            client.js("window.__editorialMeasured=JSON.stringify(Array.from(document.querySelectorAll('#w2-ccdf-plot .w2-measured-point'),e=>[e.dataset.degree,e.getAttribute('cx'),e.getAttribute('cy')]));window.__editorialGuide=document.querySelector('#w2-ccdf-plot polyline').getAttribute('points');document.querySelector('#w2-guide-slope').value=2.2;document.querySelector('#w2-guide-slope').dispatchEvent(new Event('input'))")
+            check("Week 2 changing the illustrative guide preserves measured points", "JSON.stringify(Array.from(document.querySelectorAll('#w2-ccdf-plot .w2-measured-point'),e=>[e.dataset.degree,e.getAttribute('cx'),e.getAttribute('cy')]))===window.__editorialMeasured && document.querySelector('#w2-ccdf-plot polyline').getAttribute('points')!==window.__editorialGuide && document.querySelector('#w2-guide-value').textContent==='2.20'")
+            check("Week 2 caption follows the chosen slope and distinguishes its static download", "document.querySelector('#ccdf-switch-caption').textContent.includes('2.20') && document.querySelector('#ccdf-switch-caption').textContent.includes('not fitted models') && document.querySelector('#ccdf-download-link').textContent.includes('Download static reference')")
+            client.js("document.querySelector('#w2-show-reference').click()")
+            check("Week 2 reference switch leaves the observations visible", "document.querySelector('#w2-show-reference').checked===false && document.querySelectorAll('#w2-ccdf-plot polyline').length===0 && document.querySelectorAll('#w2-ccdf-plot .w2-measured-point').length>0 && JSON.stringify(Array.from(document.querySelectorAll('#w2-ccdf-plot .w2-measured-point'),e=>[e.dataset.degree,e.getAttribute('cx'),e.getAttribute('cy')]))===window.__editorialMeasured")
+            check("Week 2 hidden references also disappear from its caption and legend", "document.querySelector('#ccdf-switch-caption').textContent.includes('Only the observations are shown') && document.querySelector('[data-w2-legend=guide]').hidden && document.querySelector('[data-w2-legend=poisson]').hidden && document.querySelector('#ccdf-download-link').textContent.includes('Download static reference')")
+            client.js("document.querySelector('[data-ccdf-view=fit]').click()")
+            check("Week 2 tail view updates the live plot and downloadable fallback", "document.querySelector('#w2-ccdf-plot').dataset.view==='fit' && document.querySelector('#ccdf-switch-img').getAttribute('src').endsWith('ccdf-fit.svg') && document.querySelector('#ccdf-download-link').href.endsWith('/assets/figures/ccdf-fit.svg') && document.querySelector('[data-ccdf-view=fit]').getAttribute('aria-pressed')==='true'")
+            client.js("document.querySelector('#w2-ccdf-plot .w2-measured-point[data-degree=\"106\"]').focus()")
+            press_key("Enter", "Enter", 13)
+            check("Week 2 measured points are keyboard inspectable", "document.querySelector('#w2-tail-readout').dataset.threshold==='106' && document.querySelector('#w2-tail-readout').dataset.count==='1'")
+            check("Week 2 tail links name a real character in the Week 1 atlas", "(()=>{const u=new URL(document.querySelector('#w2-tail-links a').href);return u.pathname.endsWith('/week1/index.html')&&u.searchParams.get('character')==='Spider-Man'&&u.hash==='#atlas'})()")
+            navigate(client.js("document.querySelector('#w2-tail-links a').href"), ready["week1/index.html"])
+            check("Week 2 character link opens Spider-Man's dossier", "document.querySelector('#dossier h3').textContent==='Spider-Man' && location.hash==='#atlas'")
+
+            navigate(base_url + "week3/index.html", ready["week3/index.html"])
+            check("Week 3 story retains its downloadable static figure and separate game", "!!document.querySelector('#w3-story-static img[src$=\"week3-removal.svg\"]') && document.querySelector('#w3-story-static').hidden && !document.querySelector('#w3-disconnect, #w3-route-form, script[src$=\"week3.js\"]') && !window.CROSSTALK_WEEK3 && !window.CROSSTALK_DATA && CROSSTALK_WEEK3_FIGURE.removal.trials===200")
+            check("Week 3 reproduces every exact removal count from its compact bundle", "CROSSTALK_WEEK3_FIGURE.removal.degree.every((degree,k)=>{const s=document.querySelector('#w3-story-removal');s.value=k;s.dispatchEvent(new Event('input'));return Number(document.querySelector('#w3-story-degree').textContent)===degree && Number(document.querySelector('#w3-story-betweenness').textContent)===CROSSTALK_WEEK3_FIGURE.removal.betweenness[k] && document.querySelector('#w3-story-random').textContent===CROSSTALK_WEEK3_FIGURE.removal.random[k].mean.toFixed(1)})")
+            client.js("document.querySelector('[data-w3-budget=\"150\"]').click()")
+            check("Week 3 150-page preset compares targeted collapse with random survival", "document.querySelector('#w3-story-removal').value==='150' && document.querySelector('#w3-story-degree').textContent==='9' && document.querySelector('#w3-story-betweenness').textContent==='9' && document.querySelector('#w3-story-random').textContent==='128.0' && document.querySelector('#w3-story-band').textContent.includes('119–137')")
+            client.js("document.querySelector('[data-w3-budget=\"30\"]').click()")
+            check("Week 3 30-page preset shows exact values and the random percentile band", "document.querySelector('#w3-story-degree').textContent==='222' && document.querySelector('#w3-story-betweenness').textContent==='225' && document.querySelector('#w3-story-random').textContent==='247.6' && document.querySelector('#w3-story-band').textContent.includes('244–252') && !!document.querySelector('#w3-story-removal-svg path[fill-opacity]') && document.querySelector('[data-w3-budget=\"30\"]').getAttribute('aria-pressed')==='true'")
+            client.js("document.querySelector('#w3-story-chart').focus()")
+            press_key("ArrowRight", "ArrowRight", 39)
+            check("Week 3 chart arrow key advances its removal budget and accessible value", "document.querySelector('#w3-story-removal').value==='31' && document.querySelector('#w3-story-chart').getAttribute('aria-valuenow')==='31' && Number(document.querySelector('#w3-story-degree').textContent)===CROSSTALK_WEEK3_FIGURE.removal.degree[31]")
+            press_key("Home", "Home", 36)
+            check("Week 3 chart Home returns to the original mainland", "document.querySelector('#w3-story-removal').value==='0' && document.querySelector('#w3-story-degree').textContent==='277'")
+            press_key("End", "End", 35)
+            check("Week 3 chart End leaves zero pages in all three trajectories", "document.querySelector('#w3-story-removal').value==='303' && ['degree','betweenness','random'].every(k=>Number(document.querySelector('#w3-story-'+k).textContent)===0)")
+            client.js("document.querySelector('[data-w3-budget=\"30\"]').click();document.querySelector('#w3-story-chart').scrollIntoView({block:'center',behavior:'instant'})")
+            next_frame()
+            hover = client.js("(()=>{const s=document.querySelector('#w3-story-removal-svg'),v=s.viewBox.baseVal,p=new DOMPoint(42+(v.width-62)*150/303,100).matrixTransform(s.getScreenCTM());return{x:p.x,y:p.y}})()")
+            client.call("Input.dispatchMouseEvent", {"type":"mouseMoved",**hover})
+            next_frame()
+            check("Week 3 pointer inspection leaves the chosen slider budget intact", "document.querySelector('#w3-story-removal').value==='30' && document.querySelector('#w3-story-chart').getAttribute('aria-valuenow')==='150' && document.querySelector('#w3-story-inspection').textContent.includes('budget is 30') && document.querySelector('#w3-story-degree').textContent==='9' && !document.querySelector('#w3-story-reset').hidden")
+            client.js("document.querySelector('#w3-story-reset').click()")
+            check("Week 3 return button clears the transient inspection", "document.querySelector('#w3-story-chart').getAttribute('aria-valuenow')==='30' && document.querySelector('#w3-story-degree').textContent==='222' && document.querySelector('#w3-story-reset').hidden")
+            client.call("Input.dispatchMouseEvent", {"type":"mouseMoved",**hover})
+            client.js("document.querySelector('#w3-story-chart').focus()")
+            press_key("Escape", "Escape", 27)
+            check("Week 3 Escape restores the pinned budget after inspection", "document.querySelector('#w3-story-chart').getAttribute('aria-valuenow')==='30' && document.querySelector('#w3-story-degree').textContent==='222'")
+            check("Week 3 rank diagram begins with Black Widow's measured rise", "document.querySelectorAll('#w3-story-rank-names button').length===8 && document.querySelector('#w3-story-rank-readout').textContent.includes('#23') && document.querySelector('#w3-story-rank-readout').textContent.includes('#8') && document.querySelector('#w3-story-rank-readout').textContent.includes('15 places higher')")
+            client.js("document.querySelector('#w3-story-rank-names [data-character=\"Hercules_(Marvel_Comics)\"]').click()")
+            check("Week 3 rank selection exposes Hercules's measured rank gap", "document.querySelector('#w3-story-rank-readout').textContent.includes('#20') && document.querySelector('#w3-story-rank-readout').textContent.includes('#7') && document.querySelector('#w3-story-rank-readout').textContent.includes('13 places higher')")
+            client.js("document.querySelector('#w3-story-rank-names [data-character=Spider-Man]').focus()")
+            press_key("Enter", "Enter", 13)
+            check("Week 3 rank diagram accepts keyboard selection", "document.querySelector('#w3-story-rank-names [data-character=Spider-Man]').getAttribute('aria-pressed')==='true' && document.querySelector('#w3-story-rank-readout').textContent.includes('same position')")
+
+            # Native touch input must distinguish reading gestures from taps.
+            # A canceled vertical pan must never commit its starting position.
+            client.call("Emulation.setDeviceMetricsOverride", {"width":390,"height":844,"deviceScaleFactor":1,"mobile":True})
+            client.call("Emulation.setTouchEmulationEnabled", {"enabled":True,"maxTouchPoints":1})
+            client.js("document.querySelector('[data-w3-budget=\"30\"]').click();document.querySelector('#w3-story-chart').scrollIntoView({block:'center',behavior:'instant'})")
+            next_frame()
+            touch_start = client.js("(()=>{const s=document.querySelector('#w3-story-removal-svg'),v=s.viewBox.baseVal,p=new DOMPoint(42+(v.width-62)*150/303,220).matrixTransform(s.getScreenCTM());window.__editorialSwipeScroll=scrollY;return{x:p.x,y:p.y}})()")
+            client.call("Input.dispatchTouchEvent", {"type":"touchStart","touchPoints":[{**touch_start,"radiusX":1,"radiusY":1,"force":1,"id":1}]})
+            next_frame()
+            check("Week 3 touch contact waits for release before changing the budget", "document.querySelector('#w3-story-removal').value==='30' && document.querySelector('#w3-story-degree').textContent==='222'")
+            for distance in (20,40,70,100,120):
+                client.call("Input.dispatchTouchEvent", {"type":"touchMove","touchPoints":[{"x":touch_start["x"],"y":touch_start["y"]-distance,"radiusX":1,"radiusY":1,"force":1,"id":1}]})
+                next_frame()
+            # Hold before lifting to avoid inertial scrolling into the next tap.
+            time.sleep(.2)
+            client.call("Input.dispatchTouchEvent", {"type":"touchEnd","touchPoints":[]})
+            next_frame()
+            check("Week 3 vertical touch swipe scrolls the story without committing a removal", "scrollY>window.__editorialSwipeScroll+20 && document.querySelector('#w3-story-removal').value==='30' && document.querySelector('#w3-story-degree').textContent==='222'")
+            client.js("document.querySelector('#w3-story-chart').scrollIntoView({block:'center',behavior:'instant'})")
+            next_frame()
+            tap = client.js("(()=>{const s=document.querySelector('#w3-story-removal-svg'),v=s.viewBox.baseVal,p=new DOMPoint(42+(v.width-62)*150/303,100).matrixTransform(s.getScreenCTM());return{x:p.x,y:p.y}})()")
+            client.call("Input.dispatchTouchEvent", {"type":"touchStart","touchPoints":[{**tap,"radiusX":1,"radiusY":1,"force":1,"id":2}]})
+            next_frame()
+            client.call("Input.dispatchTouchEvent", {"type":"touchEnd","touchPoints":[]})
+            next_frame()
+            check("Week 3 completed touch tap commits its exact 150-page budget", "document.querySelector('#w3-story-removal').value==='150' && document.querySelector('#w3-story-degree').textContent==='9' && document.querySelector('#w3-story-betweenness').textContent==='9' && document.querySelector('#w3-story-random').textContent==='128.0'")
+            client.call("Emulation.setTouchEmulationEnabled", {"enabled":False})
+            client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+            # Chapter controls and layout need checks on every story, since each
+            # page combines its own figures with the shared reading guide.
+            for route, chapter in (("week1/index.html","degrees"),("week2/index.html","paradox"),("week3/index.html","blackout")):
+                navigate(base_url + route, ready[route])
+                check(f"{route} has one story-only reading rail", "document.body.classList.contains('issue-story') && document.querySelectorAll('.journal-rail').length===1 && document.querySelector('.journal-rail select').options.length>=4")
+                client.js(f"const chapterSelect=document.querySelector('.journal-rail select');chapterSelect.value={json.dumps(chapter)};chapterSelect.dispatchEvent(new Event('change'))")
+                next_frame()
+                check(f"{route} chapter selector navigates to {chapter}", f"location.hash==={json.dumps('#'+chapter)} && scrollY>0")
+            for route in ready:
+                navigate(base_url + route, ready[route])
+                for width in (360,390,768):
+                    client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+                    next_frame()
+                    check(f"editorial {route} at {width}px has no horizontal overflow", "document.documentElement.scrollWidth<=document.documentElement.clientWidth")
+                    check(f"editorial {route} at {width}px keeps its primary figure within the viewport", "(()=>{const e=document.querySelector('#cover-map,#degree-scatter,#w2-ccdf-live,#w3-story-explorer'),r=e.getBoundingClientRect();return r.left>=-1&&r.right<=document.documentElement.clientWidth+1})()")
+                    if width == 390 and route == "week1/index.html":
+                        check("Week 1 mobile plots preserve readable 680px graphics within scrollable regions", "['distribution-chart','degree-scatter'].every(id=>{const e=document.getElementById(id);return e.scrollWidth>e.clientWidth && parseFloat(getComputedStyle(e.querySelector('svg')).width)>=680 && getComputedStyle(e).overflowX==='auto'})")
+                        check("Week 1 mobile plots visibly explain sideways scrolling", "['distribution-scroll-hint','degree-scatter-scroll-hint'].every(id=>{const hint=document.getElementById(id);return hint.getClientRects().length>0 && hint.textContent.includes('Scroll sideways')})")
+                    if width == 390 and route != "index.html":
+                        client.js("window.scrollTo({top:0,behavior:'instant'})")
+                        next_frame()
+                        screenshot("editorial-" + route.split('/')[0] + "-mobile.png", full=True)
+                        if route.startswith("week2/"):
+                            client.js("document.querySelector('#w2-ccdf-plot').closest('figure').scrollIntoView({block:'start',behavior:'instant'})")
+                        else:
+                            figure = ".degree-portrait" if route.startswith("week1/") else "#w3-story-figure"
+                            client.js(f"document.querySelector({json.dumps(figure)}).scrollIntoView({{block:'start',behavior:'instant'}})")
+                        next_frame()
+                        screenshot("editorial-" + route.split('/')[0] + "-mobile-figure.png")
+                client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+
+            navigate((ROOT / "_site/index.html").as_uri(), ready["index.html"])
+            client.js("document.querySelector('[data-cover-world=marvel]').click();document.querySelector('#cover-person').value='Baymax';document.querySelector('#cover-person').dispatchEvent(new Event('change'))")
+            check("offline editorial home switches real networks and follows a name", "location.protocol==='file:' && !window.CROSSTALK_DATA && document.querySelector('#cover-person-note h3').textContent==='Baymax' && document.querySelector('#cover-total-nodes').textContent==='303'")
+            navigate((ROOT / "_site/week1/index.html").as_uri(), ready["week1/index.html"])
+            client.js("document.querySelector('[data-degree-view=local]').click();document.querySelector('[data-degree-scale=sqrt]').click();document.querySelector('#degree-character').value='Baymax';document.querySelector('#degree-character').dispatchEvent(new Event('change'))")
+            check("offline Week 1 scatter keeps the real close-up and isolate readout", "location.protocol==='file:' && document.querySelectorAll('#degree-scatter [data-degree-character]').length===279 && document.querySelector('#degree-scatter svg').dataset.axisScale==='sqrt' && document.querySelector('#degree-character-readout').textContent.includes('17 pages')")
+            navigate((ROOT / "_site/week2/index.html").as_uri(), ready["week2/index.html"])
+            client.js("document.querySelector('#w2-tail-k').value=106;document.querySelector('#w2-tail-k').dispatchEvent(new Event('input'));document.querySelector('#w2-guide-slope').value=1.7;document.querySelector('#w2-guide-slope').dispatchEvent(new Event('input'))")
+            check("offline Week 2 tail and guide controls retain exact observations", "location.protocol==='file:' && document.querySelector('#w2-tail-readout').dataset.count==='1' && document.querySelector('#w2-tail-readout').dataset.threshold==='106' && document.querySelector('#w2-guide-value').textContent==='1.70' && document.querySelector('#w2-tail-links a').protocol==='file:'")
+            navigate((ROOT / "_site/week3/index.html").as_uri(), ready["week3/index.html"])
+            client.js("document.querySelector('[data-w3-budget=\"150\"]').click();document.querySelector('#w3-story-rank-names [data-character=\"Hercules_(Marvel_Comics)\"]').click()")
+            check("offline Week 3 removal and ranking figures work without game data", "location.protocol==='file:' && !window.CROSSTALK_WEEK3 && !window.CROSSTALK_DATA && document.querySelector('#w3-story-degree').textContent==='9' && document.querySelector('#w3-story-random').textContent==='128.0' && document.querySelector('#w3-story-rank-readout').textContent.includes('13 places higher')")
+            client.call("Emulation.setEmulatedMedia", {"features":[]})
+
+        if args.editorial_only:
+            check_editorial()
+            failures = [event for event in client.events if event.get("method") == "Runtime.exceptionThrown"]
+            if failures or QuietHandler.errors:
+                raise AssertionError({"javascript_errors":failures,"http_errors":QuietHandler.errors})
+            checks["no editorial JavaScript exceptions or missing resources"] = True
+            (preview / "editorial-checks.json").write_text(json.dumps(checks,indent=2)+"\n",encoding="utf-8")
+            print(json.dumps(checks,indent=2))
+            return
+
+        def check_week4():
+            ready = "document.readyState==='complete' && document.querySelector('#w4-map-stage')?.dataset.state==='ready' && document.querySelector('#w4-hero-map')?.dataset.state==='ready'"
+            navigate(base_url + "week4/index.html", ready)
+            next_frame()
+            # Keep initial visuals available even if a later interaction fails.
+            screenshot("week4.png", full=True)
+            screenshot("week4-hero.png")
+            check("Week 4 loads the complete real core and edge roster", "CROSSTALK_WEEK4.explorer.nodes.length===1374 && CROSSTALK_WEEK4.explorer.edges.length===9139 && document.querySelector('#w4-map-stage').dataset.visibleNodes==='1374' && document.querySelector('#w4-map-stage').dataset.visibleEdges==='9139'")
+            check("philosopher suggestions and named directory are complete", "document.querySelector('#w4-names').options.length===1374 && document.querySelector('#w4-community').options.length===10 && Array.from(document.querySelector('#w4-community').options).slice(1).every(o=>o.textContent.includes('('))")
+            check("Aristotle opens with 300 real neighbours", "document.querySelector('#w4-dossier').dataset.selectedId==='Aristotle' && document.querySelector('#w4-dossier').dataset.degree==='300' && document.querySelector('#w4-dossier').textContent.includes('521')")
+            check("community ribbons account for every philosopher", "Array.from(document.querySelectorAll('#w4-flow [data-w4-overlap]')).reduce((sum,e)=>sum+Number(e.dataset.w4Overlap),0)===1374")
+            client.js("document.querySelector('#w4-neighbors').click()")
+            check("Aristotle neighbourhood contains him and all 300 neighbours", "document.querySelector('#w4-neighbors').getAttribute('aria-pressed')==='true' && document.querySelector('#w4-map-stage').dataset.visibleNodes==='301'")
+            client.js("document.querySelector('#w4-reset').click();document.querySelector('[data-w4-lens=weighted]').click()")
+            check("weighted lens switches communities and preserves full ties", "document.querySelector('[data-w4-lens=weighted]').getAttribute('aria-pressed')==='true' && document.querySelector('#w4-map-stage').dataset.lens==='weighted' && document.querySelector('#w4-map-stage').dataset.visibleEdges==='9139' && document.querySelector('#w4-community').options.length===9")
+            check("weighted comparison reports NMI and 383 matched movers", "document.querySelector('#w4-nmi').textContent==='0.622' && document.querySelector('#w4-movers-count').textContent==='383' && document.querySelector('#w4-weighted-count').textContent==='8'")
+            client.js("document.querySelector('#w4-search').value='a philosopher who is not in this roster';document.querySelector('#w4-search-form').requestSubmit()")
+            check("invalid search explains failure and preserves selection", "document.querySelector('#w4-search-status').textContent.includes('No philosopher found') && document.querySelector('#w4-dossier').dataset.selectedId==='Aristotle'")
+            client.js("document.querySelector('#w4-search').value='  plato  ';document.querySelector('#w4-search-form').requestSubmit()")
+            check("search normalizes names and selects a real philosopher", "document.querySelector('#w4-dossier').dataset.selectedId==='Plato' && document.querySelector('#w4-search-status').textContent.includes('Plato selected') && document.querySelector('#w4-dossier .w4-wiki-link').href==='https://en.wikipedia.org/wiki/Plato'")
+            client.js("document.querySelector('#w4-search').value='John';document.querySelector('#w4-search-form').requestSubmit()")
+            check("ambiguous search requests a complete name", "document.querySelector('#w4-search-status').textContent.includes('names match') && document.querySelector('#w4-dossier').dataset.selectedId==='Plato'")
+            client.js("document.querySelector('[data-w4-lens=unweighted]').click();const directory=document.querySelector('#w4-community');directory.value='0';directory.dispatchEvent(new Event('change'))")
+            check("directory filters to its 268-member community", "document.querySelector('#w4-map-stage').dataset.visibleNodes==='268' && document.querySelector('#w4-community').value==='0'")
+            client.js("document.querySelector('#w4-reset').click();document.querySelector('[data-w4-focus=Aristotle]').click()")
+            check("Fit map clears the directory and neighbourhood filters", "document.querySelector('#w4-community').value==='all' && document.querySelector('#w4-map-stage').dataset.visibleNodes==='1374' && document.querySelector('#w4-neighbors').getAttribute('aria-pressed')==='false'")
+            client.js("document.querySelector('#w4-map').scrollIntoView({block:'center',behavior:'instant'});document.querySelector('#w4-map').focus()")
+            next_frame()
+            client.js("window.__w4FitImage=document.querySelector('#w4-map').toDataURL()")
+            press_key("+", "Equal", 187)
+            check("canvas plus key visibly zooms the actual map", "document.querySelector('#w4-map').toDataURL()!==window.__w4FitImage")
+            client.js("window.__w4ZoomedImage=document.querySelector('#w4-map').toDataURL()")
+            press_key("-", "Minus", 189)
+            check("canvas minus key visibly zooms back out", "document.querySelector('#w4-map').toDataURL()!==window.__w4ZoomedImage")
+            press_key("0", "Digit0", 48)
+            check("canvas zero key restores the fitted map", "document.querySelector('#w4-map').toDataURL()===window.__w4FitImage")
+            press_key("ArrowLeft", "ArrowLeft", 37)
+            check("canvas arrow key visibly pans the map", "document.querySelector('#w4-map').toDataURL()!==window.__w4FitImage")
+            press_key("Escape", "Escape", 27)
+            check("canvas Escape key restores the map", "document.querySelector('#w4-map').toDataURL()===window.__w4FitImage")
+            # Pointer input selects a drawn node, rather than calling its handler.
+            pointer=client.js("""(() => {const c=document.querySelector('#w4-map'),r=c.getBoundingClientRect(),n=CROSSTALK_WEEK4.explorer.nodes.find(n=>n.id==='Plato'),padding=r.width<600?24:38,scale=Math.min((r.width-padding*2)/1000,(r.height-padding*2)/760);return{x:r.x+(r.width-1000*scale)/2+n.x*scale,y:r.y+(r.height-760*scale)/2+n.y*scale}})()""")
+            client.call("Input.dispatchMouseEvent", {"type":"mousePressed",**pointer,"button":"left","clickCount":1})
+            client.call("Input.dispatchMouseEvent", {"type":"mouseReleased",**pointer,"button":"left","clickCount":1})
+            check("clicking Plato's drawn dot selects his dossier", "document.querySelector('#w4-dossier').dataset.selectedId==='Plato'")
+            for alpha, edges, attached, giant, components in ((.05,292,348,116,1096),(.2,1540,950,816,478),(.5,5641,1284,1270,98)):
+                client.js(f"document.querySelector('.w4-alpha-presets [data-w4-alpha=\"{alpha}\"]').click()")
+                check(f"backbone alpha {alpha:.2f} matches the published graph counts", f"Number(document.querySelector('#w4-backbone-edges').textContent.replaceAll(',',''))==={edges} && Number(document.querySelector('#w4-backbone-giant').textContent.replaceAll(',',''))==={giant} && Number(document.querySelector('#w4-backbone-components').textContent.replaceAll(',',''))==={components} && document.querySelector('#w4-map-stage').dataset.visibleNodes==='{attached}' && document.querySelector('#w4-map-stage').dataset.visibleEdges==='{edges}' && document.querySelector('#w4-map-stage').dataset.lens==='backbone'")
+                check(f"backbone alpha {alpha:.2f} updates curve and accessible readout", f"document.querySelector('#w4-alpha').value==='{alpha}' && document.querySelector('#w4-backbone-chart').getAttribute('aria-label').includes('alpha {alpha:.2f}') && document.querySelector('#w4-backbone-chart g[aria-hidden=true]').getAttribute('transform')==='translate({70+alpha*790:g},0)'")
+            client.js("document.querySelector('#w4-alpha').value='.1';document.querySelector('#w4-alpha').dispatchEvent(new Event('input',{bubbles:true}))")
+            check("dragging the significance dial updates the connected giant", "document.querySelector('#w4-backbone-giant').textContent==='419' && document.querySelector('#w4-visible-edges').textContent==='649'")
+            check("three backbone plates show distinct measured giants", "document.querySelectorAll('.w4-backbone-plate').length===3 && document.querySelector('.w4-backbone-plate[data-alpha=\"0.05\"]').textContent.includes('116') && document.querySelector('.w4-backbone-plate[data-alpha=\"0.2\"]').textContent.includes('816') && document.querySelector('.w4-backbone-plate[data-alpha=\"0.5\"]').textContent.includes('1,270')")
+            client.js("document.querySelector('.w4-alpha-presets [data-w4-alpha=\"0.2\"]').click();document.querySelector('[data-w4-lens=unweighted]').click();document.querySelector('[data-w4-focus=Aristotle]').click();document.querySelector('#w4-reset').click();window.scrollTo(0,0)")
+            next_frame()
+            check("Week 4 desktop has no horizontal overflow", "document.documentElement.scrollWidth<=document.documentElement.clientWidth")
+            screenshot("week4.png", full=True)
+            screenshot("week4-hero.png")
+            client.js("document.querySelector('#atlas').scrollIntoView({block:'start',behavior:'instant'})")
+            next_frame()
+            screenshot("week4-atlas.png")
+            for width in (390,360,768):
+                client.call("Emulation.setDeviceMetricsOverride", {"width":width,"height":844,"deviceScaleFactor":1,"mobile":True})
+                next_frame()
+                check(f"Week 4 {width}px has no horizontal overflow", "document.documentElement.scrollWidth<=document.documentElement.clientWidth")
+                check(f"Week 4 {width}px canvas fits its stage", "Math.abs(document.querySelector('#w4-map').getBoundingClientRect().width-document.querySelector('#w4-map-stage').getBoundingClientRect().width)<1")
+                if width==390:
+                    client.js("document.querySelector('#w4-reset').click();window.scrollTo(0,0)")
+                    next_frame()
+                    screenshot("week4-mobile.png", full=True)
+            client.call("Emulation.setDeviceMetricsOverride", {"width":1440,"height":1050,"deviceScaleFactor":1,"mobile":False})
+            navigate((ROOT / "_site/week4/index.html").as_uri(), ready)
+            check("offline Week 4 loads its local graph without fetch", "location.protocol==='file:' && document.querySelector('#w4-map-stage').dataset.visibleNodes==='1374' && document.querySelector('#w4-nmi').textContent==='0.622'")
+            client.js("document.querySelector('.w4-alpha-presets [data-w4-alpha=\"0.05\"]').click()")
+            check("offline backbone controls still compute the real giant", "document.querySelector('#w4-backbone-giant').textContent==='116' && document.querySelector('#w4-map-stage').dataset.visibleEdges==='292'")
+
+        if args.week4_only:
+            check_week4()
+            failures=[event for event in client.events if event.get("method")=="Runtime.exceptionThrown"]
+            if failures or QuietHandler.errors:
+                raise AssertionError({"javascript_errors":failures,"http_errors":QuietHandler.errors})
+            checks["no Week 4 JavaScript exceptions or missing resources"]=True
+            (preview / "week4-checks.json").write_text(json.dumps(checks,indent=2)+"\n",encoding="utf-8")
+            print(json.dumps(checks,indent=2))
+            return
+
         def check_grunge():
             navigate(base_url + "grunge/index.html", "document.readyState==='complete' && document.querySelector('#grunge-from')?.options.length===15")
             check("B-side visibly links back to Week 3", "Array.from(document.querySelectorAll('main a[href]')).some(a=>new URL(a.href).pathname.endsWith('/week3/index.html') && a.getClientRects().length>0)")
@@ -217,6 +558,8 @@ def main():
             print(json.dumps(checks,indent=2))
             return
 
+        check_editorial()
+        navigate(base_url)
         check("homepage is Crosstalk", "document.title.includes('CROSSTALK') && !!document.querySelector('.home-page')")
         check("eight week slots, four published issues", "document.querySelectorAll('.week-entry').length === 8 && document.querySelectorAll('a.week-entry').length === 4")
         check("home stays lightweight", "!window.CROSSTALK_DATA && !document.querySelector('#network-atlas')")

@@ -6,7 +6,7 @@
 
 ## Read, explore, or play
 
-The front page is a directory: every published week has an explicit story link and an experiment or game link. The shared header links directly to Weeks 1–3. Future weeks remain visibly unpublished.
+The front page combines a directory with an interactive cover: switch between philosophers and Marvel, focus a group, or trace a named page's links. It uses a small, explicitly selected sample; displayed preview counts and complete-network totals are distinct. Every published week has a story link and an experiment or game link. The shared header links directly to Weeks 1–4. Future weeks remain visibly unpublished.
 
 | Destination | What is there |
 | --- | --- |
@@ -14,14 +14,14 @@ The front page is a directory: every published week has an explicit story link a
 | `week1/index.html` | Marvel's 303 pages, degree, isolates, searchable network, hub removal |
 | `week2/index.html` | Models, friendship paradox, and what a null comparison can establish |
 | `week3/index.html` | The paths and centrality story: bridge characters, removal curves, and shortest-route findings |
-| `week4/index.html` | Philosopher communities: weighted seeded Louvain, null comparison, and interpretation |
+| `week4/index.html` | The Philosopher Atlas: searchable community map, weighted/unweighted overlap, and a live disparity-backbone dial |
 | `play/louvain.html` | Exercise 4.12: a vanilla JavaScript two-phase Louvain toy |
 | `play/index.html` | Crossed Wires: three weekly rounds and twelve practice puzzles |
 | `play/cerebro.html` | The Popularity Trap: prediction game and model illustration console |
 | `play/switchboard.html` | The Switchboard: Week 3's character-removal experiment, blackout dial, and route finder to Spider-Man |
 | `grunge/index.html` | The Week 3 B-side: paths and centrality in a separate Wikipedia musician network, plus grunge radio |
 
-Body text is larger, stories have contents links, and extended explanations use expandable panels. The Marvel journal retains its cream, ink, blue, and orange telephone identity; the extra uses charcoal and acid yellow with a record-store treatment.
+The stories share newspaper typography, larger body text, a sticky chapter selector, and reading progress. Week 1 links an inspectable degree distribution and incoming/outgoing scatterplot to the character atlas. Week 2 lets readers explore exact tail counts and adjust clearly labeled illustrative guides. Week 3 adds a live removal curve with the random-trial band and a selectable degree/betweenness rank diagram. Static downloads and extended explanations remain available. The journal retains its cream, ink, blue, and orange telephone identity; the extra uses charcoal and acid yellow with a record-store treatment.
 
 ## Run locally
 
@@ -47,11 +47,13 @@ python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
 python -m unittest discover -s tests
 python scripts/browser_smoke.py
+python scripts/browser_smoke.py --editorial-only
+python scripts/browser_smoke.py --week4-only
 ```
 
 `crawl_grunge.py` rebuilds from the frozen snapshot by default; `--refresh` explicitly fetches a new Wikipedia snapshot. Its provenance and inclusion rules are in [data/grunge/README.md](data/grunge/README.md). The public extra is separate from the shared Marvel assignment data.
 
-The browser check uses an existing Chrome or Chromium installation. Pass `--browser PATH` if necessary. Its ignored `.preview/` folder contains screenshots and check results. No browser or dependencies are installed by the check.
+The browser check uses an existing Chrome or Chromium installation. Pass `--browser PATH` if necessary. It exercises pointer and keyboard controls, phone/tablet layouts, and offline figures. Its ignored `.preview/` folder contains screenshots and check results. No browser or dependencies are installed by the check.
 
 ## Data and interpretation
 
@@ -63,7 +65,9 @@ Week 2's empirical friendship-paradox results come from the real graph. Its mode
 
 The B-side uses an explicitly sampled set of 15 musicians and 55 observed links. The full Wikipedia API crawl was unavailable; the snapshot preserves browser-observed hyperlink evidence and its sampling limits. A hyperlink between musician pages does not establish a musical collaboration.
 
-Week 4 uses the course's **15 September 2026** philosopher release (1,444 nodes and 11,135 directed links). Directed links are projected to an undirected weighted graph; reciprocal links add weight. The seeded (2026) Louvain run reports modularity and six degree-preserving approximate stub-shuffle nulls. The null is a comparison baseline, not a significance test. Exercise 4.13 applies the result in the article; exercise 4.12 is the standalone browser toy.
+Week 4 uses the course's **15 September 2026** philosopher release (1,444 nodes and 11,135 directed links). The primary graph is the **1,374-node unweighted undirected giant** with 9,139 ties. Seeded Louvain (2026) finds nine communities, modularity 0.5024. Aggregation retains self-loop weights correctly; ten seeds and six exact degree-preserving double-edge-swap nulls provide reproducible comparisons. The null is a baseline, not a significance test.
+
+The interactive atlas compares that partition with weighted Louvain using the observed article-link multiplicities summed across directions: eight communities, arithmetic **NMI 0.6223**, and 383 movers under one-to-one maximum-overlap alignment. Aristotle's 300 neighbors span eight primary communities. The disparity filter retains a tie when its tail probability is below alpha at either endpoint; its five course benchmark rows reproduce exactly. Three maps and a live dial share a deterministic layout based on the alpha=0.2 backbone, with colors detected on the full graph and node size based on strength. The exact half-giant breaking point is alpha=0.1695852271: the Confucius–Voltaire tie separates a 22-node component. All counts include isolates unless explicitly labeled attached nodes. The atlas runs offline; its JSON and JavaScript bundles contain matching results. Exercise 4.12 remains the separate two-phase toy.
 
 ## Add an issue
 

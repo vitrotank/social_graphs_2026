@@ -1,0 +1,90 @@
+/* Editorial figures for Issue 03. The Switchboard keeps its own controls. */
+.week3-page .w3-story-finding-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:24px; align-items:stretch; margin-top:38px; }
+.week3-page .w3-story-finding-grid > figure { margin:0; max-width:none; }
+.w3-story-rank-figure { border:1px solid var(--line); background:var(--paper-light); padding:24px; }
+.w3-story-rank-figure[hidden], .w3-story-explorer[hidden], .w3-story-removal-figure [hidden] { display:none !important; }
+.w3-story-rank-figure > .w3-panel-label { color:var(--ink-muted); font-size:11px; }
+.w3-story-rank-figure h3 { font:400 clamp(25px,2.4vw,36px)/1.12 var(--serif); margin:20px 0 12px; }
+.w3-story-rank-intro { color:var(--ink-muted); font-size:14px; line-height:1.65; max-width:42ch; }
+#w3-story-rank-chart { display:block; width:100%; height:auto; margin:12px 0; }
+.w3-story-rank-names { display:flex; flex-wrap:wrap; gap:7px; }
+.w3-story-rank-names button { font:12px/1.4 var(--mono); color:var(--ink); border:1px solid var(--line); background:var(--paper-light); border-radius:2px; padding:8px 10px; min-height:36px; cursor:pointer; }
+.w3-story-rank-names button:hover { background:var(--paper-dark); }
+.w3-story-rank-names button[aria-pressed="true"] { color:var(--paper-light); background:var(--ink); border-color:var(--ink); }
+.w3-story-rank-figure figcaption { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); font-size:15px; line-height:1.65; font-weight:600; }
+.w3-story-rank-note { margin-top:10px; color:var(--ink-muted); font-size:12px; line-height:1.65; }
+.week3-page .w3-story-removal-figure { padding:0; border:1px solid var(--ink); background:var(--paper-light); }
+.w3-story-chart-topline { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:17px 26px; color:var(--paper-light); background:var(--w3-navy); font:11px/1.5 var(--mono); letter-spacing:.05em; }
+.w3-story-budget { padding:24px 26px 20px; border-bottom:1px solid var(--line); background:var(--paper); }
+.w3-story-budget-heading { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:15px; }
+.w3-story-budget-heading label { font:500 19px/1.4 var(--sans); }
+.w3-story-budget-heading output { font:500 32px/1.2 var(--mono); color:var(--cobalt); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.w3-story-budget-heading output small { font-size:14px; color:var(--ink-muted); }
+.w3-story-budget input[type="range"] { display:block; width:100%; accent-color:var(--cobalt); cursor:ew-resize; min-height:30px; margin:0; }
+.w3-story-budget-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:13px; }
+.w3-story-budget-footer > p { font:12px/1.6 var(--mono); color:var(--ink-muted); }
+.w3-story-presets { display:flex; flex-wrap:wrap; gap:7px; }
+.w3-story-presets button, #w3-story-reset { min-height:34px; border:1px solid var(--line); border-radius:2px; padding:6px 11px; background:var(--paper-light); color:var(--ink); font:12px/1.5 var(--mono); cursor:pointer; }
+.w3-story-presets button:hover, #w3-story-reset:hover { border-color:var(--cobalt); }
+.w3-story-presets button[aria-pressed="true"] { color:var(--paper-light); background:var(--cobalt); border-color:var(--cobalt); }
+.w3-story-plot-layout { display:grid; grid-template-columns:minmax(0,1fr) 245px; }
+.w3-story-plot-panel { min-width:0; padding:24px 18px 18px; }
+.w3-story-axis-heading { color:var(--ink-muted); font:11px/1.5 var(--mono); letter-spacing:.04em; padding-left:28px; }
+.w3-story-chart { position:relative; width:100%; cursor:crosshair; touch-action:pan-y; margin:8px 0 0; border-radius:2px; }
+.w3-story-chart svg { display:block; width:100%; height:auto; overflow:visible; }
+.w3-story-chart :is(line,path,circle) { vector-effect:non-scaling-stroke; }
+.w3-story-inspection-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; min-height:35px; margin-top:8px; padding-inline:28px 8px; }
+.w3-story-inspection-row p { font:12px/1.6 var(--mono); color:var(--ink); }
+.w3-story-chart-help { color:var(--ink-muted); font-size:12px; line-height:1.65; margin:9px 0 0; padding-inline:28px 8px; }
+.w3-story-curve-readout { border-left:1px solid var(--line); padding:12px 22px; background:var(--paper); }
+.w3-story-curve-stat { padding:20px 0; border-bottom:1px solid var(--line); --curve-color:#2849c7; }
+.w3-story-curve-stat:last-child { border-bottom:0; }
+.w3-story-betweenness { --curve-color:#c74929; }
+.w3-story-random { --curve-color:#607478; }
+.w3-story-series-label { display:flex; align-items:center; gap:9px; font:13px/1.5 var(--mono); color:var(--ink); }
+.w3-story-series-label i { display:inline-block; width:20px; height:3px; background:var(--curve-color); }
+.w3-story-random .w3-story-series-label i { height:10px; background:#60747830; border-bottom:2px dashed var(--curve-color); }
+.w3-story-curve-stat strong { display:block; color:var(--curve-color); font:400 46px/1.2 var(--serif); margin-top:10px; font-variant-numeric:tabular-nums; }
+.w3-story-curve-stat > span:last-of-type { display:block; font-size:12px; line-height:1.6; color:var(--ink-muted); margin-top:4px; }
+.w3-story-curve-stat small { display:block; color:var(--ink-muted); font-size:11px; line-height:1.6; margin-top:7px; }
+.w3-story-takeaway { border-top:1px solid var(--line); padding:20px 26px; color:var(--ink); font:400 18px/1.6 var(--sans); background:#e9ecf5; }
+.w3-story-removal-figure > figcaption { padding:20px 26px; border-top:1px solid var(--line); font-size:13px; line-height:1.7; }
+.w3-story-removal-figure button:focus-visible, .w3-story-removal-figure input:focus-visible, .w3-story-chart:focus-visible, .w3-story-rank-figure button:focus-visible { outline:3px solid var(--cobalt); outline-offset:4px; }
+@media (max-width:900px) {
+  .week3-page .w3-story-finding-grid { grid-template-columns:1fr; }
+  .week3-page .w3-story-finding-grid > .w3-finding-figure { display:flex; flex-direction:column; }
+  .w3-story-rank-figure { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; }
+  .w3-story-rank-figure > .w3-panel-label, .w3-story-rank-figure > figcaption, .w3-story-rank-note { grid-column:1/-1; }
+  .w3-story-rank-figure h3 { grid-column:1; }
+  .w3-story-rank-intro { grid-column:1; }
+  #w3-story-rank-chart { grid-column:2; grid-row:2/5; }
+  .w3-story-rank-names { grid-column:1; align-content:start; margin-top:12px; }
+  .w3-story-plot-layout { grid-template-columns:minmax(0,1fr) 210px; }
+  .w3-story-curve-readout { padding-inline:18px; }
+}
+@media (max-width:680px) {
+  .w3-story-chart-topline { padding:14px 18px; font-size:10px; }
+  .w3-story-budget { padding:20px 18px; }
+  .w3-story-budget-heading { align-items:start; gap:12px; }
+  .w3-story-budget-heading label { font-size:17px; max-width:17ch; }
+  .w3-story-budget-heading output { font-size:28px; }
+  .w3-story-budget-heading output small { font-size:12px; }
+  .w3-story-budget-footer { display:block; }
+  .w3-story-presets { margin-top:13px; }
+  .w3-story-presets button { min-height:40px; padding-inline:10px; }
+  .w3-story-plot-layout { grid-template-columns:1fr; }
+  .w3-story-plot-panel { padding:20px 8px 16px; }
+  .w3-story-axis-heading, .w3-story-inspection-row, .w3-story-chart-help { padding-inline:12px; }
+  .w3-story-curve-readout { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-left:0; border-top:1px solid var(--line); padding:0 8px; }
+  .w3-story-curve-stat { padding:18px 6px; border:0; }
+  .w3-story-curve-stat + .w3-story-curve-stat { border-left:1px solid var(--line); }
+  .w3-story-series-label { display:block; font-size:11px; line-height:1.6; }
+  .w3-story-series-label i { display:block; margin-bottom:8px; }
+  .w3-story-curve-stat strong { font-size:clamp(26px,7vw,34px); }
+  .w3-story-curve-stat > span:last-of-type { font-size:11px; }
+  .w3-story-curve-stat small { font-size:10px; }
+  .w3-story-takeaway, .w3-story-removal-figure > figcaption { padding:18px; }
+  .w3-story-takeaway { font-size:16px; }
+  .w3-story-rank-figure { display:block; padding:20px; }
+  #w3-story-rank-chart { max-width:460px; margin-inline:auto; }
+}

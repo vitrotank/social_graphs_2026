@@ -1,0 +1,128 @@
+/* The first issue: readable maps and two linked views of actual link counts. */
+.issue-01 .atlas-shell { border-radius: 0; }
+.issue-01 .atlas-stage { grid-template-columns: minmax(0, 1fr) 290px; }
+.issue-01 .atlas-canvas { background-color: #142a2b; }
+.issue-01 .atlas-node:focus { outline: none; }
+.issue-01 .atlas-node:hover > circle:last-child,
+.issue-01 .atlas-node:focus-visible > circle:last-child { stroke: #fff6de; stroke-width: 2.5; }
+.issue-01 .atlas-shell > .legend { background: #fbf9f3; gap: 10px 20px; }
+.issue-01 .arrow-key { font-weight: 600; }
+.issue-01 .incoming-key { color: #ad4c2f; }
+.issue-01 .outgoing-key { color: #306f65; }
+.issue-01 .distribution-layout { grid-template-columns: minmax(0, 1.85fr) minmax(250px, 1fr); gap: 35px; }
+.issue-01 .chart-panel { border-radius: 0; background: #fbf9f3; }
+.issue-01 .chart-toolbar { padding: 19px 22px; }
+.issue-01 .chart-toolbar .eyebrow { font-size: 11px; }
+.issue-01 .rank-panel .chart-toolbar { padding: 0 0 19px; }
+.issue-01 .rank-button { min-height: 76px; }
+.issue-01 .rank-name { font-size: 16px; }
+.issue-01 .rank-button strong { font-size: 17px; }
+.issue-01 .rank-bar { height: 3px; }
+.issue-01 .distribution-series { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; padding: 13px 22px 0; font: 12px/1.5 var(--mono); }
+.issue-01 .distribution-series button { display: inline-flex; align-items: center; gap: 9px; min-height: 36px; border: 0; border-bottom: 2px solid transparent; padding: 5px 0; color: var(--ink-muted); background: transparent; }
+.issue-01 .distribution-series button.active { color: var(--ink); border-bottom-color: currentColor; }
+.issue-01 .distribution-series button:not(.active) .legend-dot { opacity: .35; }
+.issue-01 .distribution-series > span { margin-left: auto; color: var(--ink-muted); }
+.issue-01 .legend-dot.degree-blue { background: #3158a4; }
+.issue-01 .degree-readout { min-height: 122px; padding: 16px 22px; border-top: 1px solid var(--line); background: #f1f0e7; }
+.issue-01 .readout-label { font: 11px/1.6 var(--mono); color: var(--ink-muted); letter-spacing: .04em; }
+.issue-01 .degree-readout > p { margin-top: 4px; font: 16px/1.6 var(--sans); color: var(--ink); }
+.issue-01 .degree-examples { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 6px; }
+.issue-01 .degree-examples button { padding-block: 4px; font-size: 12px; text-align: left; }
+.issue-01 .degree-point { cursor: pointer; outline: none; }
+.issue-01 .degree-mark { stroke: #fbf9f3; stroke-width: 1; }
+.issue-01 .degree-point:hover .degree-mark,
+.issue-01 .degree-point:focus .degree-mark,
+.issue-01 .degree-point.is-focused .degree-mark { stroke: #142a2b; stroke-width: 2; }
+.issue-01 .degree-portrait { margin-top: 36px; }
+.issue-01 .portrait-heading { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 27px 26px 22px; }
+.issue-01 .portrait-heading h3 { margin: 7px 0 10px; font: 600 30px/1.2 var(--serif); letter-spacing: -.035em; }
+.issue-01 .portrait-heading p:not(.eyebrow) { max-width: 61ch; font: 15px/1.65 var(--sans); color: var(--ink-muted); }
+.issue-01 .portrait-heading .segmented { flex-shrink: 0; }
+.issue-01 .portrait-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; padding: 16px 26px; border-block: 1px solid var(--line); }
+.issue-01 .degree-spotlights { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.issue-01 .degree-spotlights button { min-height: 35px; padding: 4px 0; border: 0; border-bottom: 1px solid transparent; background: transparent; color: var(--ink-muted); font: 12px/1.6 var(--mono); text-align: left; }
+.issue-01 .degree-spotlights button[aria-pressed="true"] { border-bottom-color: var(--signal); color: var(--ink); }
+.issue-01 .degree-portrait-layout { display: grid; grid-template-columns: minmax(0, 1fr) 265px; }
+.issue-01 #degree-scatter { min-height: 0; padding: 16px 12px; }
+.issue-01 #degree-scatter svg { display: block; }
+.issue-01 .degree-inspector { border-left: 1px solid var(--line); padding: 27px 23px 24px; background: #f1f0e7; }
+.issue-01 .degree-inspector h4 { margin: 16px 0 22px; font: 600 26px/1.22 var(--serif); letter-spacing: -.035em; overflow-wrap: anywhere; }
+.issue-01 .degree-inspector p:not(.eyebrow) { color: var(--ink-muted); font: 14px/1.7 var(--sans); }
+.issue-01 .degree-inspector .degree-overlap { margin-top: 10px; font-size: 12px !important; }
+.issue-01 .degree-counts { display: flex; gap: 26px; margin: 0 0 19px; }
+.issue-01 .degree-counts > div { display: flex; flex-direction: column; gap: 8px; }
+.issue-01 .degree-counts dt { font: 11px/1.5 var(--mono); color: var(--ink-muted); }
+.issue-01 .degree-counts dd { margin: 0; font: 36px/1 var(--serif); color: var(--ink); }
+.issue-01 #degree-open-character { display: block; margin: 19px 0 28px; padding: 5px 0; font-size: 12px; text-align: left; }
+.issue-01 .degree-inspector label { display: block; margin-bottom: 10px; font: 11px/1.6 var(--mono); color: var(--ink-muted); }
+.issue-01 #degree-character { width: 100%; max-width: 100%; min-height: 42px; border: 1px solid #aeb5a6; border-radius: 0; padding: 7px 8px; color: var(--ink); background: #fbf9f3; font: 13px/1.5 var(--sans); }
+.issue-01 #degree-keyboard-note { font-size: 12px; padding-top: 15px; }
+.issue-01 .portrait-grid { stroke: #b4bbae; stroke-opacity: .45; stroke-width: 1; stroke-dasharray: 2 5; }
+.issue-01 .portrait-axis { stroke: #7d8b7f; stroke-width: 1.2; }
+.issue-01 .portrait-tick { fill: #52665f; font: 13px var(--mono); }
+.issue-01 .portrait-axis-label { fill: #3e544d; font: 12px var(--mono); letter-spacing: .03em; }
+.issue-01 .portrait-diagonal { stroke: #7a8b7f; stroke-width: 1.4; stroke-dasharray: 6 6; }
+.issue-01 .portrait-point { cursor: pointer; outline: none; }
+.issue-01 .portrait-focus-ring { stroke: #142a2b; stroke-width: 1.5; opacity: 0; }
+.issue-01 .portrait-point.is-focused .portrait-focus-ring,
+.issue-01 .portrait-point:focus-visible .portrait-focus-ring { opacity: 1; }
+.issue-01 .portrait-point.is-focused .portrait-dot { fill-opacity: 1; }
+.issue-01 .portrait-label { fill: #4b5d54; stroke: #fbf9f3; stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; font: 12px var(--mono); pointer-events: none; }
+.issue-01 .portrait-label-focused { fill: #142a2b; font-weight: 600; }
+.issue-01 .degree-portrait > .legend { font-size: 12px; }
+.issue-01 .chart-scroll-hint { display: none; }
+.issue-01 #distribution-chart:focus-visible,
+.issue-01 #degree-scatter:focus-visible { outline: 2px solid #3158a4; outline-offset: -2px; }
+.issue-01 .degree-portrait button:focus-visible,
+.issue-01 .distribution-series button:focus-visible,
+.issue-01 .degree-examples button:focus-visible { outline: 2px solid #3158a4; outline-offset: 4px; }
+@media (max-width: 1000px) {
+  .issue-01 .atlas-stage { grid-template-columns: minmax(0, 1fr) 250px; }
+  .issue-01 .distribution-layout { grid-template-columns: minmax(0, 1.65fr) minmax(220px, 1fr); gap: 25px; }
+  .issue-01 .portrait-heading { align-items: start; }
+  .issue-01 .degree-portrait-layout { grid-template-columns: minmax(0, 1fr) 225px; }
+  .issue-01 .degree-inspector { padding: 24px 18px; }
+  .issue-01 .degree-counts { gap: 20px; }
+}
+@media (max-width: 760px) {
+  .issue-01 .atlas-stage, .issue-01 .distribution-layout { grid-template-columns: minmax(0, 1fr); }
+  .issue-01 .rank-panel { border: 1px solid var(--line); padding: 22px; background: #fbf9f3; }
+  .issue-01 .rank-button { min-height: 63px; }
+  .issue-01 .portrait-heading { flex-direction: column; }
+  .issue-01 .degree-portrait-layout { grid-template-columns: minmax(0, 1fr); }
+  .issue-01 .chart-scroll-hint { display: block; margin: 15px 18px 0; color: #52665f; font: 13px/1.6 var(--mono); }
+  .issue-01 #distribution-chart,
+  .issue-01 #degree-scatter { max-width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-color: #7b8d82 #e5e7dd; }
+  .issue-01 #distribution-chart > svg,
+  .issue-01 #distribution-chart > img { display: block; min-width: 680px; }
+  .issue-01 #degree-scatter > svg { min-width: 680px; }
+  .issue-01 .portrait-tick, .issue-01 .portrait-axis-label { font-size: 15px; }
+  .issue-01 .portrait-label { font-size: 14px; }
+  .issue-01 .degree-inspector { border-left: 0; border-top: 1px solid var(--line); }
+  .issue-01 .degree-inspector h4 { font-size: 29px; margin-block: 12px 16px; }
+  .issue-01 .degree-counts { gap: 38px; }
+  .issue-01 #degree-character { max-width: 450px; }
+  .issue-01 #degree-open-character { margin-bottom: 20px; }
+  .issue-01 #degree-keyboard-note { max-width: 60ch; }
+}
+@media (max-width: 480px) {
+  .issue-01 .chart-toolbar, .issue-01 .degree-readout { padding-inline: 16px; }
+  .issue-01 .chart-toolbar { gap: 12px; }
+  .issue-01 .distribution-series { padding-inline: 16px; }
+  .issue-01 .distribution-series > span { width: 100%; margin-left: 0; }
+  .issue-01 .degree-readout { min-height: 137px; }
+  .issue-01 .portrait-heading { padding: 24px 18px 20px; }
+  .issue-01 .portrait-heading h3 { font-size: 29px; }
+  .issue-01 .portrait-toolbar { padding: 15px 18px; }
+  .issue-01 .degree-spotlights { flex-direction: column; align-items: start; gap: 2px; }
+  .issue-01 #degree-scatter { padding: 15px 0 9px; }
+  .issue-01 .degree-inspector { padding-inline: 19px; }
+}
+@media print {
+  .issue-01 .chart-scroll-hint { display: none; }
+  .issue-01 .portrait-toolbar, .issue-01 .portrait-heading .segmented,
+  .issue-01 .degree-inspector label, .issue-01 #degree-character,
+  .issue-01 #degree-open-character, .issue-01 #degree-keyboard-note { display: none; }
+  .issue-01 .degree-portrait { break-inside: avoid; }
+}

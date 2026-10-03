@@ -11,10 +11,14 @@
   <title>Week 2 · Compared to what? · CROSSTALK</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../journal.css">
+  <link rel="stylesheet" href="../week2-figures.css">
   <script defer src="../assets/data/network.js"></script>
   <script defer src="../week2.js"></script>
+  <script defer src="../journal.js"></script>
+  <script defer src="../week2-figures.js"></script>
 </head>
-<body class="report-page" data-root="../">
+<body class="report-page issue-story issue-02" data-root="../">
   <a class="skip-link" href="#report">Skip to field report</a>
   <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Crosstalk home"><svg class="brand-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M5 12h7c14 0 3 20 16 20h15" fill="none" stroke="currentColor" stroke-width="3"/><path d="M5 30h7c14 0 3-20 16-20h15" fill="none" stroke="#dc512f" stroke-width="3"/><circle cx="5" cy="12" r="4" fill="currentColor"/><circle cx="43" cy="32" r="4" fill="currentColor"/><circle cx="5" cy="30" r="4" fill="#dc512f"/><circle cx="43" cy="10" r="4" fill="#dc512f"/></svg><span class="brand-copy"><strong>CROSSTALK</strong><small>A NETWORK SCIENCE NOTEBOOK</small></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../index.html">Front page</a><a href="../index.html#games">The games room</a><a href="../grunge/index.html">Week 3 B-side ↗</a><a href="https://github.com/vitrotank/social_graphs_2026">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues"><a href="../week1/index.html"><span>01</span> Week 1</a><a href="../week2/index.html" aria-current="page"><span>02</span> Week 2</a><a href="../week3/index.html"><span>03</span> Week 3</a><a href="../week4/index.html"><span>04</span> Week 4</a><a class="all-issues" href="../index.html#journal">All weeks ↓</a></nav></div></header>
   <main id="top">
@@ -54,9 +58,17 @@
       </div>
       <figure class="chart-panel">
         <div class="chart-toolbar"><span class="eyebrow">EMPIRICAL DATA + ILLUSTRATIVE CURVES</span><div class="segmented" role="group" aria-label="CCDF plot view"><button type="button" data-ccdf-view="models" class="active" aria-pressed="true">Compare shapes</button><button type="button" data-ccdf-view="fit" aria-pressed="false">Inspect the tail</button></div></div>
-        <div class="chart-area"><img id="ccdf-switch-img" src="../assets/figures/ccdf-models.svg" alt="Measured Marvel positive in-degree CCDF alongside illustrative heavy-tail and Poisson reference curves."></div>
+        <div class="chart-area" id="w2-ccdf-fallback"><img id="ccdf-switch-img" src="../assets/figures/ccdf-models.svg" alt="Measured Marvel positive in-degree CCDF alongside illustrative heavy-tail and Poisson reference curves."></div>
+        <div id="w2-ccdf-live" class="w2-ccdf-live" hidden>
+          <p class="w2-plot-scroll-hint">↔ Scroll sideways to read the full plot.</p>
+          <div class="w2-chart-scroll" role="region" aria-label="Degree tail plot; scroll horizontally on narrow screens" tabindex="0"><svg id="w2-ccdf-plot" viewBox="0 0 960 470" role="group" aria-label="Inspect measured fractions of positive-degree Marvel pages receiving at least k links."></svg></div>
+          <div class="w2-tail-console"><div class="w2-tail-control"><label for="w2-tail-k">HOW FAR INTO THE TAIL?</label><div><input id="w2-tail-k" type="range" min="1" max="106" step="1" value="10"><output id="w2-tail-value" for="w2-tail-k">k ≥ 10</output></div><p>Choose a threshold, or focus a measured point. Counts always come from the frozen roster.</p></div><div id="w2-tail-readout" class="w2-tail-readout" aria-live="polite"></div></div>
+          <div class="w2-guide-controls"><label for="w2-show-reference"><input id="w2-show-reference" type="checkbox" checked> Show illustrative references</label><label for="w2-guide-slope">Chosen guide exponent <output id="w2-guide-value" for="w2-guide-slope">1.35</output></label><input id="w2-guide-slope" type="range" min="0.8" max="2.2" step="0.05" value="1.35"><button type="button" id="w2-tail-reset">Reset the view ↺</button></div>
+          <div class="w2-tail-links" id="w2-tail-links" aria-label="Inspect characters in this tail"></div>
+          <p class="w2-interaction-note">Drag the guide to see how easy it is to suggest a fit. Its exponent is chosen by you; it is not estimated from these data.</p>
+        </div>
         <figcaption class="chart-note" id="ccdf-switch-caption">Orange points are measured. The other curves are schematic references; they are not simulated or fitted null models.</figcaption>
-        <div class="legend"><span><i class="legend-dot orange"></i> Measured Marvel in-degree</span><span><i class="legend-dot cobalt"></i> Heavy-tail reference</span><span><i class="legend-dot leaf"></i> Poisson reference</span><a id="ccdf-download-link" href="../assets/figures/ccdf-models.svg" download>Download figure ↓</a></div>
+        <div class="legend"><span><i class="legend-dot orange"></i> Measured Marvel in-degree</span><span data-w2-legend="guide"><i class="legend-dot cobalt"></i> Chosen heavy-tail guide</span><span data-w2-legend="poisson"><i class="legend-dot leaf"></i> Poisson reference</span><a id="ccdf-download-link" href="../assets/figures/ccdf-models.svg" download>Download static reference ↓</a></div>
       </figure>
       <details class="reading-details"><summary>Why a straight line does not establish a power law</summary><div class="reading-intro"><p>Cumulative points reuse observations, so they are not independent. A least-squares line on log–log axes is not enough to establish a power law. A defensible claim requires a fitted range, goodness-of-fit assessment, and comparison with alternative distributions.</p><p>The guide line in this exhibit has a chosen slope. This repository does not provide a likelihood-ratio test or a fitted power-law uncertainty estimate, so we report neither a significance value nor a scale-free verdict.</p></div></details>
     </article>

@@ -66,7 +66,8 @@ class SiteTests(unittest.TestCase):
         # Copy only build inputs. Neither render nor stage touches the real repo.
         for relative in (
             "templates/week3.html", "templates/week4.html", "templates/louvain.html", "templates/switchboard.html", "templates/grunge.html",
-            "week3.css", "week3.js", "week4.css", "louvain.js", "grunge.css", "grunge.js",
+            "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",
+            "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js", "home.css", "journal.css", "journal.js",
             "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
             "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
             "site.json", "templates/home.html", "templates/week1.html", "templates/week2.html", "templates/play.html", "templates/cerebro.html",
@@ -95,7 +96,7 @@ class SiteTests(unittest.TestCase):
         documents = {}
         for relative in pages:
             html = (self.root / relative).read_text(encoding="utf-8")
-            self.assertIsNone(re.search(r"@@[A-Z_]+@@", html), f"Unresolved template value in {relative}")
+            self.assertIsNone(re.search(r"@@[A-Z][A-Z0-9_]*@@", html), f"Unresolved template value in {relative}")
             self.assertNotIn("polyfill.io", html)
             self.assertNotIn("open an issue", html.casefold())
             documents[self.root / relative] = Document(html)
@@ -203,6 +204,41 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(puzzles["schedule"]["release_hour"], 18)
         self.assertEqual(len(puzzles["weeks"]), 3)
         self.assertEqual(puzzles["weeks"][0]["release_at"], "2026-09-09T16:00:00Z")
+
+    def test_editorial_exhibits_use_only_frozen_nodes_edges_and_analysis(self):
+        build.render()
+        def bundle(name, variable):
+            text = (self.root / name).read_text(encoding="utf-8")
+            prefix = f"window.{variable} = "
+            self.assertTrue(text.startswith(prefix) and text.endswith(";\n"))
+            return json.loads(text[len(prefix):-2])
+        cover = bundle("assets/data/cover.js", "CROSSTALK_COVER")
+        marvel = json.loads((self.root / "assets/data/network.json").read_text(encoding="utf-8"))
+        philosopher = json.loads((self.root / "assets/data/week4.json").read_text(encoding="utf-8"))
+        originals = {"marvel": marvel["nodes"], "philosophers": philosopher["explorer"]["nodes"]}
+        source_pairs = {
+            "marvel": {frozenset((edge["source"], edge["target"])) for edge in marvel["edges"]},
+            "philosophers": {frozenset((edge["source"], edge["target"])) for edge in philosopher["explorer"]["edges"] if edge["alpha"] < .5},
+        }
+        for name, exhibit in cover.items():
+            roster = {node["id"]: node for node in originals[name]}
+            shown = {node["id"] for node in exhibit["nodes"]}
+            self.assertLess(len(shown), len(roster), "The lightweight cover must disclose its sample")
+            self.assertIn("Selected", exhibit["sampleNote"])
+            for node in exhibit["nodes"]:
+                self.assertEqual(node["degree"], roster[node["id"]]["degree"])
+                self.assertEqual(node["label"], roster[node["id"]]["label"])
+                self.assertTrue(0 <= node["x"] <= 1 and 0 <= node["y"] <= 1)
+            for edge in exhibit["edges"]:
+                pair = frozenset((edge["source"], edge["target"]))
+                self.assertTrue(pair <= shown)
+                self.assertIn(pair, source_pairs[name], "A cover mark must be an observed link")
+        figure = bundle("assets/data/week3-figure.js", "CROSSTALK_WEEK3_FIGURE")
+        source = json.loads((self.root / "assets/data/week3.json").read_text(encoding="utf-8"))
+        self.assertEqual(figure["nodes"], source["nodes"])
+        for key, value in figure["removal"].items():
+            self.assertEqual(value, source["removal"][key])
+        self.assertTrue(all(row in source["single_removal"] for row in figure["ranking"]))
 
     def test_staging_publishes_only_the_allowlist_and_preserves_its_bytes(self):
         # A workspace may contain control files that must never reach Pages.

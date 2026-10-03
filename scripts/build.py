@@ -111,6 +111,8 @@ def render() -> list[Path]:
     config = read_json(ROOT / "site.json")
     network = read_json(ROOT / "assets/data/network.json")
     summary = read_json(ROOT / "assets/data/summary.json")
+    week4 = read_json(ROOT / "assets/data/week4.json")
+    week3 = read_json(ROOT / "assets/data/week3.json")
     nodes = {n["id"]: n for n in network["nodes"]}
     # The prose is specifically a Week 1 report. A changed release needs an edit,
     # rather than silently mixing a new graph with old scientific statements.
@@ -148,6 +150,30 @@ def render() -> list[Path]:
         "ISLAND_NOTE": 'Three of the island’s page IDs carry the qualifier “Morituri”: Radian, Scatterbrain, and Snapdragon. A clue to shared context—but the frozen edge list does not explain why this island formed.'
     }
     values = {key: escape(str(value), quote=True) for key, value in plain.items()}
+    explorer = week4["explorer"]
+    comparison = explorer["weighted_comparison"]
+    week4_values = {
+        "W4_NODES": f'{week4["nodes"]:,}', "W4_EDGES": f'{week4["undirected_edges"]:,}',
+        "W4_GROUPS": week4["community_count"], "W4_Q": f'{week4["modularity"]:.3f}',
+        "W4_NULL": f'{week4["null"]["mean"]:.3f}',
+        "W4_NMI": f'{comparison["nmi"]:.3f}', "W4_WEIGHTED_GROUPS": comparison["community_count"],
+        "W4_MOVERS": comparison["mover_count"],
+        "W4_Q_MIN": f'{min(run["modularity"] for run in week4["runs"]):.3f}',
+        "W4_Q_MAX": f'{max(run["modularity"] for run in week4["runs"]):.3f}',
+        "W4_WEIGHT_FINDING": (
+            f'Agreement is substantial but incomplete: NMI {comparison["nmi"]:.3f}, '
+            f'with {comparison["mover_count"]:,} of {week4["nodes"]:,} philosophers outside their matched group. '
+            'Aristotle moves from the group anchored by Aristotle and Plato to one anchored by Aristotle and Thomas Aquinas. '
+            'His links span eight unweighted communities. One assigned group does not capture the reach of his page.'
+        ),
+        "W4_BREAK_FINDING": (
+            'We define the breaking point as the largest component falling below half the original 1,374 people. '
+            'At α ≈ 0.169585, tightening the filter takes it from 699 to 677. '
+            'Five ties share that cutoff, but Confucius—Voltaire is the only one joining the 22-node detached group to the giant. '
+            'That group includes Confucius, Laozi, Han Fei, and Zhu Xi: several East Asian traditions, not one school.'
+        ),
+    }
+    values.update({key: escape(str(value), quote=True) for key, value in week4_values.items()})
     values.update({
         "RANKING": ranking,
         "ISOLATE_BUTTONS": "\n".join(inspect_button(i) for i in summary["isolates"]),
@@ -192,12 +218,41 @@ def render() -> list[Path]:
         prefix = "../" * (len(destination.parts) - 1)
         page_values = dict(values, ROOT=prefix, HEADER=header(config, prefix, current), FOOTER=footer(config, prefix))
         template = (ROOT / "templates" / source).read_text(encoding="utf-8")
-        result = re.sub(r"@@([A-Z_]+)@@", lambda match: page_values[match[1]], template)
+        result = re.sub(r"@@([A-Z][A-Z0-9_]*)@@", lambda match: page_values[match[1]], template)
         target = ROOT / destination
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(result, encoding="utf-8", newline="\n")
     payload = json.dumps({"network": network, "summary": summary}, ensure_ascii=True, separators=(",", ":"))
     (ROOT / "assets/data/network.js").write_text("window.CROSSTALK_DATA = " + payload + ";\n", encoding="utf-8", newline="\n")
+    # Small cover exhibits are explicit samples; full analyses stay on issues.
+    philosopher_graph = week4["explorer"]
+    cover_names = {"Aristotle", "Plato", "Confucius", "Voltaire", "Immanuel_Kant", "Friedrich_Nietzsche", "Thomas_Aquinas"}
+    for community in philosopher_graph["communities"]:
+        members = sorted((node for node in philosopher_graph["nodes"] if node["community"] == community["id"]), key=lambda node: (-node["strength"], node["id"]))
+        cover_names.update(node["id"] for node in members[:8])
+    cover_names.update(node["id"] for node in sorted(philosopher_graph["nodes"], key=lambda node: (-node["strength"], node["id"]))[:75])
+    philosopher_cover_nodes = [{key: node[key] for key in ("id", "label", "community", "degree", "strength")} | {"x": round(node["x"] / 1000, 5), "y": round(node["y"] / 760, 5)}
+                              for node in philosopher_graph["nodes"] if node["id"] in cover_names]
+    philosopher_cover_edges = sorted((edge for edge in philosopher_graph["edges"] if edge["source"] in cover_names and edge["target"] in cover_names and edge["alpha"] < .5), key=lambda edge: (edge["alpha"], edge["source"], edge["target"]))[:500]
+    marvel_cover_names = {node["id"] for node in network["nodes"] if node["component"] != 0}
+    marvel_cover_names.update(node["id"] for node in sorted(network["nodes"], key=lambda node: (-node["degree"], node["id"]))[:85])
+    marvel_cover_nodes = [{"id": node["id"], "label": node["label"], "x": node["x"], "y": node["y"], "degree": node["degree"], "strength": node["in_degree"], "community": 2 if node["degree"] == 0 else node["component"]}
+                         for node in network["nodes"] if node["id"] in marvel_cover_names]
+    marvel_pairs = sorted({tuple(sorted((edge["source"], edge["target"]))) for edge in network["edges"] if edge["source"] != edge["target"] and edge["source"] in marvel_cover_names and edge["target"] in marvel_cover_names})
+    cover = {
+        "philosophers": {"title": "The philosopher atlas", "fullNodes": week4["nodes"], "fullEdges": week4["undirected_edges"], "edgeLabel": "unique ties",
+                         "nodes": philosopher_cover_nodes, "edges": [{key: edge[key] for key in ("source", "target", "alpha")} for edge in philosopher_cover_edges],
+                         "communityLabels": {str(row["id"]): row["label"] for row in philosopher_graph["communities"]},
+                         "sampleNote": "Selected philosophers and up to 500 real ties from the α = 0.50 backbone. Full-network totals; fixed positions from the α = 0.20 layout.", "path": "week4/index.html#atlas"},
+        "marvel": {"title": "The Marvel exchange", "fullNodes": summary["nodes"], "fullEdges": summary["edges"], "edgeLabel": "directed links",
+                   "nodes": marvel_cover_nodes, "edges": [{"source": a, "target": b} for a, b in marvel_pairs],
+                   "communityLabels": {"0": "The main exchange", "1": "The nine-page island", "2": "The isolated pages"},
+                   "sampleNote": "Selected pages and real linked pairs. Drawn pairs merge directions; totals count the original directed links. Size follows incoming links.", "path": "week1/index.html#atlas"},
+    }
+    (ROOT / "assets/data/cover.js").write_text("window.CROSSTALK_COVER = " + json.dumps(cover, ensure_ascii=True, separators=(",", ":")) + ";\n", encoding="utf-8", newline="\n")
+    removal_figure = {"nodes": week3["nodes"], "removal": {key: week3["removal"][key] for key in ("trials", "seed", "denominator", "degree", "betweenness", "random")},
+                      "ranking": sorted(week3["single_removal"], key=lambda node: node["betweenness_rank"])[:8]}
+    (ROOT / "assets/data/week3-figure.js").write_text("window.CROSSTALK_WEEK3_FIGURE = " + json.dumps(removal_figure, ensure_ascii=True, separators=(",", ":")) + ";\n", encoding="utf-8", newline="\n")
     puzzles = make_puzzles(network, **config.get("arcade", {}))
     (ROOT / "assets/data/puzzles.json").write_text(json.dumps(puzzles, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     (ROOT / "assets/data/puzzles.js").write_text("window.CROSSTALK_PUZZLES = " + json.dumps(puzzles, ensure_ascii=True, separators=(",", ":")) + ";\n", encoding="utf-8", newline="\n")
@@ -206,7 +261,9 @@ def render() -> list[Path]:
     (ROOT / "assets/favicon.svg").write_text(favicon, encoding="utf-8", newline="\n")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
-        "week3.css", "week3.js", "week4.css", "louvain.js", "grunge.css", "grunge.js",
+        "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js",
+        "home.css", "journal.css", "journal.js", "assets/data/cover.js", "assets/data/week3-figure.js",
+        "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",
         "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
         "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
         "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",
