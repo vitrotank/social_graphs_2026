@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#7c2938">
+  <meta name="theme-color" content="#2849c7">
   <meta name="description" content="One eight-word publisher phrase connects 282 Marvel Wikipedia pages. An exact phrase-length experiment separates editorial habit from shared stories, with traceable text evidence.">
   <title>Week 5 · Eight words. 282 pages. · @@TITLE@@</title>
   <link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml">
@@ -19,7 +19,7 @@
   @@HEADER@@
   <main id="main-content">
     <header class="w5-cover shell" aria-labelledby="w5-title">
-      <div class="w5-cover-copy"><p class="hero-kicker">ISSUE 05 / LANGUAGE <span>·</span> EXERCISE 5.9 / GO NUTS</p>
+      <div class="w5-cover-copy"><p class="hero-kicker">ISSUE 05 / LANGUAGE</p>
       <h1 class="hero-title" id="w5-title">Eight words.<br><em>282 pages.</em></h1>
       <p class="hero-deck">When Marvel pages share words, are they sharing stories? One publisher phrase makes almost the whole corpus look connected.</p>
       <div class="hero-actions"><a class="button button-primary" href="#sieve">Follow the words ↓</a><a class="text-link" href="#evidence">Read the evidence ↗</a></div></div>
@@ -90,14 +90,58 @@
       </div><aside class="article-aside w5-limitation"><p class="eyebrow">ONE MEANINGFUL LIMITATION</p><h3>A match cannot tell us who copied whom.</h3><p>It also misses paraphrases. Longer articles have more opportunities to overlap; formulas, quotations and references can survive strict thresholds. Our claim concerns this Wikipedia corpus, rather than the originality of Marvel stories.</p></aside></div>
     </section>
 
-    <section class="shell section w5-method" id="method" aria-labelledby="w5-method-title">
-      <div class="section-head"><p class="eyebrow">05 / REPRODUCE THE EXPERIMENT</p><span class="post-meta">FROZEN INPUT / STANDARD-LIBRARY PYTHON</span></div>
-      <h2 class="section-title" id="w5-method-title">Leave a <em>paper trail.</em></h2>
-      <details><summary>Definitions, exclusions and exact parameters</summary><p>The 26 August 2026 archive contains all 303 Week 1 articles. Decoded filenames must match the roster; only README and directory entries are excluded. It yields 727,203 tokens and 27,020 types.</p><p>Unicode letter tokens retain internal apostrophes; curly apostrophes are normalized and case is folded. Hyphens separate words. Numbers and punctuation are omitted; names, stopwords and headings remain. No stemming or TF-IDF.</p><p>An eight-word inverted index finds every eligible pair. Runs extend until divergence; ties choose the earliest source position. Thresholds are 8–60. Removing the first blank-line-delimited paragraph recomputes all matches: a reproducible proxy for the lead.</p><p>Retaining numerals gives 40,581 pairs at eight tokens, 82 at twenty and 14 at forty. Six tests check boundaries, extension, ties, normalization, roster validation and source offsets. Labels use LLM-assisted inspection, not independent human annotation.</p></details>
-      <details><summary>Provenance, alternatives and source attribution</summary><p>Downloaded 3 October 2026; SHA-256 <code>36023ca077053b3df5bd55630754cb514c3f9dbecbd70afcb2283e5bcc0017ee</code>. Current Wikipedia pages may differ. Original passages and offsets are preserved.</p><p>Alternatives measured: length versus undirected degree (Spearman ρ = 0.8321); raw bag-of-words cosine with 78 stopwords (Eddie Brock / Venom: 0.9172). Exact phrases let readers check meaning directly. Definitions are in the reproduction notes.</p><p>Prose is attributed to linked Wikipedia articles under <a href="https://en.wikipedia.org/wiki/Wikipedia:Copyrights">Creative Commons Attribution-ShareAlike terms</a>. Article histories identify contributors.</p></details>
-      <div class="w5-downloads w5-source-links"><a href="@@ROOT@@assets/data/week5.json" download>Computed results ↓</a><a href="@@ROOT@@data/raw/marvel_pages.zip" download>Frozen corpus ↓</a><a href="@@ROOT@@data/week5/README.md">Reproduction notes ↗</a><a href="@@REPO@@/blob/main/scripts/analyze_week5.py">Analysis code ↗</a><a href="https://sunelehmann.com/socialgraphs2026-web/weeks/week5.html">Week 5 assignment ↗</a></div>
-      <div class="w5-closing"><p>A shared universe.<br>An <em>editorial accent.</em></p><a class="text-link" href="@@ROOT@@index.html#journal">Back to all @@PUBLISHED_COUNT@@ issues ↗</a></div>
+    <section id="methods" class="shell section" aria-labelledby="w5-method-title">
+      <div class="section-head">
+        <p class="eyebrow"><span class="section-number">05 /</span> DATA &amp; METHODS</p>
+        <a class="text-link" href="@@REPO@@/blob/main/scripts/analyze_week5.py">Reproduce the analysis ↗</a>
+      </div>
+      <div class="section-intro">
+        <h2 class="section-title" id="w5-method-title">Leave a<br><em>paper trail.</em></h2>
+        <p>Every number above comes from the frozen Marvel pages corpus.<br>Python does the analysis; the browser makes it explorable.</p>
+      </div>
+      <details class="study-notes" open>
+        <summary>Source files, definitions, computation and limitations</summary>
+        <div class="issue-strip" aria-label="Measured phrase statistics">
+          <div class="issue-item"><span>THE ROSTER</span><strong>303 <small>character articles</small></strong></div>
+          <div class="issue-item"><span>THE CORPUS</span><strong>727,203 <small>word tokens</small></strong></div>
+          <div class="issue-item"><span>MATCHES AT 8</span><strong>40,570 <small>article pairs</small></strong></div>
+          <div class="issue-item"><span>MATCHES AT 20</span><strong>71 <small>article pairs</small></strong></div>
+        </div>
+        <div class="method-grid">
+          <section class="method-card">
+            <p class="eyebrow">01 / THE MATERIAL</p>
+            <h3>A frozen slice of Wikipedia.</h3>
+            <p>The 26 August 2026 archive contains all 303 Week 1 articles. Decoded filenames match the roster; only README and directory entries are excluded, yielding 727,203 tokens and 27,020 types.</p>
+            <ul class="source-list">
+              <li><a href="@@ROOT@@assets/data/week5.json" download>Computed results · JSON ↓</a></li>
+              <li><a href="@@ROOT@@data/raw/marvel_pages.zip" download>Frozen corpus · ZIP ↓</a></li>
+              <li><a href="@@ROOT@@data/week5/README.md">Reproduction notes ↗</a></li>
+              <li><a href="https://sunelehmann.com/socialgraphs2026-web/weeks/week5.html">Week 5 assignment ↗</a></li>
+            </ul>
+          </section>
+          <section class="method-card">
+            <p class="eyebrow">02 / THE RECIPE</p>
+            <h3>Exact normalized runs.</h3>
+            <p>Letter tokens retain internal apostrophes; punctuation and numbers are omitted; names and stopwords remain. An 8-word inverted index finds every eligible pair and extends matches until divergence.</p>
+            <p>Removing the first paragraph recomputes all matches as a reproducible proxy for the lead section.</p>
+          </section>
+          <section class="method-card">
+            <p class="eyebrow">03 / THE LIMITS</p>
+            <h3>Length is not intent.</h3>
+            <p>A match cannot tell who copied whom, and misses paraphrases. Longer articles have more opportunities to overlap; formulas, quotations, and bibliographies survive strict thresholds.</p>
+            <p>Our claims describe this Wikipedia corpus rather than the originality of Marvel writers.</p>
+            <a class="text-link" href="@@ROOT@@assets/data/week5.json" download>Download all results · JSON ↓</a>
+          </section>
+        </div>
+      </details>
     </section>
+
+    <nav class="shell section report-outro issue-navigation" aria-label="Continue reading">
+      <a href="@@ROOT@@week4/index.html">← Week 4 · The schools</a>
+      <a href="@@ROOT@@index.html#journal">All weekly issues</a>
+      <a href="@@ROOT@@week6/index.html">Next: Week 6 · From counts to vectors →</a>
+      <a href="#main-content">Back to top ↑</a>
+    </nav>
   </main>
   @@FOOTER@@
 </body>

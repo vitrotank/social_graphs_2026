@@ -1,0 +1,271 @@
+/* Week 6 Stylesheet: From Counts to Vectors */
+
+.w6-cover {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 70px;
+  padding: 55px 0 65px;
+  align-items: end;
+}
+
+.w6-cover .hero-kicker {
+  font: 11px/1.6 var(--mono);
+  letter-spacing: .08em;
+  margin-bottom: 25px;
+  color: var(--ink-muted);
+}
+
+.w6-cover h1 {
+  font: 400 clamp(66px, 7.8vw, 112px)/.98 var(--serif);
+  letter-spacing: -.065em;
+  margin: 0;
+}
+
+.w6-cover h1 em {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cobalt);
+}
+
+.w6-cover .hero-deck {
+  font-size: 18px;
+  line-height: 1.75;
+  margin-top: 28px;
+  max-width: 42ch;
+  color: var(--ink-muted);
+}
+
+.w6-opening {
+  border-left: 1px solid var(--cobalt);
+  padding-left: 32px;
+}
+
+.w6-opening blockquote {
+  font: italic clamp(19px, 2.2vw, 28px)/1.3 var(--serif);
+  color: var(--ink);
+  margin: 20px 0;
+}
+
+.w6-opening blockquote strong {
+  color: var(--cobalt);
+}
+
+.w6-opening > p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 38ch;
+  color: var(--ink-muted);
+}
+
+.w6-section-deck {
+  max-width: 68ch;
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 18px 0 28px;
+  color: var(--ink-muted);
+}
+
+.w6-comparison-table {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.w6-axis-spread {
+  margin: 28px 0;
+  padding: 28px;
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+}
+
+.w6-axis-spread-title {
+  margin: 0 0 6px;
+  font: 400 24px/1.2 var(--serif);
+  letter-spacing: -.02em;
+}
+
+.w6-axis-spread-deck {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin: 0 0 20px;
+}
+
+.w6-shift-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.w6-shift-card {
+  background: var(--paper);
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+}
+
+.w6-shift-name {
+  display: block;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cobalt);
+  margin-bottom: 6px;
+}
+
+.w6-shift-values {
+  font-size: 13px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.w6-shift-desc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.w6-field-note {
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+  padding: 22px;
+}
+
+.w6-field-note p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+
+.w6-field-note p + p {
+  margin-top: 10px;
+}
+
+.w6-field-note strong {
+  color: var(--ink);
+}
+
+.w6-limitation {
+  background: var(--paper-dark);
+  border-left: 3px solid var(--cobalt);
+  padding: 22px;
+}
+
+.w6-limitation h3 {
+  font: 400 22px/1.25 var(--serif);
+  margin: 6px 0 10px;
+  color: var(--ink);
+}
+
+.w6-limitation p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* Week 4-Style Method Section */
+.w6-method {
+  border-top: 1px solid var(--line);
+  padding: 50px 0 70px;
+}
+
+.w6-facts .issue-item strong {
+  font-family: var(--serif);
+  font-size: 37px;
+}
+
+.w6-facts .issue-item > span {
+  font-size: 10px;
+}
+
+.w6-facts .issue-item small {
+  font-size: 11px;
+  display: block;
+  margin: 7px 0 0;
+}
+
+.w6-method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 38px;
+}
+
+.w6-method-grid > div {
+  border-top: 1px solid var(--ink);
+  padding-top: 20px;
+}
+
+.w6-method-grid h3 {
+  font: 27px var(--serif);
+  margin-bottom: 15px;
+}
+
+.w6-method-grid p, .w6-method-details p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-muted);
+}
+
+.w6-method-details {
+  border-block: 1px solid var(--line);
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+.w6-method-details summary {
+  cursor: pointer;
+  font: 13px var(--mono);
+}
+
+.w6-method-details p {
+  max-width: 85ch;
+  margin-top: 20px;
+}
+
+.w6-source {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 25px;
+  font: 12px var(--mono);
+}
+
+.w6-closing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-top: 65px;
+  padding-top: 42px;
+  border-top: 1px solid var(--ink);
+}
+
+.w6-closing > p {
+  font: 38px/1.2 var(--serif);
+  letter-spacing: -.03em;
+}
+
+.w6-closing em {
+  color: #a44c32;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .w6-cover {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 760px) {
+  .w6-method-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .w6-closing {
+    align-items: start;
+    flex-direction: column;
+  }
+  .w6-closing > p {
+    font-size: 34px;
+  }
+}

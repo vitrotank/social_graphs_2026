@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2849c7">
+  <meta name="description" content="Vector Drift: an interactive embedding navigation puzzle. Bridge the gap between Marvel characters using word vectors and semantic algebra.">
+  <title>Vector Drift — Week 6 Game · CROSSTALK</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../vector-voyage.css">
+  <script defer src="../assets/data/week6_game.js"></script>
+  <script defer src="../vector-voyage.js"></script>
+<link rel="stylesheet" href="../design.css"></head>
+<body class="play-page vv-page" data-root="../">
+  <a class="skip-link" href="#vv-game-console">Skip to the game</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Crosstalk home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3v34M3 20h34M8 8l24 24M8 32 32 8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="4" fill="currentColor"/></svg><span class="brand-copy"><strong>CROSSTALK</strong><small>LINKS, LANGUAGE &amp; THE SPACE BETWEEN</small></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../index.html">Journal</a><a href="../explore/index.html">Networks</a><a href="../index.html#games" aria-current="page">Laboratory</a><a href="https://github.com/vitrotank/social_graphs_2026">Source ↗</a></nav></div><div class="issue-nav-wrap"><nav class="shell issue-nav" aria-label="Weekly issues"><a href="../week1/index.html"><span>01</span> Week 1</a><a href="../week2/index.html"><span>02</span> Week 2</a><a href="../week3/index.html"><span>03</span> Week 3</a><a href="../week4/index.html"><span>04</span> Week 4</a><a href="../week5/index.html"><span>05</span> Week 5</a><a href="../week6/index.html"><span>06</span> Week 6</a><a class="all-issues" href="../index.html#journal">All issues ↓</a></nav></div></header>
+  <main id="vector-voyage" class="shell">
+    <nav class="issue-context" aria-label="Breadcrumb">
+      <a href="../index.html#games">Games desk</a>
+      <span aria-hidden="true">/</span>
+      <a href="../week6/index.html">Week 6</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Vector Drift</span>
+    </nav>
+
+    <header class="vv-intro">
+      <div class="vv-intro-copy">
+        <p class="vv-eyebrow"><span class="vv-pulse-dot" aria-hidden="true"></span> THE ARCADE / WEEK 06 GAME · GO NUTS</p>
+        <h1>Vector <em>Drift.</em></h1>
+        <p class="vv-deck">Two characters. One continuous vector space. Add and subtract words to steer your coordinates across the Marvel universe.</p>
+        <nav class="issue-navigation" aria-label="Game navigation">
+          <a href="#vv-game-console">Take the helm ↓</a>
+          <a href="../week6/index.html">Read the Week 6 story ↗</a>
+          <a href="#the-math">The geometry of culture ↗</a>
+        </nav>
+      </div>
+      <div class="vv-intro-side">
+        <div class="w5-editorial-note" style="background:var(--paper); border-left:3px solid var(--cobalt); padding:16px;">
+          <p class="eyebrow" style="color:var(--cobalt); margin-bottom:6px;">EMBEDDING ALGEBRA IN ACTION</p>
+          <blockquote style="font-family:var(--mono); font-size:13px; margin:0 0 8px; color:var(--ink);">Spider-Man + magic + sorcerer ≈ Doctor Strange</blockquote>
+          <p style="font-size:12px; margin:0; line-height:1.5; color:var(--ink-muted);">Just like <code>king − man + woman ≈ queen</code>, Word2Vec turns semantic categories into directional shifts.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Game Console -->
+    <section id="vv-game-console" class="vv-console" aria-label="Vector Drift game board">
+      <div class="vv-console-header">
+        <div><span class="vv-pulse-dot" style="margin-right:8px;" aria-hidden="true"></span> CROSSTALK / SEMANTIC NAVIGATION RADAR</div>
+        <div class="serial">VECTOR DIM: 100D · DETERMINISTIC SKIP-GRAM</div>
+      </div>
+
+      <!-- Mission Selection Tabs -->
+      <nav id="vv-mission-tabs" class="vv-missions" aria-label="Missions"></nav>
+
+      <!-- Mission Briefing Dossier -->
+      <div class="vv-briefing-bar">
+        <div class="vv-mission-header-row">
+          <div class="vv-mission-info">
+            <h2 id="vv-mission-title">The Mystic Awakening</h2>
+            <p id="vv-mission-briefing">Bridge the semantic gap from Queens street science to the Sanctum Sanctorum.</p>
+          </div>
+          <div class="vv-axes-indicator">
+            <span class="axis-pill x-axis">X: Science ↔ Magic</span>
+            <span class="axis-pill y-axis">Y: Street ↔ Cosmic</span>
+            <span class="axis-pill z-axis">Z: Body ↔ Mind</span>
+          </div>
+        </div>
+
+        <div class="vv-character-dossier">
+          <!-- Origin Card -->
+          <div class="vv-char-card origin-card">
+            <div class="vv-char-head">
+              <span class="char-role-badge origin">ORIGIN / START</span>
+              <strong id="vv-start-name">Spider-Man</strong>
+            </div>
+            <p id="vv-start-desc" class="vv-char-desc">Loading origin profile...</p>
+            <div class="vv-char-coords">
+              <span>START COORD:</span> <code id="vv-start-coords">X: -38 · Y: -34 · Z: -32</code>
+            </div>
+          </div>
+
+          <div class="vv-dossier-arrow" aria-hidden="true">➔</div>
+
+          <!-- Target Card -->
+          <div class="vv-char-card target-card">
+            <div class="vv-char-head">
+              <span class="char-role-badge target">DESTINATION / TARGET</span>
+              <strong id="vv-target-name">Doctor Strange</strong>
+            </div>
+            <p id="vv-target-desc" class="vv-char-desc">Loading target profile...</p>
+            <div class="vv-char-coords">
+              <span>TARGET COORD:</span> <code id="vv-target-coords">X: +94 · Y: +58 · Z: -4</code>
+              <span class="threshold-pill" id="vv-target-threshold">Goal: Dist ≤ 32</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Workbench Area -->
+      <div id="vv-container" class="vv-grid">
+        <!-- 3D/2D Projection Canvas -->
+        <div class="vv-canvas-wrap">
+          <div class="vv-canvas-header">
+            <div class="vv-view-switch" role="group" aria-label="Projection View Mode">
+              <button id="vv-view-3d" class="vv-tab-btn active" type="button" aria-pressed="true">3D Space (Orbit)</button>
+              <button id="vv-view-2d" class="vv-tab-btn" type="button" aria-pressed="false">2D Plane</button>
+            </div>
+            <div class="vv-viewport-tools">
+              <button id="vv-zoom-in" class="vv-tool-btn" type="button" title="Zoom In" aria-label="Zoom In">+</button>
+              <button id="vv-zoom-out" class="vv-tool-btn" type="button" title="Zoom Out" aria-label="Zoom Out">−</button>
+              <button id="vv-zoom-reset" class="vv-tool-btn" type="button" title="Reset View / Fit" aria-label="Reset View">⟲ Fit</button>
+            </div>
+          </div>
+
+          <div class="vv-equation-display">
+            <span>TRAJECTORY EQUATION: </span>
+            <span id="vv-equation">Spider-Man ≈ Doctor Strange</span>
+          </div>
+
+          <div class="vv-canvas-stage-wrap" id="vv-stage-wrap">
+            <canvas id="vv-stage-canvas" width="600" height="440" role="img" aria-label="Interactive 3D/2D Vector Navigation Space"></canvas>
+            <div id="vv-stage-hint" class="vv-stage-hint">Drag mouse to orbit · Scroll to zoom · Hover dots for details</div>
+            <div id="vv-tooltip" class="vv-stage-tooltip" hidden></div>
+          </div>
+
+          <div class="vv-canvas-legend">
+            <div class="vv-legend-item"><span class="vv-legend-dot" style="background:#10b981;"></span> Origin</div>
+            <div class="vv-legend-item"><span class="vv-legend-dot" style="background:var(--cobalt);"></span> Destination Target</div>
+            <div class="vv-legend-item"><span class="vv-legend-dot" style="background:#38bdf8;"></span> Current Position</div>
+            <div class="vv-legend-item"><span class="vv-legend-dot" style="background:#64748b;"></span> Marvel Landmarks</div>
+          </div>
+        </div>
+
+        <!-- Telemetry & Word Palette -->
+        <div class="vv-workbench">
+          <!-- Live Telemetry Readout -->
+          <div class="vv-telemetry">
+            <div class="vv-metric-card">
+              <div class="vv-metric-title">Target Proximity &amp; Distance</div>
+              <div id="vv-similarity-val" class="vv-metric-val proximity">52%</div>
+              <div class="vv-proximity-bar">
+                <div id="vv-proximity-fill" class="vv-proximity-fill" style="width: 52%;"></div>
+              </div>
+              <div id="vv-distance-val" class="vv-distance-sub">Distance: -- · Goal: ≤ 32</div>
+            </div>
+            <div class="vv-metric-card">
+              <div class="vv-metric-title">Moves / Par</div>
+              <div class="vv-metric-val"><span id="vv-move-count">0</span> <small style="font-size:12px; color:var(--ink-muted);">/ par <span id="vv-par-moves">3</span></small></div>
+              <div id="vv-delta-readout" class="vv-coords-sub">Remaining: ΔX: -- · ΔY: -- · ΔZ: --</div>
+            </div>
+          </div>
+
+          <!-- Nearest Character Radar -->
+          <div class="vv-radar">
+            <div class="vv-radar-title">Nearest Marvel Characters in Space</div>
+            <div id="vv-radar-tags" class="vv-radar-list">
+              <span class="vv-radar-tag top-match">Spider-Man (100%)</span>
+            </div>
+          </div>
+
+          <!-- Controls and Palette -->
+          <div class="vv-controls">
+            <div class="vv-action-bar">
+              <div class="vv-mode-switch" role="group" aria-label="Operation Mode">
+                <button id="vv-mode-add" class="vv-mode-btn" type="button" aria-pressed="true">+ Add Vector</button>
+                <button id="vv-mode-sub" class="vv-mode-btn sub-mode" type="button" aria-pressed="false">− Subtract</button>
+              </div>
+
+              <div class="vv-quick-btns">
+                <button id="vv-hint-btn" class="vv-btn-sm" type="button" title="Get semantic direction hint">💡 Hint</button>
+                <button id="vv-undo-btn" class="vv-btn-sm" type="button" title="Undo last step">↶ Undo</button>
+                <button id="vv-reset-btn" class="vv-btn-sm" type="button" title="Reset mission">↺ Reset</button>
+              </div>
+            </div>
+
+            <!-- Palette Categories -->
+            <div id="vv-palette-categories"></div>
+
+            <!-- Custom Word Search -->
+            <div class="vv-custom-input">
+              <label for="vv-custom-word" class="sr-only">Type custom dictionary word</label>
+              <input type="text" id="vv-custom-word" placeholder="Type custom word (e.g. telepath, vibranium)...">
+              <button type="button" id="vv-custom-submit">Apply Step ➔</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Victory Receipt Modal -->
+      <div id="vv-receipt-box" class="vv-receipt-modal" hidden>
+        <div id="vv-stars-display" class="vv-stars">⭐⭐⭐</div>
+        <h3 id="vv-receipt-title">Destination Reached!</h3>
+        <p id="vv-receipt-desc">You bridged the semantic space smoothly.</p>
+        <button type="button" class="button button-primary" onclick="document.getElementById('vv-receipt-box').hidden=true;">Continue Exploring ↗</button>
+      </div>
+    </section>
+
+    <!-- Deep Scientific Context -->
+    <section id="the-math" class="shell section" style="padding: 40px 0; border-top:1px solid var(--line);">
+      <div class="section-head">
+        <p class="eyebrow">THE SCIENCE BEHIND THE GAME</p>
+        <span class="post-meta">THE GEOMETRY OF CULTURE · KOZLOWSKI ET AL. (2019)</span>
+      </div>
+      <div class="article-layout">
+        <div class="article-main">
+          <h2 class="section-title">Why does adding words <em>move characters?</em></h2>
+          <p class="lede">In count-based Bag-of-Words, every word is an isolated orthogonal axis. In dense Word2Vec embeddings, words live in a continuous 100-dimensional vector space where direction carries meaning.</p>
+          <p>When you add <code>+ magic</code> and <code>+ sorcerer</code> to Spider-Man, you are not merely adding tokens to a document. You are translating the character’s coordinate along the semantic direction of the mystical domain. Because words that occur in similar contexts share similar directional vectors, continuous vector addition smoothly steers your point past intermediate hybrid archetypes (like Scarlet Witch) directly toward Doctor Strange.</p>
+        </div>
+        <aside class="article-aside">
+          <p class="eyebrow">THE FAMOUS ANALOGY</p>
+          <p><strong>king − man + woman ≈ queen</strong></p>
+          <p>Mikolov et al. (2013) demonstrated that Word2Vec preserves linear regularities. Subtracting <code>man</code> removes gender while preserving royalty; adding <code>woman</code> redirects the vector to queen.</p>
+          <p>In our Marvel universe, <code>Thor − hammer + shield ≈ Captain America</code> works by the exact same geometric principle!</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer id="team" class="site-footer"><div class="shell"><div class="footer-top"><div><h2>Crosstalk.</h2><p>A student journal of social graphs.<br>Made with Python, curiosity, and an LLM.</p></div><div class="footer-members"><div class="member"><strong>Christos Diamantis</strong><small>s253102</small></div><div class="member"><strong>Dávid Weiner</strong><small>s253347</small></div><div class="member"><strong>Evangelos Panagiotopoulos</strong><small>s263125</small></div></div></div><div class="footer-bottom"><span>02805 · Social Graphs and Interactions · Fall 2026</span><a href="https://sunelehmann.com/socialgraphs2026-web/index.html">Course &amp; assignments ↗</a><a href="../index.html">Back to the journal ↑</a></div></div></footer>
+</body>
+</html>

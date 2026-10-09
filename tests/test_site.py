@@ -67,6 +67,7 @@ class SiteTests(unittest.TestCase):
         for relative in (
             "templates/explore.html", "design.css", "explore.css",
             "templates/week5.html", "week5.css", "week5.js", "assets/data/week5.json", "assets/data/week5.js",
+            "templates/week6.html", "week6.css", "templates/vector-voyage.html", "vector-voyage.css", "vector-voyage.js", "assets/data/week6_game.json", "assets/data/week6_game.js",
             "data/raw/marvel_pages.zip", "data/week5/README.md",
             "templates/week3.html", "templates/week4.html", "templates/louvain.html", "templates/switchboard.html", "templates/grunge.html",
             "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",

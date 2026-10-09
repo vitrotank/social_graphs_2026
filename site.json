@@ -78,7 +78,15 @@
     },
     {
       "number": 6,
-      "status": "upcoming"
+      "status": "published",
+      "title": "From counts to vectors: mapping the semantic universe.",
+      "short_title": "From counts to vectors",
+      "summary": "When counts become coordinates, words become directions. Follow the path from TF-IDF and PPMI to dense Word2Vec embeddings, navigate the space between characters, and chart the geometry of culture.",
+      "path": "week6/index.html",
+      "template": "week6.html",
+      "topic": "THE EMBEDDINGS",
+      "experience_path": "play/vector-voyage.html",
+      "experience_label": "Play Vector Drift"
     },
     {
       "number": 7,
