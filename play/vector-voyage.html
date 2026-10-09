@@ -123,6 +123,23 @@
             <canvas id="vv-stage-canvas" width="600" height="440" role="img" aria-label="Interactive 3D/2D Vector Navigation Space"></canvas>
             <div id="vv-stage-hint" class="vv-stage-hint">Drag mouse to orbit · Scroll to zoom · Hover dots for details</div>
             <div id="vv-tooltip" class="vv-stage-tooltip" hidden></div>
+
+            <!-- Marvel Superhero Victory Animation Overlay -->
+            <div id="vv-hero-celebration" class="vv-hero-celebration" hidden>
+              <canvas id="vv-fx-canvas" width="600" height="440"></canvas>
+              <div class="vv-celebration-card" id="vv-celebration-card">
+                <button type="button" class="vv-cel-close" id="vv-cel-close" title="Dismiss animation" aria-label="Dismiss">✕</button>
+                <div class="vv-cel-icon" id="vv-cel-icon">✨</div>
+                <div class="vv-cel-eyebrow" id="vv-cel-eyebrow">DESTINATION SYNCHRONIZED</div>
+                <h3 class="vv-cel-title" id="vv-cel-title">Doctor Strange</h3>
+                <p class="vv-cel-quote" id="vv-cel-quote">“By the Eye of Agamotto, the mystic realm welcomes you!”</p>
+                <div class="vv-cel-stats" id="vv-cel-stats">
+                  <span>3D Distance: <strong id="vv-cel-dist">14.2</strong></span>
+                  <span>Moves: <strong id="vv-cel-moves">3</strong></span>
+                </div>
+                <button type="button" class="button button-primary vv-cel-btn" id="vv-cel-dismiss">Explore 3D Trajectory ➔</button>
+              </div>
+            </div>
           </div>
 
           <div class="vv-canvas-legend">
@@ -170,6 +187,7 @@
 
               <div class="vv-quick-btns">
                 <button id="vv-hint-btn" class="vv-btn-sm" type="button" title="Get semantic direction hint">💡 Hint</button>
+                <button id="vv-coords-toggle" class="vv-btn-sm" type="button" aria-pressed="false" title="Reveal or hide exact 3D coordinates">🔍 Reveal Coordinates</button>
                 <button id="vv-undo-btn" class="vv-btn-sm" type="button" title="Undo last step">↶ Undo</button>
                 <button id="vv-reset-btn" class="vv-btn-sm" type="button" title="Reset mission">↺ Reset</button>
               </div>

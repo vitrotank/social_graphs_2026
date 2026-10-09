@@ -11,6 +11,7 @@
   let currentSign = 1; // 1 = add (+), -1 = subtract (-)
   let currentWeight = 1.0;
   let isVictorious = false;
+  let showCoordinates = false;
 
   // Viewport & 3D Camera State
   let viewMode = '3d'; // '3d' or '2d'
@@ -128,7 +129,9 @@
     if (startDescEl) startDescEl.textContent = currentMission.start_desc || startChar.description;
     const startCoordsEl = document.getElementById('vv-start-coords');
     if (startCoordsEl) {
-      startCoordsEl.textContent = `X: ${startChar.x > 0 ? '+' : ''}${startChar.x} · Y: ${startChar.y > 0 ? '+' : ''}${startChar.y} · Z: ${startChar.z > 0 ? '+' : ''}${startChar.z}`;
+      startCoordsEl.innerHTML = showCoordinates
+        ? `<code>X: ${startChar.x > 0 ? '+' : ''}${startChar.x} · Y: ${startChar.y > 0 ? '+' : ''}${startChar.y} · Z: ${startChar.z > 0 ? '+' : ''}${startChar.z}</code>`
+        : `<span class="masked-coord">[CLASSIFIED · Click Reveal Coordinates]</span>`;
     }
 
     // Destination Card Profile
@@ -137,7 +140,9 @@
     if (targetDescEl) targetDescEl.textContent = currentMission.target_desc || targetChar.description;
     const targetCoordsEl = document.getElementById('vv-target-coords');
     if (targetCoordsEl) {
-      targetCoordsEl.textContent = `X: ${targetChar.x > 0 ? '+' : ''}${targetChar.x} · Y: ${targetChar.y > 0 ? '+' : ''}${targetChar.y} · Z: ${targetChar.z > 0 ? '+' : ''}${targetChar.z}`;
+      targetCoordsEl.innerHTML = showCoordinates
+        ? `<code>X: ${targetChar.x > 0 ? '+' : ''}${targetChar.x} · Y: ${targetChar.y > 0 ? '+' : ''}${targetChar.y} · Z: ${targetChar.z > 0 ? '+' : ''}${targetChar.z}</code>`
+        : `<span class="masked-coord">[CLASSIFIED · Click Reveal Coordinates]</span>`;
     }
     const thresholdEl = document.getElementById('vv-target-threshold');
     if (thresholdEl) thresholdEl.textContent = `Goal: Dist ≤ ${currentMission.max_distance}`;
@@ -262,17 +267,26 @@
 
     const deltaEl = document.getElementById('vv-delta-readout');
     if (deltaEl) {
-      deltaEl.textContent = `Needed: ΔX(Magic): ${dx > 0 ? '+' : ''}${dx.toFixed(1)} · ΔY(Cosmic): ${dy > 0 ? '+' : ''}${dy.toFixed(1)} · ΔZ(Mind): ${dz > 0 ? '+' : ''}${dz.toFixed(1)}`;
+      deltaEl.innerHTML = showCoordinates
+        ? `Needed: <code>ΔX(Magic): ${dx > 0 ? '+' : ''}${dx.toFixed(1)} · ΔY(Cosmic): ${dy > 0 ? '+' : ''}${dy.toFixed(1)} · ΔZ(Mind): ${dz > 0 ? '+' : ''}${dz.toFixed(1)}</code>`
+        : `Remaining: <span class="masked-coord">ΔX: ??? · ΔY: ??? · ΔZ: ???</span> <small style="color:var(--ink-muted); font-size:10px;">(Coordinates hidden)</small>`;
     }
 
     // Equation readout
-    let eqParts = [`${startChar.label} <small>[${startChar.x}, ${startChar.y}, ${startChar.z}]</small>`];
+    let eqParts = [
+      showCoordinates
+        ? `${startChar.label} <small>[${startChar.x}, ${startChar.y}, ${startChar.z}]</small>`
+        : `<strong>${startChar.label}</strong>`
+    ];
     for (let i = 1; i < history.length; i++) {
       const step = history[i];
       const signStr = step.sign > 0 ? '+' : '−';
       eqParts.push(`${signStr} <span class="step-token">${step.word}</span>`);
     }
-    const eqHtml = eqParts.join(' ') + ` <span style="color:#94a3b8">≈</span> <em>${targetChar.label} <small>[${targetChar.x}, ${targetChar.y}, ${targetChar.z}]</small></em>`;
+    const targetEq = showCoordinates
+      ? `<em>${targetChar.label} <small>[${targetChar.x}, ${targetChar.y}, ${targetChar.z}]</small></em>`
+      : `<em>${targetChar.label}</em>`;
+    const eqHtml = eqParts.join(' ') + ` <span style="color:#94a3b8">≈</span> ${targetEq}`;
     document.getElementById('vv-equation').innerHTML = eqHtml;
 
     // Nearest characters radar
@@ -307,6 +321,7 @@
         title = 'Skilled Vector Navigator';
       }
 
+      // Update bottom receipt box
       const receipt = document.getElementById('vv-receipt-box');
       if (receipt) {
         receipt.hidden = false;
@@ -317,7 +332,337 @@
           Final 3D Distance: <strong>${dist.toFixed(1)} units</strong> (Target threshold: ≤ ${currentMission.max_distance}). Rank: <em>${title}</em>.
         `;
       }
+
+      // Trigger On-Screen Marvel Superhero Victory Animation
+      triggerHeroVictoryAnimation(targetChar, dist, moves, par);
     }
+  }
+
+  // -------------------------------------------------------------------------
+  // Marvel Superhero Victory Celebration & Particle Visualizer
+  // -------------------------------------------------------------------------
+  let fxAnimId = null;
+
+  const HERO_THEMES = {
+    'Doctor_Strange': {
+      mode: 'mystic',
+      icon: '✨',
+      accent: '#f59e0b',
+      glow: 'rgba(245, 158, 11, 0.7)',
+      eyebrow: 'MYSTIC DIMENSION CONQUERED · SORCERER SUPREME',
+      quote: '“By the Eye of Agamotto! The mystic barrier has parted.”'
+    },
+    'Jean_Grey': {
+      mode: 'phoenix',
+      icon: '🔥',
+      accent: '#ef4444',
+      glow: 'rgba(239, 68, 68, 0.7)',
+      eyebrow: 'OMEGA-LEVEL PSIONIC HARMONY · PHOENIX EMBODIMENT',
+      quote: '“The Phoenix rises from the ashes of thought! Psionic connection established.”'
+    },
+    'Phoenix_Force': {
+      mode: 'cosmic',
+      icon: '🌌',
+      accent: '#ec4899',
+      glow: 'rgba(236, 72, 153, 0.7)',
+      eyebrow: 'CELESTIAL SUPERNOVA · PRIMORDIAL COSMIC ENTITY',
+      quote: '“I am life, fire, and rebirth across the infinite cosmos.”'
+    },
+    'Iron_Lad': {
+      mode: 'cyber',
+      icon: '⚡',
+      accent: '#06b6d4',
+      glow: 'rgba(6, 182, 212, 0.7)',
+      eyebrow: 'NEURO-KINETIC ARMOR ENGAGED · 31ST CENTURY KANG TECH',
+      quote: '“31st-century armor systems online. Time travel trajectory locked.”'
+    },
+    'Hulk': {
+      mode: 'gamma',
+      icon: '💥',
+      accent: '#10b981',
+      glow: 'rgba(16, 185, 129, 0.7)',
+      eyebrow: 'GAMMA-RAY TITAN SYNCHRONIZED · SMASH PROTOCOL',
+      quote: '“Hulk strongest there is! Physical barrier shattered!”'
+    },
+    'Spider-Man': {
+      mode: 'web',
+      icon: '🕷️',
+      accent: '#ef4444',
+      glow: 'rgba(239, 68, 68, 0.7)',
+      eyebrow: 'SPIDER-SENSE TINGLING · QUEENS DEFENDER',
+      quote: '“With great power comes great responsibility! Street vectors locked.”'
+    }
+  };
+
+  function getHeroTheme(char) {
+    if (HERO_THEMES[char.id]) return HERO_THEMES[char.id];
+    if (char.category === 'mystic') return HERO_THEMES['Doctor_Strange'];
+    if (char.category === 'mutant') return HERO_THEMES['Jean_Grey'];
+    if (char.category === 'cosmic') return HERO_THEMES['Phoenix_Force'];
+    if (char.category === 'science') return HERO_THEMES['Iron_Lad'];
+    return {
+      mode: 'cosmic',
+      icon: '⭐',
+      accent: '#3874cb',
+      glow: 'rgba(56, 116, 203, 0.7)',
+      eyebrow: 'HERO CONVERGENCE ACHIEVED',
+      quote: '“Semantic coordinates aligned across the Marvel multiverse.”'
+    };
+  }
+
+  function hideHeroCelebration() {
+    const overlay = document.getElementById('vv-hero-celebration');
+    if (overlay) overlay.hidden = true;
+    if (fxAnimId) {
+      cancelAnimationFrame(fxAnimId);
+      fxAnimId = null;
+    }
+  }
+
+  function triggerHeroVictoryAnimation(target, dist, moves, par) {
+    const overlay = document.getElementById('vv-hero-celebration');
+    const fxCanvas = document.getElementById('vv-fx-canvas');
+    const card = document.getElementById('vv-celebration-card');
+    if (!overlay || !fxCanvas || !card) return;
+
+    const theme = getHeroTheme(target);
+
+    // Apply theme colors to card
+    card.style.setProperty('--hero-accent', theme.accent);
+    card.style.setProperty('--hero-glow', theme.glow);
+
+    document.getElementById('vv-cel-icon').textContent = theme.icon;
+    document.getElementById('vv-cel-eyebrow').textContent = theme.eyebrow;
+    document.getElementById('vv-cel-title').textContent = target.label;
+    document.getElementById('vv-cel-quote').textContent = theme.quote;
+    document.getElementById('vv-cel-dist').textContent = dist.toFixed(1);
+    document.getElementById('vv-cel-moves').textContent = `${moves} / par ${par}`;
+
+    overlay.hidden = false;
+
+    // Bind Close & Dismiss Handlers
+    const closeBtn = document.getElementById('vv-cel-close');
+    const dismissBtn = document.getElementById('vv-cel-dismiss');
+    if (closeBtn) closeBtn.onclick = hideHeroCelebration;
+    if (dismissBtn) dismissBtn.onclick = hideHeroCelebration;
+
+    // Launch Superhero Themed Particle Animation
+    launchHeroFx(fxCanvas, theme.mode, theme.accent);
+  }
+
+  function launchHeroFx(canvasEl, mode, accentColor) {
+    if (fxAnimId) cancelAnimationFrame(fxAnimId);
+
+    const ctx = canvasEl.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const stageContainer = document.getElementById('vv-stage-wrap');
+    const W = (stageContainer ? stageContainer.clientWidth : 600) || 600;
+    const H = (stageContainer ? stageContainer.clientHeight : 440) || 440;
+    canvasEl.width = W * dpr;
+    canvasEl.height = H * dpr;
+
+    const startTime = performance.now();
+    const cx = W / 2;
+    const cy = H / 2;
+
+    // Generate Particles
+    const particles = [];
+    const count = 90;
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1.0 + Math.random() * 4.0;
+      particles.push({
+        x: cx,
+        y: cy,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        radius: 1.5 + Math.random() * 3.5,
+        alpha: 0.6 + Math.random() * 0.4,
+        color: accentColor,
+        life: 0,
+        maxLife: 60 + Math.random() * 80
+      });
+    }
+
+    function renderFx() {
+      const elapsed = (performance.now() - startTime) / 1000;
+      ctx.save();
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, W, H);
+
+      // Mode-specific animated hero sigils
+      if (mode === 'mystic') {
+        // Doctor Strange: Eldritch Magic Mandala
+        const rot1 = elapsed * 1.3;
+        const rot2 = -elapsed * 0.9;
+        const pulseR = 120 + Math.sin(elapsed * 4) * 6;
+
+        // Outer Mandala Ring with Rune Spokes
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 2.0;
+        ctx.shadowColor = '#f59e0b';
+        ctx.shadowBlur = 15;
+        ctx.beginPath();
+        ctx.arc(cx, cy, pulseR, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 12 Outer Rune Rays
+        ctx.lineWidth = 1.4;
+        for (let i = 0; i < 12; i++) {
+          const a = rot1 + (i * Math.PI) / 6;
+          const x1 = cx + Math.cos(a) * (pulseR - 12);
+          const y1 = cy + Math.sin(a) * (pulseR - 12);
+          const x2 = cx + Math.cos(a) * (pulseR + 14);
+          const y2 = cy + Math.sin(a) * (pulseR + 14);
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+
+        // Inner Rotating Dodecagon
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        for (let i = 0; i < 12; i++) {
+          const a = rot2 + (i * Math.PI) / 6;
+          const px = cx + Math.cos(a) * 75;
+          const py = cy + Math.sin(a) * 75;
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+        ctx.stroke();
+
+        // Central Eye of Agamotto Arcs
+        ctx.strokeStyle = '#f97316';
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, 40, 24, rot1 * 0.5, 0, Math.PI * 2);
+        ctx.stroke();
+      } else if (mode === 'phoenix') {
+        // Jean Grey: Flaming Phoenix Wings & Psionic Shockwaves
+        const flap = Math.sin(elapsed * 3.5) * 22;
+
+        // Psionic expanding rings
+        for (let r = 0; r < 3; r++) {
+          const ringRad = ((elapsed * 80 + r * 60) % 180) + 20;
+          const ringAlpha = Math.max(0, 1 - ringRad / 180);
+          ctx.strokeStyle = `rgba(239, 68, 68, ${ringAlpha * 0.7})`;
+          ctx.lineWidth = 2.0;
+          ctx.beginPath();
+          ctx.arc(cx, cy, ringRad, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Left Flame Wing
+        ctx.strokeStyle = '#f59e0b';
+        ctx.shadowColor = '#ef4444';
+        ctx.shadowBlur = 18;
+        ctx.lineWidth = 3.0;
+        ctx.beginPath();
+        ctx.moveTo(cx - 20, cy + 30);
+        ctx.bezierCurveTo(cx - 90, cy - 40 + flap, cx - 130, cy - 80 + flap, cx - 180, cy - 20 + flap);
+        ctx.bezierCurveTo(cx - 130, cy + 10, cx - 70, cy + 20, cx - 20, cy + 30);
+        ctx.stroke();
+
+        // Right Flame Wing
+        ctx.beginPath();
+        ctx.moveTo(cx + 20, cy + 30);
+        ctx.bezierCurveTo(cx + 90, cy - 40 + flap, cx + 130, cy - 80 + flap, cx + 180, cy - 20 + flap);
+        ctx.bezierCurveTo(cx + 130, cy + 10, cx + 70, cy + 20, cx + 20, cy + 30);
+        ctx.stroke();
+      } else if (mode === 'cyber') {
+        // Iron Lad: Cybernetic Hexagon HUD Grid & Targeting Scan
+        const rot = elapsed * 0.6;
+        ctx.strokeStyle = '#06b6d4';
+        ctx.shadowColor = '#06b6d4';
+        ctx.shadowBlur = 14;
+        ctx.lineWidth = 1.8;
+
+        // Rotating Segmented HUD Reticle
+        ctx.setLineDash([18, 10]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 110, rot, rot + Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([8, 6]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 75, -rot * 1.2, -rot * 1.2 + Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Vertical Laser Scanline
+        const scanY = (elapsed * 160) % H;
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.45)';
+        ctx.lineWidth = 2.0;
+        ctx.beginPath();
+        ctx.moveTo(30, scanY);
+        ctx.lineTo(W - 30, scanY);
+        ctx.stroke();
+
+        // Targeting Crosshair Brackets
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.5;
+        const bSize = 25;
+        [[cx - 80, cy - 80, 1, 1], [cx + 80, cy - 80, -1, 1], [cx - 80, cy + 80, 1, -1], [cx + 80, cy + 80, -1, -1]].forEach(([bx, by, dx, dy]) => {
+          ctx.beginPath();
+          ctx.moveTo(bx, by + dy * bSize);
+          ctx.lineTo(bx, by);
+          ctx.lineTo(bx + dx * bSize, by);
+          ctx.stroke();
+        });
+      } else {
+        // Phoenix Force / Cosmic: Supernova Galaxy Spiral
+        const rot = elapsed * 0.9;
+        ctx.shadowColor = accentColor;
+        ctx.shadowBlur = 16;
+        for (let arm = 0; arm < 3; arm++) {
+          ctx.strokeStyle = arm === 0 ? '#ec4899' : (arm === 1 ? '#8b5cf6' : '#38bdf8');
+          ctx.lineWidth = 2.2;
+          ctx.beginPath();
+          for (let step = 10; step < 140; step += 8) {
+            const a = rot + (arm * Math.PI * 2) / 3 + step * 0.035;
+            const px = cx + Math.cos(a) * step;
+            const py = cy + Math.sin(a) * step;
+            if (step === 10) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+        }
+      }
+
+      // Draw Flying Particles
+      ctx.shadowBlur = 8;
+      particles.forEach(p => {
+        p.life++;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha = Math.max(0, 1 - p.life / p.maxLife);
+
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Recycle particle
+        if (p.life >= p.maxLife || p.x < 0 || p.x > W || p.y < 0 || p.y > H) {
+          p.x = cx + (Math.random() - 0.5) * 30;
+          p.y = cy + (Math.random() - 0.5) * 30;
+          const a = Math.random() * Math.PI * 2;
+          const spd = 1.0 + Math.random() * 3.5;
+          p.vx = Math.cos(a) * spd;
+          p.vy = Math.sin(a) * spd;
+          p.life = 0;
+          p.alpha = 0.8;
+        }
+      });
+
+      ctx.restore();
+      fxAnimId = requestAnimationFrame(renderFx);
+    }
+
+    renderFx();
   }
 
   function renderPalette() {
@@ -394,6 +739,25 @@
 
     const hintBtn = document.getElementById('vv-hint-btn');
     if (hintBtn) hintBtn.addEventListener('click', giveHint);
+
+    // Reveal / Hide Coordinates Toggle
+    const coordsToggleBtn = document.getElementById('vv-coords-toggle');
+    if (coordsToggleBtn) {
+      coordsToggleBtn.addEventListener('click', () => {
+        showCoordinates = !showCoordinates;
+        coordsToggleBtn.setAttribute('aria-pressed', showCoordinates ? 'true' : 'false');
+        if (showCoordinates) {
+          coordsToggleBtn.classList.add('active-toggle');
+          coordsToggleBtn.innerHTML = '🔒 Hide Coordinates';
+        } else {
+          coordsToggleBtn.classList.remove('active-toggle');
+          coordsToggleBtn.innerHTML = '🔍 Reveal Coordinates';
+        }
+        updateMissionUI();
+        updateTelemetry();
+        renderStage();
+      });
+    }
 
     // Custom search input
     const customInput = document.getElementById('vv-custom-word');
@@ -606,18 +970,24 @@
       const c = match.data;
       const last = history[history.length - 1];
       const distToCurrent = Math.hypot(c.x - last.x, c.y - last.y, c.z - last.z);
+      const coordsDisplay = showCoordinates
+        ? `<div style="font-size:9px; color:#94a3b8;">3D COORDS: [X:${c.x}, Y:${c.y}, Z:${c.z}]</div>`
+        : `<div style="font-size:9px; color:#64748b;">3D COORDS: <span style="font-style:italic;">[CLASSIFIED]</span></div>`;
       html = `
         <div style="font-weight:bold; color:#38bdf8; margin-bottom:2px;">${c.label}</div>
         <div style="font-size:9px; color:#cbd5e1; margin-bottom:3px; max-width:210px; line-height:1.3;">${c.description}</div>
-        <div style="font-size:9px; color:#94a3b8;">3D COORDS: [X:${c.x}, Y:${c.y}, Z:${c.z}]</div>
+        ${coordsDisplay}
         <div style="font-size:9px; color:#e2e8f0; margin-top:2px;">DIST TO CURRENT: <strong>${distToCurrent.toFixed(1)}</strong></div>
       `;
     } else if (match.type === 'step') {
       const s = match.data;
       const signStr = s.sign > 0 ? '+' : '−';
+      const posDisplay = showCoordinates
+        ? `<div style="font-size:9px; color:#38bdf8;">POSITION: [X:${s.x}, Y:${s.y}, Z:${s.z}]</div>`
+        : `<div style="font-size:9px; color:#64748b;">POSITION: <span style="font-style:italic;">[CLASSIFIED]</span></div>`;
       html = `
         <div style="font-weight:bold; color:#f1f5f9; margin-bottom:2px;">STEP 0${match.idx}: ${signStr} ${s.word}</div>
-        <div style="font-size:9px; color:#38bdf8;">POSITION: [X:${s.x}, Y:${s.y}, Z:${s.z}]</div>
+        ${posDisplay}
       `;
     }
     tooltip.innerHTML = html;
