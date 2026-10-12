@@ -307,11 +307,7 @@
 }
 
 .vv-chip .chip-bias {
-  font-size: 8.5px;
-  opacity: 0.8;
-  margin-left: 4px;
-  font-family: var(--mono);
-  color: var(--cobalt);
+  display: none;
 }
 
 /* Interactive Workbench Grid */

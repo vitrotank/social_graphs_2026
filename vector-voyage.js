@@ -676,7 +676,7 @@
       
       const heading = document.createElement('div');
       heading.className = 'vv-cat-heading';
-      heading.innerHTML = `<strong>${cat.category}</strong> <span style="font-size:11px; font-weight:normal; color:#64748b; margin-left:6px;">— ${cat.description}</span>`;
+      heading.innerHTML = `<strong>${cat.category}</strong>`;
       group.appendChild(heading);
 
       const chips = document.createElement('div');
@@ -686,7 +686,7 @@
         const chip = document.createElement('button');
         chip.className = 'vv-chip';
         chip.type = 'button';
-        chip.innerHTML = `<span class="chip-word">${wObj.word}</span> <span class="chip-bias">${wObj.bias}</span>`;
+        chip.innerHTML = `<span class="chip-word">${wObj.word}</span>`;
         chip.addEventListener('click', () => {
           applyStep(wObj.word, currentSign, currentWeight);
         });

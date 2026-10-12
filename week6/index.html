@@ -43,7 +43,7 @@
         <div class="article-main">
           <h2 class="section-title" id="w6-q1-title">When counts learn<br>to <em>discount.</em></h2>
           <p class="lede">Raw word counts reward frequent words until boring words dominate every comparison. TF-IDF fixes this by asking how unusual a word is across the full corpus.</p>
-          <p>Because the words <em>Marvel</em> and <em>Comics</em> appear on all 303 character articles, their inverse document frequency is $\log(303/303) = 0$. Like the English stopword <em>the</em>, they receive zero weight automatically, without needing an arbitrary human-curated stopword list.</p>
+          <p>Because the words <em>Marvel</em> and <em>Comics</em> appear on all 303 character articles, their inverse document frequency is <code>log(303/303) = 0</code>. Like the English stopword <em>the</em>, they receive zero weight automatically, without needing an arbitrary human-curated stopword list.</p>
           <p><strong>The Name Trap:</strong> Yet TF-IDF brings its own blind spot. It rewards rare words, and surnames are exceedingly rare. Storm's closest textual neighbor is the Human Torch simply because his secret identity is Johnny <em>Storm</em>. Similarly, Emma Frost matches Jack Frost. TF-IDF cannot distinguish a character's family name from the semantic meaning of weather or ice. Telling those matches apart requires looking at text, not just coordinates.</p>
         </div>
         <aside class="article-aside w6-field-note">
@@ -67,7 +67,7 @@
           <h2 class="section-title" id="w6-q2-title">From co-occurrence<br>to <em>prediction.</em></h2>
           <p class="lede">To represent words rather than documents, we turn to the distributional hypothesis: words that occur in similar surroundings have related meanings.</p>
           <p><strong>PPMI (Pointwise Mutual Information):</strong> In a raw co-occurrence matrix, every word's neighbors are dominated by function words (<em>and, with, for</em>). PPMI corrects this by dividing joint probabilities by marginal probabilities, revealing genuine associations.</p>
-          <p><strong>Word2Vec:</strong> Skip-gram turns context into a prediction task, learning dense 100-dimensional vectors via negative sampling. Instead of computing a massive softmax across all 9,526 vocabulary words for every token, negative sampling turns training into efficient binary logistic regressions against $k$ noise words.</p>
+          <p><strong>Word2Vec:</strong> Skip-gram turns context into a prediction task, learning dense 100-dimensional vectors via negative sampling. Instead of computing a massive softmax across all 9,526 vocabulary words for every token, negative sampling turns training into efficient binary logistic regressions against <em>k</em> noise words.</p>
           <div class="w6-comparison-table">
             <table class="data-table">
               <thead>
@@ -103,8 +103,8 @@
         </div>
         <aside class="article-aside w6-field-note">
           <p class="eyebrow">WINDOW SIZE DYNAMICS</p>
-          <p><strong>Narrow Window (w = 2):</strong><br>Forces Skip-gram to predict immediate syntactic modifiers (<em>uniform, mask, vibranium</em>).</p>
-          <p><strong>Broad Window (w = 5–10):</strong><br>Captures whole narrative story arcs, thematic factions, and franchise mythology.</p>
+          <p><strong>Narrow Window (<em>w</em> = 2):</strong><br>Forces Skip-gram to predict immediate syntactic modifiers (<em>uniform, mask, vibranium</em>).</p>
+          <p><strong>Broad Window (<em>w</em> = 5–10):</strong><br>Captures whole narrative story arcs, thematic factions, and franchise mythology.</p>
         </aside>
       </div>
     </section>
