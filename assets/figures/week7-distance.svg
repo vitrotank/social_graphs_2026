@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="680" viewBox="0 0 1040 680" role="img" aria-labelledby="title desc">
+<title id="title">Most lexical neighbors are one hyperlink away, with exceptions</title>
+<desc id="desc">Paired percentage bars compare graph distance for one highest-cosine lexical neighbor per article with every eligible source-target alternative. Both include disconnected pairs as a separate category. The baseline weights each source equally; reciprocal nearest-neighbor choices count twice. Percentages compare differently sized denominators, with counts printed beside each bar. 194 of 303 lexical-neighbor choices are one link apart, compared with 3.13% of all eligible choices.</desc>
+<rect width="1040" height="680" fill="#faf7f0"/>
+<g font-family="Arial, sans-serif" fill="#18243a">
+<text x="52" y="49" font-size="29" font-weight="700">Close words usually mean a short route.</text>
+<text x="52" y="80" font-size="16">Frozen Marvel pages: title-masked TF-IDF cosine and undirected hyperlink distance.</text>
+<rect x="52" y="107" width="13" height="13" fill="#c84527"/><text x="75" y="119" font-size="14">Highest-cosine neighbor: 303 source choices</text>
+<rect x="475" y="107" width="13" height="13" fill="#2849c7"/><text x="498" y="119" font-size="14">All alternatives: 91,506 ordered choices</text>
+<path d="M 240.00 157 V 583" stroke="#daddda"/>
+<text x="240.00" y="605" text-anchor="middle" font-size="12">0%</text>
+<path d="M 332.86 157 V 583" stroke="#daddda"/>
+<text x="332.86" y="605" text-anchor="middle" font-size="12">10%</text>
+<path d="M 425.71 157 V 583" stroke="#daddda"/>
+<text x="425.71" y="605" text-anchor="middle" font-size="12">20%</text>
+<path d="M 518.57 157 V 583" stroke="#daddda"/>
+<text x="518.57" y="605" text-anchor="middle" font-size="12">30%</text>
+<path d="M 611.43 157 V 583" stroke="#daddda"/>
+<text x="611.43" y="605" text-anchor="middle" font-size="12">40%</text>
+<path d="M 704.29 157 V 583" stroke="#daddda"/>
+<text x="704.29" y="605" text-anchor="middle" font-size="12">50%</text>
+<path d="M 797.14 157 V 583" stroke="#daddda"/>
+<text x="797.14" y="605" text-anchor="middle" font-size="12">60%</text>
+<path d="M 890.00 157 V 583" stroke="#daddda"/>
+<text x="890.00" y="605" text-anchor="middle" font-size="12">70%</text>
+<text x="222" y="197" text-anchor="end" font-size="16" font-weight="700">1 link</text>
+<rect x="240" y="180" width="594.531" height="20" rx="2" fill="#c84527"><title>1 link: 194 / 303 (64.03%)</title></rect>
+<text x="843.53" y="195" font-size="12">64.0% (194)</text>
+<rect x="240" y="208" width="29.103" height="20" rx="2" fill="#2849c7"><title>1 link: 2,868 / 91,506 (3.13%)</title></rect>
+<text x="278.10" y="223" font-size="12">3.1% (2,868)</text>
+<text x="222" y="279" text-anchor="end" font-size="16" font-weight="700">2 links</text>
+<rect x="240" y="262" width="140.971" height="20" rx="2" fill="#c84527"><title>2 links: 46 / 303 (15.18%)</title></rect>
+<text x="389.97" y="277" font-size="12">15.2% (46)</text>
+<rect x="240" y="290" width="283.180" height="20" rx="2" fill="#2849c7"><title>2 links: 27,906 / 91,506 (30.50%)</title></rect>
+<text x="532.18" y="305" font-size="12">30.5% (27,906)</text>
+<text x="222" y="361" text-anchor="end" font-size="16" font-weight="700">3 links</text>
+<rect x="240" y="344" width="95.002" height="20" rx="2" fill="#c84527"><title>3 links: 31 / 303 (10.23%)</title></rect>
+<text x="344.00" y="359" font-size="12">10.2% (31)</text>
+<rect x="240" y="372" width="381.755" height="20" rx="2" fill="#2849c7"><title>3 links: 37,620 / 91,506 (41.11%)</title></rect>
+<text x="630.75" y="387" font-size="12">41.1% (37,620)</text>
+<text x="222" y="443" text-anchor="end" font-size="16" font-weight="700">4+ links</text>
+<rect x="240" y="426" width="33.711" height="20" rx="2" fill="#c84527"><title>4+ links: 11 / 303 (3.63%)</title></rect>
+<text x="282.71" y="441" font-size="12">3.6% (11)</text>
+<rect x="240" y="454" width="82.500" height="20" rx="2" fill="#2849c7"><title>4+ links: 8,130 / 91,506 (8.88%)</title></rect>
+<text x="331.50" y="469" font-size="12">8.9% (8,130)</text>
+<text x="222" y="525" text-anchor="end" font-size="16" font-weight="700">Disconnected</text>
+<rect x="240" y="508" width="64.356" height="20" rx="2" fill="#c84527"><title>Disconnected: 21 / 303 (6.93%)</title></rect>
+<text x="313.36" y="523" font-size="12">6.9% (21)</text>
+<rect x="240" y="536" width="152.032" height="20" rx="2" fill="#2849c7"><title>Disconnected: 14,982 / 91,506 (16.37%)</title></rect>
+<text x="401.03" y="551" font-size="12">16.4% (14,982)</text>
+<text x="52" y="642" font-size="13">Reciprocal choices count twice. No-path pairs stay disconnected; they are excluded from 4+ links.</text>
+<text x="52" y="664" font-size="12">Lexical similarity is not semantic accuracy. Frozen course corpus and roster, 26 Aug 2026; full method and text evidence in the post.</text>
+</g></svg>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="Do Marvel pages that sound alike sit close in the hyperlink network? One reproducible comparison, shortest paths, and the frozen passages behind the exceptions.">
+  <title>Week 7 · Close words. Long way round. · @@TITLE@@</title>
+  <link rel="icon" href="@@ROOT@@assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="@@ROOT@@style.css">
+  <link rel="stylesheet" href="@@ROOT@@week7.css">
+  <link rel="stylesheet" href="@@ROOT@@journal.css">
+  <script defer src="@@ROOT@@assets/data/week7.js"></script>
+  <script defer src="@@ROOT@@week7.js"></script>
+  <script defer src="@@ROOT@@journal.js"></script>
+</head>
+<body class="report-page issue-story issue-07 week7-page" data-root="@@ROOT@@">
+  <a class="skip-link" href="#main-content">Skip to the story</a>
+  @@HEADER@@
+  <main id="main-content">
+    <header class="shell w7-cover">
+      <div>
+        <p class="hero-kicker">ISSUE 07 / FROM MEANING TO MEASUREMENT · EXERCISE 7.13</p>
+        <h1 class="hero-title">Close words.<br><em>Long way round.</em></h1>
+        <p class="hero-deck">Do Marvel pages that sound alike sit close in the hyperlink network? Usually. The exceptions tell us what our words and our links actually measure.</p>
+        <a class="button button-primary" href="#finding">Follow the evidence ↓</a>
+      </div>
+      <aside class="w7-cover-note">
+        <p class="eyebrow">A PAGE GETS ONE TEXTUAL NEIGHBOR</p>
+        <p class="w7-big-number">@@W7_LINKED@@<span> / @@W7_DOCUMENTS@@</span></p>
+        <p>choices land one hyperlink away.</p>
+        <p class="w7-small">@@W7_LINKED_PERCENT@@% of nearest-neighbor choices, compared with @@W7_BASELINE_PERCENT@@% of all eligible page choices. Character-title words are removed in both.</p>
+      </aside>
+    </header>
+
+    <nav class="shell w7-chapters" aria-label="In this issue">
+      <a href="#finding">01 / The pattern</a><a href="#evidence">02 / Read the exceptions</a><a href="#neighbors">03 / Check a page</a><a href="#method">04 / How we measured</a>
+    </nav>
+
+    <section class="shell section" id="finding" aria-labelledby="w7-finding-title">
+      <div class="section-head"><p class="eyebrow">ONE QUESTION / TWO KINDS OF CLOSENESS</p><span class="post-meta">@@W7_DOCUMENTS@@ FROZEN PAGES · @@W7_PAIRS@@ PAIRS</span></div>
+      <div class="article-layout"><div class="article-main">
+        <h2 class="section-title" id="w7-finding-title">Does shared vocabulary<br>need a <em>short route?</em></h2>
+        <p class="lede">A Wikipedia link records an editor’s reference. Shared vocabulary records what two pages spend words on. We wanted to know how often those two forms of closeness agree.</p>
+        <p>For each of the @@W7_DOCUMENTS@@ Marvel articles, we choose the other article with the highest TF-IDF cosine similarity. We reuse <a href="@@ROOT@@week6/index.html#name-audit">Week 6’s title-word removal</a>, so a repeated character title cannot take all the credit. Then we count the shortest route between the pages, allowing each frozen hyperlink to be followed in either direction.</p>
+        <p>Our comparison is every possible choice of another page: @@W7_ORDERED_PAIRS@@ source–target choices, with each source equally represented. A reciprocal nearest-neighbor match counts as two choices, because each page makes its own selection.</p>
+      </div><aside class="article-aside"><p class="eyebrow">WHAT “SOUND ALIKE” MEANS HERE</p><p>Cosine between bags of weighted words. A rare shared word contributes more than a common one.</p><p>This measures lexical resemblance. Word order, negation and paraphrases can escape it; a dense embedding could tell a different story.</p></aside></div>
+      <figure class="w7-main-figure">
+        <picture><source media="(max-width: 620px)" srcset="@@ROOT@@assets/figures/week7-distance-mobile.svg" width="360" height="790"><img src="@@ROOT@@assets/figures/week7-distance.svg" width="1040" height="680" alt="@@W7_FIGURE_ALT@@" loading="eager"></picture>
+        <figcaption><strong>Figure 1. Where the closest words lead.</strong> Each bar is a share of its own population: @@W7_DOCUMENTS@@ nearest-neighbor choices versus @@W7_ORDERED_PAIRS@@ possible source–target choices. “No path” stays separate from finite distance. <a href="@@ROOT@@assets/figures/week7-distance.svg" download>Download SVG ↗</a></figcaption>
+      </figure>
+      <div class="w7-takeaway"><p class="eyebrow">WHAT SURPRISED US</p><p>@@W7_TAKEAWAY@@</p></div>
+      @@W7_COMPARISON_TABLE@@
+    </section>
+
+    <section class="shell section w7-evidence" id="evidence" aria-labelledby="w7-evidence-title">
+      <div class="section-head"><p class="eyebrow">READ THE PAGES / EXPLAIN THE EXCEPTIONS</p><span class="post-meta">EXACT PASSAGES · TRACEABLE OFFSETS</span></div>
+      <h2 class="section-title" id="w7-evidence-title">A match needs<br>an <em>explanation.</em></h2>
+      <p class="w7-deck">@@W7_SELECTION@@</p>
+      <div class="w7-cases">@@W7_CASES@@</div>
+      <p class="w7-small">Passages come from the course’s frozen Wikipedia text, not a fresh page scrape. Offsets refer to decoded Unicode characters, with the end excluded. Expand the context to inspect neighboring text; the linked live articles and their histories may have changed.</p>
+    </section>
+
+    <section class="shell section" id="neighbors" aria-labelledby="w7-neighbors-title">
+      <div class="section-head"><p class="eyebrow">CHECK A PAGE / THE COMPLETE NEIGHBOR LIST</p><span class="post-meta">ONE CHOICE PER ARTICLE</span></div>
+      <h2 class="section-title" id="w7-neighbors-title">Follow your<br>own <em>hunch.</em></h2>
+      <p class="w7-deck">Search either name, filter by the route length, then select a pair to see the words, the shortest path and the frozen passages. These are lexical nearest neighbors; the inspected exceptions above also include highly ranked pairs that are not each other’s first choice.</p>
+      <div id="w7-explorer" class="w7-explorer" hidden>
+        <div class="w7-controls">
+          <div><label for="w7-search">Find either page</label><input id="w7-search" type="search" placeholder="Try a character name" autocomplete="off"></div>
+          <div><label for="w7-distance">Shortest path</label><select id="w7-distance"><option value="all">All distances</option><option value="1">1 step · directly linked</option><option value="2">2 steps</option><option value="3">3 steps</option><option value="4+">4 or more steps</option><option value="disconnected">No path</option></select></div>
+          <p id="w7-count" role="status" aria-live="polite"></p>
+        </div>
+        <div class="w7-table-wrap" role="region" aria-label="Lexical nearest neighbors" tabindex="0"><table class="w7-table"><caption>Nearest textual neighbors · sorted by focal page</caption><thead><tr><th scope="col">Focal page → closest text</th><th scope="col">Cosine</th><th scope="col">Route</th></tr></thead><tbody id="w7-results"></tbody></table></div>
+        <div id="w7-detail" class="w7-detail" aria-live="polite" aria-atomic="true"></div>
+      </div>
+      <noscript><p>The full neighbor list is available in the <a href="@@ROOT@@assets/data/week7.json">results download</a>. The figure and inspected passages above remain available without JavaScript.</p></noscript>
+      <p class="w7-small">Download <a href="@@ROOT@@assets/data/week7.json" download>the measured summary, top distant matches and complete neighbor list (JSON)</a>. The explorer works from the bundled snapshot, including when opened from disk.</p>
+    </section>
+
+    <section class="shell section w7-method" id="method" aria-labelledby="w7-method-title">
+      <div class="section-head"><p class="eyebrow">THE MEASUREMENT / AND ITS LIMIT</p></div>
+      <div class="article-layout"><div class="article-main">
+        <h2 class="section-title" id="w7-method-title">Shared words.<br><em>Partial map.</em></h2>
+        <p>Our answer is conditional on this representation: the closest vocabulary usually points to a nearby page, but it can also recover shared teams where a short hyperlink route is missing, or mistake a shared first name for a connection. Reading the passages is what separates those explanations.</p>
+        <p><strong>The main limitation is the map.</strong> Routes stay inside this 303-page roster. Two articles with no path here could connect through a team, event or character page outside the sample. A missing path does not establish that the characters never meet. We also remove hyperlink direction to measure separation; this does not test whether a reader can click the same route forward.</p>
+        <p>Seventeen pages are completely isolated in the frozen graph. Their textual-neighbor choices must have no path, whatever their scores. The 21 disconnected choices include these unavoidable cases.</p>
+        <p>Title masking is a sensitivity check, not complete name removal: civilian names and aliases may remain, while ordinary words can disappear. Raw term counts can give a repeated passage considerable weight. Neither a cosine score nor this descriptive comparison proves that text causes links.</p>
+        <details class="reading-details"><summary>Reproduce the analysis and inspect the definitions</summary>
+          <p>We tokenize the frozen articles into Unicode letter words, case-fold them, remove terminal possessive <code>'s</code>, then apply the same global title-word mask to every document. Each remaining term receives raw count × ln(N / document frequency), followed by L2 normalization. Cosine is the dot product of those vectors; no stoplist or learned embedding is added.</p>
+          <p>All @@W7_PAIRS@@ unordered pairs are scored. A page’s highest-cosine other page is chosen with canonical Wikipedia identifier as the tie-break. Breadth-first search gives an exact shortest path in the undirected version of the frozen graph. Disconnected pairs have a null distance and no path; zero vectors, if any, have cosine zero.</p>
+          <p>Run <code>python scripts/analyze_week7.py</code>, then <code>python scripts/build.py --output _site</code> from the repository root. Both use the Python standard library and committed inputs. No API keys or model download are required.</p>
+          <p>@@W7_PROVENANCE@@</p>
+        </details>
+      </div><aside class="article-aside"><p class="eyebrow">OPEN NOTEBOOK</p><p><a href="@@ROOT@@data/week7/README.md">Method, selection rules &amp; provenance ↗</a></p><p><a href="@@ROOT@@data/raw/marvel_pages.zip" download>Frozen Marvel text archive ↗</a></p><p><a href="@@ROOT@@data/raw/week1_edges.tsv" download>Frozen directed links ↗</a></p><p><a href="@@REPO@@/blob/main/scripts/analyze_week7.py">Analysis source ↗</a></p><p><a href="https://sunelehmann.com/socialgraphs2026-web/weeks/week7.html#go-nuts">Week 7 exercise ↗</a></p></aside></div>
+      <p class="w7-credit">LLM-assisted code and close reading; measurements are computed from the committed snapshot. Source text: Wikipedia contributors, attributed at each passage, under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA license</a>. <a href="@@ROOT@@week6/index.html">← Week 6: Names or meaning?</a></p>
+    </section>
+  </main>
+  @@FOOTER@@
+</body>
+</html>

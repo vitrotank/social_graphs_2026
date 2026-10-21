@@ -90,7 +90,15 @@
     },
     {
       "number": 7,
-      "status": "upcoming"
+      "status": "published",
+      "title": "Close words. Long way round.",
+      "short_title": "Close words. Long way round.",
+      "summary": "194 of 303 textual neighbors are one hyperlink apart. Read the distant matches to find shared teams and a misleading name.",
+      "path": "week7/index.html",
+      "template": "week7.html",
+      "topic": "THE MEASUREMENT",
+      "experience_path": "week7/index.html#neighbors",
+      "experience_label": "Check a textual neighbor"
     },
     {
       "number": 8,

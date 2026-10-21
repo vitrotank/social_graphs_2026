@@ -8,13 +8,14 @@ The Marginalia redesign puts one investigation on the cover, gives each publishe
 
 | Route | Investigation or experiment |
 | --- | --- |
-| `index.html` | Latest investigation, compact Weeks 1–6 index, laboratory |
+| `index.html` | Latest investigation, compact Weeks 1–7 index, laboratory |
 | `week1/index.html` | Marvel degree, 17 isolates, directed atlas, hub removal |
 | `week2/index.html` | Measured friendship paradox; explicitly illustrative model comparisons |
 | `week3/index.html` | Exact paths, bridge characters, 200-trial removal comparison |
 | `week4/index.html` | Philosopher communities, weighted overlap and disparity backbone |
 | `week5/index.html` | Eight words. 282 pages. Shared phrases, with paired source evidence |
 | `week6/index.html` | Names or meaning? A reproducible TF-IDF title-word ablation alongside the existing vector discussion |
+| `week7/index.html` | Close words. Long way round. Lexical nearest neighbors versus hyperlink distance, with exact source passages |
 | `explore/index.html` | Selected network previews, relocated from the cover |
 | `play/index.html` | Crossed Wires: weekly shifts and practice puzzles |
 | `play/cerebro.html` | The Popularity Trap: predictions and model illustrations |
@@ -32,7 +33,7 @@ python scripts/build.py --output _site
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [localhost:8000](http://localhost:8000/index.html), the [Week 6 investigation](http://localhost:8000/week6/index.html), or [Vector Drift](http://localhost:8000/play/vector-voyage.html). The corpus analyses use committed snapshots; Vector Drift loads its existing exported coordinates. JavaScript bundles support direct disk viewing; static figures, article text and downloads remain available without JavaScript. External Wikipedia links and optional YouTube playback need a connection.
+Open [localhost:8000](http://localhost:8000/index.html), the [Week 7 investigation](http://localhost:8000/week7/index.html), or [Vector Drift](http://localhost:8000/play/vector-voyage.html). The corpus analyses use committed snapshots; Vector Drift loads its existing exported coordinates. JavaScript bundles support direct disk viewing; static figures, article text and downloads remain available without JavaScript. External Wikipedia links and optional YouTube playback need a connection.
 
 ## Reproduce and check
 
@@ -42,11 +43,13 @@ python scripts/analyze_week3.py
 python scripts/analyze_week4.py
 python scripts/analyze_week5.py
 python scripts/analyze_week6.py
+python scripts/analyze_week7.py
 python scripts/crawl_grunge.py
 python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
 python -m unittest discover -s tests
 python scripts/browser_week6.py
+python scripts/browser_week7.py
 python scripts/browser_smoke.py --editorial-only
 python scripts/browser_smoke.py --week4-only
 python scripts/browser_smoke.py
@@ -54,6 +57,14 @@ python scripts/inspect_site.py
 ```
 
 Browser checks use installed Chrome/Edge and the Python standard library. They exercise keyboard/touch controls, evidence filters, responsive layouts, offline bundles, static fallbacks and exact data readouts. Screenshots and check reports are written to ignored `.preview/`. `inspect_site.py --references` records the supplied reference websites separately.
+
+## Week 7: close words, long way round
+
+Exercise 7.13 asks one question: do Marvel pages with similar vocabularies sit near each other in the hyperlink network? We compare the shortest undirected route for every article's title-masked TF-IDF nearest neighbor with every eligible source–target choice. Of 303 nearest-neighbor choices, 194 (64.0%) land one link away, versus 3.1% of all 91,506 possible choices. Eleven take at least four steps; 21 are disconnected within this roster.
+
+One paired-bar figure shows the complete distance comparison. The three highest-cosine connected pairs at four or more steps and the highest-cosine disconnected pair receive close readings: shared teams explain real matches, while Layla Miller versus Layla El-Faouly reveals a surviving name collision. Exact frozen passages, character offsets, surrounding context, term contributions and shortest routes make the interpretation inspectable. An optional searchable explorer exposes all 303 nearest-neighbor choices with their source passages.
+
+`python scripts/analyze_week7.py` regenerates the analysis, offline bundle and SVG using only the Python standard library. The [method and provenance](data/week7/README.md) document the complete 45,753-pair census, identical source weighting, selection rules and input SHA-256 hashes. [Downloadable results](assets/data/week7.json) include all nearest choices and the top distant matches; the script recomputes every pair. Lexical resemblance is not a dense embedding, and a missing path inside the frozen roster does not imply an absent fictional relationship. Browser checks cover filtering, source evidence, responsive layouts, offline viewing and the static fallback.
 
 ## Week 6: names or meaning?
 

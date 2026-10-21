@@ -196,6 +196,81 @@ def week6_exhibits(data: dict) -> dict:
             'W6_CASE_TABLE': '<div class="w6-case-table-wrap" role="region" aria-label="Selected before and after neighbors" tabindex="0"><table class="w6-case-table"><caption>Nearest neighbors in two representations · selected inspected pages</caption><thead><tr><th scope="col">Focal article</th><th scope="col">Original TF-IDF</th><th scope="col">Title words removed</th></tr></thead><tbody>' + ''.join(table) + '</tbody></table></div>'}
 
 
+def week7_svg(data: dict) -> str:
+    """Keep the new cover comparison tied to the measured populations."""
+    result = data['result']
+    near = 100 * result['nearest_linked_fraction']
+    base = 100 * result['baseline_linked_fraction']
+    label = f'{near:.1f}% of lexical nearest neighbors are directly linked, versus {base:.1f}% of all eligible alternatives.'
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 290" role="img" aria-label="{label}">'
+            '<text x="28" y="30" fill="#ead0cd" font-size="11" font-family="monospace">ONE HYPERLINK APART / MARVEL</text>'
+            f'<text x="28" y="117" fill="#f4f0e8" font-size="78" font-family="Georgia">{near:.1f}<tspan font-size="36">%</tspan></text>'
+            '<text x="28" y="148" fill="#f4f0e8" font-size="17" font-family="Georgia">of the closest textual neighbors</text>'
+            f'<rect x="28" y="171" width="{near/70*350:.2f}" height="12" fill="#f4f0e8"/>'
+            f'<rect x="28" y="195" width="{base/70*350:.2f}" height="12" fill="#dca9a6"/>'
+            f'<text x="28" y="236" fill="#ead0cd" font-size="14" font-family="Georgia">{base:.1f}% of all possible page choices.</text>'
+            '<text x="28" y="270" fill="#ead0cd" font-size="10" font-family="monospace">SAME ROSTER · TITLE WORDS REMOVED</text></svg>')
+
+
+def week7_exhibits(data: dict) -> dict:
+    """Put measurements and literal evidence in HTML before JavaScript runs."""
+    result = data['result']
+    characters = {row['node']: row for row in data['characters']}
+
+    def source_card(source: dict) -> str:
+        name, url = escape(source['name']), escape(source['url'], quote=True)
+        return (f'<article class="w7-source"><h4><a href="{url}">{name}</a></h4>'
+                f'<blockquote>{escape(source["text"])}</blockquote>'
+                f'<p class="w7-offset">Frozen text · character offsets [{source["start"]:,}, {source["end"]:,})</p>'
+                f'<a href="{url}">Wikipedia article &amp; history ↗</a>'
+                '<details><summary>Read the surrounding text</summary><p>'
+                f'<span class="w7-context-fade">{escape(source["before"])}</span>'
+                f'<strong>{escape(source["text"])}</strong>'
+                f'<span class="w7-context-fade">{escape(source["after"])}</span></p></details></article>')
+
+    cases = []
+    inspected = list(data['cases'])
+    if data.get('disconnected_case'):
+        inspected.append(data['disconnected_case'])
+    for index, case in enumerate(inspected, 1):
+        distance = case['distance']
+        route = 'No path' if distance is None else f'{distance} steps'
+        rank = (f'Rank {case["eligible_rank"]} of {result["far_pairs"]:,} finite pairs at 4+ steps'
+                if distance is not None else f'Rank {case["global_rank"]} of all {result["possible_pairs"]:,} pairs')
+        path = []
+        for entry in case['path']:
+            node = characters[entry] if isinstance(entry, str) else entry
+            path.append(f'<a href="{escape(node["url"], quote=True)}">{escape(node["name"])}</a>')
+        route_text = ('One shortest undirected route: ' + '<span class="w7-arrow" aria-hidden="true"> → </span>'.join(path)
+                      if path else 'No path between these pages within the frozen 303-page roster.')
+        terms = ''.join(f'<li>{escape(term["term"])}<span>{100*term["share"]:.1f}%</span></li>' for term in case['terms'][:6])
+        cases.append(f'<article class="w7-case" id="w7-case-{escape(case["id"], quote=True)}">'
+                     f'<span class="w7-case-number">CASE {index:02} / {escape(case["source_name"])} × {escape(case["target_name"])}</span>'
+                     f'<h3>{escape(case["title"])}</h3><div class="w7-case-metrics">'
+                     f'<span>Cosine {case["similarity"]:.3f}</span><span>{route}</span><span>{rank}</span></div>'
+                     f'<p class="w7-case-interpretation">{escape(case["interpretation"])}</p>'
+                     '<p class="w7-term-note">Largest shared-term contributions · percent of this pair’s cosine</p>'
+                     f'<ul class="w7-terms">{terms}</ul><p class="w7-path">{route_text}</p>'
+                     f'<div class="w7-source-grid">{"".join(source_card(source) for source in case["sources"])}</div></article>')
+    table = ''.join(f'<tr><th scope="row">{escape(row["label"])}</th>'
+                    f'<td>{row["nearest_count"]:,} / {result["documents"]:,} ({100*row["nearest_fraction"]:.1f}%)</td>'
+                    f'<td>{row["baseline_count"]:,} / {result["eligible_ordered_choices"]:,} ({100*row["baseline_fraction"]:.1f}%)</td></tr>'
+                    for row in data['comparison'])
+    provenance = 'Frozen inputs and SHA-256 checksums: ' + '; '.join(
+        f'{escape(source["label"])} <code>{escape(source["sha256"])}</code>' for source in data['corpus']['inputs']) + '.'
+    return {
+        'W7_DOCUMENTS': str(result['documents']), 'W7_LINKED': str(result['nearest_linked']),
+        'W7_LINKED_PERCENT': f'{100*result["nearest_linked_fraction"]:.1f}',
+        'W7_BASELINE_PERCENT': f'{100*result["baseline_linked_fraction"]:.1f}',
+        'W7_PAIRS': f'{result["possible_pairs"]:,}', 'W7_ORDERED_PAIRS': f'{result["eligible_ordered_choices"]:,}',
+        'W7_FIGURE_ALT': escape(data['figure']['description'] + f' {result["nearest_linked"]} of {result["documents"]} lexical-neighbor choices are directly linked, versus {100*result["baseline_linked_fraction"]:.1f}% of all alternatives.', quote=True),
+        'W7_CASES': ''.join(cases), 'W7_PROVENANCE': provenance,
+        'W7_SELECTION': f'We read the three highest-cosine pairs among the {result["far_pairs"]:,} connected pairs at least four steps apart, then inspect the highest-cosine disconnected match separately. Four steps is an exploratory way to find exceptions. These examples explain the measurement; they do not estimate its accuracy.',
+        'W7_TAKEAWAY': f'The closest words lead to a direct link for {result["nearest_linked"]} pages. That agreement is striking beside the all-alternatives comparison. But {result["nearest_far"]} choices take four or more steps, and {result["nearest_disconnected"]} have no route in this roster. A high cosine deserves a reading before it becomes a relationship.',
+        'W7_COMPARISON_TABLE': '<details class="reading-details"><summary>Read the exact counts behind Figure 1</summary><div class="w7-table-wrap w7-comparison" role="region" aria-label="Figure 1 data" tabindex="0"><table class="w7-table"><caption>Shares use the population printed in each column.</caption><thead><tr><th scope="col">Undirected distance</th><th scope="col">Textual nearest choices</th><th scope="col">All eligible choices</th></tr></thead><tbody>' + table + '</tbody></table></div></details>',
+    }
+
+
 def render() -> list[Path]:
     config = read_json(ROOT / "site.json")
     network = read_json(ROOT / "assets/data/network.json")
@@ -204,6 +279,9 @@ def render() -> list[Path]:
     week3 = read_json(ROOT / "assets/data/week3.json")
     week5 = read_json(ROOT / "assets/data/week5.json")
     week6 = read_json(ROOT / "assets/data/week6.json")
+    week7 = read_json(ROOT / "assets/data/week7.json")
+    if tuple(week7['result'][key] for key in ('documents', 'possible_pairs', 'nearest_linked', 'nearest_far', 'nearest_disconnected')) != (303, 45753, 194, 11, 21):
+        raise ValueError('This Week 7 story expects the documented frozen comparison; review the narrative before changing it.')
     if (week5['corpus']['documents'], week5['corpus']['tokens'],
         week5['result']['pairs_at_8'], week5['result']['pairs_at_20'], week5['result']['pairs_at_40'],
         week5['result']['standard_phrase_documents'], week5['result']['longest_words']) != (303, 727203, 40570, 71, 13, 282, 166):
@@ -246,6 +324,7 @@ def render() -> list[Path]:
     }
     values = {key: escape(str(value), quote=True) for key, value in plain.items()}
     values.update(week6_exhibits(week6))
+    values.update(week7_exhibits(week7))
     explorer = week4["explorer"]
     comparison = explorer["weighted_comparison"]
     week4_values = {
@@ -309,6 +388,9 @@ def render() -> list[Path]:
     elif latest['number'] == 6:
         values.update(LATEST_PLATE=week6_svg(week6),
                       LATEST_PLATE_CAPTION=f'Every article gets one nearest neighbor. Removing title words changes {week6["result"]["changed"]} of the {len(week6["rows"])} choices; changed does not mean improved.')
+    elif latest['number'] == 7:
+        values.update(LATEST_PLATE=week7_svg(week7),
+                      LATEST_PLATE_CAPTION='Lexical closeness and hyperlink distance, measured on the same 303 Marvel pages. Both bars show the share one link apart on the same scale.')
     pages = [(Path("home.html"), Path("index.html"), "home"),
              (Path("explore.html"), Path("explore/index.html"), "explore"),
              (Path("play.html"), Path("play/index.html"), "play"),
@@ -372,6 +454,7 @@ def render() -> list[Path]:
         "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js",
         "home.css", "design.css", "explore.css", "journal.css", "journal.js", "assets/data/cover.js", "assets/data/week3-figure.js",
         "week3.css", "week3.js", "week4.css", "week4.js", "week5.css", "week5.js", "week6.css", "week6.js",
+        "week7.css", "week7.js", "assets/data/week7.json", "assets/data/week7.js", "assets/figures/week7-distance.svg", "assets/figures/week7-distance-mobile.svg", "data/week7/README.md",
         "vector-voyage.css", "vector-voyage.js", "louvain.js", "grunge.css", "grunge.js",
         "assets/data/week5.json", "assets/data/week5.js", "assets/figures/week5-sieve.svg", "data/raw/marvel_pages.zip", "data/week5/README.md",
         "assets/data/week6_game.json", "assets/data/week6_game.js",
