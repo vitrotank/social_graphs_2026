@@ -147,36 +147,53 @@ def week5_svg(data: dict, *, cover: bool = False) -> str:
     return ''.join(parts)
 
 
-def week6_svg(*, cover: bool = False) -> str:
-    """Draw vector embedding geometry: analogical directions in semantic space."""
-    if cover:
-        return (
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" role="img" aria-label="Vector embedding directions: Spider-Man plus magic lands near Doctor Strange">'
-            '<rect width="440" height="250" fill="#172a48" rx="8"/>'
-            '<g stroke="#b0bdd9" stroke-opacity=".15" stroke-width=".8" stroke-dasharray="3 5">'
-            '<line x1="40" y1="60" x2="400" y2="60"/><line x1="40" y1="125" x2="400" y2="125"/><line x1="40" y1="190" x2="400" y2="190"/>'
-            '<line x1="120" y1="30" x2="120" y2="220"/><line x1="220" y1="30" x2="220" y2="220"/><line x1="320" y1="30" x2="320" y2="220"/>'
-            '</g>'
-            '<defs>'
-            '<marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 10 5 L 0 9 z" fill="#3874cb"/></marker>'
-            '</defs>'
-            '<text x="40" y="32" fill="#93c5fd" font-size="10" font-family="monospace" letter-spacing="1">WORD2VEC VECTOR DIRECTIONS</text>'
-            '<line x1="90" y1="180" x2="310" y2="75" stroke="#3874cb" stroke-width="2.5" marker-end="url(#arr)"/>'
-            '<rect x="155" y="112" width="115" height="18" rx="3" fill="#172a48" stroke="#3874cb" stroke-width=".8"/>'
-            '<text x="212" y="125" text-anchor="middle" fill="#f1f5f9" font-size="9" font-family="monospace" font-weight="bold">+ magic + sorcerer</text>'
-            '<circle cx="90" cy="180" r="6" fill="#10b981"/>'
-            '<text x="90" y="202" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Georgia">Spider-Man</text>'
-            '<circle cx="330" cy="65" r="18" fill="none" stroke="#3874cb" stroke-width="1.5" stroke-dasharray="3 3"/>'
-            '<circle cx="330" cy="65" r="7" fill="#3874cb"/>'
-            '<text x="330" y="44" text-anchor="middle" fill="#93c5fd" font-size="12" font-family="Georgia" font-weight="bold">Doctor Strange</text>'
-            '<circle cx="210" cy="165" r="3" fill="#64748b"/>'
-            '<text x="210" y="157" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">Hulk</text>'
-            '<circle cx="310" cy="150" r="4" fill="#64748b"/>'
-            '<text x="310" y="142" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">Scarlet Witch</text>'
-            '<text x="40" y="235" fill="#94a3b8" font-size="9" font-family="monospace">Science ←−−−−−− | −−−−−−→ Magic</text>'
-            '</svg>'
-        )
-    return ""
+def week6_svg(data: dict) -> str:
+    """Show the measured sensitivity count on the cover."""
+    total = len(data['rows'])
+    changed = sum(row['changed'] for row in data['rows'])
+    share = changed / total
+    label = f'{changed} of {total} articles change their nearest neighbor after title-word removal.'
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 290" role="img" aria-label="{label}">'
+            '<text x="30" y="32" fill="#ead0cd" font-size="12" font-family="monospace">TITLE WORDS REMOVED / TF-IDF</text>'
+            f'<text x="30" y="122" fill="#f4f0e8" font-size="83" font-family="Georgia">{changed}<tspan font-size="32"> / {total}</tspan></text>'
+            '<text x="30" y="157" fill="#f4f0e8" font-size="18" font-family="Georgia">articles choose a different neighbor.</text>'
+            '<rect x="30" y="187" width="380" height="10" fill="#ead0cd" opacity=".35"/>'
+            f'<rect x="30" y="187" width="{380*share:.2f}" height="10" fill="#f4f0e8"/>'
+            f'<text x="30" y="224" fill="#ead0cd" font-size="12" font-family="monospace">{100*share:.1f}% CHANGED · {total-changed} RETAINED</text>'
+            '<text x="30" y="268" fill="#ead0cd" font-size="12" font-family="monospace">A sensitivity check. Read the cases.</text></svg>')
+
+
+def week6_exhibits(data: dict) -> dict:
+    """Render frozen evidence into the article, including without JavaScript."""
+    rows = {row['node']: row for row in data['rows']}
+    table, cases = [], []
+    for case in data['cases']:
+        source = rows[case['source']]
+        anchor = 'w6-case-' + case['id']
+        table.append(f'<tr><th scope="row"><a href="#{escape(anchor, quote=True)}">{escape(source["name"])}</a></th>'
+                     f'<td>{escape(source["before"]["name"])}<small>cosine {source["before"]["similarity"]:.3f}</small></td>'
+                     f'<td>{escape(source["after"]["name"])}<small>cosine {source["after"]["similarity"]:.3f}</small></td></tr>')
+        passages = []
+        for passage in case['sources']:
+            passages.append(f'<article class="w6-source-passage"><h4>{escape(passage["name"])}</h4>'
+                            f'<blockquote>{escape(passage["text"])}</blockquote>'
+                            f'<p class="w6-offset">Frozen text · character offsets [{passage["start"]:,}, {passage["end"]:,})</p>'
+                            f'<a href="{escape(passage["url"], quote=True)}">Wikipedia article &amp; history ↗</a></article>')
+        cases.append(f'<article class="w6-case" id="{escape(anchor, quote=True)}"><h3>{escape(case["title"])}</h3>'
+                     f'<p>{escape(case["interpretation"])}</p><div class="w6-case-metrics">'
+                     f'<span>{escape(case["source_name"])} / {escape(case["target_name"])}</span>'
+                     f'<span>Same pair: {case["before"]:.3f} → {case["after"]:.3f}</span>'
+                     f'<span>Rank: {case["rank_before"]} → {case["rank_after"]}</span></div>'
+                     f'<div class="w6-source-grid">{"".join(passages)}</div></article>')
+    count = len(rows)
+    changed = sum(row['changed'] for row in rows.values())
+    return {'W6_DOCUMENTS': str(count), 'W6_CHANGED': str(changed), 'W6_RETAINED': str(count-changed),
+            'W6_MASK_SIZE': str(len(data['title_mask'])), 'W6_PAIR_COUNT': f'{count*(count-1)//2:,}',
+            'W6_LINKED_BEFORE': str(data['result']['linked_before']), 'W6_LINKED_AFTER': str(data['result']['linked_after']),
+            'W6_TOKEN_COUNT': f'{data["corpus"]["tokens"]:,}',
+            'W6_FIGURE_ALT': escape(data['figure']['description'], quote=True),
+            'W6_CASES': ''.join(cases),
+            'W6_CASE_TABLE': '<div class="w6-case-table-wrap" role="region" aria-label="Selected before and after neighbors" tabindex="0"><table class="w6-case-table"><caption>Nearest neighbors in two representations · selected inspected pages</caption><thead><tr><th scope="col">Focal article</th><th scope="col">Original TF-IDF</th><th scope="col">Title words removed</th></tr></thead><tbody>' + ''.join(table) + '</tbody></table></div>'}
 
 
 def render() -> list[Path]:
@@ -186,6 +203,7 @@ def render() -> list[Path]:
     week4 = read_json(ROOT / "assets/data/week4.json")
     week3 = read_json(ROOT / "assets/data/week3.json")
     week5 = read_json(ROOT / "assets/data/week5.json")
+    week6 = read_json(ROOT / "assets/data/week6.json")
     if (week5['corpus']['documents'], week5['corpus']['tokens'],
         week5['result']['pairs_at_8'], week5['result']['pairs_at_20'], week5['result']['pairs_at_40'],
         week5['result']['standard_phrase_documents'], week5['result']['longest_words']) != (303, 727203, 40570, 71, 13, 282, 166):
@@ -227,6 +245,7 @@ def render() -> list[Path]:
         "ISLAND_NOTE": 'Three of the island’s page IDs carry the qualifier “Morituri”: Radian, Scatterbrain, and Snapdragon. A clue to shared context—but the frozen edge list does not explain why this island formed.'
     }
     values = {key: escape(str(value), quote=True) for key, value in plain.items()}
+    values.update(week6_exhibits(week6))
     explorer = week4["explorer"]
     comparison = explorer["weighted_comparison"]
     week4_values = {
@@ -288,8 +307,8 @@ def render() -> list[Path]:
         values.update(LATEST_PLATE=week5_svg(week5, cover=True),
                       LATEST_PLATE_CAPTION='Shared words, vanishing pairs. 40,570 matches at eight words; 13 at forty. Vertical scale is logarithmic.')
     elif latest['number'] == 6:
-        values.update(LATEST_PLATE=week6_svg(cover=True),
-                      LATEST_PLATE_CAPTION='The geometry of words: Word2Vec directions and the Science vs. Magic continuum.')
+        values.update(LATEST_PLATE=week6_svg(week6),
+                      LATEST_PLATE_CAPTION=f'Every article gets one nearest neighbor. Removing title words changes {week6["result"]["changed"]} of the {len(week6["rows"])} choices; changed does not mean improved.')
     pages = [(Path("home.html"), Path("index.html"), "home"),
              (Path("explore.html"), Path("explore/index.html"), "explore"),
              (Path("play.html"), Path("play/index.html"), "play"),
@@ -352,10 +371,11 @@ def render() -> list[Path]:
     return [destination for _, destination, _ in pages] + [Path(name) for name in (
         "week1.css", "week2-figures.css", "week2-figures.js", "week3-story.css", "week3-story.js",
         "home.css", "design.css", "explore.css", "journal.css", "journal.js", "assets/data/cover.js", "assets/data/week3-figure.js",
-        "week3.css", "week3.js", "week4.css", "week4.js", "week5.css", "week5.js", "week6.css",
+        "week3.css", "week3.js", "week4.css", "week4.js", "week5.css", "week5.js", "week6.css", "week6.js",
         "vector-voyage.css", "vector-voyage.js", "louvain.js", "grunge.css", "grunge.js",
         "assets/data/week5.json", "assets/data/week5.js", "assets/figures/week5-sieve.svg", "data/raw/marvel_pages.zip", "data/week5/README.md",
         "assets/data/week6_game.json", "assets/data/week6_game.js",
+        "assets/data/week6.json", "assets/data/week6.js", "assets/figures/week6-name-audit.svg", "data/week6/README.md",
         "assets/data/week3.json", "assets/data/week3.js", "assets/data/week4.json", "assets/data/week4.js", "assets/figures/week3-removal.svg",
         "assets/data/grunge.json", "assets/data/grunge.js", "data/grunge/snapshot.json", "data/grunge/README.md",
         "style.css", "app.js", "home.js", "game.js", "game.css", "week2.js", ".nojekyll", "assets/favicon.svg",

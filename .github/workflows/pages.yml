@@ -37,6 +37,8 @@ jobs:
         run: python scripts/analyze_week4.py
       - name: Recompute the Marvel text investigation
         run: python scripts/analyze_week5.py
+      - name: Recompute the Week 6 name ablation
+        run: python scripts/analyze_week6.py
       - name: Rebuild the grunge extra from its frozen snapshot
         run: python scripts/crawl_grunge.py
       - name: Build the public site

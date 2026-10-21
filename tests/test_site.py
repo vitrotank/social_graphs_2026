@@ -67,7 +67,9 @@ class SiteTests(unittest.TestCase):
         for relative in (
             "templates/explore.html", "design.css", "explore.css",
             "templates/week5.html", "week5.css", "week5.js", "assets/data/week5.json", "assets/data/week5.js",
-            "templates/week6.html", "week6.css", "templates/vector-voyage.html", "vector-voyage.css", "vector-voyage.js", "assets/data/week6_game.json", "assets/data/week6_game.js",
+            "templates/week6.html", "week6.css", "week6.js", "assets/data/week6.json", "assets/data/week6.js",
+            "assets/figures/week6-name-audit.svg", "data/week6/README.md",
+            "templates/vector-voyage.html", "vector-voyage.css", "vector-voyage.js", "assets/data/week6_game.json", "assets/data/week6_game.js",
             "data/raw/marvel_pages.zip", "data/week5/README.md",
             "templates/week3.html", "templates/week4.html", "templates/louvain.html", "templates/switchboard.html", "templates/grunge.html",
             "week3.css", "week3.js", "week4.css", "week4.js", "louvain.js", "grunge.css", "grunge.js",
@@ -96,6 +98,7 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(first, {name: (self.root / name).read_bytes() for name in public_files})
         pages = {path for path in public_files if path.suffix == ".html"}
         self.assertTrue({Path("index.html"), Path("week1/index.html"), Path("week3/index.html"),
+                         Path("week6/index.html"), Path("play/vector-voyage.html"),
                          Path("play/index.html"), Path("play/switchboard.html"), Path("grunge/index.html")} <= pages)
         documents = {}
         for relative in pages:
@@ -154,22 +157,33 @@ class SiteTests(unittest.TestCase):
         self.assertTrue(any(image.get("src", "").endswith("week3-removal.svg") for image in documents[story].images),
                         "The story must retain its static removal figure")
 
+        week6 = self.root / "week6/index.html"
+        vector_game = self.root / "play/vector-voyage.html"
+        self.assertIn(week6, linked_pages[home], "The journal must expose the Week 6 investigation")
+        self.assertIn(vector_game, linked_pages[week6], "Week 6 must retain its colleague's companion game")
+        self.assertIn(week6, linked_pages[vector_game], "The companion game must link back to Week 6")
+        self.assertIn("../assets/data/week6.js", documents[week6].scripts,
+                      "The investigation must work when opened without a server")
+        self.assertIn("../week6.js", documents[week6].scripts)
+        self.assertTrue(any(image.get("src", "").endswith("week6-name-audit.svg") for image in documents[week6].images),
+                        "Week 6 must retain a readable static figure")
+
     def test_new_published_week_updates_homepage_and_creates_its_page(self):
         config_path = self.root / "site.json"
         config = json.loads(config_path.read_text(encoding="utf-8"))
-        config["weeks"][5].update({"status": "published", "title": "Sixth dispatch",
+        config["weeks"][6].update({"status": "published", "title": "Seventh dispatch",
                                    "summary": "A new question for the journal.",
-                                   "path": "week6/index.html", "template": "week6.html"})
+                                   "path": "week7/index.html", "template": "week7.html"})
         config_path.write_text(json.dumps(config), encoding="utf-8")
-        (self.root / "templates/week6.html").write_text(
-            '<!doctype html><html><body>@@HEADER@@<h1>Sixth dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
+        (self.root / "templates/week7.html").write_text(
+            '<!doctype html><html><body>@@HEADER@@<h1>Seventh dispatch</h1>@@FOOTER@@</body></html>', encoding="utf-8")
         files = build.render()
-        self.assertIn(Path("week6/index.html"), files)
+        self.assertIn(Path("week7/index.html"), files)
         home = (self.root / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Sixth dispatch", home)
-        self.assertIn('href="week6/index.html"', home)
-        self.assertIn("Read Week 6", home)
-        self.assertIn('href="../index.html"', (self.root / "week6/index.html").read_text(encoding="utf-8"))
+        self.assertIn("Seventh dispatch", home)
+        self.assertIn('href="week7/index.html"', home)
+        self.assertIn("Read Week 7", home)
+        self.assertIn('href="../index.html"', (self.root / "week7/index.html").read_text(encoding="utf-8"))
 
     def test_browser_payload_preserves_raw_nodes_edges_and_measured_degrees(self):
         config_path = self.root / "site.json"

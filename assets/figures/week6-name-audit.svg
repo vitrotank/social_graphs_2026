@@ -1,0 +1,346 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
+<title id="title">Does removing title words change Marvel textual lookalikes?</title>
+<desc id="desc">One point per article: cosine with its ORIGINAL nearest neighbor before and after global title-word removal. The pair is held fixed on both axes. Color records whether this original neighbor remains the nearest among all 302 alternatives. Points below the diagonal became less similar; the chart measures sensitivity, not accuracy. 158 of 303 articles choose a different nearest neighbor after removal.</desc>
+<rect width="1000" height="680" fill="#faf7f0"/>
+<g font-family="Arial, sans-serif" fill="#18243a">
+<text x="55" y="48" font-size="27" font-weight="700">The name trap, measured.</text>
+<text x="55" y="79" font-size="16">Hold each article’s original nearest-neighbor pair fixed; remove title words globally.</text>
+<text x="55" y="104" font-size="14">TF-IDF cosine · 303 frozen articles · no stopword list · title-word sensitivity, not semantic accuracy</text>
+<path d="M 95 150 V 595 M 95 595 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="95" y="620" text-anchor="middle" font-size="13">0.0</text>
+<text x="80" y="600" text-anchor="end" font-size="13">0.0</text>
+<path d="M 184.0 150 V 595 M 95 506.0 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="184.0" y="620" text-anchor="middle" font-size="13">0.2</text>
+<text x="80" y="511.0" text-anchor="end" font-size="13">0.2</text>
+<path d="M 273.0 150 V 595 M 95 417.0 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="273.0" y="620" text-anchor="middle" font-size="13">0.4</text>
+<text x="80" y="422.0" text-anchor="end" font-size="13">0.4</text>
+<path d="M 362.0 150 V 595 M 95 328.0 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="362.0" y="620" text-anchor="middle" font-size="13">0.6</text>
+<text x="80" y="333.0" text-anchor="end" font-size="13">0.6</text>
+<path d="M 451.0 150 V 595 M 95 239.0 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="451.0" y="620" text-anchor="middle" font-size="13">0.8</text>
+<text x="80" y="244.0" text-anchor="end" font-size="13">0.8</text>
+<path d="M 540 150 V 595 M 95 150 H 540" stroke="#dcdedb" stroke-width="1"/>
+<text x="540" y="620" text-anchor="middle" font-size="13">1.0</text>
+<text x="80" y="155" text-anchor="end" font-size="13">1.0</text>
+<path d="M 95 595 L 540 150" stroke="#738092" stroke-dasharray="6 5"/>
+<circle cx="189.307" cy="515.750" r="4" fill="#2849c7" fill-opacity=".58"><title>Abomination / Hulk: 0.212 → 0.178; nearest neighbor retained</title></circle>
+<circle cx="176.287" cy="448.048" r="4" fill="#2849c7" fill-opacity=".58"><title>Alex Wilder / Chase Stein: 0.183 → 0.330; nearest neighbor retained</title></circle>
+<circle cx="329.308" cy="440.164" r="4" fill="#2849c7" fill-opacity=".58"><title>She-Venom / Eddie Brock: 0.527 → 0.348; nearest neighbor retained</title></circle>
+<circle cx="209.604" cy="381.225" r="4" fill="#2849c7" fill-opacity=".58"><title>Ares / Hercules: 0.258 → 0.480; nearest neighbor retained</title></circle>
+<circle cx="140.424" cy="416.037" r="4" fill="#2849c7" fill-opacity=".58"><title>Balder the Brave / Fandral: 0.102 → 0.402; nearest neighbor retained</title></circle>
+<circle cx="239.000" cy="450.070" r="4" fill="#2849c7" fill-opacity=".58"><title>Battlestar / Bucky: 0.324 → 0.326; nearest neighbor retained</title></circle>
+<circle cx="102.854" cy="573.857" r="4" fill="#2849c7" fill-opacity=".58"><title>Baymax / Hulk: 0.018 → 0.048; nearest neighbor retained</title></circle>
+<circle cx="228.379" cy="483.256" r="4" fill="#2849c7" fill-opacity=".58"><title>Bill Foster / Hank Pym: 0.300 → 0.251; nearest neighbor retained</title></circle>
+<circle cx="200.962" cy="454.701" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Cat / Spider-Man Noir: 0.238 → 0.315; nearest neighbor retained</title></circle>
+<circle cx="295.016" cy="453.212" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Jack Tarr / Shang-Chi: 0.449 → 0.319; nearest neighbor retained</title></circle>
+<circle cx="126.509" cy="564.210" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Marvel / Blazing Skull: 0.071 → 0.069; nearest neighbor retained</title></circle>
+<circle cx="307.528" cy="273.064" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Panther / Shuri: 0.478 → 0.723; nearest neighbor retained</title></circle>
+<circle cx="224.173" cy="510.295" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Rider / Two-Gun Kid: 0.290 → 0.190; nearest neighbor retained</title></circle>
+<circle cx="241.054" cy="477.034" r="4" fill="#2849c7" fill-opacity=".58"><title>Black Widow / Yelena Belova: 0.328 → 0.265; nearest neighbor retained</title></circle>
+<circle cx="169.502" cy="434.968" r="4" fill="#2849c7" fill-opacity=".58"><title>Blade / Morbius: 0.167 → 0.360; nearest neighbor retained</title></circle>
+<circle cx="233.416" cy="509.784" r="4" fill="#2849c7" fill-opacity=".58"><title>Blue Bullet / Golem: 0.311 → 0.191; nearest neighbor retained</title></circle>
+<circle cx="262.035" cy="496.093" r="4" fill="#2849c7" fill-opacity=".58"><title>Bob, Agent of Hydra / Deadpool: 0.375 → 0.222; nearest neighbor retained</title></circle>
+<circle cx="237.997" cy="450.181" r="4" fill="#2849c7" fill-opacity=".58"><title>Brian Braddock / Betsy Braddock: 0.321 → 0.325; nearest neighbor retained</title></circle>
+<circle cx="297.888" cy="446.214" r="4" fill="#2849c7" fill-opacity=".58"><title>Bucky / Jack Monroe: 0.456 → 0.334; nearest neighbor retained</title></circle>
+<circle cx="250.835" cy="488.166" r="4" fill="#2849c7" fill-opacity=".58"><title>Captain Marvel / Captain Marvel: 0.350 → 0.240; nearest neighbor retained</title></circle>
+<circle cx="147.613" cy="524.061" r="4" fill="#2849c7" fill-opacity=".58"><title>Captain Midlands / Brian Braddock: 0.118 → 0.159; nearest neighbor retained</title></circle>
+<circle cx="189.977" cy="484.418" r="4" fill="#2849c7" fill-opacity=".58"><title>Caretaker / Ghost Rider: 0.213 → 0.248; nearest neighbor retained</title></circle>
+<circle cx="239.428" cy="293.187" r="4" fill="#2849c7" fill-opacity=".58"><title>Ch&#x27;od / Raza Longknife: 0.325 → 0.678; nearest neighbor retained</title></circle>
+<circle cx="176.287" cy="448.048" r="4" fill="#2849c7" fill-opacity=".58"><title>Chase Stein / Alex Wilder: 0.183 → 0.330; nearest neighbor retained</title></circle>
+<circle cx="132.653" cy="552.813" r="4" fill="#2849c7" fill-opacity=".58"><title>Citizen V / Blue Diamond: 0.085 → 0.095; nearest neighbor retained</title></circle>
+<circle cx="151.631" cy="542.763" r="4" fill="#2849c7" fill-opacity=".58"><title>Coldblood / Deathlok: 0.127 → 0.117; nearest neighbor retained</title></circle>
+<circle cx="233.956" cy="396.584" r="4" fill="#2849c7" fill-opacity=".58"><title>Crane Mother / Iron Fist: 0.312 → 0.446; nearest neighbor retained</title></circle>
+<circle cx="333.399" cy="335.913" r="4" fill="#2849c7" fill-opacity=".58"><title>Cyclops / Jean Grey: 0.536 → 0.582; nearest neighbor retained</title></circle>
+<circle cx="161.785" cy="521.766" r="4" fill="#2849c7" fill-opacity=".58"><title>Dargo Ktor / Beta Ray Bill: 0.150 → 0.165; nearest neighbor retained</title></circle>
+<circle cx="194.399" cy="426.456" r="4" fill="#2849c7" fill-opacity=".58"><title>Darkdevil / Scarlet Spider: 0.223 → 0.379; nearest neighbor retained</title></circle>
+<circle cx="151.631" cy="542.763" r="4" fill="#2849c7" fill-opacity=".58"><title>Deathlok / Coldblood: 0.127 → 0.117; nearest neighbor retained</title></circle>
+<circle cx="128.376" cy="524.286" r="4" fill="#2849c7" fill-opacity=".58"><title>Debrii / Vance Astrovik: 0.075 → 0.159; nearest neighbor retained</title></circle>
+<circle cx="134.944" cy="536.111" r="4" fill="#2849c7" fill-opacity=".58"><title>Detroit Steel / Iron Man: 0.090 → 0.132; nearest neighbor retained</title></circle>
+<circle cx="326.417" cy="430.044" r="4" fill="#2849c7" fill-opacity=".58"><title>Devil Hulk / Hulk: 0.520 → 0.371; nearest neighbor retained</title></circle>
+<circle cx="155.154" cy="532.941" r="4" fill="#2849c7" fill-opacity=".58"><title>Doctor Druid / Doctor Strange: 0.135 → 0.139; nearest neighbor retained</title></circle>
+<circle cx="213.572" cy="369.947" r="4" fill="#2849c7" fill-opacity=".58"><title>Alice Nugent / Hyperion: 0.266 → 0.506; nearest neighbor retained</title></circle>
+<circle cx="259.614" cy="528.674" r="4" fill="#2849c7" fill-opacity=".58"><title>Dogpool / Deadpool: 0.370 → 0.149; nearest neighbor retained</title></circle>
+<circle cx="218.113" cy="544.999" r="4" fill="#2849c7" fill-opacity=".58"><title>Doom 2099 / Kristoff Vernard: 0.277 → 0.112; nearest neighbor retained</title></circle>
+<circle cx="480.699" cy="253.434" r="4" fill="#2849c7" fill-opacity=".58"><title>Eddie Brock / Venom: 0.867 → 0.768; nearest neighbor retained</title></circle>
+<circle cx="327.297" cy="536.496" r="4" fill="#2849c7" fill-opacity=".58"><title>Elsa Bloodstone / Ulysses Bloodstone: 0.522 → 0.131; nearest neighbor retained</title></circle>
+<circle cx="187.702" cy="485.969" r="4" fill="#2849c7" fill-opacity=".58"><title>Empath / Emma Frost: 0.208 → 0.245; nearest neighbor retained</title></circle>
+<circle cx="135.669" cy="543.590" r="4" fill="#2849c7" fill-opacity=".58"><title>Emrys Killebrew / Deadpool: 0.091 → 0.116; nearest neighbor retained</title></circle>
+<circle cx="140.424" cy="416.037" r="4" fill="#2849c7" fill-opacity=".58"><title>Fandral / Balder the Brave: 0.102 → 0.402; nearest neighbor retained</title></circle>
+<circle cx="122.981" cy="543.761" r="4" fill="#2849c7" fill-opacity=".58"><title>Firelord / Nova: 0.063 → 0.115; nearest neighbor retained</title></circle>
+<circle cx="160.269" cy="525.257" r="4" fill="#2849c7" fill-opacity=".58"><title>Flatman / Living Lightning: 0.147 → 0.157; nearest neighbor retained</title></circle>
+<circle cx="145.997" cy="501.682" r="4" fill="#2849c7" fill-opacity=".58"><title>Franklin Richards / Human Torch: 0.115 → 0.210; nearest neighbor retained</title></circle>
+<circle cx="166.537" cy="489.213" r="4" fill="#2849c7" fill-opacity=".58"><title>Gargoyle / Gremlin: 0.161 → 0.238; nearest neighbor retained</title></circle>
+<circle cx="125.022" cy="560.351" r="4" fill="#2849c7" fill-opacity=".58"><title>Gauntlet / Debrii: 0.067 → 0.078; nearest neighbor retained</title></circle>
+<circle cx="278.781" cy="504.576" r="4" fill="#2849c7" fill-opacity=".58"><title>Genis-Vell / Captain Marvel: 0.413 → 0.203; nearest neighbor retained</title></circle>
+<circle cx="440.746" cy="262.828" r="4" fill="#2849c7" fill-opacity=".58"><title>Ghost Rider / Ghost Rider: 0.777 → 0.746; nearest neighbor retained</title></circle>
+<circle cx="391.298" cy="387.722" r="4" fill="#2849c7" fill-opacity=".58"><title>Ghost Rider / Ghost Rider: 0.666 → 0.466; nearest neighbor retained</title></circle>
+<circle cx="440.746" cy="262.828" r="4" fill="#2849c7" fill-opacity=".58"><title>Ghost Rider / Ghost Rider: 0.777 → 0.746; nearest neighbor retained</title></circle>
+<circle cx="184.353" cy="480.222" r="4" fill="#2849c7" fill-opacity=".58"><title>Gladiator / Vulcan: 0.201 → 0.258; nearest neighbor retained</title></circle>
+<circle cx="233.416" cy="509.784" r="4" fill="#2849c7" fill-opacity=".58"><title>Golem / Blue Bullet: 0.311 → 0.191; nearest neighbor retained</title></circle>
+<circle cx="166.537" cy="489.213" r="4" fill="#2849c7" fill-opacity=".58"><title>Gremlin / Gargoyle: 0.161 → 0.238; nearest neighbor retained</title></circle>
+<circle cx="310.698" cy="406.822" r="4" fill="#2849c7" fill-opacity=".58"><title>Guardian / Vindicator: 0.485 → 0.423; nearest neighbor retained</title></circle>
+<circle cx="165.136" cy="517.697" r="4" fill="#2849c7" fill-opacity=".58"><title>Guardsman / Iron Man: 0.158 → 0.174; nearest neighbor retained</title></circle>
+<circle cx="301.001" cy="286.916" r="4" fill="#2849c7" fill-opacity=".58"><title>Gwenpool / Spider-Woman: 0.463 → 0.692; nearest neighbor retained</title></circle>
+<circle cx="228.379" cy="483.256" r="4" fill="#2849c7" fill-opacity=".58"><title>Hank Pym / Bill Foster: 0.300 → 0.251; nearest neighbor retained</title></circle>
+<circle cx="138.795" cy="412.775" r="4" fill="#2849c7" fill-opacity=".58"><title>Happy Sam Sawyer / Junior Juniper: 0.098 → 0.409; nearest neighbor retained</title></circle>
+<circle cx="218.855" cy="489.838" r="4" fill="#2849c7" fill-opacity=".58"><title>Hawkeye / Ronin: 0.278 → 0.236; nearest neighbor retained</title></circle>
+<circle cx="209.604" cy="381.225" r="4" fill="#2849c7" fill-opacity=".58"><title>Hercules / Ares: 0.258 → 0.480; nearest neighbor retained</title></circle>
+<circle cx="218.574" cy="543.753" r="4" fill="#2849c7" fill-opacity=".58"><title>Hornet / Ricochet: 0.278 → 0.115; nearest neighbor retained</title></circle>
+<circle cx="326.417" cy="430.044" r="4" fill="#2849c7" fill-opacity=".58"><title>Hulk / Devil Hulk: 0.520 → 0.371; nearest neighbor retained</title></circle>
+<circle cx="192.698" cy="558.672" r="4" fill="#2849c7" fill-opacity=".58"><title>Hulk 2099 / Hulk: 0.220 → 0.082; nearest neighbor retained</title></circle>
+<circle cx="213.572" cy="369.947" r="4" fill="#2849c7" fill-opacity=".58"><title>Hyperion / Alice Nugent: 0.266 → 0.506; nearest neighbor retained</title></circle>
+<circle cx="152.596" cy="477.253" r="4" fill="#2849c7" fill-opacity=".58"><title>Inferno / Karnak: 0.129 → 0.265; nearest neighbor retained</title></circle>
+<circle cx="277.920" cy="371.460" r="4" fill="#2849c7" fill-opacity=".58"><title>Iron Fist / Lei Kung: 0.411 → 0.502; nearest neighbor retained</title></circle>
+<circle cx="170.084" cy="534.482" r="4" fill="#2849c7" fill-opacity=".58"><title>Iron Man 2020 / Iron Man: 0.169 → 0.136; nearest neighbor retained</title></circle>
+<circle cx="397.193" cy="455.649" r="4" fill="#2849c7" fill-opacity=".58"><title>Jean Grey / Jean Grey: 0.679 → 0.313; nearest neighbor retained</title></circle>
+<circle cx="146.112" cy="508.889" r="4" fill="#2849c7" fill-opacity=".58"><title>Jeffrey Mace / Bucky: 0.115 → 0.194; nearest neighbor retained</title></circle>
+<circle cx="177.842" cy="534.629" r="4" fill="#2849c7" fill-opacity=".58"><title>Jericho Drumm / Doctor Strange: 0.186 → 0.136; nearest neighbor retained</title></circle>
+<circle cx="392.229" cy="461.051" r="4" fill="#2849c7" fill-opacity=".58"><title>Jessica Jones / Spider-Woman: 0.668 → 0.301; nearest neighbor retained</title></circle>
+<circle cx="138.795" cy="412.775" r="4" fill="#2849c7" fill-opacity=".58"><title>Junior Juniper / Happy Sam Sawyer: 0.098 → 0.409; nearest neighbor retained</title></circle>
+<circle cx="167.866" cy="352.827" r="4" fill="#2849c7" fill-opacity=".58"><title>Karnak / Black Bolt: 0.164 → 0.544; nearest neighbor retained</title></circle>
+<circle cx="399.185" cy="487.005" r="4" fill="#2849c7" fill-opacity=".58"><title>Killpower / Motormouth: 0.684 → 0.243; nearest neighbor retained</title></circle>
+<circle cx="123.904" cy="519.327" r="4" fill="#2849c7" fill-opacity=".58"><title>Leech / Rusty Collins: 0.065 → 0.170; nearest neighbor retained</title></circle>
+<circle cx="277.920" cy="371.460" r="4" fill="#2849c7" fill-opacity=".58"><title>Lei Kung / Iron Fist: 0.411 → 0.502; nearest neighbor retained</title></circle>
+<circle cx="160.269" cy="525.257" r="4" fill="#2849c7" fill-opacity=".58"><title>Living Lightning / Flatman: 0.147 → 0.157; nearest neighbor retained</title></circle>
+<circle cx="130.094" cy="549.404" r="4" fill="#2849c7" fill-opacity=".58"><title>Magician / Wolverine: 0.079 → 0.102; nearest neighbor retained</title></circle>
+<circle cx="153.472" cy="511.841" r="4" fill="#2849c7" fill-opacity=".58"><title>Man-Thing / Mockingbird: 0.131 → 0.187; nearest neighbor retained</title></circle>
+<circle cx="320.044" cy="361.987" r="4" fill="#2849c7" fill-opacity=".58"><title>Mania / Venom: 0.506 → 0.524; nearest neighbor retained</title></circle>
+<circle cx="110.529" cy="571.018" r="4" fill="#2849c7" fill-opacity=".58"><title>Miracleman / Brian Braddock: 0.035 → 0.054; nearest neighbor retained</title></circle>
+<circle cx="212.450" cy="497.389" r="4" fill="#2849c7" fill-opacity=".58"><title>Misty Knight / Iron Fist: 0.264 → 0.219; nearest neighbor retained</title></circle>
+<circle cx="169.502" cy="434.968" r="4" fill="#2849c7" fill-opacity=".58"><title>Morbius / Blade: 0.167 → 0.360; nearest neighbor retained</title></circle>
+<circle cx="399.185" cy="487.005" r="4" fill="#2849c7" fill-opacity=".58"><title>Motormouth / Killpower: 0.684 → 0.243; nearest neighbor retained</title></circle>
+<circle cx="263.250" cy="359.195" r="4" fill="#2849c7" fill-opacity=".58"><title>Ms. Marvel / Captain Marvel: 0.378 → 0.530; nearest neighbor retained</title></circle>
+<circle cx="142.687" cy="546.302" r="4" fill="#2849c7" fill-opacity=".58"><title>Nightwatch / She-Hulk: 0.107 → 0.109; nearest neighbor retained</title></circle>
+<circle cx="109.124" cy="552.456" r="4" fill="#2849c7" fill-opacity=".58"><title>Ogre / Cable: 0.032 → 0.096; nearest neighbor retained</title></circle>
+<circle cx="155.132" cy="498.379" r="4" fill="#2849c7" fill-opacity=".58"><title>Phil Urich / Mayday Parker: 0.135 → 0.217; nearest neighbor retained</title></circle>
+<circle cx="408.291" cy="417.799" r="4" fill="#2849c7" fill-opacity=".58"><title>Phoenix / Jean Grey: 0.704 → 0.398; nearest neighbor retained</title></circle>
+<circle cx="136.126" cy="554.400" r="4" fill="#2849c7" fill-opacity=".58"><title>Powerhouse / Nova: 0.092 → 0.091; nearest neighbor retained</title></circle>
+<circle cx="204.574" cy="508.714" r="4" fill="#2849c7" fill-opacity=".58"><title>Quasar / Phyla-Vell: 0.246 → 0.194; nearest neighbor retained</title></circle>
+<circle cx="293.188" cy="401.711" r="4" fill="#2849c7" fill-opacity=".58"><title>Quicksilver / Scarlet Witch: 0.445 → 0.434; nearest neighbor retained</title></circle>
+<circle cx="125.649" cy="538.813" r="4" fill="#2849c7" fill-opacity=".58"><title>Ravage 2099 / Spider-Man: 0.069 → 0.126; nearest neighbor retained</title></circle>
+<circle cx="239.428" cy="293.187" r="4" fill="#2849c7" fill-opacity=".58"><title>Raza Longknife / Ch&#x27;od: 0.325 → 0.678; nearest neighbor retained</title></circle>
+<circle cx="188.121" cy="462.823" r="4" fill="#2849c7" fill-opacity=".58"><title>Robbie Baldwin / Timeslip: 0.209 → 0.297; nearest neighbor retained</title></circle>
+<circle cx="174.231" cy="510.858" r="4" fill="#2849c7" fill-opacity=".58"><title>Rom the Space Knight / Turbo: 0.178 → 0.189; nearest neighbor retained</title></circle>
+<circle cx="218.855" cy="489.838" r="4" fill="#2849c7" fill-opacity=".58"><title>Ronin / Hawkeye: 0.278 → 0.236; nearest neighbor retained</title></circle>
+<circle cx="213.185" cy="480.643" r="4" fill="#2849c7" fill-opacity=".58"><title>Ruby Summers / Scarlet Scarab: 0.266 → 0.257; nearest neighbor retained</title></circle>
+<circle cx="213.185" cy="480.643" r="4" fill="#2849c7" fill-opacity=".58"><title>Scarlet Scarab / Ruby Summers: 0.266 → 0.257; nearest neighbor retained</title></circle>
+<circle cx="293.188" cy="401.711" r="4" fill="#2849c7" fill-opacity=".58"><title>Scarlet Witch / Quicksilver: 0.445 → 0.434; nearest neighbor retained</title></circle>
+<circle cx="348.735" cy="353.170" r="4" fill="#2849c7" fill-opacity=".58"><title>Scatterbrain / Scaredycat: 0.570 → 0.543; nearest neighbor retained</title></circle>
+<circle cx="115.937" cy="536.390" r="4" fill="#2849c7" fill-opacity=".58"><title>Scorpio / Junior Juniper: 0.047 → 0.132; nearest neighbor retained</title></circle>
+<circle cx="116.051" cy="559.737" r="4" fill="#2849c7" fill-opacity=".58"><title>Sean and Chris / Firelord: 0.047 → 0.079; nearest neighbor retained</title></circle>
+<circle cx="295.016" cy="453.212" r="4" fill="#2849c7" fill-opacity=".58"><title>Shang-Chi / Black Jack Tarr: 0.449 → 0.319; nearest neighbor retained</title></circle>
+<circle cx="214.637" cy="503.362" r="4" fill="#2849c7" fill-opacity=".58"><title>She-Hulk / She-Hulk: 0.269 → 0.206; nearest neighbor retained</title></circle>
+<circle cx="307.528" cy="273.064" r="4" fill="#2849c7" fill-opacity=".58"><title>Shuri / Black Panther: 0.478 → 0.723; nearest neighbor retained</title></circle>
+<circle cx="209.552" cy="479.722" r="4" fill="#2849c7" fill-opacity=".58"><title>Silk / Spider-Woman: 0.257 → 0.259; nearest neighbor retained</title></circle>
+<circle cx="229.576" cy="544.664" r="4" fill="#2849c7" fill-opacity=".58"><title>Skull the Slayer / Blazing Skull: 0.302 → 0.113; nearest neighbor retained</title></circle>
+<circle cx="153.893" cy="543.681" r="4" fill="#2849c7" fill-opacity=".58"><title>Solo / G. W. Bridge: 0.132 → 0.115; nearest neighbor retained</title></circle>
+<circle cx="222.495" cy="481.186" r="4" fill="#2849c7" fill-opacity=".58"><title>Speed / Scarlet Witch: 0.287 → 0.256; nearest neighbor retained</title></circle>
+<circle cx="228.103" cy="484.906" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Bitch / Spider-Girl: 0.299 → 0.247; nearest neighbor retained</title></circle>
+<circle cx="348.038" cy="477.501" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Girl / Mayday Parker: 0.569 → 0.264; nearest neighbor retained</title></circle>
+<circle cx="303.091" cy="409.202" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Man / Mayday Parker: 0.468 → 0.418; nearest neighbor retained</title></circle>
+<circle cx="254.737" cy="502.370" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Man / Spider-Man: 0.359 → 0.208; nearest neighbor retained</title></circle>
+<circle cx="280.256" cy="443.021" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Man Noir / Spider-Man: 0.416 → 0.342; nearest neighbor retained</title></circle>
+<circle cx="301.001" cy="286.916" r="4" fill="#2849c7" fill-opacity=".58"><title>Spider-Woman / Gwenpool: 0.463 → 0.692; nearest neighbor retained</title></circle>
+<circle cx="322.679" cy="358.022" r="4" fill="#2849c7" fill-opacity=".58"><title>Spitfire / Union Jack: 0.512 → 0.533; nearest neighbor retained</title></circle>
+<circle cx="207.974" cy="457.629" r="4" fill="#2849c7" fill-opacity=".58"><title>Starhawk / Kismet: 0.254 → 0.309; nearest neighbor retained</title></circle>
+<circle cx="159.006" cy="501.798" r="4" fill="#2849c7" fill-opacity=".58"><title>Starr the Slayer / Nightmask: 0.144 → 0.209; nearest neighbor retained</title></circle>
+<circle cx="147.856" cy="580.336" r="4" fill="#2849c7" fill-opacity=".58"><title>Steel Spider / Spider-Man: 0.119 → 0.033; nearest neighbor retained</title></circle>
+<circle cx="113.736" cy="561.452" r="4" fill="#2849c7" fill-opacity=".58"><title>Super Rabbit / Will o&#x27; the Wisp: 0.042 → 0.075; nearest neighbor retained</title></circle>
+<circle cx="108.466" cy="566.242" r="4" fill="#2849c7" fill-opacity=".58"><title>Synapse / Black Widow: 0.030 → 0.065; nearest neighbor retained</title></circle>
+<circle cx="161.901" cy="514.926" r="4" fill="#2849c7" fill-opacity=".58"><title>Tarantula / Power Man: 0.150 → 0.180; nearest neighbor retained</title></circle>
+<circle cx="158.417" cy="558.345" r="4" fill="#2849c7" fill-opacity=".58"><title>Thor Girl / Beta Ray Bill: 0.143 → 0.082; nearest neighbor retained</title></circle>
+<circle cx="128.051" cy="547.396" r="4" fill="#2849c7" fill-opacity=".58"><title>Thunderbolt / Tarantula: 0.074 → 0.107; nearest neighbor retained</title></circle>
+<circle cx="188.121" cy="462.823" r="4" fill="#2849c7" fill-opacity=".58"><title>Timeslip / Robbie Baldwin: 0.209 → 0.297; nearest neighbor retained</title></circle>
+<circle cx="302.376" cy="421.055" r="4" fill="#2849c7" fill-opacity=".58"><title>Toro / Human Torch: 0.466 → 0.391; nearest neighbor retained</title></circle>
+<circle cx="174.231" cy="510.858" r="4" fill="#2849c7" fill-opacity=".58"><title>Turbo / Rom the Space Knight: 0.178 → 0.189; nearest neighbor retained</title></circle>
+<circle cx="327.297" cy="536.496" r="4" fill="#2849c7" fill-opacity=".58"><title>Ulysses Bloodstone / Elsa Bloodstone: 0.522 → 0.131; nearest neighbor retained</title></circle>
+<circle cx="313.761" cy="378.361" r="4" fill="#2849c7" fill-opacity=".58"><title>Union Jack / Spitfire: 0.492 → 0.487; nearest neighbor retained</title></circle>
+<circle cx="322.679" cy="358.022" r="4" fill="#2849c7" fill-opacity=".58"><title>Union Jack / Spitfire: 0.512 → 0.533; nearest neighbor retained</title></circle>
+<circle cx="137.638" cy="521.598" r="4" fill="#2849c7" fill-opacity=".58"><title>Ursa Major / Black Widow: 0.096 → 0.165; nearest neighbor retained</title></circle>
+<circle cx="480.699" cy="253.434" r="4" fill="#2849c7" fill-opacity=".58"><title>Venom / Eddie Brock: 0.867 → 0.768; nearest neighbor retained</title></circle>
+<circle cx="310.698" cy="406.822" r="4" fill="#2849c7" fill-opacity=".58"><title>Vindicator / Guardian: 0.485 → 0.423; nearest neighbor retained</title></circle>
+<circle cx="311.439" cy="380.742" r="4" fill="#2849c7" fill-opacity=".58"><title>Vyking / Backhand: 0.486 → 0.481; nearest neighbor retained</title></circle>
+<circle cx="179.376" cy="527.139" r="4" fill="#2849c7" fill-opacity=".58"><title>War Machine / Iron Man: 0.190 → 0.152; nearest neighbor retained</title></circle>
+<circle cx="165.905" cy="528.227" r="4" fill="#2849c7" fill-opacity=".58"><title>Werewolf by Night / Morbius: 0.159 → 0.150; nearest neighbor retained</title></circle>
+<circle cx="397.348" cy="481.094" r="4" fill="#2849c7" fill-opacity=".58"><title>White Tiger / White Tiger: 0.679 → 0.256; nearest neighbor retained</title></circle>
+<circle cx="397.348" cy="481.094" r="4" fill="#2849c7" fill-opacity=".58"><title>White Tiger / White Tiger: 0.679 → 0.256; nearest neighbor retained</title></circle>
+<circle cx="233.635" cy="412.993" r="4" fill="#2849c7" fill-opacity=".58"><title>William Burnside / Jack Monroe: 0.312 → 0.409; nearest neighbor retained</title></circle>
+<circle cx="365.689" cy="428.292" r="4" fill="#2849c7" fill-opacity=".58"><title>Wolverine / Wolverine: 0.608 → 0.375; nearest neighbor retained</title></circle>
+<circle cx="365.689" cy="428.292" r="4" fill="#2849c7" fill-opacity=".58"><title>Wolverine / Wolverine: 0.608 → 0.375; nearest neighbor retained</title></circle>
+<circle cx="241.054" cy="477.034" r="4" fill="#2849c7" fill-opacity=".58"><title>Yelena Belova / Black Widow: 0.328 → 0.265; nearest neighbor retained</title></circle>
+<circle cx="242.337" cy="536.149" r="4" fill="#c84527" fill-opacity=".58"><title>Adam Warlock / Kismet: 0.331 → 0.132; nearest neighbor changed</title></circle>
+<circle cx="282.482" cy="548.497" r="4" fill="#c84527" fill-opacity=".58"><title>Agent X / Deadpool: 0.421 → 0.105; nearest neighbor changed</title></circle>
+<circle cx="200.280" cy="336.503" r="4" fill="#c84527" fill-opacity=".58"><title>Ajak / Ikaris: 0.237 → 0.581; nearest neighbor changed</title></circle>
+<circle cx="204.165" cy="470.689" r="4" fill="#c84527" fill-opacity=".58"><title>Anole / Northstar: 0.245 → 0.279; nearest neighbor changed</title></circle>
+<circle cx="264.038" cy="537.143" r="4" fill="#c84527" fill-opacity=".58"><title>Anya Corazon / Spider-Girl: 0.380 → 0.130; nearest neighbor changed</title></circle>
+<circle cx="151.089" cy="587.289" r="4" fill="#c84527" fill-opacity=".58"><title>Arabian Knight / Moon Knight: 0.126 → 0.017; nearest neighbor changed</title></circle>
+<circle cx="311.439" cy="380.742" r="4" fill="#c84527" fill-opacity=".58"><title>Backhand / Vyking: 0.486 → 0.481; nearest neighbor changed</title></circle>
+<circle cx="161.785" cy="521.766" r="4" fill="#c84527" fill-opacity=".58"><title>Beta Ray Bill / Dargo Ktor: 0.150 → 0.165; nearest neighbor changed</title></circle>
+<circle cx="237.997" cy="450.181" r="4" fill="#c84527" fill-opacity=".58"><title>Betsy Braddock / Brian Braddock: 0.321 → 0.325; nearest neighbor changed</title></circle>
+<circle cx="149.403" cy="587.405" r="4" fill="#c84527" fill-opacity=".58"><title>Bird-Brain / Red Raven: 0.122 → 0.017; nearest neighbor changed</title></circle>
+<circle cx="195.481" cy="378.515" r="4" fill="#c84527" fill-opacity=".58"><title>Black Bolt / Gorgon: 0.226 → 0.486; nearest neighbor changed</title></circle>
+<circle cx="115.082" cy="570.824" r="4" fill="#c84527" fill-opacity=".58"><title>Black Fox / Marvel Boy: 0.045 → 0.054; nearest neighbor changed</title></circle>
+<circle cx="165.932" cy="577.118" r="4" fill="#c84527" fill-opacity=".58"><title>Black Knight / Blade: 0.159 → 0.040; nearest neighbor changed</title></circle>
+<circle cx="247.525" cy="349.610" r="4" fill="#c84527" fill-opacity=".58"><title>Blackthorn / Backhand: 0.343 → 0.551; nearest neighbor changed</title></circle>
+<circle cx="114.694" cy="589.657" r="4" fill="#c84527" fill-opacity=".58"><title>Blackwulf / Deathlok: 0.044 → 0.012; nearest neighbor changed</title></circle>
+<circle cx="229.576" cy="544.664" r="4" fill="#c84527" fill-opacity=".58"><title>Blazing Skull / Skull the Slayer: 0.302 → 0.113; nearest neighbor changed</title></circle>
+<circle cx="199.549" cy="580.695" r="4" fill="#c84527" fill-opacity=".58"><title>Blue Diamond / Blue Marvel: 0.235 → 0.032; nearest neighbor changed</title></circle>
+<circle cx="182.658" cy="464.160" r="4" fill="#c84527" fill-opacity=".58"><title>Blue Eagle / Moonglow: 0.197 → 0.294; nearest neighbor changed</title></circle>
+<circle cx="199.549" cy="580.695" r="4" fill="#c84527" fill-opacity=".58"><title>Blue Marvel / Blue Diamond: 0.235 → 0.032; nearest neighbor changed</title></circle>
+<circle cx="144.327" cy="549.457" r="4" fill="#c84527" fill-opacity=".58"><title>Box / Guardian: 0.111 → 0.102; nearest neighbor changed</title></circle>
+<circle cx="133.164" cy="593.746" r="4" fill="#c84527" fill-opacity=".58"><title>Brain Drain / Bird-Brain: 0.086 → 0.003; nearest neighbor changed</title></circle>
+<circle cx="194.837" cy="591.819" r="4" fill="#c84527" fill-opacity=".58"><title>Breeze Barton / Hawkeye: 0.224 → 0.007; nearest neighbor changed</title></circle>
+<circle cx="141.677" cy="534.797" r="4" fill="#c84527" fill-opacity=".58"><title>Bug / Star-Lord: 0.105 → 0.135; nearest neighbor changed</title></circle>
+<circle cx="226.368" cy="522.679" r="4" fill="#c84527" fill-opacity=".58"><title>Cable / Wolverine: 0.295 → 0.163; nearest neighbor changed</title></circle>
+<circle cx="161.054" cy="509.661" r="4" fill="#c84527" fill-opacity=".58"><title>Cammi / Chase Stein: 0.148 → 0.192; nearest neighbor changed</title></circle>
+<circle cx="278.781" cy="504.576" r="4" fill="#c84527" fill-opacity=".58"><title>Captain Marvel / Genis-Vell: 0.413 → 0.203; nearest neighbor changed</title></circle>
+<circle cx="126.818" cy="578.419" r="4" fill="#c84527" fill-opacity=".58"><title>Captain Ultra / Vance Astrovik: 0.072 → 0.037; nearest neighbor changed</title></circle>
+<circle cx="169.585" cy="585.451" r="4" fill="#c84527" fill-opacity=".58"><title>Captain Universe / Enigma: 0.168 → 0.021; nearest neighbor changed</title></circle>
+<circle cx="106.831" cy="583.275" r="4" fill="#c84527" fill-opacity=".58"><title>Charcoal / Luke Cage: 0.027 → 0.026; nearest neighbor changed</title></circle>
+<circle cx="138.843" cy="561.727" r="4" fill="#c84527" fill-opacity=".58"><title>Cloak and Dagger / Doctor Strange: 0.099 → 0.075; nearest neighbor changed</title></circle>
+<circle cx="157.696" cy="590.013" r="4" fill="#c84527" fill-opacity=".58"><title>Crippler / Wild Child: 0.141 → 0.011; nearest neighbor changed</title></circle>
+<circle cx="133.778" cy="564.745" r="4" fill="#c84527" fill-opacity=".58"><title>Darkhawk / Nova: 0.087 → 0.068; nearest neighbor changed</title></circle>
+<circle cx="282.482" cy="548.497" r="4" fill="#c84527" fill-opacity=".58"><title>Deadpool / Agent X: 0.421 → 0.105; nearest neighbor changed</title></circle>
+<circle cx="121.295" cy="588.500" r="4" fill="#c84527" fill-opacity=".58"><title>Delroy Garrett / Black Knight: 0.059 → 0.015; nearest neighbor changed</title></circle>
+<circle cx="206.437" cy="575.812" r="4" fill="#c84527" fill-opacity=".58"><title>Devil Dinosaur / Devil Hulk: 0.250 → 0.043; nearest neighbor changed</title></circle>
+<circle cx="164.510" cy="589.407" r="4" fill="#c84527" fill-opacity=".58"><title>Digitek / Spider-UK: 0.156 → 0.013; nearest neighbor changed</title></circle>
+<circle cx="170.038" cy="578.913" r="4" fill="#c84527" fill-opacity=".58"><title>Doctor Nemesis / Isaiah Bradley: 0.169 → 0.036; nearest neighbor changed</title></circle>
+<circle cx="177.842" cy="534.629" r="4" fill="#c84527" fill-opacity=".58"><title>Doctor Strange / Jericho Drumm: 0.186 → 0.136; nearest neighbor changed</title></circle>
+<circle cx="172.516" cy="589.668" r="4" fill="#c84527" fill-opacity=".58"><title>Dragon Lord / Star-Lord: 0.174 → 0.012; nearest neighbor changed</title></circle>
+<circle cx="158.009" cy="562.470" r="4" fill="#c84527" fill-opacity=".58"><title>Dusk / Hornet: 0.142 → 0.073; nearest neighbor changed</title></circle>
+<circle cx="300.979" cy="568.871" r="4" fill="#c84527" fill-opacity=".58"><title>Emma Frost / Jack Frost: 0.463 → 0.059; nearest neighbor changed</title></circle>
+<circle cx="169.585" cy="585.451" r="4" fill="#c84527" fill-opacity=".58"><title>Enigma / Captain Universe: 0.168 → 0.021; nearest neighbor changed</title></circle>
+<circle cx="114.912" cy="549.498" r="4" fill="#c84527" fill-opacity=".58"><title>Ethan Edwards / Spider-Man: 0.045 → 0.102; nearest neighbor changed</title></circle>
+<circle cx="166.741" cy="534.100" r="4" fill="#c84527" fill-opacity=".58"><title>Fabio Medina / Cyclops: 0.161 → 0.137; nearest neighbor changed</title></circle>
+<circle cx="137.823" cy="571.958" r="4" fill="#c84527" fill-opacity=".58"><title>Father Time / Hawkeye: 0.096 → 0.052; nearest neighbor changed</title></circle>
+<circle cx="114.439" cy="583.063" r="4" fill="#c84527" fill-opacity=".58"><title>Fin Fang Foom / Spider-Bitch: 0.044 → 0.027; nearest neighbor changed</title></circle>
+<circle cx="143.527" cy="558.349" r="4" fill="#c84527" fill-opacity=".58"><title>Firebird / Hank Pym: 0.109 → 0.082; nearest neighbor changed</title></circle>
+<circle cx="156.788" cy="544.999" r="4" fill="#c84527" fill-opacity=".58"><title>Force / Iron Man: 0.139 → 0.112; nearest neighbor changed</title></circle>
+<circle cx="149.125" cy="552.495" r="4" fill="#c84527" fill-opacity=".58"><title>Frankenstein&#x27;s Monster / Elsa Bloodstone: 0.122 → 0.096; nearest neighbor changed</title></circle>
+<circle cx="129.461" cy="563.876" r="4" fill="#c84527" fill-opacity=".58"><title>Frog-Man / Spider-Man: 0.077 → 0.070; nearest neighbor changed</title></circle>
+<circle cx="215.420" cy="548.619" r="4" fill="#c84527" fill-opacity=".58"><title>G. W. Bridge / Cable: 0.271 → 0.104; nearest neighbor changed</title></circle>
+<circle cx="251.030" cy="591.172" r="4" fill="#c84527" fill-opacity=".58"><title>Garrison Kane / Solomon Kane: 0.351 → 0.009; nearest neighbor changed</title></circle>
+<circle cx="195.481" cy="378.515" r="4" fill="#c84527" fill-opacity=".58"><title>Gorgon / Black Bolt: 0.226 → 0.486; nearest neighbor changed</title></circle>
+<circle cx="118.089" cy="590.760" r="4" fill="#c84527" fill-opacity=".58"><title>Helix / Scarlet Spider: 0.052 → 0.010; nearest neighbor changed</title></circle>
+<circle cx="120.225" cy="581.721" r="4" fill="#c84527" fill-opacity=".58"><title>Hellfire / Peggy Carter: 0.057 → 0.030; nearest neighbor changed</title></circle>
+<circle cx="163.865" cy="529.657" r="4" fill="#c84527" fill-opacity=".58"><title>Hellion / Surge: 0.155 → 0.147; nearest neighbor changed</title></circle>
+<circle cx="137.751" cy="563.246" r="4" fill="#c84527" fill-opacity=".58"><title>Hit-Monkey / Deadpool: 0.096 → 0.071; nearest neighbor changed</title></circle>
+<circle cx="149.050" cy="587.332" r="4" fill="#c84527" fill-opacity=".58"><title>Hrimhari / Red Wolf: 0.121 → 0.017; nearest neighbor changed</title></circle>
+<circle cx="165.341" cy="524.941" r="4" fill="#c84527" fill-opacity=".58"><title>Hulkling / Speed: 0.158 → 0.157; nearest neighbor changed</title></circle>
+<circle cx="164.262" cy="565.918" r="4" fill="#c84527" fill-opacity=".58"><title>Human Fly / Spider-Man: 0.156 → 0.065; nearest neighbor changed</title></circle>
+<circle cx="357.810" cy="523.425" r="4" fill="#c84527" fill-opacity=".58"><title>Human Torch / Human Torch: 0.591 → 0.161; nearest neighbor changed</title></circle>
+<circle cx="357.810" cy="523.425" r="4" fill="#c84527" fill-opacity=".58"><title>Human Torch / Human Torch: 0.591 → 0.161; nearest neighbor changed</title></circle>
+<circle cx="217.149" cy="464.062" r="4" fill="#c84527" fill-opacity=".58"><title>Hybrid / Venom: 0.274 → 0.294; nearest neighbor changed</title></circle>
+<circle cx="200.280" cy="336.503" r="4" fill="#c84527" fill-opacity=".58"><title>Ikaris / Ajak: 0.237 → 0.581; nearest neighbor changed</title></circle>
+<circle cx="110.494" cy="589.187" r="4" fill="#c84527" fill-opacity=".58"><title>Illuminator / Jessica Jones: 0.035 → 0.013; nearest neighbor changed</title></circle>
+<circle cx="131.843" cy="555.281" r="4" fill="#c84527" fill-opacity=".58"><title>Iron Lad / Speed: 0.083 → 0.089; nearest neighbor changed</title></circle>
+<circle cx="179.376" cy="527.139" r="4" fill="#c84527" fill-opacity=".58"><title>Iron Man / War Machine: 0.190 → 0.152; nearest neighbor changed</title></circle>
+<circle cx="170.038" cy="578.913" r="4" fill="#c84527" fill-opacity=".58"><title>Isaiah Bradley / Doctor Nemesis: 0.169 → 0.036; nearest neighbor changed</title></circle>
+<circle cx="300.979" cy="568.871" r="4" fill="#c84527" fill-opacity=".58"><title>Jack Frost / Emma Frost: 0.463 → 0.059; nearest neighbor changed</title></circle>
+<circle cx="359.833" cy="480.140" r="4" fill="#c84527" fill-opacity=".58"><title>Jack Monroe / Nomad: 0.595 → 0.258; nearest neighbor changed</title></circle>
+<circle cx="132.772" cy="576.414" r="4" fill="#c84527" fill-opacity=".58"><title>Janice Lincoln / Bucky: 0.085 → 0.042; nearest neighbor changed</title></circle>
+<circle cx="408.291" cy="417.799" r="4" fill="#c84527" fill-opacity=".58"><title>Jean Grey / Phoenix: 0.704 → 0.398; nearest neighbor changed</title></circle>
+<circle cx="184.932" cy="586.489" r="4" fill="#c84527" fill-opacity=".58"><title>John Jameson / Red Wolf: 0.202 → 0.019; nearest neighbor changed</title></circle>
+<circle cx="160.321" cy="487.456" r="4" fill="#c84527" fill-opacity=".58"><title>Jubilee / Wolverine: 0.147 → 0.242; nearest neighbor changed</title></circle>
+<circle cx="173.101" cy="583.388" r="4" fill="#c84527" fill-opacity=".58"><title>Justice / Vance Astrovik: 0.176 → 0.026; nearest neighbor changed</title></circle>
+<circle cx="250.505" cy="523.558" r="4" fill="#c84527" fill-opacity=".58"><title>Kid Colt / Two-Gun Kid: 0.349 → 0.161; nearest neighbor changed</title></circle>
+<circle cx="121.499" cy="585.951" r="4" fill="#c84527" fill-opacity=".58"><title>Killraven / Red Raven: 0.060 → 0.020; nearest neighbor changed</title></circle>
+<circle cx="242.337" cy="536.149" r="4" fill="#c84527" fill-opacity=".58"><title>Kismet / Adam Warlock: 0.331 → 0.132; nearest neighbor changed</title></circle>
+<circle cx="208.537" cy="519.405" r="4" fill="#c84527" fill-opacity=".58"><title>Korvus / Rachel Summers: 0.255 → 0.170; nearest neighbor changed</title></circle>
+<circle cx="218.113" cy="544.999" r="4" fill="#c84527" fill-opacity=".58"><title>Kristoff Vernard / Doom 2099: 0.277 → 0.112; nearest neighbor changed</title></circle>
+<circle cx="185.536" cy="519.256" r="4" fill="#c84527" fill-opacity=".58"><title>Luke Cage / Jessica Jones: 0.203 → 0.170; nearest neighbor changed</title></circle>
+<circle cx="170.403" cy="580.961" r="4" fill="#c84527" fill-opacity=".58"><title>Machine Man / War Machine: 0.169 → 0.032; nearest neighbor changed</title></circle>
+<circle cx="137.792" cy="544.318" r="4" fill="#c84527" fill-opacity=".58"><title>Mahr Vehl / Captain Marvel: 0.096 → 0.114; nearest neighbor changed</title></circle>
+<circle cx="178.210" cy="379.003" r="4" fill="#c84527" fill-opacity=".58"><title>Makkari / Ajak: 0.187 → 0.485; nearest neighbor changed</title></circle>
+<circle cx="106.227" cy="572.010" r="4" fill="#c84527" fill-opacity=".58"><title>Mark Hazzard: Merc / Deadpool: 0.025 → 0.052; nearest neighbor changed</title></circle>
+<circle cx="130.713" cy="558.313" r="4" fill="#c84527" fill-opacity=".58"><title>Marvel Boy / Quasar: 0.080 → 0.082; nearest neighbor changed</title></circle>
+<circle cx="348.038" cy="477.501" r="4" fill="#c84527" fill-opacity=".58"><title>Mayday Parker / Spider-Girl: 0.569 → 0.264; nearest neighbor changed</title></circle>
+<circle cx="160.245" cy="571.150" r="4" fill="#c84527" fill-opacity=".58"><title>Mockingbird / Hawkeye: 0.147 → 0.054; nearest neighbor changed</title></circle>
+<circle cx="161.630" cy="575.044" r="4" fill="#c84527" fill-opacity=".58"><title>Moon Knight / Misty Knight: 0.150 → 0.045; nearest neighbor changed</title></circle>
+<circle cx="272.760" cy="474.899" r="4" fill="#c84527" fill-opacity=".58"><title>Moondragon / Phyla-Vell: 0.399 → 0.270; nearest neighbor changed</title></circle>
+<circle cx="200.609" cy="466.010" r="4" fill="#c84527" fill-opacity=".58"><title>Moonglow / Alice Nugent: 0.237 → 0.290; nearest neighbor changed</title></circle>
+<circle cx="107.506" cy="574.532" r="4" fill="#c84527" fill-opacity=".58"><title>Phil Grayfield / Spider-Man: 0.028 → 0.046; nearest neighbor changed</title></circle>
+<circle cx="186.794" cy="545.006" r="4" fill="#c84527" fill-opacity=".58"><title>Nightmask / Star Brand: 0.206 → 0.112; nearest neighbor changed</title></circle>
+<circle cx="165.360" cy="530.776" r="4" fill="#c84527" fill-opacity=".58"><title>Noh-Varr / Captain Marvel: 0.158 → 0.144; nearest neighbor changed</title></circle>
+<circle cx="359.833" cy="480.140" r="4" fill="#c84527" fill-opacity=".58"><title>Nomad / Jack Monroe: 0.595 → 0.258; nearest neighbor changed</title></circle>
+<circle cx="204.165" cy="470.689" r="4" fill="#c84527" fill-opacity=".58"><title>Northstar / Anole: 0.245 → 0.279; nearest neighbor changed</title></circle>
+<circle cx="228.049" cy="577.131" r="4" fill="#c84527" fill-opacity=".58"><title>Nova / Ghost Rider: 0.299 → 0.040; nearest neighbor changed</title></circle>
+<circle cx="171.697" cy="567.713" r="4" fill="#c84527" fill-opacity=".58"><title>Outlaw / Agent X: 0.172 → 0.061; nearest neighbor changed</title></circle>
+<circle cx="154.152" cy="548.402" r="4" fill="#c84527" fill-opacity=".58"><title>Oya / Cyclops: 0.133 → 0.105; nearest neighbor changed</title></circle>
+<circle cx="175.493" cy="545.994" r="4" fill="#c84527" fill-opacity=".58"><title>Paladin / Misty Knight: 0.181 → 0.110; nearest neighbor changed</title></circle>
+<circle cx="233.315" cy="570.310" r="4" fill="#c84527" fill-opacity=".58"><title>Patsy Walker / U.S. Agent: 0.311 → 0.055; nearest neighbor changed</title></circle>
+<circle cx="149.356" cy="587.906" r="4" fill="#c84527" fill-opacity=".58"><title>Peggy Carter / Dogpool: 0.122 → 0.016; nearest neighbor changed</title></circle>
+<circle cx="272.760" cy="474.899" r="4" fill="#c84527" fill-opacity=".58"><title>Phyla-Vell / Moondragon: 0.399 → 0.270; nearest neighbor changed</title></circle>
+<circle cx="180.042" cy="570.845" r="4" fill="#c84527" fill-opacity=".58"><title>Power Man / Luke Cage: 0.191 → 0.054; nearest neighbor changed</title></circle>
+<circle cx="161.797" cy="476.012" r="4" fill="#c84527" fill-opacity=".58"><title>Puck / Vindicator: 0.150 → 0.267; nearest neighbor changed</title></circle>
+<circle cx="265.315" cy="480.121" r="4" fill="#c84527" fill-opacity=".58"><title>Rachel Summers / Phoenix: 0.383 → 0.258; nearest neighbor changed</title></circle>
+<circle cx="232.918" cy="393.360" r="4" fill="#c84527" fill-opacity=".58"><title>Radian / Blackthorn: 0.310 → 0.453; nearest neighbor changed</title></circle>
+<circle cx="123.437" cy="582.207" r="4" fill="#c84527" fill-opacity=".58"><title>Radioactive Man / Black Panther: 0.064 → 0.029; nearest neighbor changed</title></circle>
+<circle cx="177.417" cy="507.869" r="4" fill="#c84527" fill-opacity=".58"><title>Red Guardian / Black Widow: 0.185 → 0.196; nearest neighbor changed</title></circle>
+<circle cx="149.403" cy="587.405" r="4" fill="#c84527" fill-opacity=".58"><title>Red Raven / Bird-Brain: 0.122 → 0.017; nearest neighbor changed</title></circle>
+<circle cx="184.932" cy="586.489" r="4" fill="#c84527" fill-opacity=".58"><title>Red Wolf / John Jameson: 0.202 → 0.019; nearest neighbor changed</title></circle>
+<circle cx="130.905" cy="578.792" r="4" fill="#c84527" fill-opacity=".58"><title>Redneck / Turbo: 0.081 → 0.036; nearest neighbor changed</title></circle>
+<circle cx="218.574" cy="543.753" r="4" fill="#c84527" fill-opacity=".58"><title>Ricochet / Hornet: 0.278 → 0.115; nearest neighbor changed</title></circle>
+<circle cx="243.417" cy="535.617" r="4" fill="#c84527" fill-opacity=".58"><title>Rikki Barnes / Nomad: 0.334 → 0.133; nearest neighbor changed</title></circle>
+<circle cx="176.924" cy="482.286" r="4" fill="#c84527" fill-opacity=".58"><title>Rocket Raccoon / Star-Lord: 0.184 → 0.253; nearest neighbor changed</title></circle>
+<circle cx="122.106" cy="572.143" r="4" fill="#c84527" fill-opacity=".58"><title>Rockman / Jack Frost: 0.061 → 0.051; nearest neighbor changed</title></circle>
+<circle cx="170.423" cy="502.964" r="4" fill="#c84527" fill-opacity=".58"><title>Rockslide / Anole: 0.169 → 0.207; nearest neighbor changed</title></circle>
+<circle cx="126.680" cy="545.338" r="4" fill="#c84527" fill-opacity=".58"><title>Rusty Collins / Cable: 0.071 → 0.112; nearest neighbor changed</title></circle>
+<circle cx="141.113" cy="575.188" r="4" fill="#c84527" fill-opacity=".58"><title>Sabra / Arabian Knight: 0.104 → 0.045; nearest neighbor changed</title></circle>
+<circle cx="124.673" cy="567.000" r="4" fill="#c84527" fill-opacity=".58"><title>Satana / Deadpool: 0.067 → 0.063; nearest neighbor changed</title></circle>
+<circle cx="348.735" cy="353.170" r="4" fill="#c84527" fill-opacity=".58"><title>Scaredycat / Scatterbrain: 0.570 → 0.543; nearest neighbor changed</title></circle>
+<circle cx="257.135" cy="520.606" r="4" fill="#c84527" fill-opacity=".58"><title>Scarlet Spider / Spider-Man: 0.364 → 0.167; nearest neighbor changed</title></circle>
+<circle cx="118.069" cy="585.648" r="4" fill="#c84527" fill-opacity=".58"><title>Sentry / She-Hulk: 0.052 → 0.021; nearest neighbor changed</title></circle>
+<circle cx="119.760" cy="565.682" r="4" fill="#c84527" fill-opacity=".58"><title>Shamrock / She-Hulk: 0.056 → 0.066; nearest neighbor changed</title></circle>
+<circle cx="134.311" cy="540.762" r="4" fill="#c84527" fill-opacity=".58"><title>Shatterstar / Cable: 0.088 → 0.122; nearest neighbor changed</title></circle>
+<circle cx="289.132" cy="515.145" r="4" fill="#c84527" fill-opacity=".58"><title>She-Hulk / Hulk: 0.436 → 0.179; nearest neighbor changed</title></circle>
+<circle cx="244.764" cy="393.796" r="4" fill="#c84527" fill-opacity=".58"><title>Shear / Backhand: 0.337 → 0.452; nearest neighbor changed</title></circle>
+<circle cx="139.821" cy="498.237" r="4" fill="#c84527" fill-opacity=".58"><title>Silencer / Backhand: 0.101 → 0.217; nearest neighbor changed</title></circle>
+<circle cx="110.243" cy="580.677" r="4" fill="#c84527" fill-opacity=".58"><title>Silhouette / Isaiah Bradley: 0.034 → 0.032; nearest neighbor changed</title></circle>
+<circle cx="244.084" cy="441.526" r="4" fill="#c84527" fill-opacity=".58"><title>Snapdragon / Vyking: 0.335 → 0.345; nearest neighbor changed</title></circle>
+<circle cx="106.138" cy="573.315" r="4" fill="#c84527" fill-opacity=".58"><title>Solarman / Spider-Man: 0.025 → 0.049; nearest neighbor changed</title></circle>
+<circle cx="251.030" cy="591.172" r="4" fill="#c84527" fill-opacity=".58"><title>Solomon Kane / Garrison Kane: 0.351 → 0.009; nearest neighbor changed</title></circle>
+<circle cx="231.654" cy="553.413" r="4" fill="#c84527" fill-opacity=".58"><title>Spider-UK / Spider-Girl: 0.307 → 0.093; nearest neighbor changed</title></circle>
+<circle cx="368.913" cy="424.067" r="4" fill="#c84527" fill-opacity=".58"><title>Spider-Woman / Spider-Woman: 0.616 → 0.384; nearest neighbor changed</title></circle>
+<circle cx="392.229" cy="461.051" r="4" fill="#c84527" fill-opacity=".58"><title>Spider-Woman / Jessica Jones: 0.668 → 0.301; nearest neighbor changed</title></circle>
+<circle cx="178.643" cy="572.164" r="4" fill="#c84527" fill-opacity=".58"><title>Star-Lord / Star Brand: 0.188 → 0.051; nearest neighbor changed</title></circle>
+<circle cx="186.794" cy="545.006" r="4" fill="#c84527" fill-opacity=".58"><title>Star Brand / Nightmask: 0.206 → 0.112; nearest neighbor changed</title></circle>
+<circle cx="122.172" cy="592.464" r="4" fill="#c84527" fill-opacity=".58"><title>Stingray / Crippler: 0.061 → 0.006; nearest neighbor changed</title></circle>
+<circle cx="239.512" cy="551.622" r="4" fill="#c84527" fill-opacity=".58"><title>Storm / Human Torch: 0.325 → 0.097; nearest neighbor changed</title></circle>
+<circle cx="119.282" cy="576.756" r="4" fill="#c84527" fill-opacity=".58"><title>Straw Man / Man-Thing: 0.055 → 0.041; nearest neighbor changed</title></circle>
+<circle cx="163.865" cy="529.657" r="4" fill="#c84527" fill-opacity=".58"><title>Surge / Hellion: 0.155 → 0.147; nearest neighbor changed</title></circle>
+<circle cx="218.717" cy="567.313" r="4" fill="#c84527" fill-opacity=".58"><title>The Union / Union Jack: 0.278 → 0.062; nearest neighbor changed</title></circle>
+<circle cx="118.278" cy="564.021" r="4" fill="#c84527" fill-opacity=".58"><title>The Witness / Rockman: 0.052 → 0.070; nearest neighbor changed</title></circle>
+<circle cx="179.691" cy="317.696" r="4" fill="#c84527" fill-opacity=".58"><title>Thena / Ajak: 0.190 → 0.623; nearest neighbor changed</title></circle>
+<circle cx="145.171" cy="534.340" r="4" fill="#c84527" fill-opacity=".58"><title>Thin Man / Blue Diamond: 0.113 → 0.136; nearest neighbor changed</title></circle>
+<circle cx="111.154" cy="591.526" r="4" fill="#c84527" fill-opacity=".58"><title>Thunderclap / Spider-UK: 0.036 → 0.008; nearest neighbor changed</title></circle>
+<circle cx="269.357" cy="379.527" r="4" fill="#c84527" fill-opacity=".58"><title>Toxyn / Scaredycat: 0.392 → 0.484; nearest neighbor changed</title></circle>
+<circle cx="250.505" cy="523.558" r="4" fill="#c84527" fill-opacity=".58"><title>Two-Gun Kid / Kid Colt: 0.349 → 0.161; nearest neighbor changed</title></circle>
+<circle cx="129.348" cy="586.931" r="4" fill="#c84527" fill-opacity=".58"><title>Typeface / Solo: 0.077 → 0.018; nearest neighbor changed</title></circle>
+<circle cx="233.315" cy="570.310" r="4" fill="#c84527" fill-opacity=".58"><title>U.S. Agent / Patsy Walker: 0.311 → 0.055; nearest neighbor changed</title></circle>
+<circle cx="173.101" cy="583.388" r="4" fill="#c84527" fill-opacity=".58"><title>Vance Astrovik / Justice: 0.176 → 0.026; nearest neighbor changed</title></circle>
+<circle cx="184.353" cy="480.222" r="4" fill="#c84527" fill-opacity=".58"><title>Vulcan / Gladiator: 0.201 → 0.258; nearest neighbor changed</title></circle>
+<circle cx="146.758" cy="543.986" r="4" fill="#c84527" fill-opacity=".58"><title>Whizzer / Jack Frost: 0.116 → 0.115; nearest neighbor changed</title></circle>
+<circle cx="157.696" cy="590.013" r="4" fill="#c84527" fill-opacity=".58"><title>Wild Child / Crippler: 0.141 → 0.011; nearest neighbor changed</title></circle>
+<circle cx="116.253" cy="580.772" r="4" fill="#c84527" fill-opacity=".58"><title>Will o&#x27; the Wisp / Spider-Man: 0.048 → 0.032; nearest neighbor changed</title></circle>
+<circle cx="131.745" cy="506.408" r="4" fill="#c84527" fill-opacity=".58"><title>Xorn / Cyclops: 0.083 → 0.199; nearest neighbor changed</title></circle>
+<circle cx="124.592" cy="553.302" r="4" fill="#c84527" fill-opacity=".58"><title>Yo-Yo Rodriguez / Spider-Woman: 0.066 → 0.094; nearest neighbor changed</title></circle>
+<circle cx="141.790" cy="535.828" r="4" fill="#c84527" fill-opacity=".58"><title>Zombie / Jericho Drumm: 0.105 → 0.133; nearest neighbor changed</title></circle>
+<text x="317.5" y="655" text-anchor="middle" font-size="15">Original pair cosine, before removal</text>
+<text transform="translate(30 372.5) rotate(-90)" text-anchor="middle" font-size="15">Same pair cosine, after removal</text>
+<text x="610" y="185" font-size="63" font-weight="700" fill="#c84527">158 / 303</text>
+<text x="612" y="217" font-size="21">articles change their</text>
+<text x="612" y="244" font-size="21">nearest neighbor.</text>
+<circle cx="620" cy="286" r="6" fill="#c84527"/><text x="638" y="291" font-size="15">Original neighbor replaced</text>
+<circle cx="620" cy="317" r="6" fill="#2849c7"/><text x="638" y="322" font-size="15">Original neighbor retained</text>
+<text x="612" y="371" font-size="15">Below the dashed line:</text>
+<text x="612" y="394" font-size="15">the original pair loses similarity.</text>
+<text x="612" y="439" font-size="15">Removed 369 observed word types</text>
+<text x="612" y="462" font-size="15">(10.5% of all token occurrences).</text>
+<text x="612" y="509" font-size="14">Words such as storm and iron</text>
+<text x="612" y="531" font-size="14">carry names AND story meaning.</text>
+<text x="612" y="553" font-size="14">Change alone is not improvement.</text>
+<text x="55" y="672" font-size="11">Course Marvel corpus · snapshot 26 Aug 2026 · source archive and exact method linked in the post</text>
+</g></svg>

@@ -79,9 +79,9 @@
     {
       "number": 6,
       "status": "published",
-      "title": "From counts to vectors: mapping the semantic universe.",
-      "short_title": "From counts to vectors",
-      "summary": "When counts become coordinates, words become directions. Follow the path from TF-IDF and PPMI to dense Word2Vec embeddings, navigate the space between characters, and chart the geometry of culture.",
+      "title": "Names or meaning? The name trap, measured.",
+      "short_title": "Names or meaning?",
+      "summary": "Removing character-title words changes 158 of 303 nearest textual neighbors. Inspect the names, stories and distractions behind the result, then try Vector Drift.",
       "path": "week6/index.html",
       "template": "week6.html",
       "topic": "THE EMBEDDINGS",

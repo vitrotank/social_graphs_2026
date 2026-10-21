@@ -8,17 +8,19 @@ The Marginalia redesign puts one investigation on the cover, gives each publishe
 
 | Route | Investigation or experiment |
 | --- | --- |
-| `index.html` | Latest investigation, compact Weeks 1–5 index, laboratory |
+| `index.html` | Latest investigation, compact Weeks 1–6 index, laboratory |
 | `week1/index.html` | Marvel degree, 17 isolates, directed atlas, hub removal |
 | `week2/index.html` | Measured friendship paradox; explicitly illustrative model comparisons |
 | `week3/index.html` | Exact paths, bridge characters, 200-trial removal comparison |
 | `week4/index.html` | Philosopher communities, weighted overlap and disparity backbone |
 | `week5/index.html` | Eight words. 282 pages. Shared phrases, with paired source evidence |
+| `week6/index.html` | Names or meaning? A reproducible TF-IDF title-word ablation alongside the existing vector discussion |
 | `explore/index.html` | Selected network previews, relocated from the cover |
 | `play/index.html` | Crossed Wires: weekly shifts and practice puzzles |
 | `play/cerebro.html` | The Popularity Trap: predictions and model illustrations |
 | `play/switchboard.html` | Marvel character removal and real shortest routes |
 | `play/louvain.html` | Two-phase Louvain workshop |
+| `play/vector-voyage.html` | Vector Drift: the existing five-mission vector navigation game |
 | `grunge/index.html` | Separate Wikipedia musician sample and optional radio |
 
 ## Preview and build
@@ -30,7 +32,7 @@ python scripts/build.py --output _site
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [localhost:8000](http://localhost:8000/index.html). All analyses use committed snapshots. JavaScript bundles support direct disk viewing; static figures, article text and downloads remain available without JavaScript. External Wikipedia links and optional YouTube playback need a connection.
+Open [localhost:8000](http://localhost:8000/index.html), the [Week 6 investigation](http://localhost:8000/week6/index.html), or [Vector Drift](http://localhost:8000/play/vector-voyage.html). The corpus analyses use committed snapshots; Vector Drift loads its existing exported coordinates. JavaScript bundles support direct disk viewing; static figures, article text and downloads remain available without JavaScript. External Wikipedia links and optional YouTube playback need a connection.
 
 ## Reproduce and check
 
@@ -39,10 +41,12 @@ python scripts/analyze.py
 python scripts/analyze_week3.py
 python scripts/analyze_week4.py
 python scripts/analyze_week5.py
+python scripts/analyze_week6.py
 python scripts/crawl_grunge.py
 python scripts/generate_week2_svgs.py
 python scripts/build.py --output _site
 python -m unittest discover -s tests
+python scripts/browser_week6.py
 python scripts/browser_smoke.py --editorial-only
 python scripts/browser_smoke.py --week4-only
 python scripts/browser_smoke.py
@@ -50,6 +54,16 @@ python scripts/inspect_site.py
 ```
 
 Browser checks use installed Chrome/Edge and the Python standard library. They exercise keyboard/touch controls, evidence filters, responsive layouts, offline bundles, static fallbacks and exact data readouts. Screenshots and check reports are written to ignored `.preview/`. `inspect_site.py --references` records the supplied reference websites separately.
+
+## Week 6: names or meaning?
+
+The added investigation asks whether textual nearest neighbors survive when article-title words are removed. It compares TF-IDF cosine neighbors before and after applying one global mask of title-derived words to every article in the frozen Marvel corpus, then returns to attributed passages to inspect what changed. Removing title words is a sensitivity check: it can remove ordinary words and miss aliases or civilian names, so a changed neighbor alone does not establish a name-driven match.
+
+`python scripts/analyze_week6.py` independently regenerates the experiment from the committed archive and roster using the Python standard library. The article presents one figure, traceable source excerpts, and the limits of the title-word proxy. The existing Week 6 discussion and Vector Drift remain available alongside the new evidence.
+
+The [method and provenance](data/week6/README.md) state the tokenizer, unsmoothed TF-IDF formula, global title-word mask, ranking rules, and source checks. Outputs are [the measured results](assets/data/week6.json), a matching `assets/data/week6.js` offline bundle, and [the title-word audit figure](assets/figures/week6-name-audit.svg).
+
+Vector Drift uses the existing export in `assets/data/week6_game.json` and its matching JavaScript bundle: 28 characters, 18 palette terms, and five missions. Navigation uses the exported three-dimensional character coordinates and word displacements, with a distance-based goal. The repository does not include its trainer, PCA transform, or axis seed lists; the stored 100-dimensional vectors are not used by the navigation code. The TF-IDF audit is independently reproducible; the game export retains its original model assumptions.
 
 ## Week 5: shared words, different meanings
 
@@ -77,4 +91,4 @@ The Pages workflow recomputes frozen analyses, tests and stages an allowlisted `
 
 Crossed Wires retains its 52 deterministic Wednesday 19:00 Paris/Copenhagen shifts, starting 9 September 2026, with daylight-saving-aware release timestamps. Progress stays in the visitor's browser. The grunge radio begins only after interaction and provides direct listening links.
 
-[Coursework audit](docs/course-audit.md) records required public posts, optional exercises, and the remaining group actions of sharing Week 5 in Teams and giving peer feedback. [Design review](docs/design-review.md) records the concept, references and refinement decisions.
+[Coursework audit](docs/course-audit.md) records required public posts, optional exercises, and the remaining group actions of sharing the weekly site link in Teams and giving peer feedback. [Design review](docs/design-review.md) records the concept, references and refinement decisions.
